@@ -1,0 +1,2 @@
+compiler: lualatex
+root_file: monitoring_report/monitoring_report.tex
