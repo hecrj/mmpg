@@ -1,0 +1,96 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hidelinks, colorlinks=true, urlcolor=blue, linkcolor=black, citecolor=blue]{hyperref}
+\usepackage[english]{babel}
+\usepackage{unicode-math}
+\usepackage{xunicode}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage[justification=centering, labelfont=bf]{caption}
+\usepackage{float}
+\usepackage{pgfgantt}
+\usepackage{marvosym}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{indentfirst}
+\setlength{\parindent}{24pt}
+\include{style}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{2}
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\textsc{\Large Degree Final Project}
+\\[1.5cm]
+\rule{\linewidth}{0.5mm}
+\\[0.4cm]
+{\huge
+\bfseries
+Web platform for massive multiplayer programming games
+\\[0.4cm]
+}
+\rule{\linewidth}{0.5mm}
+\\[0.3cm]
+{\bfseries
+Monitoring report
+}
+\\[2.5cm]
+\begin{center}
+\large
+Héctor Ramón Jiménez
+\end{center}
+Directed by Jordi Petit Silvestre
+\vfill
+{\large
+Facultat d'Informàtica de Barcelona
+}
+\\[0.5cm]
+{\large
+\today
+}
+\end{center}
+\end{titlepage}
+\clearpage
+\tableofcontents
+\clearpage
+\section{Introduction}
+\subsection{Playing games while programming}
+
+A \textbf{programming game} is a computer game where the player does not directly interact
+  with the game. Instead, the player writes a \textbf{computer program} that plays the game. These \textbf{computer programs}
+  are usually called \textbf{artifficial intelligences} (\textbf{AI}s) because they try to make intelligent decisions to win the game.
+
+  Programming games exist since long time ago. The first game of this kind was \textbf{Darwin} \cite{darwin},
+  which was invented by Victor Vyssotsky in 1961 and later implemented by Douglas McIlroy at Bell Labs. Since then,
+  many programming games have been released \cite{pg}. Some of them are even commercial games, like \textbf{SpaceChem} \cite{spacechem}.
+\subsection{Playing with other people}
+With the arrival of the \textbf{Internet} and the \textbf{W}orld \textbf{W}ide \textbf{W}eb, there was nothing stopping people from developing
+  \textbf{multiplayer programming games}.
+
+  A \textbf{multiplayer programming game} is a \textbf{programming game} where multiple players compete with each other to win the game.
+  Thus, the game becomes a challenge where strategy and programming skills make the difference.
+
+  Web platforms have been created that allow players to compete with each other easily.
+  For example, \textbf{Robot Game} \cite{robotgame} is a website where anyone can upload an \textbf{AI} written in \texttt{Python}
+  and compete with other people.
+\subsection{Playing while learning}
+Writing \textbf{AI}s can be a really fun and rewarding experience because the game allows the player to see how their algorithms
+  work visually,
+  while competition between players motivates them to learn and improve.
+
+  It is not a surprise, then, that programming games are being used in schools to teach students different programming techniques.
+  For instance, an \textbf{AI programming challenge} is held every
+  semester in the \textbf{Barcelona School of Informatics} (\textbf{FIB}) where students enrolled in the subject
+  \textbf{Data Structures and Algorithms} (\textbf{EDA}) \cite{eda} compete with each other in a multiplayer programming game
+  using the \textbf{Jutge} platform \cite{jutge}.
+\subsection{A new era: playing with everyone, anytime}
+ However, the \texttt{Jutge} platform only supports programming games where a small
+  number of \textbf{AI}s play at the same time. This means that multiple matches are needed to evaluate all the students properly.
+
+  The \textbf{main goal} of this project is to improve the \textbf{Jutge} platform so it can support multiplayer programming games where
+  \textbf{all the students} can play \textbf{at the same time} in a match that can last for \textbf{weeks}.
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

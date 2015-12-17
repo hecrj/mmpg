@@ -1,0 +1,46 @@
+class Kernel:
+  def paragraph section:
+    p "#paragraph{%s}" % section
+    hfill
+    br 0.2
+
+  def irow *cols:
+    hspace "1em"
+    row *cols
+
+  def brow *cols:
+    row *cols.map{ x -> bold x }
+
+  def component task, learning, implementation, testing, integration:
+    row task, "-"
+    irow "Learning", learning
+    irow "Implementation", implementation
+    irow "Testing", testing
+    irow "Integration", integration
+
+  def centered:
+    p "#makebox[#textwidth]{"; yield; p "}"
+
+  def table title, layout:
+    __method_missing__ "table", options => "H":
+      centering
+      tabular layout: yield
+      caption title
+      label title
+
+  def bold text:
+    "\\textbf{%s}" % text
+
+  def total value, columns => 2:
+    multicolumn columns - 1, "l |", bold("Total")
+    write " & ", value.decimals, "\n"
+
+
+class Number:
+  def decimals:
+    float.decimals
+
+
+class Float:
+  def decimals:
+    "%.2f" % self
