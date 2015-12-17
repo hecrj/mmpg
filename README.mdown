@@ -1,0 +1,3 @@
+# Web platform for MMPGs
+
+[![PDF Status](https://www.sharelatex.com/github/repos/hecrj/mmpg/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/hecrj/mmpg/builds/latest/output.pdf)
