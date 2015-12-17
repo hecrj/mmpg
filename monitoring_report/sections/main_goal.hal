@@ -1,0 +1,7 @@
+section "Main goal"
+
+p "The main goal of this project is to **develop a set of libraries and components that will allow to create, manage and
+deploy massive multiplayer programming games easily**.
+
+At the same time, this project will enable the **EDA** #cite{eda} subject at the **FIB** to use **MMPG**s to evaluate
+its students."

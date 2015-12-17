@@ -43,45 +43,8 @@ document:
 
   clearpage
 
-  section "Introduction"
-  subsection "Playing games while programming"
-  p ""
-  p "A **programming game** is a computer game where the player does not directly interact
-  with the game. Instead, the player writes a **computer program** that plays the game. These **computer programs**
-  are usually called **artifficial intelligences** (**AI**s) because they try to make intelligent decisions to win the game.
-
-  Programming games exist since long time ago. The first game of this kind was **Darwin** #cite{darwin},
-  which was invented by Victor Vyssotsky in 1961 and later implemented by Douglas McIlroy at Bell Labs. Since then,
-  many programming games have been released #cite{pg}. Some of them are even commercial games, like **SpaceChem** #cite{spacechem}."
-
-  subsection "Playing with other people"
-  p "With the arrival of the **Internet** and the **W**orld **W**ide **W**eb, there was nothing stopping people from developing
-  **multiplayer programming games**.
-
-  A **multiplayer programming game** is a **programming game** where multiple players compete with each other to win the game.
-  Thus, the game becomes a challenge where strategy and programming skills make the difference.
-
-  Web platforms have been created that allow players to compete with each other easily.
-  For example, **Robot Game** #cite{robotgame} is a website where anyone can upload an **AI** written in |Python|
-  and compete with other people."
-
-  subsection "Playing while learning"
-  p "Writing **AI**s can be a really fun and rewarding experience because the game allows the player to see how their algorithms
-  work visually,
-  while competition between players motivates them to learn and improve.
-
-  It is not a surprise, then, that programming games are being used in schools to teach students different programming techniques.
-  For instance, an **AI programming challenge** is held every
-  semester in the **Barcelona School of Informatics** (**FIB**) where students enrolled in the subject
-  **Data Structures and Algorithms** (**EDA**) #cite{eda} compete with each other in a multiplayer programming game
-  using the **Jutge** platform #cite{jutge}."
-
-  subsection "A new era: playing with everyone, anytime"
-  p " However, the |Jutge| platform only supports programming games where a small
-  number of **AI**s play at the same time. This means that multiple matches are needed to evaluate all the students properly.
-
-  The **main goal** of this project is to improve the **Jutge** platform so it can support multiplayer programming games where
-  **all the students** can play **at the same time** in a match that can last for **weeks**."
+  import sections.introduction
+  import sections.main_goal
 
   clearpage
 
