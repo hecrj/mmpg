@@ -5,10 +5,10 @@ AUX_FILE = $(addsuffix .aux, $(basename $< .hal))
 
 %.pdf: %.hal
 	hal $< > $(TEX_FILE)
-	lualatex $(TEX_FILE)
+	lualatex -shell-escape $(TEX_FILE)
 	bibtex   $(AUX_FILE)
-	lualatex $(TEX_FILE)
-	lualatex $(TEX_FILE)
+	lualatex -shell-escape $(TEX_FILE)
+	lualatex -shell-escape $(TEX_FILE)
 
 slides.pdf: slides.hal
 	hal $< > slides.tex

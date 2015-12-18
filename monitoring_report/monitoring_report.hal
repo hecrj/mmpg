@@ -21,6 +21,8 @@ usepackage "multirow"
 usepackage "tocbibind", options => "nottoc,numbib"
 usepackage "indentfirst"
 usepackage "afterpage"
+usepackage "minted"
+usepackage "mdframed"
 usepackage "tikz"
 usetikzlibrary "arrows,positioning"
 

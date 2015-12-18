@@ -15,6 +15,8 @@
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{indentfirst}
 \usepackage{afterpage}
+\usepackage{minted}
+\usepackage{mdframed}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
 \setlength{\parindent}{24pt}
@@ -155,7 +157,9 @@ The current architecture makes scaling easy. Each worker can be executed in a
 The engine listens to requests made through a \texttt{REQ/REP} socket connection. Other applications can
   easily connect to the engine and interact with it.
 \item[Game abstraction]
-A set of abstract classes defines the behaviour that any \texttt{}MMPG\texttt{} needs to implement
+A set of abstract classes defines the behaviour that any \texttt{MMPG} needs to implement.
+  Mostly, this behaviour includes the \textbf{AI public interface}, \textbf{game actions}, and \textbf{world generation and
+  serialization}.
 \end{description}
 \subsubsection{Pending features}
 \begin{description}
@@ -165,6 +169,56 @@ Programs need to be executed in an isolated environment.
 Ports used in socket connections and worker addresses should be configurable.
 \end{description}
 \subsubsection{Implementation details}
+\paragraph{Programming language}
+\hfill
+\\[0.2cm]
+\indent
+The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
+\textbf{low-level} operative system operations, so it can limit how player programs are executed. Hence, \textbf{\texttt{C}++} is the
+programming language chosen to implement it, mainly because its \textbf{efficiency} and the \textbf{\texttt{}C\texttt{ POSIX API}}, which allows
+to talk directly to \textbf{\texttt{UNIX}-based operative systems}.
+\paragraph{Inter-process communication}
+\hfill
+\\[0.2cm]
+\indent
+As it was explained previously, the \textbf{engine} features a decoupled architecture. Different processes are
+executed and communicate with each other using \textbf{sockets}. However, implementing inter-process communication from
+scratch would be a real challenge by itself, and it is not the subject of this project. This is where \textbf{\texttt{ZeroMQ}} comes
+in.
+
+\textbf{\texttt{ZeroMQ}} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
+\textbf{low-level} communication, while providing a flexible and easy-to-use interface. \textbf{\texttt{ZeroMQ}} has bindings available
+for the most well-known progamming languages.
+
+The \textbf{engine} uses \textbf{\texttt{ZeroMQ}} for all the inter-process communication. As a consequence, the architecture becomes
+decoupled. For instance, a \textbf{player process} could be programmed in \textbf{any programming language}, as it
+only performs requests to the master process. Thus, it would be \textbf{relatively easy} to allow players to develop
+\textbf{AI}s using \textbf{different programming languages}.
+\paragraph{Game logic abstraction}
+\hfill
+\\[0.2cm]
+\indent
+The \textbf{engine} exposes a set of \textbf{abstract classes} to build game logic on top of it:
+\begin{description}
+\item[\texttt{AI}]
+Defines the interface that any \texttt{MMPG} AI needs to implement: a \texttt{play} method. Games can extend
+  this class to define \textbf{\texttt{AI API}s} that players can use to write their programs.
+\item[\texttt{World}]
+Represents a game world. Games need to extend this class and implement methods to
+  \textbf{generate}, \textbf{serialize} and \textbf{update} the world.
+\item[\texttt{Action}]
+Represents an action that an \textbf{AI} can perform. Normally, these actions try to \textbf{update}
+  the game world.
+\end{description}
+On the other hand, the \textbf{engine} also provides two \textbf{fully-implemented classes} to run \textbf{master and player
+processes}. As \autoref{world_injection} shows, a game world needs to be injected to run this processes.
+
+The \textbf{worker process} is \textbf{independent of the game logic} and it can be built \textbf{directly from the library}.
+\begin{figure}[!h]
+\inputminted[linenos,fontsize=\small,frame=lines,framesep=2mm]{c++}{code/master.cpp}
+\caption{Injecting a game world to the master process}
+\label{world_injection}
+\end{figure}
 \subsection{API}
 ...
 \subsection{Client}

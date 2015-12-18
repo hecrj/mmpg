@@ -3,7 +3,7 @@ label :components
 
 subsection "Engine"
 
-typewrite "MMPG"
+typewrite "MMPG", "C++"
 
 p "The MMPG **engine** is a library that implements basic features needed by any MMPG. The **engine** exposes a set
 of classes that can be used and extended to build the logic of the game.
@@ -46,7 +46,9 @@ description:
   different machine."
   item "API"; p "The engine listens to requests made through a |REQ/REP| socket connection. Other applications can
   easily connect to the engine and interact with it."
-  item "Game abstraction"; p "A set of abstract classes defines the behaviour that any |MMPG| needs to implement"
+  item "Game abstraction"; p "A set of abstract classes defines the behaviour that any MMPG needs to implement.
+  Mostly, this behaviour includes the **AI public interface**, **game actions**, and **world generation and
+  serialization**."
 
 subsubsection "Pending features"
 
@@ -56,7 +58,47 @@ description:
 
 subsubsection "Implementation details"
 
+paragraph "Programming language"
+indent; p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
+**low-level** operative system operations, so it can limit how player programs are executed. Hence, **C++** is the
+programming language chosen to implement it, mainly because its **efficiency** and the **|C POSIX API|**, which allows
+to talk directly to **|UNIX|-based operative systems**."
 
+paragraph "Inter-process communication"
+indent; p "As it was explained previously, the **engine** features a decoupled architecture. Different processes are
+executed and communicate with each other using **sockets**. However, implementing inter-process communication from
+scratch would be a real challenge by itself, and it is not the subject of this project. This is where **|ZeroMQ|** comes
+in.
+
+**|ZeroMQ|** is an embeddable networking library that implements **low-latency socket communication**. It manages
+**low-level** communication, while providing a flexible and easy-to-use interface. **|ZeroMQ|** has bindings available
+for the most well-known progamming languages.
+
+The **engine** uses **|ZeroMQ|** for all the inter-process communication. As a consequence, the architecture becomes
+decoupled. For instance, a **player process** could be programmed in **any programming language**, as it
+only performs requests to the master process. Thus, it would be **relatively easy** to allow players to develop
+**AI**s using **different programming languages**."
+
+paragraph "Game logic abstraction"
+indent; p "The **engine** exposes a set of **abstract classes** to build game logic on top of it:"
+
+description:
+  item "|AI|"; p "Defines the interface that any MMPG AI needs to implement: a |play| method. Games can extend
+  this class to define **|AI API|s** that players can use to write their programs."
+  item "|World|"; p "Represents a game world. Games need to extend this class and implement methods to
+  **generate**, **serialize** and **update** the world."
+  item "|Action|"; p "Represents an action that an **AI** can perform. Normally, these actions try to **update**
+  the game world."
+
+p "On the other hand, the **engine** also provides two **fully-implemented classes** to run **master and player
+processes**. As #autoref{world_injection} shows, a game world needs to be injected to run this processes.
+
+The **worker process** is **independent of the game logic** and it can be built **directly from the library**."
+
+figure!:
+  inputminted "c++", "code/master.cpp", options => "linenos,fontsize=\\small,frame=lines,framesep=2mm"
+  caption "Injecting a game world to the master process"
+  label :world_injection
 
 
 subsection "API"
