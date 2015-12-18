@@ -12,10 +12,27 @@ Its source code is available here: #url{https://github.com/mmpg/engine}"
 
 subsubsection "Architecture"
 
+p "The runtime of an |MMPG| **engine** consists of 3 types of processes:"
+
+description:
+  item "Master process"; p "It represents the **game-world server**. The master process listens to requests coming from
+players and updates the game world accordingly. There is only **one master process per runtime**."
+
+  item "Worker process"; p "It represents a **pool of players**. A worker process **executes** a set of players and
+  **manages** them. There can be **multiple workers per runtime**."
+
+  item "Player process"; p "It represents a **player program**. A player process **reads** the game world from the
+  **master process** and **performs requests** to **change** the game world."
+
+p "Processes comunicate with each other using **low-latency sockets**. Thus, different workers can be executed
+in different machines to achieve better performance.
+
+#autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = #sum_{i=0}^{N} M_i$ players."
+
 figure!:
   resizebox "\\textwidth":
     input "graphs/engine_arch"
-  caption "Engine processes"
+  caption "Hierarchy of engine processes"
   label "engine_arch"
 
 subsubsection "Current features"
@@ -27,8 +44,9 @@ description:
   item "Event notification"; p "Events are notified to subscribers through a |PUB/SUB| socket connection."
   item "Decoupled architecture"; p "The current architecture makes scaling easy. Each worker can be executed in a
   different machine."
-  item "API"; p "The engine listens to requests made through a |REQ/REP| socket connection. Other applications can easily
-  connect to the engine and interact with it."
+  item "API"; p "The engine listens to requests made through a |REQ/REP| socket connection. Other applications can
+  easily connect to the engine and interact with it."
+  item "Game abstraction"; p "A set of abstract classes defines the behaviour that any |MMPG| needs to implement"
 
 subsubsection "Pending features"
 

@@ -81,4 +81,12 @@ The most important change, though, is that the components **engine**, **API**, a
 in parallel in order to perform **continuous integration** so there is always a working prototype of the project.
 This change is described with more detail in #autoref{methodology}."
 
+clearpage
+
 subsection "Dedication"
+
+figure!:
+  centered:
+    includegraphics "images/dedication.png", options => "scale=0.5"
+  caption "GitHub contributions to the MMPG project"
+  label "dedication"

@@ -14,6 +14,7 @@
 \usepackage{multirow}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{indentfirst}
+\usepackage{afterpage}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
 \setlength{\parindent}{24pt}
@@ -115,11 +116,27 @@ of classes that can be used and extended to build the logic of the game.
 
 Its source code is available here: \url{https://github.com/mmpg/engine}
 \subsubsection{Architecture}
+The runtime of an \texttt{}MMPG\texttt{} \textbf{engine} consists of 3 types of processes:
+\begin{description}
+\item[Master process]
+It represents the \textbf{game-world server}. The master process listens to requests coming from
+players and updates the game world accordingly. There is only \textbf{one master process per runtime}.
+\item[Worker process]
+It represents a \textbf{pool of players}. A worker process \textbf{executes} a set of players and
+  \textbf{manages} them. There can be \textbf{multiple workers per runtime}.
+\item[Player process]
+It represents a \textbf{player program}. A player process \textbf{reads} the game world from the
+  \textbf{master process} and \textbf{performs requests} to \textbf{change} the game world.
+\end{description}
+Processes comunicate with each other using \textbf{low-latency sockets}. Thus, different workers can be executed
+in different machines to achieve better performance.
+
+\autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = \sum_{i=0}^{N} M_i$ players.
 \begin{figure}[!h]
 \noindent\resizebox{\textwidth}{!}{
 \input{graphs/engine_arch}
 }
-\caption{Engine processes}
+\caption{Hierarchy of engine processes}
 \label{engine_arch}
 \end{figure}
 \subsubsection{Current features}
@@ -135,8 +152,10 @@ Events are notified to subscribers through a \texttt{PUB/SUB} socket connection.
 The current architecture makes scaling easy. Each worker can be executed in a
   different machine.
 \item[API]
-The engine listens to requests made through a \texttt{REQ/REP} socket connection. Other applications can easily
-  connect to the engine and interact with it.
+The engine listens to requests made through a \texttt{REQ/REP} socket connection. Other applications can
+  easily connect to the engine and interact with it.
+\item[Game abstraction]
+A set of abstract classes defines the behaviour that any \texttt{}MMPG\texttt{} needs to implement
 \end{description}
 \subsubsection{Pending features}
 \begin{description}
@@ -263,7 +282,15 @@ The first change to notice is that some components have been \textbf{renamed}. A
 The most important change, though, is that the components \textbf{engine}, \textbf{API}, and \textbf{client} have been developed
 in parallel in order to perform \textbf{continuous integration} so there is always a working prototype of the project.
 This change is described with more detail in \autoref{methodology}.
+\clearpage
 \subsection{Dedication}
+\begin{figure}[!h]
+\makebox[\textwidth]{
+\includegraphics[scale=0.5]{images/dedication.png}
+}
+\caption{GitHub contributions to the \texttt{MMPG} project}
+\label{dedication}
+\end{figure}
 \clearpage
 \section{Methodology}
 \label{methodology}
