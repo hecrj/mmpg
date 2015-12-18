@@ -14,6 +14,8 @@
 \usepackage{multirow}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{indentfirst}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
 \setlength{\parindent}{24pt}
 \include{style}
 \setcounter{secnumdepth}{5}
@@ -58,7 +60,7 @@ Facultat d'Informàtica de Barcelona
 \subsection{Playing games while programming}
 In 1961, \textbf{Victor Vyssotsky}, a mathematician and computer scientist working at Bell Labs, had an idea. He devised
 a computer game, but not a traditional one where the player inputs the different actions from a controller to play it.
-No. He wanted to create a game that you could only play by writing a \textbf{computer program}. And so, along with \textbf{Robert
+No. He wanted to create a game that it could only be played by writing a \textbf{computer program}. And so, along with \textbf{Robert
 Morris Sr.} and \textbf{Doug McIlroy}, they created \textbf{Darwin} \cite{darwin}: the first programming game.
 
 A \textbf{programming game} is a computer game where the player does not directly interact with the game. Instead, the
@@ -82,8 +84,8 @@ game. Thus, the game becomes a challenge where strategy and programming skills m
 Web platforms have been created that allow players to compete with each other easily. For example, \textbf{Robot Game}
 \cite{robotgame} is a website where anyone can upload an \textbf{AI} written in \texttt{Python} and compete with other people.
 \subsection{Playing while learning}
-Writing \textbf{AI}s can be a really fun and rewarding experience because the game allows the player to see how their
-\textbf{algorithms work visually}, while competition between players motivates them to \textbf{learn and improve}.
+Writing \textbf{AI}s can be a really fun and rewarding experience because the game allows the players to see how their
+\textbf{algorithms work visually}, while competition motivates them to \textbf{learn and improve}.
 
 It is not a surprise, then, that programming games are being used in schools to teach students different programming
 techniques. For instance, an \textbf{AI programming challenge} is held every semester in the \textbf{Barcelona School of
@@ -98,12 +100,174 @@ It is time to take multiplayer programming games to the next level, featuring \t
 a \textbf{massive amount of players in real-time}. Games where the player will feel attached to the match, where constant
 \textbf{evolution} and adaptation matters, where your program plays with everyone at the same time. It is time to create
 \textbf{massive multiplayer programming games} (\textbf{MMPG}s).
-\section{Main goal}
-The main goal of this project is to \textbf{develop a set of libraries and components that will allow to create, manage and
-deploy massive multiplayer programming games easily}.
+\clearpage
+\vspace*{\fill}
+\begin{center}
+\emph{This document details the current status of the project and the changes made to the original planning.}
+\end{center}
+\vfill
+\clearpage
+\section{Component status}
+\label{components}
+\subsection{Engine}
+The \texttt{MMPG} \textbf{engine} is a library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
+of classes that can be used and extended to build the logic of the game.
 
-At the same time, this project will enable the \textbf{EDA} \cite{eda} subject at the \textbf{FIB} to use \textbf{MMPG}s to evaluate
-its students.
+Its source code is available here: \url{https://github.com/mmpg/engine}
+\subsubsection{Architecture}
+\begin{figure}[!h]
+\noindent\resizebox{\textwidth}{!}{
+\input{graphs/engine_arch}
+}
+\caption{Engine processes}
+\label{engine_arch}
+\end{figure}
+\subsubsection{Current features}
+\begin{description}
+\item[AI hot-swapping]
+Players can change their programs during a match.
+\item[Log system]
+Every event that occurs in the engine is logged properly. This allows players to replay and
+  watch the past of a match.
+\item[Event notification]
+Events are notified to subscribers through a \texttt{PUB/SUB} socket connection.
+\item[Decoupled architecture]
+The current architecture makes scaling easy. Each worker can be executed in a
+  different machine.
+\item[API]
+The engine listens to requests made through a \texttt{REQ/REP} socket connection. Other applications can easily
+  connect to the engine and interact with it.
+\end{description}
+\subsubsection{Pending features}
+\begin{description}
+\item[Security]
+Programs need to be executed in an isolated environment.
+\item[Configuration]
+Ports used in socket connections and worker addresses should be configurable.
+\end{description}
+\subsubsection{Implementation details}
+\subsection{API}
+...
+\subsection{Client}
+...
+\subsection{Space Wars}
+\subsubsection{Logic}
+...
+\subsubsection{Viewer}
+...
+\section{Planning}
+\subsection{Time management}
+\autoref{gantt_original} shows the original time planning, while \autoref{gantt_current} shows the final time
+planning.
+
+\begin{figure}[!h]
+\makebox[\textwidth]{
+\noindent\resizebox{300pt}{!}{
+\begin{ganttchart}[hgrid, vgrid]{1}{25}
+\gantttitle{2015}{20}
+\gantttitle{2016}{5}
+\\
+\gantttitle{September}{5}
+\gantttitle{October}{5}
+\gantttitle{November}{5}
+\gantttitle{December}{5}
+\gantttitle{January}{5}
+\\
+\ganttbar{Project management}{3}{8}
+\\
+\ganttbar{Analysis and design}{4}{5}
+\\
+\ganttbar{Game engine}{6}{10}
+\\
+\ganttbar{Real-time notifier}{11}{13}
+\\
+\ganttbar{Notifier subscriber}{14}{15}
+\\
+\ganttbar{Control panel}{16}{17}
+\\
+\ganttbar{Game example - logic}{11}{18}
+\\
+\ganttbar{Game example - viewer}{16}{20}
+\\
+\ganttbar{Testing and polishing}{21}{22}
+\\
+\ganttbar{Project memory}{11}{23}
+\\
+\ganttbar{Oral presentation}{24}{24}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem2}{elem3}
+\ganttlink{elem3}{elem4}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem2}{elem6}
+\ganttlink{elem4}{elem7}
+\ganttlink{elem6}{elem8}
+\ganttlink{elem7}{elem8}
+\ganttlink{elem2}{elem9}
+\ganttlink{elem9}{elem10}
+\end{ganttchart}
+}
+}
+\caption{Original time planning}
+\label{gantt_original}
+\end{figure}
+\begin{figure}[!h]
+\makebox[\textwidth]{
+\noindent\resizebox{300pt}{!}{
+\begin{ganttchart}[hgrid, vgrid]{1}{25}
+\gantttitle{2015}{20}
+\gantttitle{2016}{5}
+\\
+\gantttitle{September}{5}
+\gantttitle{October}{5}
+\gantttitle{November}{5}
+\gantttitle{December}{5}
+\gantttitle{January}{5}
+\\
+\ganttbar{Project management}{3}{11}
+\\
+\ganttbar{Analysis and design}{6}{7}
+\\
+\ganttbar{Engine}{9}{15}
+\\
+\ganttbar{API}{9}{13}
+\\
+\ganttbar{Client}{9}{13}
+\\
+\ganttbar{Space Wars - logic}{16}{19}
+\\
+\ganttbar{Space Wars - viewer}{16}{20}
+\\
+\ganttbar{Testing and polishing}{21}{22}
+\\
+\ganttbar{Project memory}{16}{23}
+\\
+\ganttbar{Oral presentation}{24}{24}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem1}{elem3}
+\ganttlink{elem1}{elem4}
+\ganttlink{elem2}{elem5}
+\ganttlink{elem3}{elem6}
+\ganttlink{elem4}{elem6}
+\ganttlink{elem5}{elem7}
+\ganttlink{elem6}{elem7}
+\ganttlink{elem8}{elem9}
+\end{ganttchart}
+}
+}
+\caption{Final time planning}
+\label{gantt_current}
+\end{figure}
+The first change to notice is that some components have been \textbf{renamed}. Also, the control panel has been
+\textbf{integrated} inside the game viewer, as described in \autoref{components}.
+
+The most important change, though, is that the components \textbf{engine}, \textbf{API}, and \textbf{client} have been developed
+in parallel in order to perform \textbf{continuous integration} so there is always a working prototype of the project.
+This change is described with more detail in \autoref{methodology}.
+\subsection{Dedication}
+\clearpage
+\section{Methodology}
+\label{methodology}
+CI
 \clearpage
 \bibliographystyle{plain}
 \bibliography{references}

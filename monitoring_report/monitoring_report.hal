@@ -20,6 +20,9 @@ usepackage "siunitx"
 usepackage "multirow"
 usepackage "tocbibind", options => "nottoc,numbib"
 usepackage "indentfirst"
+usepackage "tikz"
+usetikzlibrary "arrows,positioning"
+
 
 setlength "\\parindent", "24pt"
 
@@ -44,7 +47,22 @@ document:
   clearpage
 
   import sections.introduction
-  import sections.main_goal
+
+  clearpage
+
+  vspace "\\fill", special => true
+  center:
+    p "*This document details the current status of the project and the changes made to the original planning.*"
+  vfill
+
+  clearpage
+
+  import sections.current_status
+  import sections.planning
+
+  clearpage
+
+  import sections.methodology
 
   clearpage
 

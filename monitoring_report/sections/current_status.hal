@@ -1,0 +1,60 @@
+section "Component status"
+label :components
+
+subsection "Engine"
+
+typewrite "MMPG"
+
+p "The MMPG **engine** is a library that implements basic features needed by any MMPG. The **engine** exposes a set
+of classes that can be used and extended to build the logic of the game.
+
+Its source code is available here: #url{https://github.com/mmpg/engine}"
+
+subsubsection "Architecture"
+
+figure!:
+  resizebox "\\textwidth":
+    input "graphs/engine_arch"
+  caption "Engine processes"
+  label "engine_arch"
+
+subsubsection "Current features"
+
+description:
+  item "AI hot-swapping"; p "Players can change their programs during a match."
+  item "Log system"; p "Every event that occurs in the engine is logged properly. This allows players to replay and
+  watch the past of a match."
+  item "Event notification"; p "Events are notified to subscribers through a |PUB/SUB| socket connection."
+  item "Decoupled architecture"; p "The current architecture makes scaling easy. Each worker can be executed in a
+  different machine."
+  item "API"; p "The engine listens to requests made through a |REQ/REP| socket connection. Other applications can easily
+  connect to the engine and interact with it."
+
+subsubsection "Pending features"
+
+description:
+  item "Security"; p "Programs need to be executed in an isolated environment."
+  item "Configuration"; p "Ports used in socket connections and worker addresses should be configurable."
+
+subsubsection "Implementation details"
+
+
+
+
+subsection "API"
+
+p "..."
+
+subsection "Client"
+
+p "..."
+
+subsection "Space Wars"
+
+subsubsection "Logic"
+
+p "..."
+
+subsubsection "Viewer"
+
+p "..."

@@ -35,6 +35,18 @@ class Kernel:
     multicolumn columns - 1, "l |", bold("Total")
     write " & ", value.decimals, "\n"
 
+  def resizebox width => "!", height => "!":
+    print "\\noindent\\resizebox{%s}{%s}{" % [width, height]
+    yield
+    print "}"
+
+  def itemize:
+    __method_missing__ :itemize:
+      Itemize.new.instance_exec &yield
+
+  def figure!:
+    __method_missing__ :figure, options => "!h": yield
+
 
 class Number:
   def decimals:
@@ -44,3 +56,7 @@ class Number:
 class Float:
   def decimals:
     "%.2f" % self
+
+class Itemize:
+  def item i:
+    __method_missing__ :item; p i
