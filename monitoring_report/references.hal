@@ -97,3 +97,20 @@ bibtex :references:
     author "U.S. Energy Information Administration"
     url "http://www.eia.gov/tools/faqs/faq.cfm?id=74&t=11"
     online "October 18, 2015"
+
+  misc :jwt:
+    title "{JSON Web Tokens}"
+    url "https://jwt.io/"
+    online "December 18, 2015"
+
+  misc :galcon:
+    title "Galcon"
+    author "Phil Hassey"
+    url "http://www.galcon.com/"
+    online "December 18, 2015"
+
+  misc :planet_wars:
+    title "{Planet Wars}"
+    author "University of Waterloo. Google"
+    url "http://planetwars.aichallenge.org/"
+    online "December 18, 2015"

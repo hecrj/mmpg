@@ -16,7 +16,7 @@
 \usepackage{indentfirst}
 \usepackage{afterpage}
 \usepackage{minted}
-\usepackage{mdframed}
+\usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
 \setlength{\parindent}{24pt}
@@ -188,7 +188,7 @@ in.
 
 \textbf{\texttt{ZeroMQ}} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
 \textbf{low-level} communication, while providing a flexible and easy-to-use interface. \textbf{\texttt{ZeroMQ}} has bindings available
-for the most well-known progamming languages.
+for the most well-known programming languages.
 
 The \textbf{engine} uses \textbf{\texttt{ZeroMQ}} for all the inter-process communication. As a consequence, the architecture becomes
 decoupled. For instance, a \textbf{player process} could be programmed in \textbf{any programming language}, as it
@@ -211,7 +211,7 @@ Represents an action that an \textbf{AI} can perform. Normally, these actions tr
   the game world.
 \end{description}
 On the other hand, the \textbf{engine} also provides two \textbf{fully-implemented classes} to run \textbf{master and player
-processes}. As \autoref{world_injection} shows, a game world needs to be injected to run this processes.
+processes}. As \autoref{world_injection} shows, a game world needs to be injected to run these processes.
 
 The \textbf{worker process} is \textbf{independent of the game logic} and it can be built \textbf{directly from the library}.
 \begin{figure}[!h]
@@ -220,10 +220,59 @@ The \textbf{worker process} is \textbf{independent of the game logic} and it can
 \label{world_injection}
 \end{figure}
 \subsection{API}
-...
+The \textbf{\texttt{API}} component exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
+usually handles requests from the game viewer.
+
+The \textbf{\texttt{API}} component is developed using the \textbf{\texttt{Go}} programming language \cite{golang}. \textbf{Go}
+is \textbf{simple}, \textbf{fast}, \textbf{easy-to-deploy} and includes \textbf{native} libraries to build \texttt{REST API}s.
+
+It source code is available here: \url{https://github.com/mmpg/api}
+\subsubsection{Current endpoints}
+\begin{tabularx}{\textwidth}{l | l | X}
+\textbf{URI} & \textbf{Method} & \textbf{Description}\\
+\hline
+\texttt{/auth} & \texttt{GET} & Validates an authentication token and returns a new one.\\
+\texttt{/auth} & \texttt{POST} & Validates the given user credentials and returns an authentication token.\\
+\texttt{/log} & \texttt{GET} & Returns the log file of the given \textbf{time}.\\
+\texttt{/events} & \texttt{GET} & Upgrades the HTTP request to a WebSocket subscription of engine events.\\
+\texttt{/player} & \texttt{POST} & Deploys the uploaded file as the player of the authencated user.\\
+\end{tabularx}
+\subsubsection{Pending endpoints}
+\begin{tabularx}{\textwidth}{l | l | X}
+\textbf{URI} & \textbf{Method} & \textbf{Description}\\
+\hline
+\texttt{/world} & \texttt{GET} & Returns the current state of the world.\\
+\end{tabularx}
+\\[0.2cm]
+\indent
+This endpoint might be useful to reduce the amount of information in the events, as the \textbf{static} part of
+the game world would not need to be included anymore.
 \subsection{Client}
-...
+The \textbf{client} component is a \textbf{JavaScript} library that implements a set of useful classes to communicate with
+an \textbf{\texttt{MMPG} \texttt{API}} and implement \textbf{game viewers}.
+
+Its source code is available here: \url{https://github.com/mmpg/client}
+\subsubsection{Current classes}
+\begin{description}
+\item[\texttt{Client}]
+Allows to perform requests to any \textbf{\texttt{MMPG} \texttt{API}}. Most of its methods perform an \texttt{HTTP} request
+  and return a JavaScript \textbf{promise}.
+\item[\texttt{EventStream}]
+Represents a stream of game events. It delegates the event handling to its \textbf{subscriber}.
+\item[\texttt{LiveSubscriber}]
+\textbf{Buffers} 2 seconds of events and then starts \textbf{consuming them}.
+\item[\texttt{PlaybackSubscriber}]
+Reads a \textbf{log} of events from the \texttt{API} and consumes them. When the number of
+  events reaches a minimum, it requests the next log to the \texttt{API}.
+\item[\texttt{Webtoken}]
+Represents a \textbf{\texttt{JSON} Webtoken} \cite{jwt}. It is used to manage authentication tokens.
+\item[\texttt{GameLoop}]
+Implements a \textbf{consistent game loop}, calling a callback function and passing the time
+  between calls as the first argument.
+\end{description}
 \subsection{Space Wars}
+\textbf{Space Wars} will be the first game using the \texttt{MMPG} platform. It is inspired by \textbf{Galcon} \cite{galcon}
+and \textbf{Planet Wars} \cite{planet_wars}.
 \subsubsection{Logic}
 ...
 \subsubsection{Viewer}

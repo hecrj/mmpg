@@ -22,7 +22,7 @@ usepackage "tocbibind", options => "nottoc,numbib"
 usepackage "indentfirst"
 usepackage "afterpage"
 usepackage "minted"
-usepackage "mdframed"
+usepackage "tabularx"
 usepackage "tikz"
 usetikzlibrary "arrows,positioning"
 
