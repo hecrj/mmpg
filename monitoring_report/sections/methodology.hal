@@ -9,7 +9,7 @@ the **latest working prototype**. Therefore, breaking changes can be easily dete
 integration** there is always an **up-to-date** working prototype of the platform that can be shown to anyone.
 
 To set it up, a #href{http://linode.com/}{**Linode**} running |Ubuntu| was booted up to execute an instance of
-**Space Wars**. Then, #href{http://semaphoreci.com/}{**Semaphore**} was configured to build any change in the
+the platform. Then, #href{http://semaphoreci.com/}{**Semaphore**} was configured to build any change in the
 repositories. If a build succeeds, then **Semaphore** deploys the changes to the **Linode**, where the changes will
 be applied. #autoref{build_process} shows the build process of the **Space Wars** engine, while
 #autoref{deployment_process} shows its deployment process.
