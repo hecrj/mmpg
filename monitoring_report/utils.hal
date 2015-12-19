@@ -45,7 +45,7 @@ class Kernel:
       Itemize.new.instance_exec &yield
 
   def figure!:
-    __method_missing__ :figure, options => "!h": yield
+    __method_missing__ :figure, options => "H": yield
 
 
 class Number:

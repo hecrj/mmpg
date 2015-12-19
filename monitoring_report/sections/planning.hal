@@ -74,14 +74,12 @@ figure options => "!h":
   caption "Final time planning"
   label "gantt_current"
 
-p "The first change to notice is that some components have been **renamed**. Also, the control panel has been
+p "The first change to notice is that some components have been **renamed** and he control panel has been
 **integrated** inside the game viewer, as described in #autoref{components}.
 
 The most important change, though, is that the components **engine**, **API**, and **client** have been developed
 in parallel in order to perform **continuous integration** so there is always a working prototype of the project.
 This change is described with more detail in #autoref{methodology}."
-
-clearpage
 
 subsection "Dedication"
 
