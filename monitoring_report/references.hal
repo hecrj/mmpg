@@ -114,3 +114,9 @@ bibtex :references:
     author "University of Waterloo. Google"
     url "http://planetwars.aichallenge.org/"
     online "December 18, 2015"
+
+  misc :zeromq:
+    title "{ZeroMQ. Distributed Messaging}"
+    author "iMatix Corporation"
+    url "http://zeromq.org/"
+    online "December 18, 2015"

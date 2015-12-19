@@ -2,11 +2,7 @@ section "Planning"
 
 subsection "Time management"
 
-p "#autoref{gantt_original} shows the original time planning, while #autoref{gantt_current} shows the final time
-planning.
-"
-
-figure options => "!h":
+figure!:
   centered:
     resizebox width => "300pt":
       ganttchart 1, 25, options => "hgrid, vgrid":
@@ -39,9 +35,9 @@ figure options => "!h":
         ganttlink "elem9", "elem10"
 
   caption "Original time planning"
-  label "gantt_original"
+  label :gantt_original
 
-figure options => "!h":
+figure!:
   centered:
     resizebox width => "300pt":
       ganttchart 1, 25, options => "hgrid, vgrid":
@@ -72,19 +68,29 @@ figure options => "!h":
         ganttlink "elem8", "elem9"
 
   caption "Final time planning"
-  label "gantt_current"
+  label :gantt_current
 
-p "The first change to notice is that some components have been **renamed** and he control panel has been
+p "#autoref{gantt_original} shows the **original time planning**, while #autoref{gantt_current} shows the **final time
+planning**.
+
+The first change to notice is that some components have been **renamed** and the control panel has been
 **integrated** inside the game viewer, as described in #autoref{components}.
 
-The most important change, though, is that the components **engine**, **API**, and **client** have been developed
+The most important change, though, is that the components: **engine**, **API**, and **client** have been developed
 in parallel in order to perform **continuous integration** so there is always a working prototype of the project.
 This change is described with more detail in #autoref{methodology}."
 
 subsection "Dedication"
 
+p "#autoref{dedication} shows the **relative amount of contributions per day** to this project."
+
 figure!:
   centered:
-    includegraphics "images/dedication.png", options => "scale=0.5"
-  caption "GitHub contributions to the MMPG project"
-  label "dedication"
+    includegraphics "images/dedication.png", options => "scale=0.6"
+
+  caption "GitHub contributions to the MMPG project \\url{https://github.com/hecrj}"
+  label :dedication
+
+p "As it can be observed, there is **at least one contribution per day since November 4**. However, while dedication has
+been constant, there are many days where **contributions were minimal**. Hence, **dedication and productivity are expected
+to increase** during the incoming holidays."

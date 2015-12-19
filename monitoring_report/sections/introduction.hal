@@ -21,12 +21,12 @@ Since then, many other programming games have been created #cite{pg}. Some of th
 subsection "Playing with other people"
 
 p "With the arrival of the **Internet** and the **W**orld **W**ide **W**eb, there was nothing stopping people from
-developing **multiplayer programming games**.
+developing web platforms for **multiplayer programming games**.
 
 A **multiplayer programming game** is a **programming game** where multiple players compete with each other to win the
 game. Thus, the game becomes a challenge where strategy and programming skills make the difference.
 
-Web platforms have been created that allow players to compete with each other easily. For example, **Robot Game**
+These web platforms allow players to compete with each other easily. For example, **Robot Game**
 #cite{robotgame} is a website where anyone can upload an **AI** written in |Python| and compete with other people."
 
 subsection "Playing while learning"
@@ -45,7 +45,7 @@ matches are necessary to decide who wrote the best program."
 
 subsection "A new era: playing with everyone at the same time"
 
-p "It is time to take multiplayer programming games to the next level, featuring **huge worlds**, **long matches** and
-a **massive amount of players in real-time**. Games where the player will feel attached to the match, where constant
-**evolution** and adaptation matters, where your program plays with everyone at the same time. It is time to create
-**massive multiplayer programming games** (**MMPG**s)."
+p "Multiplayer programming games need to evolve. They need to feature **huge worlds**, **long matches** and
+a **massive amount of players in real-time**. Then, players will feel attached to the match, programs will need to
+**adapt** constantly as they play with **everyone at the same time**. It is time to take this genre to the next level and
+create **massive multiplayer programming games** (**MMPG**s)."

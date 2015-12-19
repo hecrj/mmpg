@@ -79,12 +79,12 @@ Since then, many other programming games have been created \cite{pg}. Some of th
 \textbf{SpaceChem} \cite{spacechem}.
 \subsection{Playing with other people}
 With the arrival of the \textbf{Internet} and the \textbf{W}orld \textbf{W}ide \textbf{W}eb, there was nothing stopping people from
-developing \textbf{multiplayer programming games}.
+developing web platforms for \textbf{multiplayer programming games}.
 
 A \textbf{multiplayer programming game} is a \textbf{programming game} where multiple players compete with each other to win the
 game. Thus, the game becomes a challenge where strategy and programming skills make the difference.
 
-Web platforms have been created that allow players to compete with each other easily. For example, \textbf{Robot Game}
+These web platforms allow players to compete with each other easily. For example, \textbf{Robot Game}
 \cite{robotgame} is a website where anyone can upload an \textbf{AI} written in \texttt{Python} and compete with other people.
 \subsection{Playing while learning}
 Writing \textbf{AI}s can be a really fun and rewarding experience because the game allows the players to see how their
@@ -99,18 +99,12 @@ However, current multiplayer programming games feature \textbf{short matches} wi
 is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
 matches are necessary to decide who wrote the best program.
 \subsection{A new era: playing with everyone at the same time}
-It is time to take multiplayer programming games to the next level, featuring \textbf{huge worlds}, \textbf{long matches} and
-a \textbf{massive amount of players in real-time}. Games where the player will feel attached to the match, where constant
-\textbf{evolution} and adaptation matters, where your program plays with everyone at the same time. It is time to create
-\textbf{massive multiplayer programming games} (\textbf{MMPG}s).
+Multiplayer programming games need to evolve. They need to feature \textbf{huge worlds}, \textbf{long matches} and
+a \textbf{massive amount of players in real-time}. Then, players will feel attached to the match, programs will need to
+\textbf{adapt} constantly as they play with \textbf{everyone at the same time}. It is time to take this genre to the next level and
+create \textbf{massive multiplayer programming games} (\textbf{MMPG}s).
 \clearpage
-\vspace*{\fill}
-\begin{center}
-\emph{This document details the current status of the project and the changes made to the original planning.}
-\end{center}
-\vfill
-\clearpage
-\section{Component status}
+\section{Project status}
 \label{components}
 \subsection{Engine}
 The \texttt{MMPG} \textbf{engine} is a library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
@@ -118,7 +112,7 @@ of classes that can be used and extended to build the logic of the game.
 
 Its source code is available here: \url{https://github.com/mmpg/engine}
 \subsubsection{Architecture}
-The runtime of an \texttt{}MMPG\texttt{} \textbf{engine} consists of 3 types of processes:
+The runtime of an \texttt{MMPG} \textbf{engine} consists of 3 types of processes:
 \begin{description}
 \item[Master process]
 It represents the \textbf{game-world server}. The master process listens to requests coming from
@@ -186,7 +180,7 @@ executed and communicate with each other using \textbf{sockets}. However, implem
 scratch would be a real challenge by itself, and it is not the subject of this project. This is where \textbf{\texttt{ZeroMQ}} comes
 in.
 
-\textbf{\texttt{ZeroMQ}} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
+\textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
 \textbf{low-level} communication, while providing a flexible and easy-to-use interface. \textbf{\texttt{ZeroMQ}} has bindings available
 for the most well-known programming languages.
 
@@ -374,12 +368,10 @@ Administrators will have access to a panel to \textbf{control the current match}
 \end{minipage}
 }
 \end{figure}
+\clearpage
 \section{Planning}
 \subsection{Time management}
-\autoref{gantt_original} shows the original time planning, while \autoref{gantt_current} shows the final time
-planning.
-
-\begin{figure}[!h]
+\begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{300pt}{!}{
 \begin{ganttchart}[hgrid, vgrid]{1}{25}
@@ -429,7 +421,7 @@ planning.
 \caption{Original time planning}
 \label{gantt_original}
 \end{figure}
-\begin{figure}[!h]
+\begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{300pt}{!}{
 \begin{ganttchart}[hgrid, vgrid]{1}{25}
@@ -476,24 +468,60 @@ planning.
 \caption{Final time planning}
 \label{gantt_current}
 \end{figure}
-The first change to notice is that some components have been \textbf{renamed} and he control panel has been
+\autoref{gantt_original} shows the \textbf{original time planning}, while \autoref{gantt_current} shows the \textbf{final time
+planning}.
+
+The first change to notice is that some components have been \textbf{renamed} and the control panel has been
 \textbf{integrated} inside the game viewer, as described in \autoref{components}.
 
-The most important change, though, is that the components \textbf{engine}, \textbf{API}, and \textbf{client} have been developed
+The most important change, though, is that the components: \textbf{engine}, \textbf{API}, and \textbf{client} have been developed
 in parallel in order to perform \textbf{continuous integration} so there is always a working prototype of the project.
 This change is described with more detail in \autoref{methodology}.
 \subsection{Dedication}
+\autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.
 \begin{figure}[H]
 \makebox[\textwidth]{
-\includegraphics[scale=0.5]{images/dedication.png}
+\includegraphics[scale=0.6]{images/dedication.png}
 }
-\caption{GitHub contributions to the \texttt{MMPG} project}
+\caption{GitHub contributions to the \texttt{MMPG} project \url{https://github.com/hecrj}}
 \label{dedication}
 \end{figure}
+As it can be observed, there is \textbf{at least one contribution per day since November 4}. However, while dedication has
+been constant, there are many days where \textbf{contributions were minimal}. Hence, \textbf{dedication and productivity are expected
+to increase} during the incoming holidays.
 \clearpage
 \section{Methodology}
 \label{methodology}
-CI
+The \textbf{validation methodology} has changed slightly in order to give priority to \textbf{integration testing}, given that
+the platform is made of \textbf{multiple independent components}.
+
+When a change is made to any component while using \textbf{continuous integration}, the change is automatically applied to
+the \textbf{latest working prototype}. Therefore, breaking changes can be easily detected. Also, when using  \textbf{continuous
+integration} there is always an \textbf{up-to-date} working prototype of the platform that can be shown to anyone.
+
+To set it up, a \href{http://linode.com/}{\textbf{Linode}} running \texttt{Ubuntu} was booted up to execute an instance of
+\textbf{Space Wars}. Then, \href{http://semaphoreci.com/}{\textbf{Semaphore}} was configured to build any change in the
+repositories. If a build succeeds, then \textbf{Semaphore} deploys the changes to the \textbf{Linode}, where the changes will
+be applied. \autoref{build_process} shows the build process of the \textbf{Space Wars} engine, while
+\autoref{deployment_process} shows its deployment process.
+
+Changes are pushed to the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
+when some changes are pushed to the repository, a script is executed that \textbf{builds and restarts the component}.
+These scripts are located in the \textbf{repository itself}, so they can be updated easily.
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/build_process.png}
+}
+\caption{Semaphore build process}
+\label{build_process}
+\end{figure}
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/deployment_process.png}
+}
+\caption{Semaphore deployment process}
+\label{deployment_process}
+\end{figure}
 \clearpage
 \bibliographystyle{plain}
 \bibliography{references}

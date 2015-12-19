@@ -1,4 +1,4 @@
-section "Component status"
+section "Project status"
 label :components
 
 subsection "Engine"
@@ -12,7 +12,7 @@ Its source code is available here: #url{https://github.com/mmpg/engine}"
 
 subsubsection "Architecture"
 
-p "The runtime of an |MMPG| **engine** consists of 3 types of processes:"
+p "The runtime of an MMPG **engine** consists of 3 types of processes:"
 
 description:
   item "Master process"; p "It represents the **game-world server**. The master process listens to requests coming from
@@ -70,7 +70,7 @@ executed and communicate with each other using **sockets**. However, implementin
 scratch would be a real challenge by itself, and it is not the subject of this project. This is where **|ZeroMQ|** comes
 in.
 
-**|ZeroMQ|** is an embeddable networking library that implements **low-latency socket communication**. It manages
+**|ZeroMQ|** #cite{zeromq} is an embeddable networking library that implements **low-latency socket communication**. It manages
 **low-level** communication, while providing a flexible and easy-to-use interface. **|ZeroMQ|** has bindings available
 for the most well-known programming languages.
 

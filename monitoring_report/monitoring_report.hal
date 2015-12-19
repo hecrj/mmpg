@@ -42,31 +42,21 @@ document:
         authors  => ["Héctor Ramón Jiménez"],
         footer   => "Facultat d'Informàtica de Barcelona",
         extra    => "Directed by Jordi Petit Silvestre"
-
   clearpage
 
   tableofcontents
-
   clearpage
 
   import sections.introduction
-
-  clearpage
-
-  vspace "\\fill", special => true
-  center:
-    p "*This document details the current status of the project and the changes made to the original planning.*"
-  vfill
-
   clearpage
 
   import sections.current_status
-  import sections.planning
+  clearpage
 
+  import sections.planning
   clearpage
 
   import sections.methodology
-
   clearpage
 
   bibliographystyle :plain
