@@ -59,5 +59,8 @@ document:
   import sections.methodology
   clearpage
 
+  import sections.license
+  clerapage
+
   bibliographystyle :plain
   bibliography :references
