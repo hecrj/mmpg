@@ -1,1 +1,13 @@
 section "License"
+
+subsection "Code"
+
+p "The MMPG platform code hosted in #url{https://github.com/mmpg} will be released under
+#href{https://opensource.org/licenses/MIT}{**The MIT License**}."
+
+subsection "Documents"
+
+p "This monitoring report and the final document related with the MMPG platform and hosted in
+#url{https://github.com/hecrj/mmpg} will be released under the
+#href{http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt}{**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International**}
+license."
