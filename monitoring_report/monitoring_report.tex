@@ -168,9 +168,12 @@ Ports used in socket connections and worker addresses should be configurable.
 \\[0.2cm]
 \indent
 The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
-\textbf{low-level} operative system operations, so it can limit how player programs are executed. Hence, \textbf{\texttt{C}++} is the
-programming language chosen to implement it, mainly because its \textbf{efficiency} and the \textbf{\texttt{}C\texttt{ POSIX API}}, which allows
-to talk directly to \textbf{\texttt{UNIX}-based operative systems}.
+\textbf{low-level} operative system operations, so it can limit how player programs are executed.
+
+The most well-known programming languages that satisfiy these requirements are \texttt{}C\texttt{} and \texttt{}C\texttt{++}. However, \texttt{}C\texttt{}  is lacking
+the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
+the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX API}}, which allows to talk
+directly to \textbf{\texttt{UNIX}-based operative systems}.
 \paragraph{Inter-process communication}
 \hfill
 \\[0.2cm]
@@ -217,8 +220,9 @@ The \textbf{worker} executable is \textbf{independent of the game logic} and it 
 The \textbf{\texttt{API}} component exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
 usually handles requests from the game viewer.
 
-The \textbf{\texttt{API}} component is developed using the \textbf{\texttt{Go}} programming language \cite{golang}. \textbf{Go}
-is \textbf{simple}, \textbf{fast}, \textbf{easy-to-deploy} and includes \textbf{native} libraries to build \texttt{REST API}s.
+There are many programming languages that allow to create \texttt{HTTP API}s easily, like \texttt{Pyhton}, \texttt{Ruby}, \texttt{Elixir}... However,
+the \texttt{API} component is implemented using the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
+libraries to build \texttt{REST API}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
 
 This component was originally called \textbf{real-time notifier}, but actually it does more than notifying. For this reason,
 the name was changed.
@@ -245,8 +249,11 @@ It source code is available here: \url{https://github.com/mmpg/api}
 This endpoint might be useful to reduce the amount of information in the events, as the \textbf{static} part of
 the game world would not need to be included anymore.
 \subsection{Client}
-The \textbf{client} component is a \textbf{JavaScript} library that implements a set of useful classes to communicate with
+The \textbf{client} component is a library that implements a set of useful classes to communicate with
 an \textbf{\texttt{MMPG} \texttt{API}} and implement \textbf{game viewers}.
+
+The \textbf{client} library will run in web-browsers, as \texttt{}MMPG\texttt{} viewers are web-based. For this reason, the library
+must be written in \textbf{\texttt{JavaScript}}.
 
 This component had a different name originally. It was called \textbf{notifier subscriber}. But given that the \textbf{real-time
 notifier} evolved into an \textbf{API}, it made sense to rename this component to \textbf{client}.
@@ -272,7 +279,9 @@ Implements a \textbf{consistent game loop}, calling a callback function and pass
 \end{description}
 \subsection{Space Wars}
 \textbf{Space Wars} will be the first game using the \texttt{MMPG} platform. It is inspired by \textbf{Galcon} \cite{galcon}
-and \textbf{Planet Wars} \cite{planet_wars}.
+and \textbf{Planet Wars} \cite{planet_wars}. These games were chosen because they seem to have \textbf{simple rules}, but they
+also seem \textbf{easy to extend}. This way, development can start with the implementation of the original game rules while
+new concepts to \textbf{increase the game size} and make it \textbf{massive} can be added later.
 \subsubsection{Logic}
 \indent
 The game logic has currently \textbf{one feature}:
@@ -522,6 +531,8 @@ These scripts are located in the \textbf{repository itself}, so they can be upda
 \caption{Semaphore deployment process}
 \label{deployment_process}
 \end{figure}
+\clearpage
+\section{License}
 \clearpage
 \bibliographystyle{plain}
 \bibliography{references}

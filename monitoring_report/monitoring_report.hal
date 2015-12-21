@@ -60,7 +60,7 @@ document:
   clearpage
 
   import sections.license
-  clerapage
+  clearpage
 
   bibliographystyle :plain
   bibliography :references

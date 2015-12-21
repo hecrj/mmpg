@@ -60,9 +60,12 @@ subsubsection "Implementation details"
 
 paragraph "Programming language"
 indent; p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
-**low-level** operative system operations, so it can limit how player programs are executed. Hence, **C++** is the
-programming language chosen to implement it, mainly because its **efficiency** and the **|C POSIX API|**, which allows
-to talk directly to **|UNIX|-based operative systems**."
+**low-level** operative system operations, so it can limit how player programs are executed.
+
+The most well-known programming languages that satisfiy these requirements are |C| and |C++|. However, |C|  is lacking
+the capacity to **represent abstractions and interfaces** easily. Hence, **C++** is the perfect alternative to implement
+the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
+directly to **|UNIX|-based operative systems**."
 
 paragraph "Inter-process communication"
 indent; p "As it was explained previously, the **engine** features a decoupled architecture. Different processes are
@@ -105,8 +108,9 @@ subsection "API"
 p "The **|API|** component exposes **|HTTP|** endpoints that allow to interact with an underlying **engine**. It
 usually handles requests from the game viewer.
 
-The **|API|** component is developed using the **|Go|** programming language #cite{golang}. **Go**
-is **simple**, **fast**, **easy-to-deploy** and includes **native** libraries to build |REST API|s.
+There are many programming languages that allow to create |HTTP API|s easily, like |Pyhton|, |Ruby|, |Elixir|... However,
+the |API| component is implemented using the **|Go|** programming language because it includes **native**
+libraries to build |REST API|s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives.
 
 This component was originally called **real-time notifier**, but actually it does more than notifying. For this reason,
 the name was changed.
@@ -135,8 +139,11 @@ the game world would not need to be included anymore."
 
 subsection "Client"
 
-p "The **client** component is a **JavaScript** library that implements a set of useful classes to communicate with
+p "The **client** component is a library that implements a set of useful classes to communicate with
 an **MMPG |API|** and implement **game viewers**.
+
+The **client** library will run in web-browsers, as |MMPG| viewers are web-based. For this reason, the library
+must be written in **|JavaScript|**.
 
 This component had a different name originally. It was called **notifier subscriber**. But given that the **real-time
 notifier** evolved into an **API**, it made sense to rename this component to **client**.
@@ -159,7 +166,9 @@ description:
 subsection "Space Wars"
 
 p "**Space Wars** will be the first game using the MMPG platform. It is inspired by **Galcon** #cite{galcon}
-and **Planet Wars** #cite{planet_wars}."
+and **Planet Wars** #cite{planet_wars}. These games were chosen because they seem to have **simple rules**, but they
+also seem **easy to extend**. This way, development can start with the implementation of the original game rules while
+new ideas to **increase the game size** and make it **massive** can be added later."
 
 subsubsection "Logic"
 
