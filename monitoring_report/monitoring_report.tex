@@ -180,14 +180,24 @@ directly to \textbf{\texttt{UNIX}-based operative systems}.
 \indent
 As it was explained previously, the \textbf{engine} features a decoupled architecture. Different processes are
 executed and communicate with each other using \textbf{sockets}. However, implementing inter-process communication from
-scratch would be a real challenge by itself, and it is not the subject of this project. This is where \textbf{\texttt{ZeroMQ}} comes
-in.
+scratch would be a real challenge by itself, and it is not the subject of this project. This is where a
+\textbf{messaging technology} comes in.
 
-\textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
-\textbf{low-level} communication, while providing a flexible and easy-to-use interface. \textbf{\texttt{ZeroMQ}} has bindings available
+The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
+
+\texttt{RabbitMQ} implements
+a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
+some \textbf{latency}.
+
+\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
+\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
+
+On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
+\textbf{low-level} communication, while providing a flexible and easy-to-use interface. Also, \textbf{\texttt{ZeroMQ}} has bindings available
 for the most well-known programming languages.
 
-The \textbf{engine} uses \textbf{\texttt{ZeroMQ}} for all the inter-process communication. As a consequence, the architecture becomes
+Thus, the \textbf{engine} uses \textbf{\texttt{ZeroMQ}} for all the inter-process communication. As a consequence, the architecture becomes
 decoupled. For instance, a \textbf{player process} could be programmed in \textbf{any programming language}, as it
 only performs requests to the master process. Thus, it would be \textbf{relatively easy} to allow players to develop
 \textbf{AI}s using \textbf{different programming languages}.
@@ -281,7 +291,7 @@ Implements a \textbf{consistent game loop}, calling a callback function and pass
 \textbf{Space Wars} will be the first game using the \texttt{MMPG} platform. It is inspired by \textbf{Galcon} \cite{galcon}
 and \textbf{Planet Wars} \cite{planet_wars}. These games were chosen because they seem to have \textbf{simple rules}, but they
 also seem \textbf{easy to extend}. This way, development can start with the implementation of the original game rules while
-new concepts to \textbf{increase the game size} and make it \textbf{massive} can be added later.
+new ideas to \textbf{increase the game size} and make it \textbf{massive} can be added later.
 \subsubsection{Logic}
 \indent
 The game logic has currently \textbf{one feature}:

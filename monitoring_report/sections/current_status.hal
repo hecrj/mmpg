@@ -70,14 +70,24 @@ directly to **|UNIX|-based operative systems**."
 paragraph "Inter-process communication"
 indent; p "As it was explained previously, the **engine** features a decoupled architecture. Different processes are
 executed and communicate with each other using **sockets**. However, implementing inter-process communication from
-scratch would be a real challenge by itself, and it is not the subject of this project. This is where **|ZeroMQ|** comes
-in.
+scratch would be a real challenge by itself, and it is not the subject of this project. This is where a
+**messaging technology** comes in.
 
-**|ZeroMQ|** #cite{zeromq} is an embeddable networking library that implements **low-latency socket communication**. It manages
-**low-level** communication, while providing a flexible and easy-to-use interface. **|ZeroMQ|** has bindings available
+The most well-known **messaging technologies** out there are: |RabbitMQ|, |ZeroMQ| and |ActiveMQ|.
+
+|RabbitMQ| implements
+a **broker architecture**, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the **engine**, as we want to decouple components, and it would also add
+some **latency**.
+
+|ActiveMQ| can be used with a **peer-to-peer architecture** but, when compared with |ZeroMQ|, it is a
+**high-level** library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
+
+On the other hand, **|ZeroMQ|** #cite{zeromq} is an embeddable networking library that implements **low-latency socket communication**. It manages
+**low-level** communication, while providing a flexible and easy-to-use interface. Also, **|ZeroMQ|** has bindings available
 for the most well-known programming languages.
 
-The **engine** uses **|ZeroMQ|** for all the inter-process communication. As a consequence, the architecture becomes
+Thus, the **engine** uses **|ZeroMQ|** for all the inter-process communication. As a consequence, the architecture becomes
 decoupled. For instance, a **player process** could be programmed in **any programming language**, as it
 only performs requests to the master process. Thus, it would be **relatively easy** to allow players to develop
 **AI**s using **different programming languages**."
