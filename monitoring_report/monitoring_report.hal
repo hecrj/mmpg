@@ -62,5 +62,8 @@ document:
   import sections.license
   clearpage
 
+  import sections.legality
+  clearpage
+
   bibliographystyle :plain
   bibliography :references
