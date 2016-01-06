@@ -68,6 +68,9 @@ document:
   import sections.validation
   clearpage
 
+  import sections.sustainability
+  clearpage
+
   import sections.legality
   clearpage
 
