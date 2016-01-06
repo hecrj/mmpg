@@ -1,0 +1,25 @@
+chapter "Client"
+
+p "The **client** component is a library that implements a set of useful classes to communicate with
+an **MMPG |API|** and implement **game viewers**.
+
+The **client** library will run in web-browsers, as |MMPG| viewers are web-based. For this reason, the library
+must be written in **|JavaScript|**.
+
+This component had a different name originally. It was called **notifier subscriber**. But given that the **real-time
+notifier** evolved into an **API**, it made sense to rename this component to **client**.
+
+Its source code is available here: #url{https://github.com/mmpg/client}"
+
+section "Current classes"
+
+description:
+  item "|Client|"; p "Allows to perform requests to any **MMPG |API|**. Most of its methods perform an |HTTP| request
+  and return a JavaScript **promise**."
+  item "|EventStream|"; p "Represents a stream of game events. It delegates the event handling to its **subscriber**."
+  item "|LiveSubscriber|"; p "**Buffers** 2 seconds of events and then starts **consuming them**."
+  item "|PlaybackSubscriber|"; p "Reads a **log** of events from the |API| and consumes them. When the number of
+  events reaches a minimum, it requests the next log to the |API|."
+  item "|Webtoken|"; p "Represents a **|JSON| Webtoken** #cite{jwt}. It is used to manage authentication tokens."
+  item "|GameLoop|"; p "Implements a **consistent game loop**, calling a callback function and passing the time
+  between calls as the first argument."

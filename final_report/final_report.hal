@@ -1,0 +1,85 @@
+import haltex
+import utils
+import references
+
+documentclass "report", options => "a4paper,11pt,titlepage,abstract,numbers=noenddot,automark,mnsy,intlimits,rgb,dvipsnames"
+
+usepackage "hyperref", options => "hidelinks, colorlinks=true, urlcolor=blue, linkcolor=black, citecolor=blue"
+usepackage "babel", options => "english"
+usepackage "unicode-math"
+usepackage "xunicode"
+usepackage "url"
+usepackage "cite"
+usepackage "graphicx"
+usepackage "caption", options => "justification=centering, labelfont=bf"
+usepackage "float"
+usepackage "pgfgantt"
+usepackage "marvosym"
+usepackage "siunitx"
+usepackage "multirow"
+usepackage "tocbibind", options => "nottoc,numbib"
+usepackage "indentfirst"
+usepackage "afterpage"
+usepackage "minted"
+usepackage "tabularx"
+usepackage "tikz"
+usepackage "appendix", options => "toc,page"
+usetikzlibrary "arrows,positioning"
+
+include :style
+
+typewrite "MMPG"
+
+document:
+  cover title    => "Web platform for massive multiplayer programming games",
+        subject  => "Degree Final Project",
+        authors  => ["Héctor Ramón Jiménez"],
+        footer   => "Facultat d'Informàtica de Barcelona",
+        extra    => "Directed by Jordi Petit Silvestre"
+  clearpage
+
+  tableofcontents
+  clearpage
+
+  import sections.introduction
+  clearpage
+
+  import sections.scope
+  clearpage
+
+  import sections.engine
+  clearpage
+
+  import sections.api
+  clearpage
+
+  import sections.client
+  clearpage
+
+  import sections.space_wars
+  clearpage
+
+  import sections.planning
+  clearpage
+
+  import sections.economic_cost
+  clearpage
+
+  import sections.validation
+  clearpage
+
+  import sections.legality
+  clearpage
+
+  import sections.license
+  clearpage
+
+  import sections.conclusions
+  clearpage
+
+  bibliographystyle :plain
+  bibliography :references
+
+  appendices:
+    p "..."
+    clearpage

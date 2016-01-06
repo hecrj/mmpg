@@ -1,0 +1,55 @@
+chapter "Introduction"
+section "Playing games while programming"
+
+p "In 1961, **Victor Vyssotsky**, a mathematician and computer scientist working at Bell Labs, had an idea. He devised
+a computer game, but not a traditional one where the player inputs the different actions from a controller to play it.
+No. He wanted to create a game that it could only be played by writing a **computer program**. And so, along with **Robert
+Morris Sr.** and **Doug McIlroy**, they created **Darwin** #cite{darwin}: the first programming game.
+
+A **programming game** is a computer game where the player does not directly interact with the game. Instead, the
+player writes a **computer program** that plays the game. These **computer programs** are usually called **artifficial
+intelligences** (**AI**s) because they try to make intelligent decisions to win the game.
+
+**Darwin** consisted of two or more small programs, written by the players, that were loaded in memory. The main goal
+of the game was to spread copies of your own program and find and kill the copies of other players. The game was only
+played for a few weeks before Morris developed an ultimate program, as no-one managed to produce anything that could
+defeat it.
+
+Since then, many other programming games have been created #cite{pg}. Some of them are even commercial games, like
+**SpaceChem** #cite{spacechem}."
+
+section "Playing with other people"
+
+p "With the arrival of the **Internet** and the **W**orld **W**ide **W**eb, there was nothing stopping people from
+developing web platforms for **multiplayer programming games**.
+
+A **multiplayer programming game** is a **programming game** where multiple players compete with each other to win the
+game. Thus, the game becomes a challenge where strategy and programming skills make the difference.
+
+These web platforms allow players to compete with each other easily. For example, **Robot Game**
+#cite{robotgame} is a website where anyone can upload an **AI** written in |Python| and compete with other people."
+
+section "Playing while learning"
+
+p "Writing **AI**s can be a really fun and rewarding experience because the game allows the players to see how their
+**algorithms work visually**, while competition motivates them to **learn and improve**.
+
+It is not a surprise, then, that programming games are being used in schools to teach students different programming
+techniques. For instance, an **AI programming challenge** is held every semester in the **Barcelona School of
+Informatics** (**FIB**) where students enrolled in the subject **Data Structures and Algorithms** (**EDA**) #cite{eda}
+compete with each other in a multiplayer programming game using the **Jutge** platform #cite{jutge}.
+
+However, current multiplayer programming games feature **short matches** with a **small number of players**. There
+is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
+matches are necessary to decide who wrote the best program."
+
+section "State of the art"
+
+p "..."
+
+section "A new era: playing with everyone at the same time"
+
+p "Multiplayer programming games need to evolve. They need to feature **huge worlds**, **long matches** and
+a **massive amount of players in real-time**. Then, players will feel attached to the match, programs will need to
+**adapt** constantly as they play with **everyone at the same time**. It is time to take this genre to the next level and
+create **massive multiplayer programming games** (**MMPG**s)."

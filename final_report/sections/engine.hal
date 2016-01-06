@@ -1,0 +1,109 @@
+chapter "Engine"
+
+p "The MMPG **engine** is a library that implements basic features needed by any MMPG. The **engine** exposes a set
+of classes that can be used and extended to build the logic of the game.
+
+Its source code is available here: #url{https://github.com/mmpg/engine}"
+
+section "Architecture"
+
+p "The runtime of an MMPG **engine** consists of 3 types of processes:"
+
+description:
+  item "Master process"; p "It represents the **game-world server**. The master process listens to requests coming from
+players and updates the game world accordingly. There is only **one master process per runtime**."
+
+  item "Worker process"; p "It represents a **pool of players**. A worker process **executes** a set of players and
+  **manages** them. There can be **multiple workers per runtime**."
+
+  item "Player process"; p "It represents a **player program**. A player process **reads** the game world from the
+  **master process** and **performs requests** to **change** the game world."
+
+p "Processes comunicate with each other using **low-latency sockets**. Thus, different workers can be executed
+in different machines to achieve better performance.
+
+#autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = #sum_{i=0}^{N} M_i$ players."
+
+figure!:
+  resizebox "\\textwidth":
+    input "graphs/engine_arch"
+  caption "Hierarchy of engine processes"
+  label "engine_arch"
+
+section "Current features"
+
+description:
+  item "AI hot-swapping"; p "Players can change their programs during a match."
+  item "Log system"; p "Every event that occurs in the engine is logged properly. This allows players to replay and
+  watch the past of a match."
+  item "Event notification"; p "Events are notified to subscribers through a |PUB/SUB| socket connection."
+  item "Decoupled architecture"; p "The current architecture makes scaling easy. Each worker can be executed in a
+  different machine."
+  item "API"; p "The engine listens to requests made through a |REQ/REP| socket connection. Other applications can
+  easily connect to the engine and interact with it."
+  item "Game abstraction"; p "A set of abstract classes defines the behaviour that any MMPG needs to implement.
+  Mostly, this behaviour includes the **AI public interface**, **game actions**, and **world generation and
+  serialization**."
+
+section "Pending features"
+
+description:
+  item "Security"; p "Programs need to be executed in an isolated environment."
+  item "Configuration"; p "Ports used in socket connections and worker addresses should be configurable."
+
+section "Implementation details"
+
+paragraph "Programming language"
+indent; p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
+**low-level** operative system operations, so it can limit how player programs are executed.
+
+The most well-known programming languages that satisfiy these requirements are |C| and |C++|. However, |C|  is lacking
+the capacity to **represent abstractions and interfaces** easily. Hence, **C++** is the perfect alternative to implement
+the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
+directly to **|UNIX|-based operative systems**."
+
+paragraph "Inter-process communication"
+indent; p "As it was explained previously, the **engine** features a decoupled architecture. Different processes are
+executed and communicate with each other using **sockets**. However, implementing inter-process communication from
+scratch would be a real challenge by itself, and it is not the subject of this project. This is where a
+**messaging technology** comes in.
+
+The most well-known **messaging technologies** out there are: |RabbitMQ|, |ZeroMQ| and |ActiveMQ|.
+
+|RabbitMQ| implements
+a **broker architecture**, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the **engine**, as we want to decouple components, and it would also add
+some **latency**.
+
+|ActiveMQ| can be used with a **peer-to-peer architecture** but, when compared with |ZeroMQ|, it is a
+**high-level** library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
+
+On the other hand, **|ZeroMQ|** #cite{zeromq} is an embeddable networking library that implements **low-latency socket communication**. It manages
+**low-level** communication, while providing a flexible and easy-to-use interface. Also, **|ZeroMQ|** has bindings available
+for the most well-known programming languages.
+
+Thus, the **engine** uses **|ZeroMQ|** for all the inter-process communication. As a consequence, the architecture becomes
+decoupled. For instance, a **player process** could be programmed in **any programming language**, as it
+only performs requests to the master process. Thus, it would be **relatively easy** to allow players to develop
+**AI**s using **different programming languages**."
+
+paragraph "Game logic abstraction"
+indent; p "The **engine** exposes a set of **abstract classes** to build game logic on top of it:"
+
+description:
+  item "|AI|"; p "Defines the interface that any MMPG AI needs to implement: a |play| method. Games can extend
+  this class to define **|AI API|s** that players can use to write their programs."
+  item "|World|"; p "Represents a game world. Games need to extend this class and implement methods to
+  **generate**, **serialize** and **update** the world."
+  item "|Action|"; p "Represents an action that an **AI** can perform. Normally, these actions try to **update**
+  the game world."
+
+p "On the other hand, the **engine** also provides two **fully-implemented classes** to run **master and player
+processes**. As #autoref{world_injection} shows, a game world needs to be injected to run these processes.
+
+The **worker** executable is **independent of the game logic** and it can be built **directly from the library**."
+
+figure!:
+  inputminted "c++", "code/master.cpp", options => "linenos,fontsize=\\small,frame=lines,framesep=2mm"
+  caption "Injecting a game world to the master process"
+  label :world_injection

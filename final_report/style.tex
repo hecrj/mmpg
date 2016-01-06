@@ -1,0 +1,36 @@
+\usepackage{fontspec}
+
+\defaultfontfeatures{Scale=MatchLowercase}
+\setmainfont[Ligatures=TeX,
+BoldFont=texgyrepagella-bold.otf,
+BoldItalicFont=texgyrepagella-bolditalic.otf,
+ItalicFont=texgyrepagella-italic.otf]{texgyrepagella-regular.otf}
+\setsansfont[Ligatures=TeX,
+BoldFont=lmsans10-bold.otf,
+BoldItalicFont=lmsans10-boldoblique.otf,
+ItalicFont=lmsans10-oblique.otf]{lmsans10-regular.otf}
+\setmonofont[BoldFont=lmmonolt10-bold.otf,
+BoldItalicFont=lmmonolt10-boldoblique.otf,
+ItalicFont=lmmono10-italic.otf,
+SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
+\setmathfont{texgyrepagella-math.otf}
+\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{xits-math.otf}
+\setlength{\parindent}{24pt}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{1}
+
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Héctor Ramón}
+\fancyhead[RE,LO]{\leftmark}
+\fancyfoot[RE]{Final degree project}
+\fancyfoot[LO]{\emph{Web platform for multiplayer programming games}}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\footrulewidth}{0.5pt}
+\setlength{\marginparwidth}{0pt}
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\normalfont\bfseries}{\Huge\thechapter}{20pt}{\Huge}

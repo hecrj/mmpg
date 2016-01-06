@@ -1,0 +1,25 @@
+chapter "Scope"
+
+section "Main objective"
+
+p "Develop a web platform for **massive** multiplayer programming games and wire it to **Jutge.org**."
+
+
+section "Secondary objectives"
+
+subsection "Develop an abstract game engine"
+p "Any experienced programmer must be able to create new games for the platform easily."
+
+subsection "Allow hot-swapping of AIs"
+p "Players must be able to change the code of their current AIs in the middle of a match."
+
+subsection "Implement a real-time webviewer"
+p "Players must be able to watch in real-time how the game unfolds in a web browser."
+
+subsection "Create a control panel"
+p "Administrators must be able to play, pause and stop the game and also see a ranking of the current match."
+
+subsection "Make the infrastructure scalable and stable"
+p "The underlying infrastructure must be able to handle huge worlds and a large number of |AI|s without
+hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
+or affect the platform negatively."

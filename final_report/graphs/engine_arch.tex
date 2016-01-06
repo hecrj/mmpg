@@ -1,0 +1,32 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.8cm,
+    main node/.style={thick,circle,draw,minimum width=2.5cm}]
+
+    \node[main node] (1) {master};
+
+	\node[auto=false] (2) [below=of 1]{\ldots};
+    \node[auto=false] (21) [left=of 2]{};
+    \node[auto=false] (23) [left=of 21]{};
+    \node[auto=false] (22) [right=of 2]{};
+    \node[auto=false] (24) [right=of 22]{};
+
+    \node[main node] (3) [left=of 23]{worker$_0$};
+    \node[main node] (4) [right=of 24]{worker$_N$};
+
+    \node[auto=false] (5) [below=of 3]{\ldots};
+    \node[main node] (6) [left=of 5]{player$_{0,0}$};
+    \node[main node] (7) [right=of 5]{player$_{0,{M_0}}$};
+
+    \node[auto=false] (8) [below=of 4]{\ldots};
+    \node[main node] (9) [left=of 8]{player$_{N,0}$};
+    \node[main node] (10) [right=of 8]{player$_{N,{M_N}}$};
+
+
+    \path (1) edge (3);
+    \path (1) edge (4);
+
+    \path (3) edge (6);
+    \path (3) edge (7);
+
+    \path (4) edge (9);
+    \path (4) edge (10);
+\end{tikzpicture}

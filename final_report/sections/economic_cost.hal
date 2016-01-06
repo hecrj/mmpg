@@ -1,0 +1,226 @@
+chapter "Economic cost"
+
+BUDGET = {}
+
+p "The following resources will be needed to develop the project:"
+
+description:
+  item "Hardware"; p "A computer and **Jutge.org** servers."
+  item "Software"; p "Ubuntu, Sublime Text, a web-browser, |CLion|, LaTeX, |Makefile|, |git|, |evince|,
+  #href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{|HAL|}, |C++|, |Go|,
+  |Javascript|, |Coffeescript|, and |WebGL|."
+  item "Human"; p "Student, project director, and project management tutor."
+  item "Other"; p "Electricity and internet connection."
+
+
+section "Hardware resources"
+p "The project will be developed using a personal desktop computer and a laptop. Also, a monitor,
+a keyboard and a mouse are needed to use the desktop computer. There is no other hardware needed."
+
+hardware = {
+  "Desktop computer" => {
+    :cost => 2600,
+    :life => 4
+  },
+  "Personal laptop" => {
+    :cost => 1000,
+    :life => 4
+  },
+  "Monitor Acer XB270HU" => {
+    :cost => 750,
+    :life => 4
+  },
+  "Mouse Corsair M60" => {
+    :cost => 60,
+    :life => 4
+  },
+  "Keyboard Corsair K70 RGB" => {
+    :cost => 170,
+    :life => 4
+  }
+}
+
+table "Hardware budget", "l | S | S | S":
+  head "Hardware", "Cost (\\EURtm)", "Useful life (years)", "Amortized cost (\\EURtm)"
+
+  hardware.each with product, data:
+    row product, data[:cost].decimals, data[:life], (data[:cost] / (data[:life] * 365 * 24) * 460).decimals
+
+  hline
+  hline
+
+  BUDGET["Hardware"] = hardware.map{ _, data -> data[:cost] / (data[:life] * 365 * 24) * 460 }.sum
+
+  total BUDGET["Hardware"], columns => 4
+
+section "Software resources"
+
+p "All the software needed to develop the project can be used for free."
+
+software = {
+  "Ubuntu"   => "http://www.ubuntu.com/about/about-ubuntu/our-philosophy",
+  "LaTeX"    => "https://latex-project.org/lppl/",
+  "|git|"    => "https://git-scm.com/about/free-and-open-source",
+  "|C++|"    => "https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html",
+  "|Go|"     => "https://golang.org/project/",
+  "Mozilla Firefox" => "https://www.mozilla.org/en-US/foundation/licensing/",
+  "|Coffeescript|"  => "https://github.com/jashkenas/coffeescript/blob/master/LICENSE",
+  "|WebGL|"         => "https://www.khronos.org/legal/license/"
+}
+
+
+table "Software licenses", "l | l":
+  head "Software", "License"
+
+  software.each with name, license:
+    row pstyle(name), "\\url{%s}" % license
+
+p "Mozilla Firefox includes a |Javascript| engine and |evince| is included in Ubuntu.
+Also, the |HAL| programming language is owned by the author of the project. |Jetbrains| allows students to use
+|CLion| for free#footnote{#url{https://www.jetbrains.com/student/}} and
+|Sublime Text| can be used without registration with no limitations#footnote{#url{http://www.sublimetext.com/2}}.
+Therefore, **there are no software costs**."
+
+BUDGET["Software"] = 0
+
+section "Human resources"
+
+p "#autoref{Tasks per role} shows the tasks assigned to each project role. #autoref{Human resources budget} shows the
+expected cost of the human resources according to project roles and their respective tasks."
+
+task_durations = {
+  "Project management course" => 75,
+  "Analysis and design"       => 10,
+  "Game engine"               => 70,
+  "Real-time notifier"        => 50,
+  "Notifier subscriber"       => 30,
+  "Control panel"             => 35,
+  "Game example"              => 100,
+  "Testing and polishing"     => 40,
+  "Project memory"            => 40,
+  "Oral presentation"         => 10
+}
+
+human_resources = {
+  "Project manager" => {
+    :payment => 35,
+    :tasks   => [
+      "Project management course",
+      "Project memory",
+      "Oral presentation"
+    ]
+  },
+  "Software engineer"  => {
+    :payment => 40,
+    :tasks   => [
+      "Analysis and design"
+    ]
+  },
+  "Software developer" => {
+    :payment => 30,
+    :tasks => [
+      "Game engine",
+      "Real-time notifier",
+      "Notifier subscriber",
+      "Control panel",
+      "Game example",
+      "Testing and polishing"
+    ]
+  }
+}
+
+table "Tasks per role", "l | l | S":
+  head "Role", "Task", "Time (h)"
+
+  human_resources.each with role, data:
+    multirow data[:tasks].size, "*", role
+
+    (data[:tasks]).each with index, task:
+      row "", task, task_durations[task]
+
+    hline
+
+  hline
+  total human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum }.sum, columns => 3
+
+table "Human resources budget", "l | S | S | S":
+  head "Role", "Payment (\\EURtm / h)", "Time (h)", "Total (\\EURtm)"
+  human_resources.each with role, data:
+    hours = data[:tasks].map{ task -> task_durations[task] }.sum
+
+    row role,
+      data[:payment].decimals,
+      hours,
+      (data[:payment] * hours).decimals
+
+  hline
+  hline
+
+  BUDGET["Human resources"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
+  total BUDGET["Human resources"], columns => 4
+
+section "Other resources"
+
+subsection "Electricity"
+kwh = 0.147358
+
+p "Electricity will be needed to power the hardware. #autoref{Electricity budget} shows the power consumption,
+the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
+assuming %f #EURtm / kWh in Spain#footnote{#url{http://comparadorluz.com/faq/precio-kwh-electricidad}}." % kwh
+
+electricity = {
+  "Desktop computer" => {
+    :consumption => 400,
+    :usage       => 400
+  },
+  "Laptop"           => {
+    :consumption => 100,
+    :usage       => 50
+  },
+  "Monitor Acer XB270HU" => {
+    :consumption => 30,
+    :usage       => 400
+  }
+}
+
+table "Electricity budget", "l | S | S | S":
+  head "Hardware", "Consumption (W)", "Time of usage (h)", "Cost (\\EURtm)"
+
+  electricity.each with hardware, data:
+    row hardware, data[:consumption], data[:usage], ((data[:consumption] * data[:usage] / 1000.0) * kwh).decimals
+
+  hline
+  hline
+
+  BUDGET["Electricity"] = electricity.map{ _, data -> (data[:consumption] * data[:usage] / 1000.0) * kwh }.sum
+  total BUDGET["Electricity"], columns => 4
+
+subsection "Internet connection"
+internet_month = 38
+internet_hour = internet_month / (30.0 * 24)
+
+BUDGET["Internet"] = internet_hour * 460 * 0.3
+
+p "An Internet connection will be necessary to perform all the tasks. The student will use its personal
+internet connection most of the time, which costs " + internet_month.str + "\\EURtm/month $#simeq$ " + \
+internet_hour.decimals + "\\EURtm/h. It is expected to use the internet connection during the 30\\% of the
+total project's duration.
+Thus, the estimated budget for the internet connection is
+460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + BUDGET["Internet"].decimals + "\\EURtm**."
+
+section "Total"
+p "#autoref{Total budget} shows the total budget needed to develop the project. The 10\\% of the total cost
+is added to face any unforeseen contingencies."
+
+table "Total budget", "l | S":
+  head "Resource", "Total cost (\\EURtm)"
+
+  BUDGET.each with type, total:
+    row type, total.decimals
+
+  hline
+  hline
+  row "Subtotal", BUDGET.values.sum.decimals
+  row "Contingency (10\\%)", (BUDGET.values.sum * 0.1).decimals
+  hline
+  total BUDGET.values.sum + BUDGET.values.sum * 0.1, columns => 2

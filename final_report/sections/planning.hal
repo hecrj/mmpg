@@ -1,0 +1,88 @@
+chapter "Planning"
+
+section "Time table"
+label :time_table
+
+center:
+  tabular "l | l":
+    head "Task", "Expected duration (h)"
+
+    row "Project management course", 75
+    hline
+    row "Analysis and design", 10
+    hline
+    component "Game engine", 5, 50, 14, 1
+    hline
+    component "Real-time notifier", 10, 25, 10, 5
+    hline
+    component "Notifier subscriber", 5, 20, 3, 2
+    hline
+    component "Control panel", 5, 20, 5, 5
+    hline
+    row "Game example", "-"
+    irow "Logic", 50
+    irow "Real-time viewer", 50
+    hline
+    row "Testing and polishing", 40
+    hline
+    row "Project memory", 40
+    hline
+    row "Oral presentation", 10
+    hline
+    hline
+    total = 75 + 10 + 70 + 50 + 30 + 35 + 100 + 40 + 40 + 10
+    row "\\textbf{Total}", total
+
+p "The total duration of the project has been **460 hours**."
+
+
+section "Time management"
+
+figure!:
+  centered:
+    resizebox width => "300pt":
+      ganttchart 1, 25, options => "hgrid, vgrid":
+        gantttitle 2015, 20; gantttitle 2016, 5
+        br
+        ["September", "October", "November", "December", "January"].each with month:
+          gantttitle month, 5
+        br
+        ganttbar "Project management", 3, 11; br
+        ganttbar "Analysis and design", 6, 7; br
+        ganttbar "Engine", 9, 15; br;
+        ganttbar "API", 9, 13; br
+        ganttbar "Client", 9, 13; br
+        ganttbar "Space Wars - logic", 16, 19; br
+        ganttbar "Space Wars - viewer", 16, 20; br
+        ganttbar "Testing and polishing", 21, 22; br
+        ganttbar "Project memory", 16, 23; br
+        ganttbar "Oral presentation", 24, 24
+
+        ganttlink "elem1", "elem2"
+        ganttlink "elem1", "elem3"
+        ganttlink "elem1", "elem4"
+        ganttlink "elem2", "elem5"
+        ganttlink "elem3", "elem6"
+        ganttlink "elem4", "elem6"
+        ganttlink "elem5", "elem7"
+        ganttlink "elem6", "elem7"
+        ganttlink "elem8", "elem9"
+
+  caption "Final time planning"
+  label :gantt_current
+
+
+section "Dedication"
+
+p "#autoref{dedication} shows the **relative amount of contributions per day** to this project."
+
+figure!:
+  centered:
+    includegraphics "images/dedication.png", options => "scale=0.6"
+
+  caption "GitHub contributions to the MMPG project \\url{https://github.com/hecrj}"
+  label :dedication
+
+p "As it can be observed, there is **at least one contribution per day since November 4**. However, while dedication has
+been constant, there are many days where **contributions were minimal**. Hence, **dedication and productivity are expected
+to increase** during the incoming holidays."

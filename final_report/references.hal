@@ -1,0 +1,122 @@
+from haltex.bibtex import bibtex
+
+bibtex :references:
+  misc :darwin:
+    title "{Darwin, a Game of Survival of the Fittest among Programs}"
+    author "Douglas McIlroy "
+    url "http://www.cs.dartmouth.edu/~doug/darwin.pdf"
+    online "September 23, 2015"
+
+  misc :pg:
+    title "{ProgrammingGames}"
+    author "Wiki"
+    url "http://programminggames.org/"
+    online "September 23, 2015"
+
+  misc :ccombat:
+    title "{CodeCombat}"
+    author "{CodeCombat Team}"
+    url "https://codecombat.com/"
+    online "September 23, 2015"
+
+  misc :eda:
+    title "{EDA, Estructures de Dades i Algorismes}"
+    author "Jordi Petit"
+    url "http://www.cs.upc.edu/eda/"
+    online "September 23, 2015"
+
+  misc :jutge:
+    title "Jutge.org"
+    author "Jordi Petit and Salvador Roura"
+    url "https://jutge.org"
+    online "September 23, 2015"
+
+  misc :spacechem:
+    title "{SpaceChem}"
+    author "Zachtronics"
+    url "http://www.zachtronics.com/spacechem/"
+    online "September 23, 2015"
+
+  misc :robotgame:
+    title "{Robot Game}"
+    author "Peter Wen"
+    url "https://robotgame.net/"
+    online "September 23, 2015"
+
+  misc :golang:
+    title "{The Go Programming Language}"
+    author "Google"
+    url "https://golang.org/"
+    online "September 23, 2015"
+
+  misc :tdd:
+    title "{Test-driven development}"
+    author "Martin Fowler"
+    url "http://martinfowler.com/bliki/TestDrivenDevelopment.html"
+    online "September 23, 2015"
+
+  misc :it:
+    title "{Integration Testing}"
+    author "Microsoft"
+    url "https://msdn.microsoft.com/en-us/library/aa292128(v=vs.71).aspx"
+    online "September 23, 2015"
+
+  book :tdd_by_example:
+    title "{Test Driven Development: By Example}"
+    author "Kent Beck"
+    publisher "Addison-Wesley"
+    year 2003
+    note "ISBN: 0321146530"
+    edition "1st"
+
+  book :ci:
+    title "{Continuous Integration: Improving Software Quality and Reducing Risk}"
+    author "Paul M. Duvall"
+    publisher "Addison-Wesley"
+    year 2007
+    note "ISBN: 9780321336385"
+    edition "1st"
+
+  book :iterative_methodology:
+    title "{Agile and Iterative Development: A Manager's Guide}"
+    author "Craig Larman"
+    publisher "Addison-Wesley"
+    year 2004
+    note "ISBN: 0131111558"
+    edition "1st"
+
+  book :sustainability_report:
+    title "{The economy of the common good}"
+    author "Felber, C."
+    publisher "Deusto SA Editions"
+    year 2011
+    note "ISBN: 9788423412808"
+
+  misc :co2:
+    title "{How much carbon dioxide is produced per kilowatthour when generating electricity with fossil fuels?}"
+    author "U.S. Energy Information Administration"
+    url "http://www.eia.gov/tools/faqs/faq.cfm?id=74&t=11"
+    online "October 18, 2015"
+
+  misc :jwt:
+    title "{JSON Web Tokens}"
+    url "https://jwt.io/"
+    online "December 18, 2015"
+
+  misc :galcon:
+    title "Galcon"
+    author "Phil Hassey"
+    url "http://www.galcon.com/"
+    online "December 18, 2015"
+
+  misc :planet_wars:
+    title "{Planet Wars}"
+    author "University of Waterloo. Google"
+    url "http://planetwars.aichallenge.org/"
+    online "December 18, 2015"
+
+  misc :zeromq:
+    title "{ZeroMQ. Distributed Messaging}"
+    author "iMatix Corporation"
+    url "http://zeromq.org/"
+    online "December 18, 2015"

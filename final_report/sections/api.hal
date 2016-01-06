@@ -1,0 +1,34 @@
+chapter "API"
+
+p "The **|API|** component exposes **|HTTP|** endpoints that allow to interact with an underlying **engine**. It
+usually handles requests from the game viewer.
+
+There are many programming languages that allow to create |HTTP API|s easily, like |Pyhton|, |Ruby|, |Elixir|... However,
+the |API| component is implemented using the **|Go|** programming language because it includes **native**
+libraries to build |REST API|s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives.
+
+This component was originally called **real-time notifier**, but actually it does more than notifying. For this reason,
+the name was changed.
+
+It source code is available here: #url{https://github.com/mmpg/api}"
+
+section "Current endpoints"
+
+tabularx "\\textwidth", "l | l | X":
+  head "URI", "Method", "Description"
+  row "\\texttt{/auth}", "\\texttt{GET}", "Validates an authentication token and returns a new one."
+  row "\\texttt{/auth}", "\\texttt{POST}", "Validates the given user credentials and returns an authentication token."
+  row "\\texttt{/log}", "\\texttt{GET}", "Returns the log file of the given \\textbf{time}."
+  row "\\texttt{/events}", "\\texttt{GET}", "Upgrades the HTTP request to a WebSocket subscription of engine events."
+  row "\\texttt{/player}", "\\texttt{POST}", "Deploys the uploaded file as the player of the authenticated user."
+
+
+section "Pending endpoints"
+
+tabularx "\\textwidth", "l | l | X":
+  head "URI", "Method", "Description"
+  row "\\texttt{/world}", "\\texttt{GET}", "Returns the current state of the world."
+
+br 0.2
+indent; p "This endpoint might be useful to reduce the amount of information in the events, as the **static** part of
+the game world would not need to be included anymore."
