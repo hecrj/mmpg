@@ -41,17 +41,20 @@ techniques. For instance, an **AI programming challenge** is held every semester
 Informatics** (**FIB**) where students enrolled in the subject **Data Structures and Algorithms** (**EDA**) #cite{eda}
 compete with each other in a multiplayer programming game using the **Jutge** platform #cite{jutge}."
 
+section "Personal motivation"
 
-section "State of the art"
+p "**I love videogames.**
 
-p "Current multiplayer programming games feature **short matches** with a **small number of players**. There
-is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
-matches are necessary to decide who wrote the best program."
+**I love programming**. "
 
+section "Summary"
 
-section "The future"
+p "This report consists of three different parts. Each one of them describes a vital phase in the development of
+the project:"
 
-p "Multiplayer programming games need to evolve. They need to feature **huge worlds**, **long matches** and
-a **massive amount of players in real-time**. Then, players will feel attached to the match, programs will need to
-**adapt** constantly as they play with **everyone at the same time**. It is time to take this genre to the next level and
-create **massive multiplayer programming games** (**MMPG**s)."
+description:
+  item "Formulation"; p "It identifies the **problem to solve**, it details its **analysis**, it **specifies** the scope of
+  the project, and it shows the **design** of the solution."
+  item "Implementation"; p "It describes the development of the different **components** that compose the solution."
+  item "Review"; p "It describes the **validation methodology**, it states the final **planning** and **economic cost**
+  of the project, and it discusses the **sustainability** and **legality** of the project."

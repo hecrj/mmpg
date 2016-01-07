@@ -1,0 +1,33 @@
+chapter "Analysis"
+
+section "State of the art"
+
+p "Current multiplayer programming games feature **short matches** with a **small number of players**. There
+is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
+matches are necessary to decide who wrote the best program."
+
+
+section "The future"
+
+p "Multiplayer programming games need to evolve. They need to feature **huge worlds**, **long matches** and
+a **massive amount of players in real-time**. Then, players will feel attached to the match, programs will need to
+**adapt** constantly as they play with **everyone at the same time**. It is time to take this genre to the next level and
+create **massive multiplayer programming games** (**MMPG**s)."
+
+section "Stakeholders"
+
+subsection "Game programmers"
+p "The **abstract game engine** will be used by the game programmers to build MMPGs."
+
+
+subsection "Players";
+
+p "Players will develop |AI|s for a concrete game that uses the **abstract game engine**
+and upload them to the web platform at any time during the game match. Also, they can watch the match unfold
+in real-time using the **real-time webviewer**."
+
+
+subsection "Administrators"
+
+p "Administrators will use the **control panel** to supervise how the game match unfolds, start, stop or pause the game, and obtain
+the final scores of every player."

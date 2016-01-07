@@ -17,7 +17,7 @@ usepackage "pgfgantt"
 usepackage "marvosym"
 usepackage "siunitx"
 usepackage "multirow"
-usepackage "tocbibind", options => "nottoc,numbib"
+usepackage "tocbibind", options => "nottoc"
 usepackage "indentfirst"
 usepackage "afterpage"
 usepackage "minted"
@@ -38,47 +38,16 @@ document:
         extra    => "Directed by Jordi Petit Silvestre"
   clearpage
 
+  import parts.abstract
+  clearpage
+  
   tableofcontents
   clearpage
 
-  import sections.introduction
-  clearpage
-
-  import sections.scope
-  clearpage
-
-  import sections.engine
-  clearpage
-
-  import sections.api
-  clearpage
-
-  import sections.client
-  clearpage
-
-  import sections.space_wars
-  clearpage
-
-  import sections.planning
-  clearpage
-
-  import sections.economic_cost
-  clearpage
-
-  import sections.validation
-  clearpage
-
-  import sections.sustainability
-  clearpage
-
-  import sections.legality
-  clearpage
-
-  import sections.license
-  clearpage
-
-  import sections.conclusions
-  clearpage
+  import parts.introduction
+  import parts.formulation
+  import parts.implementation
+  import parts.review
 
   bibliographystyle :plain
   bibliography :references

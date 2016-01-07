@@ -1,0 +1,13 @@
+part "Formulation"
+
+import parts.formulation.analysis
+clearpage
+
+import parts.formulation.specification
+clearpage
+
+import parts.formulation.design
+clearpage
+
+import parts.formulation.license
+clearpage
