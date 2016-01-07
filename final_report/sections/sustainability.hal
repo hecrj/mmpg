@@ -1,10 +1,10 @@
-section "Sustainability"
+chapter "Sustainability"
 
 p "This section contains a sustainability report of the project based on the application of the matrix described by
 Christian Felber in `The economy of the common good' #cite{sustainability_report}. However, only the **planning**
 stage is considered."
 
-subsection "Economic analysis"
+section "Economic analysis"
 p "The economical analysis is complete and thorough, all costs are assessed and reasonable.
 Resources are used efficiently, spending more time in the most important tasks. Moreover, the best technologies
 are chosen to produce the best results in the least amount of time possible. A contingency budget has been added
@@ -13,7 +13,7 @@ no direct economic benefit from it."
 br 0.1
 p "Overall, the project receives a 7 in economical viability because its efficency but lack of profitability."
 
-subsection "Social impact analysis"
+section "Social impact analysis"
 p "The project is directed to computer science students and teachers, and game progammers. The project
 will be used by students to learn different programming techniques, by teachers to evaluate these students, and
 by game programmers to create new content. Moreover, it will be used in the Data Structures and Algorithms subject
@@ -25,7 +25,7 @@ br 0.1
 p "The project receives a 6 in social impact because it will be positive for a specific community but it will not
 have a direct impact on the global population."
 
-subsection "Environmental impact analysis"
+section "Environmental impact analysis"
 p "The project will use 177kWh of electricity, which is approximately 174kg
 of CO#textsuperscript{2} #cite{co2}. This is the amount of CO#textsuperscript{2} that a car produces by driving only 7
 hours#footnote{#url{http://www.yousustain.com/footprint/howmuchco2?co2=174+kg}}. Also, any source of
@@ -34,7 +34,7 @@ recycled and it will, eventually, become electronic waste with a high amount of 
 br 0.1
 p "The project obtains an 8 in environmental impact because its environmental footprint is almost negligible."
 
-subsection "Matrix"
+section "Matrix"
 p "#autoref{Sustainability matrix} shows the sustainability matrix and the total score obtained in the planning
 stage. The total score obtained is **21 out of 30**. Therefore, the project is planned to be **reasonably sustainable**."
 
