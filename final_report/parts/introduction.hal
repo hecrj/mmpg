@@ -43,9 +43,21 @@ compete with each other in a multiplayer programming game using the **Jutge** pl
 
 section "Personal motivation"
 
-p "**I love videogames.**
+p "**I love videogames**. Ever since my father introduced me to my first computer when I was 3 years old.
+I was immediately hooked. I started playing simple puzzle games, while discovering first person shooters and strategic
+games soon after.
 
-**I love programming**. "
+**Videogames were the main reason I chose to study computer science**. I learned my first
+programming language (**PHP**) when I was 10 years old because I wanted to open a website
+to share my passion about videogames. Since then, **programming** became a really important part of my life.
+
+**Studying computer science has made me love videogames even more**. When I a see videogame now, I can try to
+imagine the logic
+behind it. I can try to picture the different algorithms involved. I imagine thousands of bits correctly aligned,
+flowing and changing constantly, while they follow some complex logic. For me, the fact that a **videogame** is
+able to show how its code works visually is truly fascinating.
+
+Programming games mix together two of my passions: **videogames** and **programming**. [...]"
 
 section "Summary"
 
@@ -53,7 +65,7 @@ p "This report consists of three different parts. Each one of them describes a v
 the project:"
 
 description:
-  item "Formulation"; p "It identifies the **problem to solve**, it details its **analysis**, it **specifies** the scope of
+  item "Formulation"; p "It identifies and analyzes the **problem to solve**, it **specifies** the scope of
   the project, and it shows the **design** of the solution."
   item "Implementation"; p "It describes the development of the different **components** that compose the solution."
   item "Review"; p "It describes the **validation methodology**, it states the final **planning** and **economic cost**
