@@ -1,0 +1,48 @@
+chapter "The first prototype"
+
+p "The first step of the implementation process was to build a simple prototype of the platform.
+
+This first prototype must implement the most basic feature of the platform and it also has to lay the foundations for extending
+it easily. Therefore, it was decided that the first prototype should feature the first working versions of:"
+
+enumerate:
+  item; p "The **engine**, running one simple player and notifying its actions to any subscribers."
+  item; p "The **API**, subscribed to the **engine** and notifying its actions to **client**s."
+  item; p "The **client** library, subscribed to the **API** and drawing the player actions in a web-browser."
+
+
+section "The first API"
+subsection "Programming language"
+p "There are many programming languages that allow to create **HTTP API**s easily, like Pyhton, Ruby, Elixir... However,
+language chosen to implement the **API** is the **|Go|** programming language because it includes **native**
+libraries to build concurrent **REST API**s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives."
+
+subsection "The subscriber hub"
+p "The **subscriber hub** keeps track of the different **client**s subscribed to the **API**, while
+also allows to send data to subscribers.
+
+This functionality was relatively easy to implement, thanks to the native concurrency in **Go** and the use of **WebSockets**."
+
+section "The first client"
+subsection "Programming language"
+p "..."
+
+subsection "Third-party libraries"
+p "..."
+
+subsection "API subscription"
+p "..."
+
+
+section "The first engine"
+subsection "Programming language"
+p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
+**low-level** operative system operations, so it can limit how player programs are executed.
+
+The most well-known programming languages that satisfiy these requirements are C and C++. However, C  is lacking
+the capacity to **represent abstractions and interfaces** easily. Hence, **C++** is the perfect alternative to implement
+the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
+directly to **|UNIX|-based operative systems**."
+
+
+section "Wiring the API to the engine"

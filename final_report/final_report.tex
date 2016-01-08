@@ -84,7 +84,7 @@ A \textbf{multiplayer programming game} is a \textbf{programming game} where mul
 game. Thus, the game becomes a challenge where strategy and programming skills make the difference.
 
 These web platforms allow players to compete with each other easily. For example, \textbf{Robot Game}
-\cite{robotgame} is a website where anyone can upload an \textbf{\texttt{AI}} written in \texttt{Python} and compete with other people.
+\cite{robotgame} is a website where anyone can upload an \textbf{\texttt{AI}} written in \texttt{}Python\texttt{} and compete with other people.
 \subsection{Playing while learning}
 Writing \textbf{\texttt{AI}}s can be a really fun and rewarding experience because the game allows the players to see how their
 \textbf{algorithms work visually}, while competition motivates them to \textbf{learn and improve}.
@@ -175,247 +175,78 @@ This monitoring report and the final document related with the \texttt{MMPG} pla
 license.
 \clearpage
 \part{Implementation}
-\chapter{Engine}
-The \texttt{MMPG} \textbf{engine} is a library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
-of classes that can be used and extended to build the logic of the game.
+\chapter{Methodology}
+As seen in \autoref{design}, the platform to be implemented is composed of different components that communicate with
+each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
+communicates with other software, especially when both are being developed at the same time: changes made in
+the public interface of some component can easily break other components.
 
-Its source code is available here: \url{https://github.com/mmpg/engine}
-\section{Architecture}
-The runtime of an \texttt{MMPG} \textbf{engine} consists of 3 types of processes:
-\begin{description}
-\item[Master process]
-It represents the \textbf{game-world server}. The master process listens to requests coming from
-players and updates the game world accordingly. There is only \textbf{one master process per runtime}.
-\item[Worker process]
-It represents a \textbf{pool of players}. A worker process \textbf{executes} a set of players and
-  \textbf{manages} them. There can be \textbf{multiple workers per runtime}.
-\item[Player process]
-It represents a \textbf{player program}. A player process \textbf{reads} the game world from the
-  \textbf{master process} and \textbf{performs requests} to \textbf{change} the game world.
-\end{description}
-Processes comunicate with each other using \textbf{low-latency sockets}. Thus, different workers can be executed
-in different machines to achieve better performance.
+Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
+it is necessary to \textbf{detect when a component breaks as soon as possible}. That way, components can be fixed before more changes
+are made and fixing it becomes nightmare.
 
-\autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = \sum_{i=0}^{N} M_i$ players.
-\begin{figure}[H]
-\noindent\resizebox{\textwidth}{!}{
-\input{graphs/engine_arch}
-}
-\caption{Hierarchy of engine processes}
-\label{engine_arch}
-\end{figure}
-\section{Programming language}
+In order to ensure that all the components of the platform keep working during the entire implementation process, and also
+detect and fix issues as soon as possible, the project was developed using an \textbf{iterative methodology} with
+\textbf{continuous integration}. This methodology consisted in:
+\begin{enumerate}
+\item
+Develop a simple prototype of the platform
+\item
+Run the prototype in some external server
+\item
+When a change is made to any component:
+\begin{enumerate}
+\item
+Apply and integrate the change in the server
+\item
+Test that the prototype keeps working as expected
+\end{enumerate}
+\end{enumerate}
+This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
+a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
+transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
+the prototype was available to the director of the project to assess and follow any progress closely.
+\clearpage
+\chapter{The first prototype}
+The first step of the implementation process was to build a simple prototype of the platform.
+
+This first prototype must implement the most basic feature of the platform and it also has to lay the foundations for extending
+it easily. Therefore, it was decided that the first prototype should feature the first working versions of:
+\begin{enumerate}
+\item
+The \textbf{engine}, running one simple player and notifying its actions to any subscribers.
+\item
+The \textbf{\texttt{API}}, subscribed to the \textbf{engine} and notifying its actions to \textbf{client}s.
+\item
+The \textbf{client} library, subscribed to the \textbf{\texttt{API}} and drawing the player actions in a web-browser.
+\end{enumerate}
+\section{The first API}
+\subsection{Programming language}
+There are many programming languages that allow to create \textbf{HTTP \texttt{API}}s easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
+language chosen to implement the \textbf{\texttt{API}} is the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
+libraries to build concurrent \textbf{\texttt{REST} \texttt{API}}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
+\subsection{The subscriber hub}
+The \textbf{subscriber hub} keeps track of the different \textbf{client}s subscribed to the \textbf{\texttt{API}}, while
+also allows to send data to subscribers.
+
+This functionality was relatively easy to implement, thanks to the native concurrency in \textbf{Go} and the use of \textbf{WebSockets}.
+\section{The first client}
+\subsection{Programming language}
+...
+\subsection{Third-party libraries}
+...
+\subsection{API subscription}
+...
+\section{The first engine}
+\subsection{Programming language}
 The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
 \textbf{low-level} operative system operations, so it can limit how player programs are executed.
 
-The most well-known programming languages that satisfiy these requirements are \texttt{C} and \texttt{C++}. However, \texttt{C}  is lacking
-the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{C++} is the perfect alternative to implement
-the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{C POSIX API}}, which allows to talk
+The most well-known programming languages that satisfiy these requirements are \texttt{C} and \texttt{C}++. However, \texttt{C}  is lacking
+the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
+the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
 directly to \textbf{\texttt{UNIX}-based operative systems}.
-\section{Inter-process communication}
-As it was explained previously, the \textbf{engine} features a decoupled architecture. Different processes are
-executed and communicate with each other using \textbf{sockets}. However, implementing inter-process communication from
-scratch would be a real challenge by itself, and it is not the subject of this project. This is where a
-\textbf{messaging technology} comes in.
-
-The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
-
-\texttt{RabbitMQ} implements
-a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
-This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
-some \textbf{latency}.
-
-\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
-\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
-
-On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements \textbf{low-latency socket communication}. It manages
-\textbf{low-level} communication, while providing a flexible and easy-to-use interface. Also, \textbf{\texttt{ZeroMQ}} has bindings available
-for the most well-known programming languages.
-
-Thus, the \textbf{engine} uses \textbf{\texttt{ZeroMQ}} for all the inter-process communication. As a consequence, the architecture becomes
-decoupled. For instance, a \textbf{player process} could be programmed in \textbf{any programming language}, as it
-only performs requests to the master process. Therefore, it would be \textbf{relatively easy} to allow players to develop
-\textbf{\texttt{AI}}s using \textbf{different programming languages}.
-\section{Hot-swapping AIs}
-\section{Event notification}
-\section{Log system}
-\section{API}
-The engine listens to requests made through a \texttt{REQ/REP} socket connection. Other applications can
-  easily connect to the engine and interact with it.
-\section{Game logic abstraction}
-The \textbf{engine} exposes a set of \textbf{abstract classes} to build game logic on top of it:
-\begin{description}
-\item[\texttt{}AI\texttt{}]
-Defines the interface that any \texttt{MMPG} \texttt{AI} needs to implement: a \texttt{play} method. Games can extend
-  this class to define \textbf{\texttt{}AI\texttt{ API}s} that players can use to write their programs.
-\item[\texttt{World}]
-Represents a game world. Games need to extend this class and implement methods to
-  \textbf{generate}, \textbf{serialize} and \textbf{update} the world.
-\item[\texttt{Action}]
-Represents an action that an \textbf{\texttt{AI}} can perform. Normally, these actions try to \textbf{update}
-  the game world.
-\end{description}
-On the other hand, the \textbf{engine} also provides two \textbf{fully-implemented classes} to run \textbf{master and player
-processes}. As \autoref{world_injection} shows, a game world needs to be injected to run these processes.
-
-The \textbf{worker} executable is \textbf{independent of the game logic} and it can be built \textbf{directly from the library}.
-\clearpage
-\chapter{API}
-The \textbf{\texttt{API}} component exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
-usually handles requests from the game viewer.
-
-There are many programming languages that allow to create \texttt{HTTP API}s easily, like \texttt{Pyhton}, \texttt{Ruby}, \texttt{Elixir}... However,
-the \texttt{API} component is implemented using the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
-libraries to build \texttt{REST API}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
-
-Its source code is available here: \url{https://github.com/mmpg/api}
-\section{Subscriber hub}
-\section{Authentication}
-\section{World information}
-\section{Log retrieval}
-\section{Player deployment}
-\section{Summary}
-\begin{tabularx}{\textwidth}{l | l | X}
-\textbf{URI} & \textbf{Method} & \textbf{Description}\\
-\hline
-\texttt{/auth} & \texttt{GET} & Validates an authentication token and returns a new one.\\
-\texttt{/auth} & \texttt{POST} & Validates the given user credentials and returns an authentication token.\\
-\texttt{/log} & \texttt{GET} & Returns the log file of the given \textbf{time}.\\
-\texttt{/events} & \texttt{GET} & Upgrades the HTTP request to a WebSocket subscription of engine events.\\
-\texttt{/player} & \texttt{POST} & Deploys the uploaded file as the player of the authenticated user.\\
-\texttt{/world} & \texttt{GET} & Returns the current state of the world.\\
-\end{tabularx}
-\clearpage
-\chapter{Client}
-The \textbf{client} component is a library that implements a set of useful classes to communicate with
-an \textbf{\texttt{MMPG} \texttt{API}} and implement \textbf{game viewers}.
-
-The \textbf{client} library will run in web-browsers, as \texttt{}MMPG\texttt{} viewers are web-based. For this reason, the library
-must be written in \textbf{\texttt{JavaScript}}.
-
-This component had a different name originally. It was called \textbf{notifier subscriber}. But given that the \textbf{real-time
-notifier} evolved into an \textbf{API}, it made sense to rename this component to \textbf{client}.
-
-Its source code is available here: \url{https://github.com/mmpg/client}
-\section{Current classes}
-\begin{description}
-\item[\texttt{Client}]
-Allows to perform requests to any \textbf{\texttt{MMPG} \texttt{API}}. Most of its methods perform an \texttt{HTTP} request
-  and return a JavaScript \textbf{promise}.
-\item[\texttt{EventStream}]
-Represents a stream of game events. It delegates the event handling to its \textbf{subscriber}.
-\item[\texttt{LiveSubscriber}]
-\textbf{Buffers} 2 seconds of events and then starts \textbf{consuming them}.
-\item[\texttt{PlaybackSubscriber}]
-Reads a \textbf{log} of events from the \texttt{API} and consumes them. When the number of
-  events reaches a minimum, it requests the next log to the \texttt{API}.
-\item[\texttt{Webtoken}]
-Represents a \textbf{\texttt{JSON} Webtoken} \cite{jwt}. It is used to manage authentication tokens.
-\item[\texttt{GameLoop}]
-Implements a \textbf{consistent game loop}, calling a callback function and passing the time
-  between calls as the first argument.
-\end{description}
-\clearpage
-\chapter{Space Wars}
-\textbf{Space Wars} will be the first game using the \texttt{MMPG} platform. It is inspired by \textbf{Galcon} \cite{galcon}
-and \textbf{Planet Wars} \cite{planet_wars}. These games were chosen because they seem to have \textbf{simple rules}, but they
-also seem \textbf{easy to extend}. This way, development can start with the implementation of the original game rules while
-new ideas to \textbf{increase the game size} and make it \textbf{massive} can be added later.
-\section{Logic}
-\indent
-The game logic has currently \textbf{one feature}:
-\begin{description}
-\item[Pseudo-randomly generated planetary systems]
-The game world is randomly generated. The current algorithm
-  chooses the \textbf{size of the sun}, \textbf{number of planets}, and the \textbf{size}, \textbf{orbit} and \textbf{position} of every planet.
-  Finally, it generates a \textbf{connected graph of planets}, where an edge represents a path between the two nodes.
-\end{description}
-However, these are the features that are expected to be available \textbf{before the year ends}:
-\begin{description}
-\item[Space ships]
-Planets can be \textbf{conquered} by space ships. Conquered planets \textbf{generate} space ships.
-\item[Multiple systems]
-The game will take place in multiple planetary systems connected by \textbf{mass relays}.
-\item[Mass relays]
-Nodes that allow ships to \textbf{travel between planetary systems}.
-\item[Score system]
-Players with more conquered planets will obtain higher scores.
-\end{description}
-\clearpage
-\section{Viewer}
-Currently, the \textbf{Space Wars viewer} supports these features:
-\begin{description}
-\item[Planetary system rendering]
-The game world generated by the game logic is rendered using \textbf{\texttt{WebGL}},
-  as shown in \autoref{planets}.
-\item[Login]
-Players can be authenticated using a login form. The session is saved in the browser's
-  \textbf{local storage}.
-  See \autoref{login_form}.
-\item[Player deployment]
-Authenticated players can \textbf{deploy a new version of their program} and receive feedback
-  in \textbf{real-time} of the deployment process. See \autoref{deploy_error}.
-\item[Game time control]
-There is a widget that allows viewers to watch the \textbf{previous events of the
-  current match}. See \autoref{game_time}.
-\end{description}
-\indent
-By the end of the project, the viewer is \textbf{expected to support}:
-\begin{description}
-\item[Camera movement]
-The camera will \textbf{move} using the \texttt{W}, \texttt{A}, \texttt{S}, \texttt{D} keys.
-\item[Game rendering]
-Space ships, mass relays and solar systems will be rendered properly to \textbf{reflect the
-  state of the game world}.
-\item[Control panel]
-Administrators will have access to a panel to \textbf{control the current match} and, possibly,
-  \textbf{monitor the players' status}.
-\end{description}
-\begin{figure}[H]
-\noindent\resizebox{\textwidth}{!}{
-\includegraphics{images/planets.png}
-}
-\caption{Planetary system}
-\label{planets}
-\end{figure}
-\begin{figure}[H]
-\makebox[\textwidth]{
-\noindent\resizebox{!}{250pt}{
-\includegraphics{images/login_ok.png}
-}
-\noindent\resizebox{!}{250pt}{
-\includegraphics{images/login_error.png}
-}
-}
-\caption{Login form. Valid (left). Invalid (right)}
-\label{login_form}
-\end{figure}
-\begin{figure}[H]
-\makebox[\textwidth]{
-\begin{minipage}{.5\textwidth}
-\begin{figure}[H]
-\makebox[\textwidth]{
-\noindent\resizebox{!}{250pt}{
-\includegraphics{images/deploy_error.png}
-}
-}
-\caption{Player deployment with a compiling error}
-\label{deploy_error}
-\end{figure}
-\end{minipage}
-\begin{minipage}{.5\textwidth}
-\begin{figure}[H]
-\makebox[\textwidth]{
-\noindent\resizebox{!}{100pt}{
-\includegraphics{images/game_time.png}
-}
-}
-\caption{Game time}
-\label{game_time}
-\end{figure}
-\end{minipage}
-}
-\end{figure}
+\section{Wiring the API to the engine}
 \clearpage
 \part{Review}
 \chapter{Validation}
@@ -587,7 +418,7 @@ The following resources will be needed to develop the project:
 A computer and \textbf{Jutge.org} servers.
 \item[Software]
 Ubuntu, Sublime Text, a web-browser, \texttt{CLion}, \LaTeX{}, \texttt{Makefile}, \texttt{git}, \texttt{evince},
-  \href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{\texttt{HAL}}, \texttt{C++}, \texttt{Go},
+  \href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{\texttt{HAL}}, \texttt{}C\texttt{++}, \texttt{Go},
   \texttt{Javascript}, \texttt{Coffeescript}, and \texttt{WebGL}.
 \item[Human]
 Student, project director, and project management tutor.
@@ -625,7 +456,7 @@ All the software needed to develop the project can be used for free.
 Ubuntu & \url{http://www.ubuntu.com/about/about-ubuntu/our-philosophy}\\
 \LaTeX{} & \url{https://latex-project.org/lppl/}\\
 \texttt{git} & \url{https://git-scm.com/about/free-and-open-source}\\
-\texttt{C++} & \url{https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html}\\
+\texttt{}C\texttt{++} & \url{https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html}\\
 \texttt{Go} & \url{https://golang.org/project/}\\
 Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
 \texttt{Coffeescript} & \url{https://github.com/jashkenas/coffeescript/blob/master/LICENSE}\\

@@ -1,13 +1,7 @@
 part "Implementation"
 
-import parts.implementation.engine
+import parts.implementation.methodology
 clearpage
 
-import parts.implementation.api
-clearpage
-
-import parts.implementation.client
-clearpage
-
-import parts.implementation.space_wars
+import parts.implementation.the_first_prototype
 clearpage
