@@ -7,12 +7,19 @@ There are many programming languages that allow to create |HTTP API|s easily, li
 the |API| component is implemented using the **|Go|** programming language because it includes **native**
 libraries to build |REST API|s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives.
 
-This component was originally called **real-time notifier**, but actually it does more than notifying. For this reason,
-the name was changed.
+Its source code is available here: #url{https://github.com/mmpg/api}"
 
-It source code is available here: #url{https://github.com/mmpg/api}"
+section "Subscriber hub"
 
-section "Current endpoints"
+section "Authentication"
+
+section "World information"
+
+section "Log retrieval"
+
+section "Player deployment"
+
+section "Summary"
 
 tabularx "\\textwidth", "l | l | X":
   head "URI", "Method", "Description"
@@ -21,14 +28,4 @@ tabularx "\\textwidth", "l | l | X":
   row "\\texttt{/log}", "\\texttt{GET}", "Returns the log file of the given \\textbf{time}."
   row "\\texttt{/events}", "\\texttt{GET}", "Upgrades the HTTP request to a WebSocket subscription of engine events."
   row "\\texttt{/player}", "\\texttt{POST}", "Deploys the uploaded file as the player of the authenticated user."
-
-
-section "Pending endpoints"
-
-tabularx "\\textwidth", "l | l | X":
-  head "URI", "Method", "Description"
   row "\\texttt{/world}", "\\texttt{GET}", "Returns the current state of the world."
-
-br 0.2
-indent; p "This endpoint might be useful to reduce the amount of information in the events, as the **static** part of
-the game world would not need to be included anymore."

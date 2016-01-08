@@ -28,7 +28,7 @@ usetikzlibrary "arrows,positioning"
 
 include :style
 
-typewrite "MMPG"
+typewrite "MMPG", "PHP", "AI"
 
 document:
   cover title    => "Web platform for massive multiplayer programming games",

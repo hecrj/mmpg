@@ -17,17 +17,17 @@ create **massive multiplayer programming games** (**MMPG**s)."
 section "Stakeholders"
 
 subsection "Game programmers"
-p "The **abstract game engine** will be used by the game programmers to build MMPGs."
+p "Game programmers want to build **MMPG**s easily. They want to focus on programming the game logic and the
+game viewer, without worrying about internal aspects of the platform."
 
 
 subsection "Players";
 
-p "Players will develop |AI|s for a concrete game that uses the **abstract game engine**
-and upload them to the web platform at any time during the game match. Also, they can watch the match unfold
-in real-time using the **real-time webviewer**."
+p "Players will **develop |AI|s** for a concrete game and upload them to the web platform at any time during the game match.
+Also, they want to **watch the match unfold in real-time**."
 
 
 subsection "Administrators"
 
-p "Administrators will use the **control panel** to supervise how the game match unfolds, start, stop or pause the game, and obtain
-the final scores of every player."
+p "Administrators want to **control** the game. They want to supervise, start,
+stop or pause the game, and obtain the final scores of every player."
