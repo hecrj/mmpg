@@ -163,6 +163,21 @@ hindering performance. Moreover, the platform must be secure and fault-tolerant;
 or affect the platform negatively.
 \clearpage
 \chapter{Design}
+\begin{description}
+\item[Engine]
+A library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
+  of classes that can be used and extended to build the logic of the game.
+\item[\texttt{API}]
+A component that exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
+  usually handles requests from a \textbf{game viewer} using the \textbf{client} library.
+\item[Client]
+A library that implements a set of useful classes to communicate with an \textbf{\texttt{API}} and implement
+  \textbf{game viewers}.
+\item[Game logic]
+...
+\item[Game viewer]
+...
+\end{description}
 \clearpage
 \chapter{License}
 \section{Code}
@@ -183,7 +198,7 @@ the public interface of some component can easily break other components.
 
 Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
 it is necessary to \textbf{detect when a component breaks as soon as possible}. That way, components can be fixed before more changes
-are made and fixing it becomes nightmare.
+are made and fixing it becomes a nightmare.
 
 In order to ensure that all the components of the platform keep working during the entire implementation process, and also
 detect and fix issues as soon as possible, the project was developed using an \textbf{iterative methodology} with
@@ -220,23 +235,32 @@ The \textbf{\texttt{API}}, subscribed to the \textbf{engine} and notifying its a
 \item
 The \textbf{client} library, subscribed to the \textbf{\texttt{API}} and drawing the player actions in a web-browser.
 \end{enumerate}
+It is important to note that the \textbf{engine} and the \textbf{client} are libraries that can be used to build
+game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
+game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity\footnote{i.e.
+creating game logic and game viewer components}.
 \section{The first API}
 \subsection{Programming language}
 There are many programming languages that allow to create \textbf{HTTP \texttt{API}}s easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
-language chosen to implement the \textbf{\texttt{API}} is the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
+the language chosen to implement the \textbf{\texttt{API}} was the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
 libraries to build concurrent \textbf{\texttt{REST} \texttt{API}}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
 \subsection{The subscriber hub}
-The \textbf{subscriber hub} keeps track of the different \textbf{client}s subscribed to the \textbf{\texttt{API}}, while
-also allows to send data to subscribers.
+The \textbf{\texttt{API}} needs to keep track of the different \textbf{client}s subscribed to it, and it also needs to be able to send data
+to them.
 
-This functionality was relatively easy to implement, thanks to the native concurrency in \textbf{Go} and the use of \textbf{WebSockets}.
+A \textbf{subscriber hub} was developed using the native concurrency of \textbf{Go}. Basically, the \textbf{hub} runs an infinite loop in the
+background that smartly monitors the connected \textbf{client}s; sending data or closing connections accordingly.
+\subsection{The events endpoint}
+A simple HTTP endpoint was created: \textbf{\texttt{/events}}. This endpoint accepted WebSocket connections and delegated them to the
+\textbf{hub}.
+
+After that, the \textbf{\texttt{API}} was ready to send data to \textbf{game viewers} in \textbf{real-time}.
 \section{The first client}
 \subsection{Programming language}
-...
-\subsection{Third-party libraries}
-...
+The \textbf{client} code needs to be executed by web-browsers, as \textbf{game viewers} are web-based.
+Thus, it has to be written in \textbf{Javascript}, as it is supported by web-browsers natively.
 \subsection{API subscription}
-...
+A \textbf{WebSocket} was connected to the \textbf{\texttt{/events}} endpoint, printing any received data in the \textbf{Javascript} console.
 \section{The first engine}
 \subsection{Programming language}
 The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
@@ -246,7 +270,96 @@ The most well-known programming languages that satisfiy these requirements are \
 the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
 the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
 directly to \textbf{\texttt{UNIX}-based operative systems}.
-\section{Wiring the API to the engine}
+\subsection{The first architecture}
+When designing the first architecture of the \textbf{engine}, it was important to take its requirements into account:
+\begin{enumerate}
+\item
+The \textbf{engine} must not allow \textbf{\texttt{AI}}s to cheat.
+\item
+\textbf{\texttt{AI}}s may be hot-swapped during a match.
+\end{enumerate}
+Thus, if the game logic and all the \textbf{\texttt{AI}}s were executed in the same process:
+\begin{enumerate}
+\item
+\textbf{\texttt{AI}}s could access the memory related with the game logic or other \textbf{\texttt{AI}}s.
+\item
+Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s.
+\item
+Updating an \textbf{\texttt{AI}} would require to restart the process.
+\end{enumerate}
+In other words, it would be really unsafe and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
+
+Therefore, the initial architecture of the \textbf{engine} consisted of 2 types of processes:
+\begin{description}
+\item[Master process]
+It represented the \textbf{game-world server}. The master process listened to requests coming from
+players and notified its actions accordingly. There was only \textbf{one master process per runtime}.
+\item[Player process]
+It represented a \textbf{player program}. The player program contained some \textbf{\texttt{AI}} code that was
+  executed \textbf{30 times per second}.
+\end{description}
+\autoref{engine_first_arch} shows the hierarchy of the prototype's engine runtime with $M$ players.
+\begin{figure}[H]
+\begin{center}
+\input{graphs/engine_first_arch}
+\end{center}
+\caption{Hierarchy of the protoype's engine processes}
+\label{engine_first_arch}
+\end{figure}
+\subsection{Inter-process communication}
+As it was explained previously, the \textbf{engine} featured a decoupled architecture. Different processes were
+executed and communicated with each other using \textbf{sockets}. However, implementing inter-process communication from
+scratch would have been a real challenge by itself, and it was not the subject of this project. This is where a
+\textbf{messaging technology} came in.
+
+The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
+
+\texttt{RabbitMQ} implements
+a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
+some \textbf{latency}.
+
+\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
+\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
+
+On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements
+\textbf{low-latency socket communication}. It manages \textbf{low-level} communication, while providing a flexible and easy-to-use interface.
+Also, \textbf{\texttt{ZeroMQ}} has bindings available for the most well-known programming languages.
+
+Thus, \textbf{\texttt{ZeroMQ}} was the library chosen to implement all the inter-process communication.
+\subsection{The first master process}
+The first master process consisted of three basic components:
+\begin{description}
+\item[The worker]
+It compiled and executed \textbf{player processes} for each given \textbf{\texttt{AI}}.
+\item[The notifier]
+It sent any given message through a \texttt{ZeroMQ} socket.
+\item[The server]
+It listened requests made by \textbf{player processes} and notified them through the \textbf{notifier}.
+\end{description}
+This components allowed the master process to act as a \textbf{game server}, while notifying the actions of the players to any
+subscribers.
+\section{Putting everything together}
+Once the initial engine was finished, a simple \textbf{\texttt{AI}} was developed to simulate a player moving
+while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
+to show this movement.
+
+Then, the \textbf{\texttt{API}} was connected to the \textbf{engine notifier} and the received messages were directly delegated to the \textbf{\texttt{API} hub},
+which in turn were sent to any open \textbf{client}s.
+
+Finally, once the \textbf{Javascript} console started showing the received events, a simple scene using \textbf{\texttt{Three.js}} was created in the
+\textbf{client}. This scene featured a cube representing the \textbf{player}, whose position was updated with every received event.
+\autoref{cube_movement} shows the observed result. \textbf{The prototype was finished}.
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{20em}{
+\includegraphics{images/cube_movement.png}
+}
+\end{center}
+\caption{A cube moved by the player program}
+\label{cube_movement}
+\end{figure}
+\section{Summary}
 \clearpage
 \part{Review}
 \chapter{Validation}

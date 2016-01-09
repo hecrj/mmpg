@@ -1,0 +1,14 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=0.8cm,
+    main node/.style={thick,circle,draw,minimum width=2.5cm}]
+
+    \node[main node] (1) {master};
+
+	\node[auto=false] (2) [below=of 1]{\ldots};
+
+    \node[main node] (3) [left=of 2]{player$_0$};
+    \node[main node] (4) [right=of 2]{player$_{M}$};
+
+
+    \path (1) edge (3);
+    \path (1) edge (4);
+\end{tikzpicture}
