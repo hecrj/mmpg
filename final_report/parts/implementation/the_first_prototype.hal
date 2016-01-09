@@ -123,7 +123,7 @@ p "This components allowed the master process to act as a **game server**, while
 subscribers."
 
 
-section "Putting everything together"
+section "Putting it all together"
 p "Once the initial engine was finished, a simple **AI** was developed to simulate a player moving
 while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
 to show this movement.
@@ -139,8 +139,17 @@ figure!:
   center:
     resizebox height => "20em":
       includegraphics "images/cube_movement.png"
-  caption "A cube moved by the player program"
+  caption "A cube that was moved by the player program"
   label :cube_movement
 
 
 section "Summary"
+p "In this chapter, it is been described how the first prototype of the platform was built. A prototype that implemented the
+most basic features of every component:"
+
+enumerate:
+  item; p "The **engine** compiled and run players, and notified their actions to subscribers."
+  item; p "The **API** subscribed to the engine and delegated the received events to all the connected clients."
+  item; p "The **client** was able to connect to the **API** and receive events from the **engine**."
+
+p "The foundations of the platform were ready."

@@ -1,8 +1,9 @@
 chapter "Methodology"
+label :methodology
 
 p "As seen in #autoref{design}, the platform to be implemented is composed of different components that communicate with
 each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
-communicates with other software, especially when both are being developed at the same time: changes made in
+communicates with other software, especially when both are being developed at the same time; changes made in
 the public interface of some component can easily break other components.
 
 Therefore, components **will** break. Developers are humans, and **humans make mistakes**. Thus, in order to be productive,

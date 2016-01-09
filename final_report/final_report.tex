@@ -191,9 +191,10 @@ license.
 \clearpage
 \part{Implementation}
 \chapter{Methodology}
+\label{methodology}
 As seen in \autoref{design}, the platform to be implemented is composed of different components that communicate with
 each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
-communicates with other software, especially when both are being developed at the same time: changes made in
+communicates with other software, especially when both are being developed at the same time; changes made in
 the public interface of some component can easily break other components.
 
 Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
@@ -356,44 +357,88 @@ Finally, once the \textbf{Javascript} console started showing the received event
 \includegraphics{images/cube_movement.png}
 }
 \end{center}
-\caption{A cube moved by the player program}
+\caption{A cube that was moved by the player program}
 \label{cube_movement}
 \end{figure}
 \section{Summary}
+In this chapter, it is been described how the first prototype of the platform was built. A prototype that implemented the
+most basic features of every component:
+\begin{enumerate}
+\item
+The \textbf{engine} compiled and run players, and notified their actions to subscribers.
+\item
+The \textbf{\texttt{API}} subscribed to the engine and delegated the received events to all the connected clients.
+\item
+The \textbf{client} was able to connect to the \textbf{\texttt{API}} and receive events from the \textbf{engine}.
+\end{enumerate}
+The foundations of the platform were ready.
 \clearpage
-\part{Review}
-\chapter{Validation}
-\label{methodology}
-The \textbf{validation methodology} has changed slightly in order to give priority to \textbf{integration testing}, given that
-the platform is made of \textbf{multiple independent components}.
+\chapter{Continuous integration}
+Once the first prototype was finished, it was time to set up the \textbf{integration server}, as described in
+\autoref{methodology}.
+\section{The dedicated server}
+First things first, an \textbf{integration server} to run the prototype was needed.
 
-When a change is made to any component while using \textbf{continuous integration}, the change is automatically applied to
-the \textbf{latest working prototype}. Therefore, breaking changes can be easily detected. Also, when using  \textbf{continuous
-integration} there is always an \textbf{up-to-date} working prototype of the platform that can be shown to anyone.
+Initially, a server was requested to the project director. However, the university policy did not allow professors
+to give root access to students. Root access was necessary because many different services might need to be installed during the
+development of the platform\footnote{\texttt{ZeroMQ}, for example}. Therefore, it was decided to use an external \textbf{cloud-host provider}.
 
-To set it up, a \href{http://linode.com/}{\textbf{Linode}} running \texttt{Ubuntu} was booted up to execute an instance of
-the platform. Then, \href{http://semaphoreci.com/}{\textbf{Semaphore}} was configured to build any change in the
-repositories. If a build succeeds, then \textbf{Semaphore} deploys the changes to the \textbf{Linode}, where the changes will
-be applied. \autoref{build_process} shows the build process of the \textbf{Space Wars} engine, while
-\autoref{deployment_process} shows its deployment process.
+There are many providers that present cloud-hosting solutions\footnote{AWS \cite{aws}, DigitalOcean \cite{digital_ocean}, etc.}.
+At the end, \textbf{Linode} \cite{linode} was the provider chosen, as the project developer already had experience with it and
+the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the \textbf{integration server}.
 
-Changes are pushed to the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
-when some changes are pushed to the repository, a script is executed that \textbf{builds and restarts the component}.
-These scripts are located in the \textbf{repository itself}, so they can be updated easily.
+A \textbf{Linode 1GB}\footnote{https://www.linode.com/pricing} running \texttt{Ubuntu} was booted up to execute an
+instance of the platform.
+\section{The integration service}
+The next step consisted in setting up an \textbf{integration service}.
+
+Integration services keep track of some code repositories and can be configured to \textbf{build and test the code when a change 
+happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
+
+As it happened with cloud-hosting providers, there are many different \textbf{integration
+services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc}. Fortunately, most of them
+are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
+\textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
+also happened with the cloud-hosting provider.
+\section{The integration process}
+\textbf{Semaphore} was configured to trigger a build when any component
+changed. If a build succeeded, then \textbf{Semaphore} deployed the changes to the \textbf{Linode}, where the changes were applied.
+
+Changes were applied in the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
+when some changes were pushed to the repository, a script was executed that \textbf{built and restarted the component}.
+These scripts were located in the \textbf{repository itself}, so they could be updated easily with the same process.
+
+\autoref{build_process} shows the build process of the \textbf{engine}, while \autoref{deployment_process} shows
+its deployment process.
 \begin{figure}[H]
-\noindent\resizebox{\textwidth}{!}{
+\begin{center}
+\noindent\resizebox{30em}{!}{
 \includegraphics{images/build_process.png}
 }
+\end{center}
 \caption{Semaphore build process}
 \label{build_process}
 \end{figure}
 \begin{figure}[H]
-\noindent\resizebox{\textwidth}{!}{
+\begin{center}
+\noindent\resizebox{!}{30em}{
 \includegraphics{images/deployment_process.png}
 }
+\end{center}
 \caption{Semaphore deployment process}
 \label{deployment_process}
 \end{figure}
+\clearpage
+\chapter{The log system}
+At this point, the platform was running smoothly in the integration server.
+\clearpage
+\part{Review}
+\chapter{Validation}
+\label{validation}
+\section{Continuous integration}
+[...]
+\section{Testing}
+[...]
 \clearpage
 \chapter{Planning}
 \section{Time table}

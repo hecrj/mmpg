@@ -1,34 +1,8 @@
 chapter "Validation"
-label :methodology
+label :validation
 
-p "The **validation methodology** has changed slightly in order to give priority to **integration testing**, given that
-the platform is made of **multiple independent components**.
+section "Continuous integration"
+p "[...]"
 
-When a change is made to any component while using **continuous integration**, the change is automatically applied to
-the **latest working prototype**. Therefore, breaking changes can be easily detected. Also, when using  **continuous
-integration** there is always an **up-to-date** working prototype of the platform that can be shown to anyone.
-
-To set it up, a #href{http://linode.com/}{**Linode**} running |Ubuntu| was booted up to execute an instance of
-the platform. Then, #href{http://semaphoreci.com/}{**Semaphore**} was configured to build any change in the
-repositories. If a build succeeds, then **Semaphore** deploys the changes to the **Linode**, where the changes will
-be applied. #autoref{build_process} shows the build process of the **Space Wars** engine, while
-#autoref{deployment_process} shows its deployment process.
-
-Changes are pushed to the **Linode** using **bare |git| repositories** and **script hooks**. Basically,
-when some changes are pushed to the repository, a script is executed that **builds and restarts the component**.
-These scripts are located in the **repository itself**, so they can be updated easily."
-
-figure!:
-  resizebox width => "\\textwidth":
-    includegraphics "images/build_process.png"
-
-  caption "Semaphore build process"
-  label :build_process
-
-
-figure!:
-  resizebox width => "\\textwidth":
-    includegraphics "images/deployment_process.png"
-
-  caption "Semaphore deployment process"
-  label :deployment_process
+section "Testing"
+p "[...]"

@@ -5,3 +5,9 @@ clearpage
 
 import parts.implementation.the_first_prototype
 clearpage
+
+import parts.implementation.continuous_integration
+clearpage
+
+import parts.implementation.the_log_system
+clearpage
