@@ -120,3 +120,9 @@ bibtex :references:
     author "iMatix Corporation"
     url "http://zeromq.org/"
     online "December 18, 2015"
+
+  misc :event_sourcing:
+    title "{Event Sourcing}"
+    author "Martin Fowler"
+    url "http://martinfowler.com/eaaDev/EventSourcing.html"
+    online "January 10, 2016"

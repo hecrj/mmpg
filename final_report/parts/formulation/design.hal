@@ -1,4 +1,5 @@
 chapter "Design"
+label :design
 
 description:
   item "Engine"; p "A library that implements basic features needed by any MMPG. The **engine** exposes a set

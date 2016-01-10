@@ -1,4 +1,7 @@
 \usepackage{fontspec}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
 
 \defaultfontfeatures{Scale=MatchLowercase}
 \setmainfont[Ligatures=TeX,
@@ -19,7 +22,7 @@ SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{1}
 
-\usepackage{fancyhdr}
+
  
 \pagestyle{fancy}
 \fancyhf{}
@@ -31,6 +34,7 @@ SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
 
 \renewcommand{\footrulewidth}{0.5pt}
 \setlength{\marginparwidth}{0pt}
+\setlength{\parskip}{0.8em}
 
-\usepackage{titlesec}
+
 \titleformat{\chapter}{\normalfont\bfseries}{\Huge\thechapter}{20pt}{\Huge}

@@ -163,6 +163,7 @@ hindering performance. Moreover, the platform must be secure and fault-tolerant;
 or affect the platform negatively.
 \clearpage
 \chapter{Design}
+\label{design}
 \begin{description}
 \item[Engine]
 A library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
@@ -222,7 +223,6 @@ This methodology has a lot of benefits. Not only it allows to detect mistakes as
 a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
 transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
 the prototype was available to the director of the project to assess and follow any progress closely.
-\clearpage
 \chapter{The first prototype}
 The first step of the implementation process was to build a simple prototype of the platform.
 
@@ -340,7 +340,7 @@ It listened requests made by \textbf{player processes} and notified them through
 \end{description}
 This components allowed the master process to act as a \textbf{game server}, while notifying the actions of the players to any
 subscribers.
-\section{Putting everything together}
+\section{Putting it all together}
 Once the initial engine was finished, a simple \textbf{\texttt{AI}} was developed to simulate a player moving
 while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
 to show this movement.
@@ -372,7 +372,6 @@ The \textbf{\texttt{API}} subscribed to the engine and delegated the received ev
 The \textbf{client} was able to connect to the \textbf{\texttt{API}} and receive events from the \textbf{engine}.
 \end{enumerate}
 The foundations of the platform were ready.
-\clearpage
 \chapter{Continuous integration}
 Once the first prototype was finished, it was time to set up the \textbf{integration server}, as described in
 \autoref{methodology}.
@@ -396,7 +395,7 @@ Integration services keep track of some code repositories and can be configured 
 happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
 
 As it happened with cloud-hosting providers, there are many different \textbf{integration
-services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc}. Fortunately, most of them
+services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc.}. Fortunately, most of them
 are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
 \textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
 also happened with the cloud-hosting provider.
@@ -428,10 +427,48 @@ its deployment process.
 \caption{Semaphore deployment process}
 \label{deployment_process}
 \end{figure}
-\clearpage
 \chapter{The log system}
-At this point, the platform was running smoothly in the integration server.
-\clearpage
+Matches of \textbf{\texttt{MMPG}}s are expected to last days or weeks, and while allowing viewers to watch the current state of
+the match is mandatory, \textbf{\texttt{AI}}s will keep playing while players sleep. Therefore, \textbf{players will miss parts of the match}.
+For this reason, it is important to allow viewers to replay the \textbf{past of the match}. This feature is especially
+interesting, as it allows players to detect long-term strategies and learn from mistakes without the need to watch the
+match constantly.
+
+This chapter details how the replay feature was added to the platform by creating the \textbf{log system}.
+\section{Event sourcing}
+\textbf{Event sourcing} \cite{event_sourcing} is a technique that consists in \textbf{saving the state changes of an application as a
+sequence of events}. Hence, instead of saving the current state of the application, its entire history is saved. This technique
+has one main benefit: \textbf{it allows to reconstruct the state of the application at any given time}.
+
+\textbf{Event sourcing} can be applied to the \texttt{MMPG} platform. A match can be seen as a \textbf{sequence of immutable events}:
+\begin{description}
+\item[Player actions]
+Performed by the different \textbf{\texttt{AI}}s.
+\item[World updates]
+Performed by the \textbf{master process} to update the game world.
+\end{description}
+Thus, it would be possible to \textbf{recreate the match state at any given time}, if such sequence were available, by applying
+all the events \textbf{from the start until that point in time}. But, as it was said before, matches can be quite long. Therefore,
+processing all the events might become really time consuming.
+
+An efficient way to solve this problem consists in saving a \textbf{snapshot} of the match periodically. That is, a big event
+containing the \textbf{current state} of the match. As a consequence, it is possible to start from the \textbf{closest snapshot} in order
+to recreate the state of the match at a given time.
+
+The \textbf{event sourcing} technique with the \textbf{snapshot strategy} was used to implement replays of a match \textbf{efficiently} in
+the \texttt{MMPG} platform.
+\section{Logging events}
+\section{Delivering log files}
+\section{Controlling time}
+\section{Summary}
+\chapter{Authentication}
+[...]
+\chapter{The first game world}
+[...]
+\chapter{Fleets and planets}
+[...]
+\chapter{A whole galaxy}
+[...]
 \part{Review}
 \chapter{Validation}
 \label{validation}
