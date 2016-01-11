@@ -1,6 +1,13 @@
 chapter "Design"
 label :design
 
+figure!:
+  center:
+    includegraphics "graphs/mmpg_design.pdf", options => "scale=0.5"
+  caption "The design of an MMPG"
+  label :mmpg_graph
+
+
 description:
   item "Engine"; p "A library that implements basic features needed by any MMPG. The **engine** exposes a set
   of classes that can be used and extended to build the logic of the game."

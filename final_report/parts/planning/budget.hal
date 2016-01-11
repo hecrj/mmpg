@@ -1,17 +1,12 @@
-chapter "Economic cost"
+chapter "Budget"
 
-BUDGET = {}
+class Kernel:
+  @BUDGET = {}
 
-p "The following resources will be needed to develop the project:"
+  def budget:
+    @@BUDGET
 
-description:
-  item "Hardware"; p "A computer and **Jutge.org** servers."
-  item "Software"; p "Ubuntu, Sublime Text, a web-browser, |CLion|, LaTeX, |Makefile|, |git|, |evince|,
-  #href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{|HAL|}, |C++|, |Go|,
-  |Javascript|, |Coffeescript|, and |WebGL|."
-  item "Human"; p "Student, project director, and project management tutor."
-  item "Other"; p "Electricity and internet connection."
-
+BUDGET = budget
 
 section "Hardware resources"
 p "The project will be developed using a personal desktop computer and a laptop. Also, a monitor,

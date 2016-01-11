@@ -1,0 +1,8 @@
+part "Evaluation"
+
+import parts.evaluation.validation
+import parts.evaluation.time_management
+import parts.evaluation.economic_cost
+import parts.evaluation.sustainability
+import parts.evaluation.legality
+import parts.evaluation.conclusion

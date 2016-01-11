@@ -1,0 +1,186 @@
+chapter "Time plan"
+
+section "Estimated project duration"
+p "The project starts the **September 15th, 2015** and its deadline is the **January 25th, 2016**. Thus,
+the project will take approximately **4 months** to be completed."
+
+section "Tasks"
+p "This section details the different tasks and subtasks that need to be completed in order
+to finish the project successfully. Every task is provided with a **description**, an **expected duration**,
+**possible complications** and **task dependencies**. A **time table** and a **Gantt diagram**
+can be found in #autoref{time_table} and #autoref{gantt}, respectively."
+
+subsection "Project management course"
+p "The project management course aims to help lead the project in the right direction. In this task,
+different parts of the project are defined: **context and scope**, **temporal planning**, and
+**economic viability**."
+
+description:
+  item "Expected duration"; p "75 hours."
+  item "Possible complications"; p "None. The course is entirely guided and feedback is
+  regularly provided to ensure the student can finish it properly."
+  item "Task dependencies"; p "None."
+
+subsection "Analysis and design"
+p "In this task, the project requirements are analyzed and a solution is designed to satisfy them."
+
+description:
+  item "Expected duration"; p "10 hours."
+  item "Possible complications"; p "Some minor details might change during the implementation. It is
+  important to focus on the *big picture* of the project."
+  item "Task dependencies"; p "None."
+
+subsection "Component development"
+
+subsubsection "Engine"
+p "A library that will allow **game programmers** to build games and wire them to the platform
+easily. The codebase will implement the features that are independent of the final game and, therefore, can be reused."
+
+description:
+  item "Expected duration"; p "70 hours"
+  item "Possible complications"; p "AI memory management might be tricky.
+  The student may need to learn low-level instructions to control OS's processes."
+
+subsubsection "API"
+p "A web-server that **notifies its subscribers of the changes that occur in the game world**."
+
+description:
+  item "Expected duration"; p "50 hours"
+  item "Possible complications"; p "The student needs to learn |Go|, which might take some time."
+
+subsubsection "Client"
+p "A library that handles a connection with the **API**. **Game programmers** will be able to use it to build
+the **real-time webviewers** of their games. It will be programmed in |Javascript|, using |Coffeescript|."
+
+description:
+  item "Expected duration"; p "30 hours"
+  item "Possible complications"; p "The student needs to learn |Coffeescript|, which might take some time."
+
+subsubsection "Control panel"
+p "Allows **administrators** to supervise the games, start, stop and pause current matches, and obtain the
+scores of every player. It will be implemend in **Jutge.org**, using |PHP|."
+
+description:
+  item "Expected duration"; p "35 hours"
+  item "Possible complications"; p "The student may need some time to understand the codebase of **Jutge.org**."
+
+subsection "Game example"
+p "A **massive multiplayer programming game** will be developed to test that the underlying
+engine and infrastructure work as intended. This task will be splitted in other two: **logic** and **viewer**."
+
+subsubsection "Logic"
+p "During this task, the main logic of the game will be developed on top of the **engine**.
+This includes the different game **rules** and the game **world**."
+
+description:
+  item "Expected duration"; p "50 hours"
+  item "Possible complications"; p "Balancing the game could be **really** hard."
+  item "Task dependencies"; p "Engine."
+
+subsubsection "Viewer"
+p "In this task, a web-viewer that shows the game world in **real-time** will be developed using the **API**."
+
+description:
+  item "Expected duration"; p "50 hours"
+  item "Possible complications"; p "Loading a **huge** game world might be complicated."
+  item "Task dependencies"; p "API."
+
+subsection "Testing and polishing"
+p "In this task, the platform will be tested under heavy load to ensure its **stability** and **scalability**."
+
+description:
+  item "Expected duration"; p "40 hours"
+  item "Possible complications"; p "Components might need to change if some unexpected bottleneck is detected."
+  item "Task dependencies"; p "Game example."
+
+subsection "Project memory"
+p "During this task, a document explaining how the project was developed will be written."
+
+description:
+  item "Expected duration"; p "40 hours"
+  item "Possible complications"; p "None."
+  item "Task dependencies"; p "Engine. It will be written in different parts, after each task is finished."
+
+subsection "Oral presentation"
+p "Once the project memory is finished, the student will prepare the final oral presentation."
+
+description:
+  item "Expected duration"; p "10 hours"
+  item "Possible complications"; p "Executing live examples is risky, it might be useful to have a fallback strategy."
+  item "Task dependencies"; p "Project memory."
+
+section "Time table"
+
+figure!:
+  center:
+    tabular "l | l":
+      head "Task", "Expected duration (h)"
+
+      row "Project management course", 75
+      hline
+      row "Analysis and design", 10
+      hline
+      component "Engine", 5, 50, 14, 1
+      hline
+      component "Client", 10, 25, 10, 5
+      hline
+      component "API", 5, 20, 3, 2
+      hline
+      component "Control panel", 5, 20, 5, 5
+      hline
+      row "Game example", "-"
+      irow "Logic", 50
+      irow "Viewer", 50
+      hline
+      row "Testing and polishing", 40
+      hline
+      row "Project memory", 40
+      hline
+      row "Oral presentation", 10
+      hline
+      hline
+      total = 75 + 10 + 70 + 50 + 30 + 35 + 100 + 40 + 40 + 10
+      row "\\textbf{Total}", total
+
+  caption "Planning time table"
+  label :planning_time_table
+
+p "The total duration of the project is **460 hours**. The student will need to work
+$#frac{460 #: hour}{16 #: week} #simeq 29 #: hour/week$ to finish the project before the deadline,
+which seems reasonable."
+
+section "Timeline"
+
+figure!:
+  resizebox width => "\\textwidth":
+    ganttchart 1, 25, options => "hgrid, vgrid":
+      gantttitle 2015, 20; gantttitle 2016, 5
+      br
+      ["September", "October", "November", "December", "January"].each with month:
+        gantttitle month, 5
+      br
+      ganttbar "Project management", 3, 8; br
+      ganttbar "Analysis and design", 4, 5; br
+      ganttbar "Engine", 6, 10; br;
+      ganttbar "Client", 11, 13; br
+      ganttbar "API", 14, 15; br
+      ganttbar "Control panel", 16, 17; br
+      ganttbar "Game example - logic", 11, 18; br
+      ganttbar "Game example - viewer", 16, 20; br
+      ganttbar "Testing and polishing", 21, 22; br
+      ganttbar "Project memory", 11, 23; br
+      ganttbar "Oral presentation", 24, 24
+
+      ganttlink "elem1", "elem2"
+      ganttlink "elem2", "elem3"
+      ganttlink "elem3", "elem4"
+      ganttlink "elem4", "elem5"
+      ganttlink "elem2", "elem6"
+      ganttlink "elem4", "elem7"
+      ganttlink "elem6", "elem8"
+      ganttlink "elem7", "elem8"
+      ganttlink "elem2", "elem9"
+      ganttlink "elem9", "elem10"
+
+  caption "Planning timeline"
+  label :planning_timeline

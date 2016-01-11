@@ -24,11 +24,12 @@ usepackage "minted"
 usepackage "tabularx"
 usepackage "tikz"
 usepackage "appendix", options => "toc,page"
+usepackage "svg"
 usetikzlibrary "arrows,positioning"
 
 include :style
 
-typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js"
+typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js", "Javascript"
 
 document:
   cover title    => "Web platform for massive multiplayer programming games",
@@ -46,12 +47,13 @@ document:
 
   import parts.introduction
   import parts.formulation
+  import parts.planning
   import parts.implementation
-  import parts.review
+  import parts.evaluation
 
   bibliographystyle :plain
   bibliography :references
 
-  appendices:
-    p "..."
-    clearpage
+#  appendices:
+#    p "..."
+#    clearpage

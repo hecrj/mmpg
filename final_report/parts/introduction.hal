@@ -48,9 +48,9 @@ I was immediately hooked. I started playing simple puzzle games, while discoveri
 games soon after.
 
 **Videogames were the main reason I chose to study computer science**. I learned my first
-programming language (**PHP**) because I wanted to open a website
-to share my passion about videogames. I was 10 years old back then. **Programming** has been a really important
-aspect of my life.
+programming language#footnote{**PHP**} because I wanted to open a website
+to share my passion about videogames. I was 10 years old back then. **Programming** is a really important
+facet of my life.
 
 **Studying computer science has made me love videogames even more**. When I a see videogame now, I can try to
 imagine the logic
@@ -58,16 +58,18 @@ behind it. I can try to picture the different algorithms involved. I imagine tho
 flowing and changing constantly, while they follow some complex logic. For me, the fact that a **videogame** is
 able to show how its code works **visually** is truly fascinating.
 
-Programming games mix together two of my passions: **videogames** and **programming**. [...]"
+Programming games mix two of my passions: **videogames** and **programming**. So when this project was offered to me,
+I thought it was the **perfect fit**."
 
 section "Summary"
 
-p "This report consists of three different parts. Each one of them describes a vital phase in the development of
+p "This report consists of four different parts. Each one of them describes a vital phase in the development of
 the project:"
 
 description:
   item "Formulation"; p "It identifies and analyzes the **problem to solve**, it **specifies** the scope of
   the project, and it shows the **design** of the solution."
+  item "Planning"; p "It details the **time plan** and the **budget** to develop the project."
   item "Implementation"; p "It describes the development of the different **components** that compose the solution."
-  item "Review"; p "It describes the **validation methodology**, it states the final **planning** and **economic cost**
-  of the project, and it discusses the **sustainability** and **legality** of the project."
+  item "Evaluation"; p "It describes the **validation methodology**, it reviews the **time management** and **economic cost**,
+  and it discusses the **sustainability** and **legality** of the project."

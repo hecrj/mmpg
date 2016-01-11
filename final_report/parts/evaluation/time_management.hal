@@ -1,42 +1,47 @@
-chapter "Planning"
+chapter "Time management"
 
 section "Time table"
 label :time_table
 
-center:
-  tabular "l | l":
-    head "Task", "Expected duration (h)"
+figure!:
+  center:
+    resizebox height => "16em":
+      tabular "l | l":
+        head "Task", "Expected duration (h)"
 
-    row "Project management course", 75
-    hline
-    row "Analysis and design", 10
-    hline
-    component "Game engine", 5, 50, 14, 1
-    hline
-    component "Real-time notifier", 10, 25, 10, 5
-    hline
-    component "Notifier subscriber", 5, 20, 3, 2
-    hline
-    component "Control panel", 5, 20, 5, 5
-    hline
-    row "Game example", "-"
-    irow "Logic", 50
-    irow "Real-time viewer", 50
-    hline
-    row "Testing and polishing", 40
-    hline
-    row "Project memory", 40
-    hline
-    row "Oral presentation", 10
-    hline
-    hline
-    total = 75 + 10 + 70 + 50 + 30 + 35 + 100 + 40 + 40 + 10
-    row "\\textbf{Total}", total
+        row "Project management course", 75
+        hline
+        row "Analysis and design", 10
+        hline
+        component "Game engine", 5, 50, 14, 1
+        hline
+        component "Real-time notifier", 10, 25, 10, 5
+        hline
+        component "Notifier subscriber", 5, 20, 3, 2
+        hline
+        component "Control panel", 5, 20, 5, 5
+        hline
+        row "Game example", "-"
+        irow "Logic", 50
+        irow "Real-time viewer", 50
+        hline
+        row "Testing and polishing", 40
+        hline
+        row "Project memory", 40
+        hline
+        row "Oral presentation", 10
+        hline
+        hline
+        total = 75 + 10 + 70 + 50 + 30 + 35 + 100 + 40 + 40 + 10
+        row "\\textbf{Total}", total
 
-p "The total duration of the project has been **460 hours**."
+  caption "Time table"
+  label :time_table
+
+p "[...]"
 
 
-section "Time management"
+section "Timeline"
 
 figure!:
   centered:
@@ -68,7 +73,7 @@ figure!:
         ganttlink "elem6", "elem7"
         ganttlink "elem8", "elem9"
 
-  caption "Final time planning"
+  caption "Final timeline"
   label :gantt_current
 
 

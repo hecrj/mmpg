@@ -19,6 +19,7 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \usepackage[toc,page]{appendix}
+\usepackage{svg}
 \usetikzlibrary{arrows,positioning}
 \include{style}
 \begin{document}
@@ -99,9 +100,9 @@ I was immediately hooked. I started playing simple puzzle games, while discoveri
 games soon after.
 
 \textbf{Videogames were the main reason I chose to study computer science}. I learned my first
-programming language (\textbf{\texttt{PHP}}) because I wanted to open a website
-to share my passion about videogames. I was 10 years old back then. \textbf{Programming} has been a really important
-aspect of my life.
+programming language\footnote{\textbf{\texttt{PHP}}} because I wanted to open a website
+to share my passion about videogames. I was 10 years old back then. \textbf{Programming} is a really important
+facet of my life.
 
 \textbf{Studying computer science has made me love videogames even more}. When I a see videogame now, I can try to
 imagine the logic
@@ -109,31 +110,59 @@ behind it. I can try to picture the different algorithms involved. I imagine tho
 flowing and changing constantly, while they follow some complex logic. For me, the fact that a \textbf{videogame} is
 able to show how its code works \textbf{visually} is truly fascinating.
 
-Programming games mix together two of my passions: \textbf{videogames} and \textbf{programming}. [...]
+Programming games mix two of my passions: \textbf{videogames} and \textbf{programming}. So when this project was offered to me,
+I thought it was the \textbf{perfect fit}.
 \section{Summary}
-This report consists of three different parts. Each one of them describes a vital phase in the development of
+This report consists of four different parts. Each one of them describes a vital phase in the development of
 the project:
 \begin{description}
 \item[Formulation]
 It identifies and analyzes the \textbf{problem to solve}, it \textbf{specifies} the scope of
   the project, and it shows the \textbf{design} of the solution.
+\item[Planning]
+It details the \textbf{time plan} and the \textbf{budget} to develop the project.
 \item[Implementation]
 It describes the development of the different \textbf{components} that compose the solution.
-\item[Review]
-It describes the \textbf{validation methodology}, it states the final \textbf{planning} and \textbf{economic cost}
-  of the project, and it discusses the \textbf{sustainability} and \textbf{legality} of the project.
+\item[Evaluation]
+It describes the \textbf{validation methodology}, it reviews the \textbf{time management} and \textbf{economic cost},
+  and it discusses the \textbf{sustainability} and \textbf{legality} of the project.
 \end{description}
 \part{Formulation}
 \chapter{Analysis}
 \section{State of the art}
-Current multiplayer programming games feature \textbf{short matches} with a \textbf{small number of players}. There
-is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
-matches are necessary to decide who wrote the best program.
-\section{The future}
-Multiplayer programming games need to evolve. They need to feature \textbf{huge worlds}, \textbf{long matches} and
-a \textbf{massive amount of players in real-time}. Then, players will feel attached to the match, programs will need to
-\textbf{adapt} constantly as they play with \textbf{everyone at the same time}. It is time to take this genre to the next level and
-create \textbf{massive multiplayer programming games} (\textbf{\texttt{MMPG}}s).
+There are many platforms that offer \textbf{\texttt{AI}} programming challenges. Some examples are:
+\begin{description}
+\item[Google's \texttt{AI} programming challenge \cite{google_ai}]
+The university of Waterloo organized some \texttt{AI} programming challenges
+  sponsored by \textbf{Google} during 2010-2011.
+\item[Battlecode \cite{battlecode}]
+A website that organizes an \texttt{AI} programming challenge every year where anyone can
+  compete alone or in a team.
+\item[CodinGame \cite{codingame}]
+A website that has many \texttt{AI} programming contests, which can help players to apply for
+  specific jobs.
+\item[\texttt{EDA} competition \cite{eda}]
+An \texttt{AI} programming challenge is held every semester in the \textbf{Barcelona School of
+  Informatics} (\textbf{FIB}) where students compete with each other using the \textbf{Jutge.org} platform \cite{jutge}.
+\end{description}
+However, all of this platforms feature multiplayer programming games with \textbf{short matches} played by a
+\textbf{small number of players}. As a consequence, multiple matches with different players are necessary to decide who wrote
+the best \textbf{\texttt{AI}}.
+\section{The requirement}
+The director of this project is one of the founders of the \textbf{Jutge.org} platform. Also, he is deeply involved in the \texttt{AI}
+programming challenge organized in the \texttt{EDA} subject in the \textbf{Barcelona School of Informatics}.
+
+Currently, the contest strategy is based in a \textbf{round} system. All the students play at least one match per round. Players
+that lose a match play against other losers. At the end, the player that loses the last match is eliminated from the contest.
+
+Clearly, this strategy has one main drawback: eliminated students stop playing. Hence, their learning process halts completely.
+This could be solved using a simple \textbf{score} system, but it would still be patching the main issue: the
+programming games used \textbf{do not support a huge amount of players natively}.
+
+The aim of this project is to provide an easy way to develop multiplayer programming games featuring \textbf{huge worlds},
+\textbf{long matches} and a \textbf{massive amount of players in real-time}. This will make players feel attached to the match,
+programs will need to \textbf{adapt} constantly as they play with \textbf{everyone at the same time}. As a consequence, this project will
+finally allow to improve the strategy used in the \texttt{EDA} progamming challenge.
 \section{Stakeholders}
 \subsection{Game programmers}
 Game programmers want to build \textbf{\texttt{MMPG}}s easily. They want to focus on programming the game logic and the
@@ -164,6 +193,13 @@ or affect the platform negatively.
 \clearpage
 \chapter{Design}
 \label{design}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5]{graphs/mmpg_design.pdf}
+\end{center}
+\caption{The design of an \texttt{MMPG}}
+\label{mmpg_graph}
+\end{figure}
 \begin{description}
 \item[Engine]
 A library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
@@ -190,296 +226,133 @@ This monitoring report and the final document related with the \texttt{MMPG} pla
 \href{http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt}{\textbf{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}}
 license.
 \clearpage
-\part{Implementation}
-\chapter{Methodology}
-\label{methodology}
-As seen in \autoref{design}, the platform to be implemented is composed of different components that communicate with
-each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
-communicates with other software, especially when both are being developed at the same time; changes made in
-the public interface of some component can easily break other components.
-
-Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
-it is necessary to \textbf{detect when a component breaks as soon as possible}. That way, components can be fixed before more changes
-are made and fixing it becomes a nightmare.
-
-In order to ensure that all the components of the platform keep working during the entire implementation process, and also
-detect and fix issues as soon as possible, the project was developed using an \textbf{iterative methodology} with
-\textbf{continuous integration}. This methodology consisted in:
-\begin{enumerate}
-\item
-Develop a simple prototype of the platform
-\item
-Run the prototype in some external server
-\item
-When a change is made to any component:
-\begin{enumerate}
-\item
-Apply and integrate the change in the server
-\item
-Test that the prototype keeps working as expected
-\end{enumerate}
-\end{enumerate}
-This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
-a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
-transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
-the prototype was available to the director of the project to assess and follow any progress closely.
-\chapter{The first prototype}
-The first step of the implementation process was to build a simple prototype of the platform.
-
-This first prototype must implement the most basic feature of the platform and it also has to lay the foundations for extending
-it easily. Therefore, it was decided that the first prototype should feature the first working versions of:
-\begin{enumerate}
-\item
-The \textbf{engine}, running one simple player and notifying its actions to any subscribers.
-\item
-The \textbf{\texttt{API}}, subscribed to the \textbf{engine} and notifying its actions to \textbf{client}s.
-\item
-The \textbf{client} library, subscribed to the \textbf{\texttt{API}} and drawing the player actions in a web-browser.
-\end{enumerate}
-It is important to note that the \textbf{engine} and the \textbf{client} are libraries that can be used to build
-game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
-game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity\footnote{i.e.
-creating game logic and game viewer components}.
-\section{The first API}
-\subsection{Programming language}
-There are many programming languages that allow to create \textbf{HTTP \texttt{API}}s easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
-the language chosen to implement the \textbf{\texttt{API}} was the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
-libraries to build concurrent \textbf{\texttt{REST} \texttt{API}}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
-\subsection{The subscriber hub}
-The \textbf{\texttt{API}} needs to keep track of the different \textbf{client}s subscribed to it, and it also needs to be able to send data
-to them.
-
-A \textbf{subscriber hub} was developed using the native concurrency of \textbf{Go}. Basically, the \textbf{hub} runs an infinite loop in the
-background that smartly monitors the connected \textbf{client}s; sending data or closing connections accordingly.
-\subsection{The events endpoint}
-A simple HTTP endpoint was created: \textbf{\texttt{/events}}. This endpoint accepted WebSocket connections and delegated them to the
-\textbf{hub}.
-
-After that, the \textbf{\texttt{API}} was ready to send data to \textbf{game viewers} in \textbf{real-time}.
-\section{The first client}
-\subsection{Programming language}
-The \textbf{client} code needs to be executed by web-browsers, as \textbf{game viewers} are web-based.
-Thus, it has to be written in \textbf{Javascript}, as it is supported by web-browsers natively.
-\subsection{API subscription}
-A \textbf{WebSocket} was connected to the \textbf{\texttt{/events}} endpoint, printing any received data in the \textbf{Javascript} console.
-\section{The first engine}
-\subsection{Programming language}
-The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
-\textbf{low-level} operative system operations, so it can limit how player programs are executed.
-
-The most well-known programming languages that satisfiy these requirements are \texttt{C} and \texttt{C}++. However, \texttt{C}  is lacking
-the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
-the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
-directly to \textbf{\texttt{UNIX}-based operative systems}.
-\subsection{The first architecture}
-When designing the first architecture of the \textbf{engine}, it was important to take its requirements into account:
-\begin{enumerate}
-\item
-The \textbf{engine} must not allow \textbf{\texttt{AI}}s to cheat.
-\item
-\textbf{\texttt{AI}}s may be hot-swapped during a match.
-\end{enumerate}
-Thus, if the game logic and all the \textbf{\texttt{AI}}s were executed in the same process:
-\begin{enumerate}
-\item
-\textbf{\texttt{AI}}s could access the memory related with the game logic or other \textbf{\texttt{AI}}s.
-\item
-Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s.
-\item
-Updating an \textbf{\texttt{AI}} would require to restart the process.
-\end{enumerate}
-In other words, it would be really unsafe and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
-
-Therefore, the initial architecture of the \textbf{engine} consisted of 2 types of processes:
+\part{Planning}
+\chapter{Time plan}
+\section{Estimated project duration}
+The project starts the \textbf{September 15th, 2015} and its deadline is the \textbf{January 25th, 2016}. Thus,
+the project will take approximately \textbf{4 months} to be completed.
+\section{Tasks}
+This section details the different tasks and subtasks that need to be completed in order
+to finish the project successfully. Every task is provided with a \textbf{description}, an \textbf{expected duration},
+\textbf{possible complications} and \textbf{task dependencies}. A \textbf{time table} and a \textbf{Gantt diagram}
+can be found in \autoref{time_table} and \autoref{gantt}, respectively.
+\subsection{Project management course}
+The project management course aims to help lead the project in the right direction. In this task,
+different parts of the project are defined: \textbf{context and scope}, \textbf{temporal planning}, and
+\textbf{economic viability}.
 \begin{description}
-\item[Master process]
-It represented the \textbf{game-world server}. The master process listened to requests coming from
-players and notified its actions accordingly. There was only \textbf{one master process per runtime}.
-\item[Player process]
-It represented a \textbf{player program}. The player program contained some \textbf{\texttt{AI}} code that was
-  executed \textbf{30 times per second}.
+\item[Expected duration]
+75 hours.
+\item[Possible complications]
+None. The course is entirely guided and feedback is
+  regularly provided to ensure the student can finish it properly.
+\item[Task dependencies]
+None.
 \end{description}
-\autoref{engine_first_arch} shows the hierarchy of the prototype's engine runtime with $M$ players.
-\begin{figure}[H]
-\begin{center}
-\input{graphs/engine_first_arch}
-\end{center}
-\caption{Hierarchy of the protoype's engine processes}
-\label{engine_first_arch}
-\end{figure}
-\subsection{Inter-process communication}
-As it was explained previously, the \textbf{engine} featured a decoupled architecture. Different processes were
-executed and communicated with each other using \textbf{sockets}. However, implementing inter-process communication from
-scratch would have been a real challenge by itself, and it was not the subject of this project. This is where a
-\textbf{messaging technology} came in.
-
-The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
-
-\texttt{RabbitMQ} implements
-a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
-This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
-some \textbf{latency}.
-
-\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
-\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
-
-On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements
-\textbf{low-latency socket communication}. It manages \textbf{low-level} communication, while providing a flexible and easy-to-use interface.
-Also, \textbf{\texttt{ZeroMQ}} has bindings available for the most well-known programming languages.
-
-Thus, \textbf{\texttt{ZeroMQ}} was the library chosen to implement all the inter-process communication.
-\subsection{The first master process}
-The first master process consisted of three basic components:
+\subsection{Analysis and design}
+In this task, the project requirements are analyzed and a solution is designed to satisfy them.
 \begin{description}
-\item[The worker]
-It compiled and executed \textbf{player processes} for each given \textbf{\texttt{AI}}.
-\item[The notifier]
-It sent any given message through a \texttt{ZeroMQ} socket.
-\item[The server]
-It listened requests made by \textbf{player processes} and notified them through the \textbf{notifier}.
+\item[Expected duration]
+10 hours.
+\item[Possible complications]
+Some minor details might change during the implementation. It is
+  important to focus on the \emph{big picture} of the project.
+\item[Task dependencies]
+None.
 \end{description}
-This components allowed the master process to act as a \textbf{game server}, while notifying the actions of the players to any
-subscribers.
-\section{Putting it all together}
-Once the initial engine was finished, a simple \textbf{\texttt{AI}} was developed to simulate a player moving
-while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
-to show this movement.
-
-Then, the \textbf{\texttt{API}} was connected to the \textbf{engine notifier} and the received messages were directly delegated to the \textbf{\texttt{API} hub},
-which in turn were sent to any open \textbf{client}s.
-
-Finally, once the \textbf{Javascript} console started showing the received events, a simple scene using \textbf{\texttt{Three.js}} was created in the
-\textbf{client}. This scene featured a cube representing the \textbf{player}, whose position was updated with every received event.
-\autoref{cube_movement} shows the observed result. \textbf{The prototype was finished}.
-\begin{figure}[H]
-\begin{center}
-\noindent\resizebox{!}{20em}{
-\includegraphics{images/cube_movement.png}
-}
-\end{center}
-\caption{A cube that was moved by the player program}
-\label{cube_movement}
-\end{figure}
-\section{Summary}
-In this chapter, it is been described how the first prototype of the platform was built. A prototype that implemented the
-most basic features of every component:
-\begin{enumerate}
-\item
-The \textbf{engine} compiled and run players, and notified their actions to subscribers.
-\item
-The \textbf{\texttt{API}} subscribed to the engine and delegated the received events to all the connected clients.
-\item
-The \textbf{client} was able to connect to the \textbf{\texttt{API}} and receive events from the \textbf{engine}.
-\end{enumerate}
-The foundations of the platform were ready.
-\chapter{Continuous integration}
-Once the first prototype was finished, it was time to set up the \textbf{integration server}, as described in
-\autoref{methodology}.
-\section{The dedicated server}
-First things first, an \textbf{integration server} to run the prototype was needed.
-
-Initially, a server was requested to the project director. However, the university policy did not allow professors
-to give root access to students. Root access was necessary because many different services might need to be installed during the
-development of the platform\footnote{\texttt{ZeroMQ}, for example}. Therefore, it was decided to use an external \textbf{cloud-host provider}.
-
-There are many providers that present cloud-hosting solutions\footnote{AWS \cite{aws}, DigitalOcean \cite{digital_ocean}, etc.}.
-At the end, \textbf{Linode} \cite{linode} was the provider chosen, as the project developer already had experience with it and
-the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the \textbf{integration server}.
-
-A \textbf{Linode 1GB}\footnote{https://www.linode.com/pricing} running \texttt{Ubuntu} was booted up to execute an
-instance of the platform.
-\section{The integration service}
-The next step consisted in setting up an \textbf{integration service}.
-
-Integration services keep track of some code repositories and can be configured to \textbf{build and test the code when a change 
-happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
-
-As it happened with cloud-hosting providers, there are many different \textbf{integration
-services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc.}. Fortunately, most of them
-are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
-\textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
-also happened with the cloud-hosting provider.
-\section{The integration process}
-\textbf{Semaphore} was configured to trigger a build when any component
-changed. If a build succeeded, then \textbf{Semaphore} deployed the changes to the \textbf{Linode}, where the changes were applied.
-
-Changes were applied in the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
-when some changes were pushed to the repository, a script was executed that \textbf{built and restarted the component}.
-These scripts were located in the \textbf{repository itself}, so they could be updated easily with the same process.
-
-\autoref{build_process} shows the build process of the \textbf{engine}, while \autoref{deployment_process} shows
-its deployment process.
-\begin{figure}[H]
-\begin{center}
-\noindent\resizebox{30em}{!}{
-\includegraphics{images/build_process.png}
-}
-\end{center}
-\caption{Semaphore build process}
-\label{build_process}
-\end{figure}
-\begin{figure}[H]
-\begin{center}
-\noindent\resizebox{!}{30em}{
-\includegraphics{images/deployment_process.png}
-}
-\end{center}
-\caption{Semaphore deployment process}
-\label{deployment_process}
-\end{figure}
-\chapter{The log system}
-Matches of \textbf{\texttt{MMPG}}s are expected to last days or weeks, and while allowing viewers to watch the current state of
-the match is mandatory, \textbf{\texttt{AI}}s will keep playing while players sleep. Therefore, \textbf{players will miss parts of the match}.
-For this reason, it is important to allow viewers to replay the \textbf{past of the match}. This feature is especially
-interesting, as it allows players to detect long-term strategies and learn from mistakes without the need to watch the
-match constantly.
-
-This chapter details how the replay feature was added to the platform by creating the \textbf{log system}.
-\section{Event sourcing}
-\textbf{Event sourcing} \cite{event_sourcing} is a technique that consists in \textbf{saving the state changes of an application as a
-sequence of events}. Hence, instead of saving the current state of the application, its entire history is saved. This technique
-has one main benefit: \textbf{it allows to reconstruct the state of the application at any given time}.
-
-\textbf{Event sourcing} can be applied to the \texttt{MMPG} platform. A match can be seen as a \textbf{sequence of immutable events}:
+\subsection{Component development}
+\subsubsection{Engine}
+A library that will allow \textbf{game programmers} to build games and wire them to the platform
+easily. The codebase will implement the features that are independent of the final game and, therefore, can be reused.
 \begin{description}
-\item[Player actions]
-Performed by the different \textbf{\texttt{AI}}s.
-\item[World updates]
-Performed by the \textbf{master process} to update the game world.
+\item[Expected duration]
+70 hours
+\item[Possible complications]
+\texttt{AI} memory management might be tricky.
+  The student may need to learn low-level instructions to control OS's processes.
 \end{description}
-Thus, it would be possible to \textbf{recreate the match state at any given time}, if such sequence were available, by applying
-all the events \textbf{from the start until that point in time}. But, as it was said before, matches can be quite long. Therefore,
-processing all the events might become really time consuming.
-
-An efficient way to solve this problem consists in saving a \textbf{snapshot} of the match periodically. That is, a big event
-containing the \textbf{current state} of the match. As a consequence, it is possible to start from the \textbf{closest snapshot} in order
-to recreate the state of the match at a given time.
-
-The \textbf{event sourcing} technique with the \textbf{snapshot strategy} was used to implement replays of a match \textbf{efficiently} in
-the \texttt{MMPG} platform.
-\section{Logging events}
-\section{Delivering log files}
-\section{Controlling time}
-\section{Summary}
-\chapter{Authentication}
-[...]
-\chapter{The first game world}
-[...]
-\chapter{Fleets and planets}
-[...]
-\chapter{A whole galaxy}
-[...]
-\part{Review}
-\chapter{Validation}
-\label{validation}
-\section{Continuous integration}
-[...]
-\section{Testing}
-[...]
-\clearpage
-\chapter{Planning}
+\subsubsection{API}
+A web-server that \textbf{notifies its subscribers of the changes that occur in the game world}.
+\begin{description}
+\item[Expected duration]
+50 hours
+\item[Possible complications]
+The student needs to learn \texttt{Go}, which might take some time.
+\end{description}
+\subsubsection{Client}
+A library that handles a connection with the \textbf{\texttt{API}}. \textbf{Game programmers} will be able to use it to build
+the \textbf{real-time webviewers} of their games. It will be programmed in \texttt{}Javascript\texttt{}, using \texttt{Coffeescript}.
+\begin{description}
+\item[Expected duration]
+30 hours
+\item[Possible complications]
+The student needs to learn \texttt{Coffeescript}, which might take some time.
+\end{description}
+\subsubsection{Control panel}
+Allows \textbf{administrators} to supervise the games, start, stop and pause current matches, and obtain the
+scores of every player. It will be implemend in \textbf{Jutge.org}, using \texttt{}PHP\texttt{}.
+\begin{description}
+\item[Expected duration]
+35 hours
+\item[Possible complications]
+The student may need some time to understand the codebase of \textbf{Jutge.org}.
+\end{description}
+\subsection{Game example}
+A \textbf{massive multiplayer programming game} will be developed to test that the underlying
+engine and infrastructure work as intended. This task will be splitted in other two: \textbf{logic} and \textbf{viewer}.
+\subsubsection{Logic}
+During this task, the main logic of the game will be developed on top of the \textbf{engine}.
+This includes the different game \textbf{rules} and the game \textbf{world}.
+\begin{description}
+\item[Expected duration]
+50 hours
+\item[Possible complications]
+Balancing the game could be \textbf{really} hard.
+\item[Task dependencies]
+Engine.
+\end{description}
+\subsubsection{Viewer}
+In this task, a web-viewer that shows the game world in \textbf{real-time} will be developed using the \textbf{\texttt{API}}.
+\begin{description}
+\item[Expected duration]
+50 hours
+\item[Possible complications]
+Loading a \textbf{huge} game world might be complicated.
+\item[Task dependencies]
+\texttt{API}.
+\end{description}
+\subsection{Testing and polishing}
+In this task, the platform will be tested under heavy load to ensure its \textbf{stability} and \textbf{scalability}.
+\begin{description}
+\item[Expected duration]
+40 hours
+\item[Possible complications]
+Components might need to change if some unexpected bottleneck is detected.
+\item[Task dependencies]
+Game example.
+\end{description}
+\subsection{Project memory}
+During this task, a document explaining how the project was developed will be written.
+\begin{description}
+\item[Expected duration]
+40 hours
+\item[Possible complications]
+None.
+\item[Task dependencies]
+Engine. It will be written in different parts, after each task is finished.
+\end{description}
+\subsection{Oral presentation}
+Once the project memory is finished, the student will prepare the final oral presentation.
+\begin{description}
+\item[Expected duration]
+10 hours
+\item[Possible complications]
+Executing live examples is risky, it might be useful to have a fallback strategy.
+\item[Task dependencies]
+Project memory.
+\end{description}
 \section{Time table}
-\label{time_table}
+\begin{figure}[H]
 \begin{center}
 \begin{tabular}{l | l}
 \textbf{Task} & \textbf{Expected duration (h)}\\
@@ -488,7 +361,7 @@ Project management course & 75\\
 \hline
 Analysis and design & 10\\
 \hline
-Game engine & -\\
+Engine & -\\
 \hspace{1em}
 Learning & 5\\
 \hspace{1em}
@@ -498,7 +371,7 @@ Testing & 14\\
 \hspace{1em}
 Integration & 1\\
 \hline
-Real-time notifier & -\\
+Client & -\\
 \hspace{1em}
 Learning & 10\\
 \hspace{1em}
@@ -508,7 +381,7 @@ Testing & 10\\
 \hspace{1em}
 Integration & 5\\
 \hline
-Notifier subscriber & -\\
+API & -\\
 \hspace{1em}
 Learning & 5\\
 \hspace{1em}
@@ -532,7 +405,7 @@ Game example & -\\
 \hspace{1em}
 Logic & 50\\
 \hspace{1em}
-Real-time viewer & 50\\
+Viewer & 50\\
 \hline
 Testing and polishing & 40\\
 \hline
@@ -544,11 +417,15 @@ Oral presentation & 10\\
 \textbf{Total} & 460\\
 \end{tabular}
 \end{center}
-The total duration of the project has been \textbf{460 hours}.
-\section{Time management}
+\caption{Planning time table}
+\label{planning_time_table}
+\end{figure}
+The total duration of the project is \textbf{460 hours}. The student will need to work
+$\frac{460 \: hour}{16 \: week} \simeq 29 \: hour/week$ to finish the project before the deadline,
+which seems reasonable.
+\section{Timeline}
 \begin{figure}[H]
-\makebox[\textwidth]{
-\noindent\resizebox{300pt}{!}{
+\noindent\resizebox{\textwidth}{!}{
 \begin{ganttchart}[hgrid, vgrid]{1}{25}
 \gantttitle{2015}{20}
 \gantttitle{2016}{5}
@@ -559,67 +436,43 @@ The total duration of the project has been \textbf{460 hours}.
 \gantttitle{December}{5}
 \gantttitle{January}{5}
 \\
-\ganttbar{Project management}{3}{11}
+\ganttbar{Project management}{3}{8}
 \\
-\ganttbar{Analysis and design}{6}{7}
+\ganttbar{Analysis and design}{4}{5}
 \\
-\ganttbar{Engine}{9}{15}
+\ganttbar{Engine}{6}{10}
 \\
-\ganttbar{API}{9}{13}
+\ganttbar{Client}{11}{13}
 \\
-\ganttbar{Client}{9}{13}
+\ganttbar{API}{14}{15}
 \\
-\ganttbar{Space Wars - logic}{16}{19}
+\ganttbar{Control panel}{16}{17}
 \\
-\ganttbar{Space Wars - viewer}{16}{20}
+\ganttbar{Game example - logic}{11}{18}
+\\
+\ganttbar{Game example - viewer}{16}{20}
 \\
 \ganttbar{Testing and polishing}{21}{22}
 \\
-\ganttbar{Project memory}{16}{23}
+\ganttbar{Project memory}{11}{23}
 \\
 \ganttbar{Oral presentation}{24}{24}
 \ganttlink{elem1}{elem2}
-\ganttlink{elem1}{elem3}
-\ganttlink{elem1}{elem4}
-\ganttlink{elem2}{elem5}
-\ganttlink{elem3}{elem6}
-\ganttlink{elem4}{elem6}
-\ganttlink{elem5}{elem7}
-\ganttlink{elem6}{elem7}
-\ganttlink{elem8}{elem9}
+\ganttlink{elem2}{elem3}
+\ganttlink{elem3}{elem4}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem2}{elem6}
+\ganttlink{elem4}{elem7}
+\ganttlink{elem6}{elem8}
+\ganttlink{elem7}{elem8}
+\ganttlink{elem2}{elem9}
+\ganttlink{elem9}{elem10}
 \end{ganttchart}
 }
-}
-\caption{Final time planning}
-\label{gantt_current}
+\caption{Planning timeline}
+\label{planning_timeline}
 \end{figure}
-\section{Dedication}
-\autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.
-\begin{figure}[H]
-\makebox[\textwidth]{
-\includegraphics[scale=0.6]{images/dedication.png}
-}
-\caption{GitHub contributions to the \texttt{MMPG} project \url{https://github.com/hecrj}}
-\label{dedication}
-\end{figure}
-As it can be observed, there is \textbf{at least one contribution per day since November 4}. However, while dedication has
-been constant, there are many days where \textbf{contributions were minimal}. Hence, \textbf{dedication and productivity are expected
-to increase} during the incoming holidays.
-\clearpage
-\chapter{Economic cost}
-The following resources will be needed to develop the project:
-\begin{description}
-\item[Hardware]
-A computer and \textbf{Jutge.org} servers.
-\item[Software]
-Ubuntu, Sublime Text, a web-browser, \texttt{CLion}, \LaTeX{}, \texttt{Makefile}, \texttt{git}, \texttt{evince},
-  \href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{\texttt{HAL}}, \texttt{}C\texttt{++}, \texttt{Go},
-  \texttt{Javascript}, \texttt{Coffeescript}, and \texttt{WebGL}.
-\item[Human]
-Student, project director, and project management tutor.
-\item[Other]
-Electricity and internet connection.
-\end{description}
+\chapter{Budget}
 \section{Hardware resources}
 The project will be developed using a personal desktop computer and a laptop. Also, a monitor,
 a keyboard and a mouse are needed to use the desktop computer. There is no other hardware needed.
@@ -660,7 +513,7 @@ Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
 \caption{Software licenses}
 \label{Software licenses}
 \end{table}
-Mozilla Firefox includes a \texttt{Javascript} engine and \texttt{evince} is included in Ubuntu.
+Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evince} is included in Ubuntu.
 Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
 \texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
 \texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
@@ -763,7 +616,564 @@ Contingency (10\%) & 1461.85\\
 \caption{Total budget}
 \label{Total budget}
 \end{table}
-\clearpage
+\part{Implementation}
+\chapter{Methodology}
+\label{methodology}
+As seen in \autoref{design}, the platform to be implemented is composed of different components that communicate with
+each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
+communicates with other software, especially when both are being developed at the same time; changes made in
+the public interface of some component can easily break other components.
+
+Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
+it is necessary to \textbf{detect when a component breaks as soon as possible}. That way, components can be fixed before more changes
+are made and fixing it becomes a nightmare.
+
+In order to ensure that all the components of the platform keep working during the entire implementation process, and also
+detect and fix issues as soon as possible, the project was developed using an \textbf{iterative methodology} with
+\textbf{continuous integration}. This methodology consisted in:
+\begin{enumerate}
+\item
+Develop a simple prototype of the platform
+\item
+Run the prototype in some external server
+\item
+When a change is made to any component:
+\begin{enumerate}
+\item
+Apply and integrate the change in the server
+\item
+Test that the prototype keeps working as expected
+\end{enumerate}
+\end{enumerate}
+This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
+a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
+transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
+the prototype was available to the director of the project to assess and follow any progress closely.
+\chapter{The first prototype}
+The first step of the implementation process was to build a simple prototype of the platform.
+
+This first prototype must implement the most basic feature of the platform and it also has to lay the foundations for extending
+it easily. Therefore, it was decided that the first prototype should feature the first working versions of:
+\begin{enumerate}
+\item
+The \textbf{engine}, running one simple player and notifying its actions to any subscribers.
+\item
+The \textbf{\texttt{API}}, subscribed to the \textbf{engine} and notifying its actions to \textbf{client}s.
+\item
+The \textbf{client} library, subscribed to the \textbf{\texttt{API}} and drawing the player actions in a web-browser.
+\end{enumerate}
+It is important to note that the \textbf{engine} and the \textbf{client} are libraries that can be used to build
+game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
+game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity\footnote{i.e.
+creating game logic and game viewer components}.
+\section{The first API}
+\subsection{Programming language}
+There are many programming languages that allow to create \textbf{HTTP \texttt{API}}s easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
+the language chosen to implement the \textbf{\texttt{API}} was the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
+libraries to build concurrent \textbf{\texttt{REST} \texttt{API}}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
+\subsection{The subscriber hub}
+The \textbf{\texttt{API}} needs to keep track of the different \textbf{client}s subscribed to it, and it also needs to be able to send data
+to them.
+
+A \textbf{subscriber hub} was developed using the native concurrency of \textbf{Go}. Basically, the \textbf{hub} runs an infinite loop in the
+background that smartly monitors the connected \textbf{client}s; sending data or closing connections accordingly.
+\subsection{The events endpoint}
+A simple HTTP endpoint was created: \textbf{\texttt{/events}}. This endpoint accepted WebSocket connections and delegated them to the
+\textbf{hub}.
+
+After that, the \textbf{\texttt{API}} was ready to send data to \textbf{game viewers} in \textbf{real-time}.
+\section{The first client}
+\subsection{Programming language}
+The \textbf{client} code needs to be executed by web-browsers, as \textbf{game viewers} are web-based.
+Thus, it has to be written in \textbf{\texttt{Javascript}}, as it is supported by web-browsers natively.
+\subsection{API subscription}
+A \textbf{WebSocket} was connected to the \textbf{\texttt{/events}} endpoint, printing any received data in the \textbf{\texttt{Javascript}} console.
+\section{The first engine}
+\subsection{Programming language}
+The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
+\textbf{low-level} operative system operations, so it can limit how player programs are executed.
+
+The most well-known programming languages that satisfiy these requirements are \texttt{C} and \texttt{C}++. However, \texttt{C}  is lacking
+the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
+the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
+directly to \textbf{\texttt{UNIX}-based operative systems}.
+\subsection{The first architecture}
+When designing the first architecture of the \textbf{engine}, it was important to take its requirements into account:
+\begin{enumerate}
+\item
+The \textbf{engine} must not allow \textbf{\texttt{AI}}s to cheat.
+\item
+\textbf{\texttt{AI}}s may be hot-swapped during a match.
+\end{enumerate}
+Thus, if the game logic and all the \textbf{\texttt{AI}}s were executed in the same process:
+\begin{enumerate}
+\item
+\textbf{\texttt{AI}}s could access the memory related with the game logic or other \textbf{\texttt{AI}}s.
+\item
+Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s.
+\item
+Updating an \textbf{\texttt{AI}} would require to restart the process.
+\end{enumerate}
+In other words, it would be really unsafe and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
+
+Therefore, the initial architecture of the \textbf{engine} consisted of 2 types of processes:
+\begin{description}
+\item[Master process]
+It represented the \textbf{game-world server}. The master process listened to requests coming from
+players and notified its actions accordingly. There was only \textbf{one master process per runtime}.
+\item[Player process]
+It represented a \textbf{player program}. The player program contained some \textbf{\texttt{AI}} code that was
+  executed \textbf{30 times per second}.
+\end{description}
+\autoref{engine_first_arch} shows the hierarchy of the prototype's engine runtime with $M$ players.
+\begin{figure}[H]
+\begin{center}
+\input{graphs/engine_first_arch}
+\end{center}
+\caption{Hierarchy of the protoype's engine processes}
+\label{engine_first_arch}
+\end{figure}
+\subsection{Inter-process communication}
+As it was explained previously, the \textbf{engine} featured a decoupled architecture. Different processes were
+executed and communicated with each other using \textbf{sockets}. However, implementing inter-process communication from
+scratch would have been a real challenge by itself, and it was not the subject of this project. This is where a
+\textbf{messaging technology} came in.
+
+The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
+
+\texttt{RabbitMQ} implements
+a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
+some \textbf{latency}.
+
+\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
+\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
+
+On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements
+\textbf{low-latency socket communication}. It manages \textbf{low-level} communication, while providing a flexible and easy-to-use interface.
+Also, \textbf{\texttt{ZeroMQ}} has bindings available for the most well-known programming languages.
+
+Thus, \textbf{\texttt{ZeroMQ}} was the library chosen to implement all the inter-process communication.
+\subsection{The first master process}
+The first master process consisted of three basic components:
+\begin{description}
+\item[The worker]
+It compiled and executed \textbf{player processes} for each given \textbf{\texttt{AI}}.
+\item[The notifier]
+It sent any given message through a \texttt{ZeroMQ} socket.
+\item[The server]
+It listened requests made by \textbf{player processes} and notified them through the \textbf{notifier}.
+\end{description}
+This components allowed the master process to act as a \textbf{game server}, while notifying the actions of the players to any
+subscribers.
+\section{Putting it all together}
+Once the initial engine was finished, a simple \textbf{\texttt{AI}} was developed to simulate a player moving
+while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
+to show this movement.
+
+Then, the \textbf{\texttt{API}} was connected to the \textbf{engine notifier} and the received messages were directly delegated to the \textbf{\texttt{API} hub},
+which in turn were sent to any open \textbf{client}s.
+
+Finally, once the \textbf{\texttt{Javascript}} console started showing the received events, a simple scene using \textbf{\texttt{Three.js}} was created in the
+\textbf{client}. This scene featured a cube representing the \textbf{player}, whose position was updated with every received event.
+\autoref{cube_movement} shows the observed result. \textbf{The prototype was finished}.
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{20em}{
+\includegraphics{images/cube_movement.png}
+}
+\end{center}
+\caption{A cube that was moved by the player program}
+\label{cube_movement}
+\end{figure}
+\section{Summary}
+In this chapter, it is been described how the first prototype of the platform was built. A prototype that implemented the
+most basic features of every component:
+\begin{enumerate}
+\item
+The \textbf{engine} compiled and run players, and notified their actions to subscribers.
+\item
+The \textbf{\texttt{API}} subscribed to the engine and delegated the received events to all the connected clients.
+\item
+The \textbf{client} was able to connect to the \textbf{\texttt{API}} and receive events from the \textbf{engine}.
+\end{enumerate}
+The foundations of the platform were ready.
+\chapter{Continuous integration}
+Once the first prototype was finished, it was time to set up the \textbf{integration server}, as described in
+\autoref{methodology}.
+\section{The dedicated server}
+First things first, an \textbf{integration server} to run the prototype was needed.
+
+Initially, a server was requested to the project director. However, the university policy did not allow professors
+to give root access to students. Root access was necessary because many different services might need to be installed during the
+development of the platform\footnote{\texttt{ZeroMQ}, for example}. Therefore, it was decided to use an external \textbf{cloud-host provider}.
+
+There are many providers that present cloud-hosting solutions\footnote{AWS \cite{aws}, DigitalOcean \cite{digital_ocean}, etc.}.
+At the end, \textbf{Linode} \cite{linode} was the provider chosen, as the project developer already had experience with it and
+the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the \textbf{integration server}.
+
+A \textbf{Linode 1GB}\footnote{https://www.linode.com/pricing} running \texttt{Ubuntu} was booted up to execute an
+instance of the platform.
+\section{The integration service}
+The next step consisted in setting up an \textbf{integration service}.
+
+Integration services keep track of some code repositories and can be configured to \textbf{build and test the code when a change 
+happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
+
+As it happened with cloud-hosting providers, there are many different \textbf{integration
+services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc.}. Fortunately, most of them
+are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
+\textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
+also happened with the cloud-hosting provider.
+\section{The integration process}
+\textbf{Semaphore} was configured to trigger a build when any component
+changed. If a build succeeded, then \textbf{Semaphore} deployed the changes to the \textbf{Linode}, where the changes were applied.
+
+Changes were applied in the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
+when some changes were pushed to the repository, a script was executed that \textbf{built and restarted the component}.
+These scripts were located in the \textbf{repository itself}, so they could be updated easily with the same process.
+
+\autoref{build_process} shows the build process of the \textbf{engine}, while \autoref{deployment_process} shows
+its deployment process.
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{30em}{!}{
+\includegraphics{images/build_process.png}
+}
+\end{center}
+\caption{Semaphore build process}
+\label{build_process}
+\end{figure}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{30em}{
+\includegraphics{images/deployment_process.png}
+}
+\end{center}
+\caption{Semaphore deployment process}
+\label{deployment_process}
+\end{figure}
+\chapter{The log system}
+Matches of \textbf{\texttt{MMPG}}s are expected to last days or weeks, and while allowing viewers to watch the current state of
+the match is mandatory, \textbf{\texttt{AI}}s will keep playing while players sleep. Therefore, \textbf{players will miss parts of the match}.
+For this reason, it is important to allow viewers to replay the \textbf{past of the match}. This feature is especially
+interesting, as it allows players to detect long-term strategies and learn from mistakes without the need to watch the
+match constantly.
+
+This chapter details how the replay feature was added to the platform by creating the \textbf{log system}.
+\section{Event sourcing}
+\textbf{Event sourcing} \cite{event_sourcing} is a technique that consists in \textbf{saving the state changes of an application as a
+sequence of events}. Hence, instead of saving the current state of the application, its entire history is saved. This technique
+has one main benefit: \textbf{it allows to reconstruct the state of the application at any given time}.
+
+\textbf{Event sourcing} can be applied to the \texttt{MMPG} platform. A match can be seen as a \textbf{sequence of immutable events}:
+\begin{description}
+\item[Player actions]
+Triggered by the different \textbf{\texttt{AI}}s.
+\item[World updates]
+Triggered by the \textbf{master process} to update the game world.
+\end{description}
+Thus, it would be possible to \textbf{recreate the match state at any given time}, if such sequence were available, by applying
+all the events \textbf{from the start until that point in time}. But, as it was said before, matches can be quite long. Therefore,
+processing all the events might become really time consuming.
+
+An efficient way to solve this problem consists in saving a \textbf{snapshot} of the match periodically. That is, a big event
+containing the \textbf{current state} of the match. As a consequence, it is possible to start from the \textbf{closest snapshot} in order
+to recreate the state of the match at a given time.
+
+The \textbf{event sourcing} technique with the \textbf{snapshot strategy} was used to implement replays of a match \textbf{efficiently} in
+the \texttt{MMPG} platform.
+\section{Logging events}
+\section{Delivering log files}
+\section{Controlling time}
+\section{Summary}
+\chapter{Authentication}
+[...]
+\chapter{The first game world}
+[...]
+\chapter{Fleets and planets}
+[...]
+\chapter{A whole galaxy}
+[...]
+\part{Evaluation}
+\chapter{Validation}
+\label{validation}
+\section{Continuous integration}
+[...]
+\section{Testing}
+[...]
+\chapter{Time management}
+\section{Time table}
+\label{time_table}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{16em}{
+\begin{tabular}{l | l}
+\textbf{Task} & \textbf{Expected duration (h)}\\
+\hline
+Project management course & 75\\
+\hline
+Analysis and design & 10\\
+\hline
+Game engine & -\\
+\hspace{1em}
+Learning & 5\\
+\hspace{1em}
+Implementation & 50\\
+\hspace{1em}
+Testing & 14\\
+\hspace{1em}
+Integration & 1\\
+\hline
+Real-time notifier & -\\
+\hspace{1em}
+Learning & 10\\
+\hspace{1em}
+Implementation & 25\\
+\hspace{1em}
+Testing & 10\\
+\hspace{1em}
+Integration & 5\\
+\hline
+Notifier subscriber & -\\
+\hspace{1em}
+Learning & 5\\
+\hspace{1em}
+Implementation & 20\\
+\hspace{1em}
+Testing & 3\\
+\hspace{1em}
+Integration & 2\\
+\hline
+Control panel & -\\
+\hspace{1em}
+Learning & 5\\
+\hspace{1em}
+Implementation & 20\\
+\hspace{1em}
+Testing & 5\\
+\hspace{1em}
+Integration & 5\\
+\hline
+Game example & -\\
+\hspace{1em}
+Logic & 50\\
+\hspace{1em}
+Real-time viewer & 50\\
+\hline
+Testing and polishing & 40\\
+\hline
+Project memory & 40\\
+\hline
+Oral presentation & 10\\
+\hline
+\hline
+\textbf{Total} & 460\\
+\end{tabular}
+}
+\end{center}
+\caption{Time table}
+\label{time_table}
+\end{figure}
+[...]
+\section{Timeline}
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{300pt}{!}{
+\begin{ganttchart}[hgrid, vgrid]{1}{25}
+\gantttitle{2015}{20}
+\gantttitle{2016}{5}
+\\
+\gantttitle{September}{5}
+\gantttitle{October}{5}
+\gantttitle{November}{5}
+\gantttitle{December}{5}
+\gantttitle{January}{5}
+\\
+\ganttbar{Project management}{3}{11}
+\\
+\ganttbar{Analysis and design}{6}{7}
+\\
+\ganttbar{Engine}{9}{15}
+\\
+\ganttbar{API}{9}{13}
+\\
+\ganttbar{Client}{9}{13}
+\\
+\ganttbar{Space Wars - logic}{16}{19}
+\\
+\ganttbar{Space Wars - viewer}{16}{20}
+\\
+\ganttbar{Testing and polishing}{21}{22}
+\\
+\ganttbar{Project memory}{16}{23}
+\\
+\ganttbar{Oral presentation}{24}{24}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem1}{elem3}
+\ganttlink{elem1}{elem4}
+\ganttlink{elem2}{elem5}
+\ganttlink{elem3}{elem6}
+\ganttlink{elem4}{elem6}
+\ganttlink{elem5}{elem7}
+\ganttlink{elem6}{elem7}
+\ganttlink{elem8}{elem9}
+\end{ganttchart}
+}
+}
+\caption{Final timeline}
+\label{gantt_current}
+\end{figure}
+\section{Dedication}
+\autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.
+\begin{figure}[H]
+\makebox[\textwidth]{
+\includegraphics[scale=0.6]{images/dedication.png}
+}
+\caption{GitHub contributions to the \texttt{MMPG} project \url{https://github.com/hecrj}}
+\label{dedication}
+\end{figure}
+As it can be observed, there is \textbf{at least one contribution per day since November 4}. However, while dedication has
+been constant, there are many days where \textbf{contributions were minimal}. Hence, \textbf{dedication and productivity are expected
+to increase} during the incoming holidays.
+\chapter{Economic cost}
+\section{Hardware resources}
+The project used the hardware resources specified in \fullref{budget}. However, a \textbf{Linode 1GB} was needed during \textbf{3 months}.
+\begin{table}[H]
+\centering
+\begin{tabular}{l | S}
+\textbf{Hardware} & \textbf{Cost (\EURtm)}\\
+\hline
+Hardware budget & 60.13\\
+Linode 1GB & 27.47\\
+\multicolumn{1}{l |}{\textbf{Total}}
+ & 87.60
+\end{tabular}
+\caption{Hardware cost}
+\label{Hardware cost}
+\end{table}
+\section{Software resources}
+All the software needed to develop the project can be used for free.
+\begin{table}[H]
+\centering
+\begin{tabular}{l | l}
+\textbf{Software} & \textbf{License}\\
+\hline
+Ubuntu & \url{http://www.ubuntu.com/about/about-ubuntu/our-philosophy}\\
+\LaTeX{} & \url{https://latex-project.org/lppl/}\\
+\texttt{git} & \url{https://git-scm.com/about/free-and-open-source}\\
+\texttt{}C\texttt{++} & \url{https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html}\\
+\texttt{Go} & \url{https://golang.org/project/}\\
+Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
+\texttt{Coffeescript} & \url{https://github.com/jashkenas/coffeescript/blob/master/LICENSE}\\
+\texttt{WebGL} & \url{https://www.khronos.org/legal/license/}\\
+\end{tabular}
+\caption{Software licenses}
+\label{Software licenses}
+\end{table}
+Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evince} is included in Ubuntu.
+Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
+\texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
+\texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
+Therefore, \textbf{there are no software costs}.
+\section{Human resources}
+\autoref{Tasks per role} shows the tasks assigned to each project role. \autoref{Human resources budget} shows the
+expected cost of the human resources according to project roles and their respective tasks.
+\begin{table}[H]
+\centering
+\begin{tabular}{l | l | S}
+\textbf{Role} & \textbf{Task} & \textbf{Time (h)}\\
+\hline
+\multirow{3}{*}{Project manager}
+ & Project management course & 75\\
+ & Project memory & 40\\
+ & Oral presentation & 10\\
+\hline
+\multirow{1}{*}{Software engineer}
+ & Analysis and design & 10\\
+\hline
+\multirow{6}{*}{Software developer}
+ & Game engine & 70\\
+ & Real-time notifier & 50\\
+ & Notifier subscriber & 30\\
+ & Control panel & 35\\
+ & Game example & 100\\
+ & Testing and polishing & 40\\
+\hline
+\hline
+\multicolumn{2}{l |}{\textbf{Total}}
+ & 460.00
+\end{tabular}
+\caption{Tasks per role}
+\label{Tasks per role}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{l | S | S | S}
+\textbf{Role} & \textbf{Payment (\EURtm / h)} & \textbf{Time (h)} & \textbf{Total (\EURtm)}\\
+\hline
+Project manager & 35.00 & 125 & 4375.00\\
+Software engineer & 40.00 & 10 & 400.00\\
+Software developer & 30.00 & 325 & 9750.00\\
+\hline
+\hline
+\multicolumn{3}{l |}{\textbf{Total}}
+ & 14525.00
+\end{tabular}
+\caption{Human resources budget}
+\label{Human resources budget}
+\end{table}
+\section{Other resources}
+\subsection{Electricity}
+Electricity will be needed to power the hardware. \autoref{Electricity budget} shows the power consumption,
+the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
+assuming 0.147358 \EURtm / kWh in Spain\footnote{\url{http://comparadorluz.com/faq/precio-kwh-electricidad}}.
+\begin{table}[H]
+\centering
+\begin{tabular}{l | S | S | S}
+\textbf{Hardware} & \textbf{Consumption (W)} & \textbf{Time of usage (h)} & \textbf{Cost (\EURtm)}\\
+\hline
+Desktop computer & 400 & 400 & 23.58\\
+Laptop & 100 & 50 & 0.74\\
+Monitor Acer XB270HU & 30 & 400 & 1.77\\
+\hline
+\hline
+\multicolumn{3}{l |}{\textbf{Total}}
+ & 26.08
+\end{tabular}
+\caption{Electricity budget}
+\label{Electricity budget}
+\end{table}
+\subsection{Internet connection}
+An Internet connection will be necessary to perform all the tasks. The student will use its personal
+internet connection most of the time, which costs 38\EURtm/month $\simeq$ 0.05\EURtm/h. It is expected to use the internet connection during the 30\% of the
+total project's duration.
+Thus, the estimated budget for the internet connection is
+460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.28\EURtm}.
+\section{Total}
+\autoref{Total budget} shows the total budget needed to develop the project. The 10\% of the total cost
+is added to face any unforeseen contingencies.
+\begin{table}[H]
+\centering
+\begin{tabular}{l | S}
+\textbf{Resource} & \textbf{Total cost (\EURtm)}\\
+\hline
+Hardware & 60.13\\
+Software & 0.00\\
+Human resources & 14525.00\\
+Electricity & 26.08\\
+Internet & 7.28\\
+\hline
+\hline
+Subtotal & 14618.49\\
+Contingency (10\%) & 1461.85\\
+\hline
+\multicolumn{1}{l |}{\textbf{Total}}
+ & 16080.34
+\end{tabular}
+\caption{Total budget}
+\label{Total budget}
+\end{table}
 \chapter{Sustainability}
 This section contains a sustainability report of the project based on the application of the matrix described by
 Christian Felber in `The economy of the common good' \cite{sustainability_report}. However, only the \textbf{planning}
@@ -808,18 +1218,11 @@ Planning & 7 & 6 & 8 & \textbf{21}\\
 \caption{Sustainability matrix}
 \label{Sustainability matrix}
 \end{table}
-\clearpage
 \chapter{Legality}
 There are no special laws that apply to this project. The entity using the platform
 is liable for the information inputted in it, as it is specified in the \textbf{code license}.
-\clearpage
 \chapter{Conclusion}
 ...
-\clearpage
 \bibliographystyle{plain}
 \bibliography{references}
-\begin{appendices}
-...
-\clearpage
-\end{appendices}
 \end{document}

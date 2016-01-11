@@ -2,17 +2,39 @@ chapter "Analysis"
 
 section "State of the art"
 
-p "Current multiplayer programming games feature **short matches** with a **small number of players**. There
-is no way to perform a challenge with a considerable amount of students playing at the same time. Therefore, multiple
-matches are necessary to decide who wrote the best program."
+p "There are many platforms that offer **AI** programming challenges. Some examples are:"
+
+description:
+  item "Google's AI programming challenge #cite{google_ai}"; p "The university of Waterloo organized some AI programming challenges
+  sponsored by **Google** during 2010-2011."
+  item "Battlecode #cite{battlecode}"; p "A website that organizes an AI programming challenge every year where anyone can
+  compete alone or in a team."
+  item "CodinGame #cite{codingame}"; p "A website that has many AI programming contests, which can help players to apply for
+  specific jobs."
+  item "|EDA| competition #cite{eda}"; p "An AI programming challenge is held every semester in the **Barcelona School of
+  Informatics** (**FIB**) where students compete with each other using the **Jutge.org** platform #cite{jutge}."
+
+p "However, all of this platforms feature multiplayer programming games with **short matches** played by a
+**small number of players**. As a consequence, multiple matches with different players are necessary to decide who wrote
+the best **AI**."
 
 
-section "The future"
+section "The requirement"
 
-p "Multiplayer programming games need to evolve. They need to feature **huge worlds**, **long matches** and
-a **massive amount of players in real-time**. Then, players will feel attached to the match, programs will need to
-**adapt** constantly as they play with **everyone at the same time**. It is time to take this genre to the next level and
-create **massive multiplayer programming games** (**MMPG**s)."
+p "The director of this project is one of the founders of the **Jutge.org** platform. Also, he is deeply involved in the AI
+programming challenge organized in the |EDA| subject in the **Barcelona School of Informatics**.
+
+Currently, the contest strategy is based in a **round** system. All the students play at least one match per round. Players
+that lose a match play against other losers. At the end, the player that loses the last match is eliminated from the contest.
+
+Clearly, this strategy has one main drawback: eliminated students stop playing. Hence, their learning process halts completely.
+This could be solved using a simple **score** system, but it would still be patching the main issue: the
+programming games used **do not support a huge amount of players natively**.
+
+The aim of this project is to provide an easy way to develop multiplayer programming games featuring **huge worlds**,
+**long matches** and a **massive amount of players in real-time**. This will make players feel attached to the match,
+programs will need to **adapt** constantly as they play with **everyone at the same time**. As a consequence, this project will
+finally allow to improve the strategy used in the |EDA| progamming challenge."
 
 section "Stakeholders"
 
