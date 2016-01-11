@@ -8,7 +8,7 @@ section "Tasks"
 p "This section details the different tasks and subtasks that need to be completed in order
 to finish the project successfully. Every task is provided with a **description**, an **expected duration**,
 **possible complications** and **task dependencies**. A **time table** and a **Gantt diagram**
-can be found in #autoref{time_table} and #autoref{gantt}, respectively."
+can be found in #autoref{time_table} and #autoref{planning_timeline}, respectively."
 
 subsection "Project management course"
 p "The project management course aims to help lead the project in the right direction. In this task,
@@ -58,7 +58,7 @@ description:
 
 subsubsection "Control panel"
 p "Allows **administrators** to supervise the games, start, stop and pause current matches, and obtain the
-scores of every player. It will be implemend in **Jutge.org**, using |PHP|."
+scores of every player."
 
 description:
   item "Expected duration"; p "35 hours"
