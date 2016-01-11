@@ -31,7 +31,7 @@
 \\[0.4cm]
 {\huge
 \bfseries
-Web platform for massive multiplayer programming games
+Platform for massive multiplayer programming games
 \\[0.4cm]
 }
 \rule{\linewidth}{0.5mm}
@@ -176,7 +176,7 @@ stop or pause the game, and obtain the final scores of every player.
 \clearpage
 \chapter{Specification}
 \section{Main objective}
-Develop a web platform for \textbf{massive} multiplayer programming games and wire it to \textbf{Jutge.org}.
+Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.
 \section{Secondary objectives}
 \subsection{Develop an abstract game engine}
 Any experienced programmer must be able to create new games for the platform easily.
@@ -193,6 +193,8 @@ or affect the platform negatively.
 \clearpage
 \chapter{Design}
 \label{design}
+The design of the platform has to allow game developers to implement \textbf{\texttt{MMPG}}s easily. Hence, it is necessary to keep
+the number of components and dependencies at bay.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.5]{graphs/mmpg_design.pdf}
@@ -200,10 +202,15 @@ or affect the platform negatively.
 \caption{The design of an \texttt{MMPG}}
 \label{mmpg_graph}
 \end{figure}
+\autoref{mmpg_graph} shows a diagram of the different components that compose an \textbf{\texttt{MMPG}} and their dependencies. As it is shown,
+game developers only need to implement two components to create an \textbf{\texttt{MMPG}}: the \textbf{game logic} and the \textbf{game viewer}. This is
+quite logical, since these are the only two components that are game-specific.
+
+Hence, a \textbf{massive multiplayer programming game} using the platform consists of:
 \begin{description}
 \item[Engine]
 A library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
-  of classes that can be used and extended to build the logic of the game.
+  of classes that must be extended to build the \textbf{game logic}.
 \item[\texttt{API}]
 A component that exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
   usually handles requests from a \textbf{game viewer} using the \textbf{client} library.
@@ -211,9 +218,10 @@ A component that exposes \textbf{\texttt{HTTP}} endpoints that allow to interact
 A library that implements a set of useful classes to communicate with an \textbf{\texttt{API}} and implement
   \textbf{game viewers}.
 \item[Game logic]
-...
+It includes the game world definition and the rules of the game. It is built on top of the \textbf{engine}.
 \item[Game viewer]
-...
+It allows viewers to watch game matches. Also, it makes players able to upload new \textbf{\texttt{AI}}s. It uses
+    the \textbf{client} library to connect to the \textbf{\texttt{API}}.
 \end{description}
 \clearpage
 \chapter{License}
@@ -473,6 +481,7 @@ which seems reasonable.
 \label{planning_timeline}
 \end{figure}
 \chapter{Budget}
+\label{budget}
 \section{Hardware resources}
 The project will be developed using a personal desktop computer and a laptop. Also, a monitor,
 a keyboard and a mouse are needed to use the desktop computer. There is no other hardware needed.
@@ -535,9 +544,9 @@ expected cost of the human resources according to project roles and their respec
  & Analysis and design & 10\\
 \hline
 \multirow{6}{*}{Software developer}
- & Game engine & 70\\
- & Real-time notifier & 50\\
- & Notifier subscriber & 30\\
+ & Engine & 70\\
+ & API & 50\\
+ & Client & 30\\
  & Control panel & 35\\
  & Game example & 100\\
  & Testing and polishing & 40\\
@@ -569,7 +578,7 @@ Software developer & 30.00 & 325 & 9750.00\\
 \subsection{Electricity}
 Electricity will be needed to power the hardware. \autoref{Electricity budget} shows the power consumption,
 the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
-assuming 0.147358 \EURtm / kWh in Spain\footnote{\url{http://comparadorluz.com/faq/precio-kwh-electricidad}}.
+assuming 0.147358 \EURtm / kWh in Spain.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | S | S | S}
@@ -602,7 +611,7 @@ is added to face any unforeseen contingencies.
 \hline
 Hardware & 60.13\\
 Software & 0.00\\
-Human resources & 14525.00\\
+Human & 14525.00\\
 Electricity & 26.08\\
 Internet & 7.28\\
 \hline
@@ -889,11 +898,41 @@ the \texttt{MMPG} platform.
 \section{Summary}
 \chapter{Authentication}
 [...]
+\section{Wiring the API with Jutge.org}
+[...]
+\section{Logging in players from the viewer}
+[...]
+\section{Summary}
+[...]
 \chapter{The first game world}
+[...]
+\section{Choosing a game: Space Wars}
+[...]
+\section{Generating a planetary system procedurally}
+[...]
+\section{Rendering the planetary system}
+[...]
+\section{Summary}
 [...]
 \chapter{Fleets and planets}
 [...]
+\section{Generating ships in conquered planets}
+[...]
+\section{Moving fleets between planets}
+[...]
+\section{Summary}
+[...]
 \chapter{A whole galaxy}
+[...]
+\section{Generating multiple planetary systems}
+[...]
+\section{Separating world structure from dynamic data}
+[...]
+\section{Rendering a galaxy}
+[...]
+\section{Connecting planetary systems}
+[...]
+\section{Summary}
 [...]
 \part{Evaluation}
 \chapter{Validation}
@@ -904,7 +943,6 @@ the \texttt{MMPG} platform.
 [...]
 \chapter{Time management}
 \section{Time table}
-\label{time_table}
 \begin{figure}[H]
 \begin{center}
 \noindent\resizebox{!}{16em}{
@@ -1053,60 +1091,21 @@ Linode 1GB & 27.47\\
 \label{Hardware cost}
 \end{table}
 \section{Software resources}
-All the software needed to develop the project can be used for free.
+As stated in the original planning, all the software needed to develop the project can be used for free.
+  \autoref{additional_software} shows additional software that was used but it was not listed in the original planning.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | l}
 \textbf{Software} & \textbf{License}\\
 \hline
-Ubuntu & \url{http://www.ubuntu.com/about/about-ubuntu/our-philosophy}\\
-\LaTeX{} & \url{https://latex-project.org/lppl/}\\
-\texttt{git} & \url{https://git-scm.com/about/free-and-open-source}\\
-\texttt{}C\texttt{++} & \url{https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html}\\
-\texttt{Go} & \url{https://golang.org/project/}\\
-Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
-\texttt{Coffeescript} & \url{https://github.com/jashkenas/coffeescript/blob/master/LICENSE}\\
-\texttt{WebGL} & \url{https://www.khronos.org/legal/license/}\\
+\texttt{Three.js} & \url{https://github.com/mrdoob/three.js/blob/master/LICENSE}\\
 \end{tabular}
-\caption{Software licenses}
-\label{Software licenses}
+\caption{Additional software}
+\label{Additional software}
 \end{table}
-Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evince} is included in Ubuntu.
-Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
-\texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
-\texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
-Therefore, \textbf{there are no software costs}.
 \section{Human resources}
-\autoref{Tasks per role} shows the tasks assigned to each project role. \autoref{Human resources budget} shows the
-expected cost of the human resources according to project roles and their respective tasks.
-\begin{table}[H]
-\centering
-\begin{tabular}{l | l | S}
-\textbf{Role} & \textbf{Task} & \textbf{Time (h)}\\
-\hline
-\multirow{3}{*}{Project manager}
- & Project management course & 75\\
- & Project memory & 40\\
- & Oral presentation & 10\\
-\hline
-\multirow{1}{*}{Software engineer}
- & Analysis and design & 10\\
-\hline
-\multirow{6}{*}{Software developer}
- & Game engine & 70\\
- & Real-time notifier & 50\\
- & Notifier subscriber & 30\\
- & Control panel & 35\\
- & Game example & 100\\
- & Testing and polishing & 40\\
-\hline
-\hline
-\multicolumn{2}{l |}{\textbf{Total}}
- & 460.00
-\end{tabular}
-\caption{Tasks per role}
-\label{Tasks per role}
-\end{table}
+\autoref{Human resources cost} shows the final cost of the human resources according
+to the final task durations detailed in \autoref{time_table} and the task per role in \autoref{Tasks per role}.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | S | S | S}
@@ -1120,14 +1119,12 @@ Software developer & 30.00 & 325 & 9750.00\\
 \multicolumn{3}{l |}{\textbf{Total}}
  & 14525.00
 \end{tabular}
-\caption{Human resources budget}
-\label{Human resources budget}
+\caption{Human resources cost}
+\label{Human resources cost}
 \end{table}
 \section{Other resources}
 \subsection{Electricity}
-Electricity will be needed to power the hardware. \autoref{Electricity budget} shows the power consumption,
-the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
-assuming 0.147358 \EURtm / kWh in Spain\footnote{\url{http://comparadorluz.com/faq/precio-kwh-electricidad}}.
+\autoref{Electricity cost} shows the electricity cost of the project.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | S | S | S}
@@ -1141,38 +1138,32 @@ Monitor Acer XB270HU & 30 & 400 & 1.77\\
 \multicolumn{3}{l |}{\textbf{Total}}
  & 26.08
 \end{tabular}
-\caption{Electricity budget}
-\label{Electricity budget}
+\caption{Electricity cost}
+\label{Electricity cost}
 \end{table}
 \subsection{Internet connection}
-An Internet connection will be necessary to perform all the tasks. The student will use its personal
-internet connection most of the time, which costs 38\EURtm/month $\simeq$ 0.05\EURtm/h. It is expected to use the internet connection during the 30\% of the
-total project's duration.
-Thus, the estimated budget for the internet connection is
-460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.28\EURtm}.
+The project was developed using the internet connection described in \fullref{budget}. The internet connection was used
+approximately during the 30\% of the total project's duration, as expected.
+Thus, the final cost of the internet connection was 460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.28\EURtm}.
 \section{Total}
-\autoref{Total budget} shows the total budget needed to develop the project. The 10\% of the total cost
-is added to face any unforeseen contingencies.
+\autoref{Total cost} shows the total cost of the project.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | S}
 \textbf{Resource} & \textbf{Total cost (\EURtm)}\\
 \hline
-Hardware & 60.13\\
+Hardware & 87.60\\
 Software & 0.00\\
-Human resources & 14525.00\\
+Human & 14525.00\\
 Electricity & 26.08\\
 Internet & 7.28\\
 \hline
 \hline
-Subtotal & 14618.49\\
-Contingency (10\%) & 1461.85\\
-\hline
 \multicolumn{1}{l |}{\textbf{Total}}
- & 16080.34
+ & 14645.96
 \end{tabular}
-\caption{Total budget}
-\label{Total budget}
+\caption{Total cost}
+\label{Total cost}
 \end{table}
 \chapter{Sustainability}
 This section contains a sustainability report of the project based on the application of the matrix described by

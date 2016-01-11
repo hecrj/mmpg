@@ -32,7 +32,7 @@ include :style
 typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js", "Javascript"
 
 document:
-  cover title    => "Web platform for massive multiplayer programming games",
+  cover title    => "Platform for massive multiplayer programming games",
         subject  => "Degree Final Project",
         authors  => ["Héctor Ramón Jiménez"],
         footer   => "Facultat d'Informàtica de Barcelona",

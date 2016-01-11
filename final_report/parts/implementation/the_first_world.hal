@@ -1,3 +1,14 @@
 chapter "The first game world"
+p "[...]"
 
+section "Choosing a game: Space Wars"
+p "[...]"
+
+section "Generating a planetary system procedurally"
+p "[...]"
+
+section "Rendering the planetary system"
+p "[...]"
+
+section "Summary"
 p "[...]"

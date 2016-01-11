@@ -1,3 +1,17 @@
 chapter "A whole galaxy"
+p "[...]"
 
+section "Generating multiple planetary systems"
+p "[...]"
+
+section "Separating world structure from dynamic data"
+p "[...]"
+
+section "Rendering a galaxy"
+p "[...]"
+
+section "Connecting planetary systems"
+p "[...]"
+
+section "Summary"
 p "[...]"

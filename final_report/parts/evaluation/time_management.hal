@@ -1,7 +1,6 @@
 chapter "Time management"
 
 section "Time table"
-label :time_table
 
 figure!:
   center:

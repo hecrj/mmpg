@@ -1,3 +1,12 @@
 chapter "Authentication"
 
 p "[...]"
+
+section "Wiring the API with Jutge.org"
+p "[...]"
+
+section "Logging in players from the viewer"
+p "[...]"
+
+section "Summary"
+p "[...]"

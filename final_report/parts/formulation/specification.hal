@@ -2,8 +2,7 @@ chapter "Specification"
 
 section "Main objective"
 
-p "Develop a web platform for **massive** multiplayer programming games and wire it to **Jutge.org**."
-
+p "Develop a set of components that ease the creation and the usage of **massive multiplayer programming games**."
 
 section "Secondary objectives"
 

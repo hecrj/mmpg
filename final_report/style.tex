@@ -26,10 +26,10 @@ SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
  
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{Héctor Ramón}
+\fancyhead[LE,RO]{\parttitle}
 \fancyhead[RE,LO]{\leftmark}
 \fancyfoot[RE]{Final degree project}
-\fancyfoot[LO]{\emph{Web platform for multiplayer programming games}}
+\fancyfoot[LO]{\emph{Platform for multiplayer programming games}}
 \fancyfoot[LE,RO]{\thepage}
 
 \renewcommand{\footrulewidth}{0.5pt}
@@ -39,3 +39,6 @@ SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
 
 \titleformat{\chapter}{\normalfont\bfseries}{\Huge\thechapter}{20pt}{\Huge}
 \newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1} \nameref*{#1}}}
+\let\Oldpart\part
+\newcommand{\parttitle}{}
+\renewcommand{\part}[1]{\Oldpart{#1}\renewcommand{\parttitle}{\thepart. #1}}

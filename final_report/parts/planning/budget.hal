@@ -1,4 +1,5 @@
 chapter "Budget"
+label :budget
 
 class Kernel:
   @BUDGET = {}
@@ -86,9 +87,9 @@ expected cost of the human resources according to project roles and their respec
 task_durations = {
   "Project management course" => 75,
   "Analysis and design"       => 10,
-  "Game engine"               => 70,
-  "Real-time notifier"        => 50,
-  "Notifier subscriber"       => 30,
+  "Engine"                    => 70,
+  "API"                       => 50,
+  "Client"                    => 30,
   "Control panel"             => 35,
   "Game example"              => 100,
   "Testing and polishing"     => 40,
@@ -114,9 +115,9 @@ human_resources = {
   "Software developer" => {
     :payment => 30,
     :tasks => [
-      "Game engine",
-      "Real-time notifier",
-      "Notifier subscriber",
+      "Engine",
+      "API",
+      "Client",
       "Control panel",
       "Game example",
       "Testing and polishing"
@@ -151,8 +152,8 @@ table "Human resources budget", "l | S | S | S":
   hline
   hline
 
-  BUDGET["Human resources"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
-  total BUDGET["Human resources"], columns => 4
+  BUDGET["Human"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
+  total BUDGET["Human"], columns => 4
 
 section "Other resources"
 
@@ -161,7 +162,7 @@ kwh = 0.147358
 
 p "Electricity will be needed to power the hardware. #autoref{Electricity budget} shows the power consumption,
 the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
-assuming %f #EURtm / kWh in Spain#footnote{#url{http://comparadorluz.com/faq/precio-kwh-electricidad}}." % kwh
+assuming %f #EURtm / kWh in Spain." % kwh
 
 electricity = {
   "Desktop computer" => {

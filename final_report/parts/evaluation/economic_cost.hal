@@ -17,45 +17,33 @@ table "Hardware cost", "l | S":
 
 section "Software resources"
 
-p "All the software needed to develop the project can be used for free."
+p "As stated in the original planning, all the software needed to develop the project can be used for free.
+  #autoref{additional_software} shows additional software that was used but it was not listed in the original planning."
 
 software = {
-  "Ubuntu"   => "http://www.ubuntu.com/about/about-ubuntu/our-philosophy",
-  "LaTeX"    => "https://latex-project.org/lppl/",
-  "|git|"    => "https://git-scm.com/about/free-and-open-source",
-  "|C++|"    => "https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html",
-  "|Go|"     => "https://golang.org/project/",
-  "Mozilla Firefox" => "https://www.mozilla.org/en-US/foundation/licensing/",
-  "|Coffeescript|"  => "https://github.com/jashkenas/coffeescript/blob/master/LICENSE",
-  "|WebGL|"         => "https://www.khronos.org/legal/license/"
+  "Three.js" => "https://github.com/mrdoob/three.js/blob/master/LICENSE"
 }
 
 
-table "Software licenses", "l | l":
+table "Additional software", "l | l":
   head "Software", "License"
 
   software.each with name, license:
     row pstyle(name), "\\url{%s}" % license
 
-p "Mozilla Firefox includes a |Javascript| engine and |evince| is included in Ubuntu.
-Also, the |HAL| programming language is owned by the author of the project. |Jetbrains| allows students to use
-|CLion| for free#footnote{#url{https://www.jetbrains.com/student/}} and
-|Sublime Text| can be used without registration with no limitations#footnote{#url{http://www.sublimetext.com/2}}.
-Therefore, **there are no software costs**."
-
-BUDGET["Software"] = 0
+COST["Software"] = BUDGET["Software"]
 
 section "Human resources"
 
-p "#autoref{Tasks per role} shows the tasks assigned to each project role. #autoref{Human resources budget} shows the
-expected cost of the human resources according to project roles and their respective tasks."
+p "#autoref{Human resources cost} shows the final cost of the human resources according
+to the final task durations detailed in #autoref{time_table} and the task per role in #autoref{Tasks per role}."
 
 task_durations = {
   "Project management course" => 75,
   "Analysis and design"       => 10,
-  "Game engine"               => 70,
-  "Real-time notifier"        => 50,
-  "Notifier subscriber"       => 30,
+  "Engine"                    => 70,
+  "API"                       => 50,
+  "Client"                    => 30,
   "Control panel"             => 35,
   "Game example"              => 100,
   "Testing and polishing"     => 40,
@@ -81,9 +69,9 @@ human_resources = {
   "Software developer" => {
     :payment => 30,
     :tasks => [
-      "Game engine",
-      "Real-time notifier",
-      "Notifier subscriber",
+      "Engine",
+      "API",
+      "Client",
       "Control panel",
       "Game example",
       "Testing and polishing"
@@ -91,21 +79,7 @@ human_resources = {
   }
 }
 
-table "Tasks per role", "l | l | S":
-  head "Role", "Task", "Time (h)"
-
-  human_resources.each with role, data:
-    multirow data[:tasks].size, "*", role
-
-    (data[:tasks]).each with index, task:
-      row "", task, task_durations[task]
-
-    hline
-
-  hline
-  total human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum }.sum, columns => 3
-
-table "Human resources budget", "l | S | S | S":
+table "Human resources cost", "l | S | S | S":
   head "Role", "Payment (\\EURtm / h)", "Time (h)", "Total (\\EURtm)"
   human_resources.each with role, data:
     hours = data[:tasks].map{ task -> task_durations[task] }.sum
@@ -118,17 +92,15 @@ table "Human resources budget", "l | S | S | S":
   hline
   hline
 
-  BUDGET["Human resources"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
-  total BUDGET["Human resources"], columns => 4
+  COST["Human"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
+  total COST["Human"], columns => 4
 
 section "Other resources"
 
 subsection "Electricity"
 kwh = 0.147358
 
-p "Electricity will be needed to power the hardware. #autoref{Electricity budget} shows the power consumption,
-the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
-assuming %f #EURtm / kWh in Spain#footnote{#url{http://comparadorluz.com/faq/precio-kwh-electricidad}}." % kwh
+p "#autoref{Electricity cost} shows the electricity cost of the project."
 
 electricity = {
   "Desktop computer" => {
@@ -145,7 +117,7 @@ electricity = {
   }
 }
 
-table "Electricity budget", "l | S | S | S":
+table "Electricity cost", "l | S | S | S":
   head "Hardware", "Consumption (W)", "Time of usage (h)", "Cost (\\EURtm)"
 
   electricity.each with hardware, data:
@@ -154,35 +126,29 @@ table "Electricity budget", "l | S | S | S":
   hline
   hline
 
-  BUDGET["Electricity"] = electricity.map{ _, data -> (data[:consumption] * data[:usage] / 1000.0) * kwh }.sum
-  total BUDGET["Electricity"], columns => 4
+  COST["Electricity"] = electricity.map{ _, data -> (data[:consumption] * data[:usage] / 1000.0) * kwh }.sum
+  total COST["Electricity"], columns => 4
 
 subsection "Internet connection"
 internet_month = 38
 internet_hour = internet_month / (30.0 * 24)
 
-BUDGET["Internet"] = internet_hour * 460 * 0.3
+COST["Internet"] = internet_hour * 460 * 0.3
 
-p "An Internet connection will be necessary to perform all the tasks. The student will use its personal
-internet connection most of the time, which costs " + internet_month.str + "\\EURtm/month $#simeq$ " + \
-internet_hour.decimals + "\\EURtm/h. It is expected to use the internet connection during the 30\\% of the
-total project's duration.
-Thus, the estimated budget for the internet connection is
-460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + BUDGET["Internet"].decimals + "\\EURtm**."
+p "The project was developed using the internet connection described in #fullref{budget}. The internet connection was used
+approximately during the 30\\% of the total project's duration, as expected.
+Thus, the final cost of the internet connection was 460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + COST["Internet"].decimals + "\\EURtm**."
 
 section "Total"
-p "#autoref{Total budget} shows the total budget needed to develop the project. The 10\\% of the total cost
-is added to face any unforeseen contingencies."
+p "#autoref{Total cost} shows the total cost of the project."
 
-table "Total budget", "l | S":
+table "Total cost", "l | S":
   head "Resource", "Total cost (\\EURtm)"
 
-  BUDGET.each with type, total:
+  COST.each with type, total:
     row type, total.decimals
 
   hline
   hline
-  row "Subtotal", BUDGET.values.sum.decimals
-  row "Contingency (10\\%)", (BUDGET.values.sum * 0.1).decimals
-  hline
-  total BUDGET.values.sum + BUDGET.values.sum * 0.1, columns => 2
+
+  total COST.values.sum, columns => 2

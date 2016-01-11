@@ -1,16 +1,24 @@
 chapter "Design"
 label :design
 
+p "The design of the platform has to allow game developers to implement **MMPG**s easily. Hence, it is necessary to keep
+the number of components and dependencies at bay."
+
 figure!:
   center:
     includegraphics "graphs/mmpg_design.pdf", options => "scale=0.5"
   caption "The design of an MMPG"
   label :mmpg_graph
 
+p "#autoref{mmpg_graph} shows a diagram of the different components that compose an **MMPG** and their dependencies. As it is shown,
+game developers only need to implement two components to create an **MMPG**: the **game logic** and the **game viewer**. This is
+quite logical, since these are the only two components that are game-specific.
+
+Hence, a **massive multiplayer programming game** using the platform consists of:"
 
 description:
   item "Engine"; p "A library that implements basic features needed by any MMPG. The **engine** exposes a set
-  of classes that can be used and extended to build the logic of the game."
+  of classes that must be extended to build the **game logic**."
   
   item "API"; p "A component that exposes **|HTTP|** endpoints that allow to interact with an underlying **engine**. It
   usually handles requests from a **game viewer** using the **client** library."
@@ -18,6 +26,7 @@ description:
   item "Client"; p "A library that implements a set of useful classes to communicate with an **API** and implement
   **game viewers**."
 
-  item "Game logic"; p "..."
+  item "Game logic"; p "It includes the game world definition and the rules of the game. It is built on top of the **engine**."
 
-  item "Game viewer"; p "..."
+  item "Game viewer"; p "It allows viewers to watch game matches. Also, it makes players able to upload new **AI**s. It uses
+    the **client** library to connect to the **API**."
