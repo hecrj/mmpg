@@ -893,9 +893,66 @@ to recreate the state of the match at a given time.
 The \textbf{event sourcing} technique with the \textbf{snapshot strategy} was used to implement replays of a match \textbf{efficiently} in
 the \texttt{MMPG} platform.
 \section{Logging events}
+The first step to implement the replay feature was to log events in the \textbf{engine}.
+
+The log system saved every \textbf{player action}. Additionally, a \textbf{snapshot} was also saved every second.
+These \textbf{snapshots} allowed to recreate the state of the match easily and also allowed \textbf{viewers} to synchronize its state.
+
+Internally, the log system consisted of multiple log files, where every file represented a \textbf{5-minute interval}, allowing the
+retrieval of events for a particular interval of time.
 \section{Delivering log files}
+While \textbf{the notifier} of the \textbf{engine master process} implemented in the \textbf{first prototype} is well suited for publishing
+events to subscribers, it is not able to receive data from them. For this reason, a new component was implemented in the
+\textbf{master process}: the \textbf{engine app-server}.
+
+The \textbf{app-server} was able to receive requests from another application and reply accordingly. This component creates a channel that
+allows external applications to interact directly with the \textbf{engine}. The first version of this component only was able to handle
+\textbf{log requests}.
+
+A \textbf{log request} was represented by a string of characters: the \texttt{LOG} keyword followed by a space and then the UNIX time
+of the log to be retrieved. For example:
+\begin{verbatim}
+LOG 1451606400
+\end{verbatim}
+This request would ask for the \textbf{log file} that contains events created at \texttt{01/01/2016 @ 00:00 (UTC)}.
+
+Once the \textbf{engine} was able to reply to log requests, a new endpoint \textbf{\texttt{/log}} was created in the \textbf{\texttt{API}} component. This
+endpoint accepted a \textbf{\texttt{time}} parameter, which was used to request the correct log file to the \textbf{engine}. Then, the log
+file was sent back to the client that requested it.
+
+Finally, the \textbf{client} library was updated to enable \textbf{log requests} in \textbf{viewers}.
+\section{Compressing log files}
+\textbf{Log files} had a repetitive structure, given that multiple events of the same type were stored in it. Hence, they were
+really \textbf{compressible}. Moreover, \textbf{log files} were directly delivered to web-browsers through the \textbf{\texttt{API}}, and most modern
+web-browsers are able to decompress \textbf{gzip} natively. For this reason, \textbf{log files} were compressed using \textbf{gzip},
+\textbf{reducing both disk and bandwidth usage}.
 \section{Controlling time}
+Finally, a \textbf{widget} was created in the \textbf{viewer} to control the \textbf{game time}. This widget allowed to \textbf{start}, \textbf{pause},
+\textbf{rewind} and \textbf{forward} the game timer. \autoref{game_time} shows the design of this widget.
+\begin{figure}[H]
+\begin{center}
+\includegraphics{images/game_time.png}
+\end{center}
+\caption{Game time widget}
+\label{game_time}
+\end{figure}
+The \textbf{game time widget} performed \textbf{log requests} under the scenes when necessary. Then, it created a \textbf{buffer} of events
+from the log and started consuming them at the \textbf{same rate they were created}. When the buffer begun to empty, the \textbf{next log file
+was requested to refill the buffer}.
 \section{Summary}
+In this chapter, the replay feature was implemented. The implementation process featured:
+\begin{enumerate}
+\item
+Saving \textbf{player actions and snapshots} in log files.
+\item
+Creating an \textbf{app-server} in the \textbf{engine} to handle \textbf{log requests}.
+\item
+Creating a \textbf{\texttt{/log}} endpoint in the \textbf{\texttt{API}} to allow \textbf{clients} to request log files.
+\item
+\textbf{Compressing} log files using \textbf{gzip}.
+\item
+Developing a \textbf{game time widget} in the \textbf{viewer} to control \textbf{game time}.
+\end{enumerate}
 \chapter{Authentication}
 [...]
 \section{Wiring the API with Jutge.org}

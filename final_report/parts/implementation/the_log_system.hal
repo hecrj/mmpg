@@ -32,13 +32,68 @@ the MMPG platform."
 
 
 section "Logging events"
+p "The first step to implement the replay feature was to log events in the **engine**.
 
+The log system saved every **player action**. Additionally, a **snapshot** was also saved every second.
+These **snapshots** allowed to recreate the state of the match easily and also allowed **viewers** to synchronize its state.
+
+Internally, the log system consisted of multiple log files, where every file represented a **5-minute interval**, allowing the
+retrieval of events for a particular interval of time."
 
 
 section "Delivering log files"
+p "While **the notifier** of the **engine master process** implemented in the **first prototype** is well suited for publishing
+events to subscribers, it is not able to receive data from them. For this reason, a new component was implemented in the
+**master process**: the **engine app-server**.
+
+The **app-server** was able to receive requests from another application and reply accordingly. This component creates a channel that
+allows external applications to interact directly with the **engine**. The first version of this component only was able to handle
+**log requests**.
+
+A **log request** was represented by a string of characters: the |LOG| keyword followed by a space and then the UNIX time
+of the log to be retrieved. For example:"
+
+verbatim:
+  p "LOG 1451606400"
+
+p "This request would ask for the **log file** that contains events created at |01/01/2016 @ 00:00 (UTC)|.
+
+Once the **engine** was able to reply to log requests, a new endpoint **|/log|** was created in the **API** component. This
+endpoint accepted a **|time|** parameter, which was used to request the correct log file to the **engine**. Then, the log
+file was sent back to the client that requested it.
+
+Finally, the **client** library was updated to enable **log requests** in **viewers**."
+
+
+section "Compressing log files"
+p "**Log files** had a repetitive structure, given that multiple events of the same type were stored in it. Hence, they were
+really **compressible**. Moreover, **log files** were directly delivered to web-browsers through the **API**, and most modern
+web-browsers are able to decompress **gzip** natively. For this reason, **log files** were compressed using **gzip**,
+**reducing both disk and bandwidth usage**."
 
 
 section "Controlling time"
+p "Finally, a **widget** was created in the **viewer** to control the **game time**. This widget allowed to **start**, **pause**,
+**rewind** and **forward** the game timer. #autoref{game_time} shows the design of this widget."
+
+figure!:
+  center:
+    includegraphics "images/game_time.png"
+
+  caption "Game time widget"
+  label :game_time
+
+p "The **game time widget** performed **log requests** under the scenes when necessary. Then, it created a **buffer** of events
+from the log and started consuming them at the **same rate they were created**. When the buffer begun to empty, the **next log file
+was requested to refill the buffer**."
 
 
 section "Summary"
+p "In this chapter, the replay feature was implemented. The implementation process featured:"
+
+enumerate:
+  item; p "Saving **player actions and snapshots** in log files."
+  item; p "Creating an **app-server** in the **engine** to handle **log requests**."
+  item; p "Creating a **|/log|** endpoint in the **API** to allow **clients** to request log files."
+  item; p "**Compressing** log files using **gzip**."
+  item; p "Developing a **game time widget** in the **viewer** to control **game time**."
