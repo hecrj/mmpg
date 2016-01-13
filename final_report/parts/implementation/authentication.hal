@@ -78,7 +78,7 @@ figure!:
 p "When a **login succeeded** the returned **authentication token** was saved in the **local storage** of the browser and renewed
 when the **viewer** was reaccessed, or every **30 minutes** if it was kept open."
 
-section "Deploying new AIs"
+section "Hot-swapping AI"
 p "Once, players were able to login, the deployment of new **AI**s could be implemented.
 
 Firstly, a new request handler in the **app-server** was needed: **|DEPLOY\\_PLAYER|**. This type of request had two
@@ -100,32 +100,41 @@ enumerate:
   item; p "Returned a **|200 OK|** response."
 
 p "As it is been shown multiple times now. There is an **API** endpoint for almost every request that the **engine app-server**
-can handle. Hence, the **API** exposes the **engine** with a layer of **control** on top of it.
+can handle. Hence, the **API** exposes the **engine** with an **access layer** on top of it."
 
-Finally, the **client** was updated to support the new endpoint and a **deployment form** was created in the **viewer**.
+section "Deploying new AI"
+p "Finally, the **client** was updated to support the new **API** endpoint and a **deployment form** was created in the **viewer**.
 This form was designed having in mind that **the deployment process should be fun**, so players feel encouraged to
-**improve its code**. #autoref{deploy_error} shows how the **deployment form** looks."
+**improve its code**. #autoref{deploy_error} shows how the **deployment form** looks.
+
+Also, a **player menu** was designed to welcome authenticated players. From this menu, players can access the **deployment form**
+and they can also **logout**. #autoref{player_menu} shows how the **player menu** looks."
 
 figure!:
-  centered:
-    resizebox height => "210pt":
-      includegraphics "images/deploy_error.png"
+  minipage ".5\\textwidth":
+    figure!:
+      centered:
+        resizebox height => "220pt":
+          includegraphics "images/deploy_error.png"
 
-  caption "Player deployment with a compilation error"
-  label :deploy_error
+      caption "Player deployment with a compilation error"
+      label :deploy_error
+
+  minipage ".5\\textwidth":
+    figure!:
+      centered:
+        resizebox height => "100pt":
+          includegraphics "images/player_menu.png"
+
+      caption "Player menu"
+      label :player_menu
+
 
 section "Summary"
-p "Summarizing, this capter detailed the implementation of:"
+p "This capter detailed the implementation of the **AI hot-swapping** feature, which needed an
+**authentication system** first. Summarizing, the most important implemented components are:"
 
 enumerate:
-  item; p "An **authentication system**, which consisted in:"
-  enumerate:
-    item; p "Implementing the **|PLAYER\\_EXISTS|** handler in the **engine app-server**."
-    item; p "Adding the **|/auth|** endpoint to the **API**."
-    item; p "Creating of the **login form** in the viewer."
-
-  item; p "The **AI hot-swapping** feature, which consisted in:"
-  enumerate:
-    item; p "Implementing the **|DEPLOY\\_PLAYER|** handler in the **engine app-server**."
-    item; p "Adding the **|/player|** endpoint to the **API**."
-    item; p "Creating of the **deployment form** in the viewer."
+  item; p "The **|PLAYER\\_EXISTS|** and **|DEPLOY\\_PLAYER|** request handlers in the **engine app-server**"
+  item; p "The **|/auth|** and **|/player|** endpoint in the **API**"
+  item; p "The **login form**, **player menu**, and **deployment form** in the **viewer**."

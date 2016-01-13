@@ -1039,7 +1039,7 @@ shows how this \textbf{login form} looks.
 \end{figure}
 When a \textbf{login succeeded} the returned \textbf{authentication token} was saved in the \textbf{local storage} of the browser and renewed
 when the \textbf{viewer} was reaccessed, or every \textbf{30 minutes} if it was kept open.
-\section{Deploying new AIs}
+\section{Hot-swapping AI}
 Once, players were able to login, the deployment of new \textbf{\texttt{AI}}s could be implemented.
 
 Firstly, a new request handler in the \textbf{app-server} was needed: \textbf{\texttt{DEPLOY\_PLAYER}}. This type of request had two
@@ -1067,43 +1067,48 @@ Returned a descriptive error if the deploymet failed.
 Returned a \textbf{\texttt{200 OK}} response.
 \end{enumerate}
 As it is been shown multiple times now. There is an \textbf{\texttt{API}} endpoint for almost every request that the \textbf{engine app-server}
-can handle. Hence, the \textbf{\texttt{API}} exposes the \textbf{engine} with a layer of \textbf{control} on top of it.
-
-Finally, the \textbf{client} was updated to support the new endpoint and a \textbf{deployment form} was created in the \textbf{viewer}.
+can handle. Hence, the \textbf{\texttt{API}} exposes the \textbf{engine} with an \textbf{access layer} on top of it.
+\section{Deploying new AI}
+Finally, the \textbf{client} was updated to support the new \textbf{\texttt{API}} endpoint and a \textbf{deployment form} was created in the \textbf{viewer}.
 This form was designed having in mind that \textbf{the deployment process should be fun}, so players feel encouraged to
 \textbf{improve its code}. \autoref{deploy_error} shows how the \textbf{deployment form} looks.
+
+Also, a \textbf{player menu} was designed to welcome authenticated players. From this menu, players can access the \textbf{deployment form}
+and they can also \textbf{logout}. \autoref{player_menu} shows how the \textbf{player menu} looks.
+\begin{figure}[H]
+\begin{minipage}{.5\textwidth}
 \begin{figure}[H]
 \makebox[\textwidth]{
-\noindent\resizebox{!}{210pt}{
+\noindent\resizebox{!}{220pt}{
 \includegraphics{images/deploy_error.png}
 }
 }
 \caption{Player deployment with a compilation error}
 \label{deploy_error}
 \end{figure}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{100pt}{
+\includegraphics{images/player_menu.png}
+}
+}
+\caption{Player menu}
+\label{player_menu}
+\end{figure}
+\end{minipage}
+\end{figure}
 \section{Summary}
-Summarizing, this capter detailed the implementation of:
+This capter detailed the implementation of the \textbf{\texttt{AI} hot-swapping} feature, which needed an
+\textbf{authentication system} first. Summarizing, the most important implemented components are:
 \begin{enumerate}
 \item
-An \textbf{authentication system}, which consisted in:
-\begin{enumerate}
+The \textbf{\texttt{PLAYER\_EXISTS}} and \textbf{\texttt{DEPLOY\_PLAYER}} request handlers in the \textbf{engine app-server}
 \item
-Implementing the \textbf{\texttt{PLAYER\_EXISTS}} handler in the \textbf{engine app-server}.
+The \textbf{\texttt{/auth}} and \textbf{\texttt{/player}} endpoint in the \textbf{\texttt{API}}
 \item
-Adding of the \textbf{\texttt{/auth}} endpoint to the \textbf{\texttt{API}}.
-\item
-Creating of the \textbf{login form} in the viewer.
-\end{enumerate}
-\item
-The \textbf{\texttt{AI} hot-swapping} feature, which consisted in:
-\begin{enumerate}
-\item
-Implementing the \textbf{\texttt{DEPLOY\_PLAYER}} handler in the \textbf{engine app-server}.
-\item
-Adding of the \textbf{\texttt{/player}} endpoint to the \textbf{\texttt{API}}.
-\item
-Creating of the \textbf{deployment form} in the viewer.
-\end{enumerate}
+The \textbf{login form}, \textbf{player menu}, and \textbf{deployment form} in the \textbf{viewer}.
 \end{enumerate}
 \chapter{The first game world}
 [...]
