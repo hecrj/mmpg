@@ -1,8 +1,47 @@
 chapter "The first game world"
-p "[...]"
+p "Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
+the platform was able to:"
+
+enumerate:
+  item; p "**Notify** game events in **real-time**"
+  item; p "**Replay** the past of the current match"
+  item; p "**Hotswap AIs** during a match"
+
+p "These features alone, fullfilled **2** of the **6** secondary objectives detailed in #autoref{secondary_objectives},
+specifically:"
+
+enumerate:
+  item; p "Allow hot-swapping of AIs (#autoref{hotswap_ais})"
+  item; p "Implement a real-time webviewer (#autoref{real_time_viewer})"
+
+p "Therefore, there were still **four** secondary objectives to fullfill. However, one of these objectives talked about
+**stability and scalability**, features that could only be validated at the end of the project (see #autoref{validation}).
+
+For this reason, it was decided that the next implemented features **aimed to fullfill** the objectives:"
+
+enumerate:
+  item; p "Develop an abstract game engine (#autoref{abstract_engine})"
+  item; p "Create a game example (#autoref{game_example})"
+
+p "These two objectives could be **fullfilled both at the same time** by **creating a game example without adding any game-specific
+code in the engine**. Thus, the next step was decided."
 
 section "Choosing a game: Space Wars"
-p "[...]"
+p "First, it was necessary to choose the game to implement. The best candidates were games with **simple rules**, but that
+also seemed **easy to extend**. Hence, development could start with the implementation of the original game rules while
+new ideas to **increase the game size** and make it **massive** could be added later.
+
+At the end, it was chosen to implement a game inspired by **Galcon** #cite{galcon}, which also inspired
+**Planet Wars** #cite{planet_wars}. **Planet Wars** was a game used in the **AI programming challenge**
+(see #autoref{state_of_the_art}) sponsored by **Google** during 2010. The game rules were simple:"
+
+enumerate:
+  item; p "The game world consists in a system with a determined number of planets."
+  item; p "Every player owns one planet before the match starts."
+  item; p "During the match, every owned planet generates space ships in a rate that is proportional to the radius of the planet."
+  item; p "Ships can be sent from planet to planet."
+  item; p "A player can conquer other planets by sending a greater number of ships than the planet holds."
+  item; p "The objective of the match is to destroy other players and/or conquer the major number of planets."
 
 section "Generating a planetary system procedurally"
 p "[...]"

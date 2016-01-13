@@ -59,7 +59,7 @@ implement its own **credentials validator** and customize the authentication sys
 Finally, a **credentials validator** for the **Jutge.org** platform was developed using an endpoint provided by the project
 director. Thus, to authenticate properly it was necessary to provide a valid **e-mail** and **password** of **Jutge.org**."
 
-section "Logging in players from the viewer"
+section "Logging in players"
 p "Once the **authentication system** was implemented, the **client** library was updated to add support to the new **|/auth|**
 endpoint. Also, a **login form** was designed in the **viewer** to allow players to **login**. #autoref{login_form}
 shows how this **login form** looks."

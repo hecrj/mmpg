@@ -1,6 +1,7 @@
 chapter "Analysis"
 
 section "State of the art"
+label :state_of_the_art
 
 p "There are many platforms that offer **AI** programming challenges. Some examples are:"
 

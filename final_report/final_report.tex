@@ -130,6 +130,7 @@ It describes the \textbf{validation methodology}, it reviews the \textbf{time ma
 \part{Formulation}
 \chapter{Analysis}
 \section{State of the art}
+\label{state_of_the_art}
 There are many platforms that offer \textbf{\texttt{AI}} programming challenges. Some examples are:
 \begin{description}
 \item[Google's \texttt{AI} programming challenge \cite{google_ai}]
@@ -178,18 +179,27 @@ stop or pause the game, and obtain the final scores of every player.
 \section{Main objective}
 Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.
 \section{Secondary objectives}
+\label{secondary_objectives}
 \subsection{Develop an abstract game engine}
+\label{abstract_engine}
 Any experienced programmer must be able to create new games for the platform easily.
 \subsection{Allow hot-swapping of AIs}
+\label{hotswap_ais}
 Players must be able to change the code of their current AIs in the middle of a match.
 \subsection{Implement a real-time webviewer}
+\label{real_time_viewer}
 Players must be able to watch in real-time how the game unfolds in a web browser.
 \subsection{Create a control panel}
+\label{control_panel_obj}
 Administrators must be able to play, pause and stop the game and also see a ranking of the current match.
 \subsection{Make the infrastructure scalable and stable}
+\label{it_scalable_stable}
 The underlying infrastructure must be able to handle huge worlds and a large number of \texttt{}AI\texttt{}s without
 hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
 or affect the platform negatively.
+\subsection{Create a game example}
+\label{game_example}
+A multiplayer programming game will be created to test and show that the platform works correctly.
 \clearpage
 \chapter{Design}
 \label{design}
@@ -1021,7 +1031,7 @@ implement its own \textbf{credentials validator} and customize the authenticatio
 
 Finally, a \textbf{credentials validator} for the \textbf{Jutge.org} platform was developed using an endpoint provided by the project
 director. Thus, to authenticate properly it was necessary to provide a valid \textbf{e-mail} and \textbf{password} of \textbf{Jutge.org}.
-\section{Logging in players from the viewer}
+\section{Logging in players}
 Once the \textbf{authentication system} was implemented, the \textbf{client} library was updated to add support to the new \textbf{\texttt{/auth}}
 endpoint. Also, a \textbf{login form} was designed in the \textbf{viewer} to allow players to \textbf{login}. \autoref{login_form}
 shows how this \textbf{login form} looks.
@@ -1111,9 +1121,58 @@ The \textbf{\texttt{/auth}} and \textbf{\texttt{/player}} endpoint in the \textb
 The \textbf{login form}, \textbf{player menu}, and \textbf{deployment form} in the \textbf{viewer}.
 \end{enumerate}
 \chapter{The first game world}
-[...]
+Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
+the platform was able to:
+\begin{enumerate}
+\item
+\textbf{Notify} game events in \textbf{real-time}
+\item
+\textbf{Replay} the past of the current match
+\item
+\textbf{Hotswap AIs} during a match
+\end{enumerate}
+These features alone, fullfilled \textbf{2} of the \textbf{6} secondary objectives detailed in \autoref{secondary_objectives},
+specifically:
+\begin{enumerate}
+\item
+Allow hot-swapping of AIs (\autoref{hotswap_ais})
+\item
+Implement a real-time webviewer (\autoref{real_time_viewer})
+\end{enumerate}
+Therefore, there were still \textbf{four} secondary objectives to fullfill. However, one of these objectives talked about
+\textbf{stability and scalability}, features that could only be validated at the end of the project (see \autoref{validation}).
+
+For this reason, it was decided that the next implemented features \textbf{aimed to fullfill} the objectives:
+\begin{enumerate}
+\item
+Develop an abstract game engine (\autoref{abstract_engine})
+\item
+Create a game example (\autoref{game_example})
+\end{enumerate}
+These two objectives could be \textbf{fullfilled both at the same time} by \textbf{creating a game example without adding any game-specific
+code in the engine}. Thus, the next step was decided.
 \section{Choosing a game: Space Wars}
-[...]
+First, it was necessary to choose the game to implement. The best candidates were games with \textbf{simple rules}, but that
+also seemed \textbf{easy to extend}. Hence, development could start with the implementation of the original game rules while
+new ideas to \textbf{increase the game size} and make it \textbf{massive} could be added later.
+
+At the end, it was chosen to implement a game inspired by \textbf{Galcon} \cite{galcon}, which also inspired
+\textbf{Planet Wars} \cite{planet_wars}. \textbf{Planet Wars} was a game used in the \textbf{\texttt{AI} programming challenge}
+(see \autoref{state_of_the_art}) sponsored by \textbf{Google} during 2010. The game rules were simple:
+\begin{enumerate}
+\item
+The game world consists of a determined number of planets.
+\item
+Every player owns one planet before the match starts.
+\item
+During the match, every owned planet generates space ships in a rate that is proportional to the radius of the planet.
+\item
+Ships can be sent from planet to planet.
+\item
+A player can conquer other planets by sending a greater number of ships than the planet holds.
+\item
+The objective of the match is to destroy other players and/or conquer the major number of planets.
+\end{enumerate}
 \section{Generating a planetary system procedurally}
 [...]
 \section{Rendering the planetary system}
