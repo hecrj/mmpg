@@ -924,7 +924,7 @@ Finally, the \textbf{client} library was updated to enable \textbf{log requests}
 \section{Compressing log files}
 \textbf{Log files} had a repetitive structure, given that multiple events of the same type were stored in it. Hence, they were
 really \textbf{compressible}. Moreover, \textbf{log files} were directly delivered to web-browsers through the \textbf{\texttt{API}}, and most modern
-web-browsers are able to decompress \textbf{gzip} natively. For this reason, \textbf{log files} were compressed using \textbf{gzip},
+web-browsers are able to decompress \textbf{\texttt{gzip}} natively. For this reason, \textbf{log files} were compressed using \textbf{\texttt{gzip}},
 \textbf{reducing both disk and bandwidth usage}.
 \section{Controlling time}
 Finally, a \textbf{widget} was created in the \textbf{viewer} to control the \textbf{game time}. This widget allowed to \textbf{start}, \textbf{pause},
@@ -949,18 +949,162 @@ Creating an \textbf{app-server} in the \textbf{engine} to handle \textbf{log req
 \item
 Creating a \textbf{\texttt{/log}} endpoint in the \textbf{\texttt{API}} to allow \textbf{clients} to request log files.
 \item
-\textbf{Compressing} log files using \textbf{gzip}.
+\textbf{Compressing} log files using \textbf{\texttt{gzip}}.
 \item
 Developing a \textbf{game time widget} in the \textbf{viewer} to control \textbf{game time}.
 \end{enumerate}
-\chapter{Authentication}
-[...]
-\section{Wiring the API with Jutge.org}
-[...]
+\chapter{Deployment of AI}
+The next most basic feature that the platform needed to support was the \textbf{hot-swapping of \texttt{AI}}s. Players needed to be
+able to change their \textbf{\texttt{AI}}s during a match.
+
+However, it was also necessary to provide some security, so players could not change the \textbf{\texttt{AI}}s of other players. Hence,
+a method to \textbf{authenticate players} was needed.
+
+This chapter details the implementation of the authentication system and the deployment system.
+\section{Recognizing players}
+The first step consisted in making the \textbf{engine} acknowledge the different players by some identifier. When the \textbf{engine}
+was booted up, it read a file containing a list of \textbf{user identifiers}. Then, each one of these identifiers was internally
+linked with a match player.
+
+Afterwards, a new type of request handler was added to the \textbf{app-server} developed in the previous chapter: \textbf{\texttt{PLAYER\_EXISTS}}.
+This request consisted of the \texttt{PLAYER\_EXISTS} keyword followed by a space, and then a user identifier. For example:
+\begin{verbatim}
+PLAYER_EXISTS hector.ramon@est.fib.upc.edu
+\end{verbatim}
+In this example, the user identifier is an e-mail. But it is important to note that the engine was not limited to e-mails,
+it was able to work with \textbf{any type of string}.
+
+When the \textbf{engine} received a \textbf{\texttt{PLAYER\_EXISTS}} request, it checked if the given identifier was linked to some player in
+the current match and replied \textbf{\texttt{YES}} or \textbf{\texttt{NO}} accordingly.
+\section{Authenticating players}
+The authentication system was implemented in the \textbf{\texttt{API}} component. Mainly because authentication solved an environment
+limitation of the component that exposed the \textbf{engine}: the \textbf{\texttt{API}}. Hence, the \textbf{engine} did not need to know how to authenticate
+users, the \textbf{\texttt{API}} did.
+
+A new endpoint \textbf{\texttt{/auth}} was created in the \textbf{\texttt{API}}. This endpoint accepted two types of requests:
+\begin{description}
+\item[\texttt{POST}]
+It \textbf{validated player credentials}:
+\begin{enumerate}
+\item
+Accepted an \textbf{identifier} and a \textbf{password}.
+\item
+Checked whether the \textbf{identifier} and the \textbf{password} were valid using a \textbf{credentials validator}.
+\item
+Returned a \texttt{403 Forbidden} error if the credentials were not valid.
+\item
+Checked if the player existed in the \textbf{engine} using the \textbf{\texttt{PLAYER\_EXISTS}} request.
+\item
+Returned a \texttt{403 Forbidden} error if the player did not exist.
+\item
+Returned a \textbf{digitally-signed authentication token} for the given \textbf{identifier}.
+\end{enumerate}
+\item[\texttt{GET}]
+It \textbf{renewed authentication token}s
+\begin{enumerate}
+\item
+Accepted an \textbf{authentication token}.
+\item
+Checked if the \textbf{authentication token} was valid.
+\item
+Returned a \texttt{400 Bad Request} error if the \textbf{authentication token} was not valid.
+\item
+Returned a new \textbf{authentication token}.
+\end{enumerate}
+\end{description}
+The \textbf{authentication tokens} were implemented using \textbf{\texttt{JSON WebTokens}} \cite{jwt}. This tokens have an expìration date,
+hence the necessity to \textbf{renew} them.
+
+A \textbf{credentials validator} is a simple \texttt{Go} function that tells whether the given \textbf{identifier} and
+\textbf{password} are valid or not. A \textbf{credential validator} can be injected in the \textbf{\texttt{API}} easily. Hence, anyone can
+implement its own \textbf{credentials validator} and customize the authentication system.
+
+Finally, a \textbf{credentials validator} for the \textbf{Jutge.org} platform was developed using an endpoint provided by the project
+director. Thus, to authenticate properly it was necessary to provide a valid \textbf{e-mail} and \textbf{password} of \textbf{Jutge.org}.
 \section{Logging in players from the viewer}
-[...]
+Once the \textbf{authentication system} was implemented, the \textbf{client} library was updated to add support to the new \textbf{\texttt{/auth}}
+endpoint. Also, a \textbf{login form} was designed in the \textbf{viewer} to allow players to \textbf{login}. \autoref{login_form}
+shows how this \textbf{login form} looks.
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{250pt}{
+\includegraphics{images/login_ok.png}
+}
+\noindent\resizebox{!}{250pt}{
+\includegraphics{images/login_error.png}
+}
+}
+\caption{Login form. Valid (left). Invalid (right)}
+\label{login_form}
+\end{figure}
+When a \textbf{login succeeded} the returned \textbf{authentication token} was saved in the \textbf{local storage} of the browser and renewed
+when the \textbf{viewer} was reaccessed, or every \textbf{30 minutes} if it was kept open.
+\section{Deploying new AIs}
+Once, players were able to login, the deployment of new \textbf{\texttt{AI}}s could be implemented.
+
+Firstly, a new request handler in the \textbf{app-server} was needed: \textbf{\texttt{DEPLOY\_PLAYER}}. This type of request had two
+parameters: the \textbf{player identifier} and the \textbf{code of the new \texttt{AI} encoded in \texttt{base64}}. After receiving a \textbf{\texttt{DEPLOY\_PLAYER}}
+request, the \textbf{engine} tried to \textbf{compile} the \textbf{code}, assigned the new executable to the player with the given \textbf{identifier},
+and \textbf{restarted} its \textbf{player process}. In case the compilation failed, then the compilation error was returned.
+
+Secondly, a new \textbf{\texttt{API}} endpoint \textbf{\texttt{/player}} was implemented to expose the new \textbf{engine} functionality and
+allow \textbf{authenticated players} to change their \textbf{\texttt{AI}}s. This endpoint was pretty simple:
+\begin{enumerate}
+\item
+Accepted an \textbf{authentication token} and an \textbf{uploaded file}.
+\item
+Checked whether the \textbf{authentication token} was valid or not.
+\item
+Returned a \textbf{\texttt{401 Unauthorized}} error if the \textbf{authentication token} was invalid.
+\item
+Encoded the \textbf{uploaded file} in \textbf{\texttt{base64}}.
+\item
+Issued a \texttt{DEPLOY\_PLAYER} request to the engine using the \textbf{identifier} in the \textbf{authentication token} and the
+  \textbf{encoded file} as parameters.
+\item
+Returned a descriptive error if the deploymet failed.
+\item
+Returned a \textbf{\texttt{200 OK}} response.
+\end{enumerate}
+As it is been shown multiple times now. There is an \textbf{\texttt{API}} endpoint for almost every request that the \textbf{engine app-server}
+can handle. Hence, the \textbf{\texttt{API}} exposes the \textbf{engine} with a layer of \textbf{control} on top of it.
+
+Finally, the \textbf{client} was updated to support the new endpoint and a \textbf{deployment form} was created in the \textbf{viewer}.
+This form was designed having in mind that \textbf{the deployment process should be fun}, so players feel encouraged to
+\textbf{improve its code}. \autoref{deploy_error} shows how the \textbf{deployment form} looks.
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{210pt}{
+\includegraphics{images/deploy_error.png}
+}
+}
+\caption{Player deployment with a compilation error}
+\label{deploy_error}
+\end{figure}
 \section{Summary}
-[...]
+Summarizing, this capter detailed the implementation of:
+\begin{enumerate}
+\item
+An \textbf{authentication system}, which consisted in:
+\begin{enumerate}
+\item
+Implementing the \textbf{\texttt{PLAYER\_EXISTS}} handler in the \textbf{engine app-server}.
+\item
+Adding of the \textbf{\texttt{/auth}} endpoint to the \textbf{\texttt{API}}.
+\item
+Creating of the \textbf{login form} in the viewer.
+\end{enumerate}
+\item
+The \textbf{\texttt{AI} hot-swapping} feature, which consisted in:
+\begin{enumerate}
+\item
+Implementing the \textbf{\texttt{DEPLOY\_PLAYER}} handler in the \textbf{engine app-server}.
+\item
+Adding of the \textbf{\texttt{/player}} endpoint to the \textbf{\texttt{API}}.
+\item
+Creating of the \textbf{deployment form} in the viewer.
+\end{enumerate}
+\end{enumerate}
 \chapter{The first game world}
 [...]
 \section{Choosing a game: Space Wars}

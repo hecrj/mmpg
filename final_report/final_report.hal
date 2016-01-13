@@ -29,7 +29,8 @@ usetikzlibrary "arrows,positioning"
 
 include :style
 
-typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js", "Javascript"
+typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js",
+  "Javascript", "gzip", "POST", "GET", "base64"
 
 document:
   cover title    => "Platform for massive multiplayer programming games",
