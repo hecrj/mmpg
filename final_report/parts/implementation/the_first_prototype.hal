@@ -1,4 +1,5 @@
 chapter "The first prototype"
+label :first_prototype
 
 p "The first step of the implementation process was to build a simple prototype of the platform.
 

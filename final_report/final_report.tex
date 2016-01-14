@@ -686,6 +686,7 @@ a fully working prototype of the platform that can be shown to anyone. Thus, the
 transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
 the prototype was available to the director of the project to assess and follow any progress closely.
 \chapter{The first prototype}
+\label{first_prototype}
 The first step of the implementation process was to build a simple prototype of the platform.
 
 This first prototype must implement the most basic feature of the platform and it also has to lay the foundations for extending
@@ -848,7 +849,7 @@ There are many providers that present cloud-hosting solutions\footnote{AWS \cite
 At the end, \textbf{Linode} \cite{linode} was the provider chosen, as the project developer already had experience with it and
 the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the \textbf{integration server}.
 
-A \textbf{Linode 1GB}\footnote{https://www.linode.com/pricing} running \texttt{Ubuntu} was booted up to execute an
+A \textbf{Linode 1GB} \cite{linode} running \texttt{Ubuntu} was booted up to execute an
 instance of the platform.
 \section{The integration service}
 The next step consisted in setting up an \textbf{integration service}.
@@ -857,7 +858,7 @@ Integration services keep track of some code repositories and can be configured 
 happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
 
 As it happened with cloud-hosting providers, there are many different \textbf{integration
-services}\footnote{TravisCI \cite{travis}, CircleCI \cite{circle}, etc.}. Fortunately, most of them
+services}\footnote{TravisCI \cite{travisci}, CircleCI \cite{circleci}, etc.}. Fortunately, most of them
 are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
 \textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
 also happened with the cloud-hosting provider.
@@ -981,6 +982,7 @@ Creating a \textbf{\texttt{/log}} endpoint in the \textbf{\texttt{API}} to allow
 Developing a \textbf{game time widget} in the \textbf{viewer} to control \textbf{game time}.
 \end{enumerate}
 \chapter{Deployment of AI}
+\label{deployment_ai}
 The next most basic feature that the platform needed to support was the \textbf{hot-swapping of \texttt{AI}}s. Players needed to be
 able to change their \textbf{\texttt{AI}}s during a match.
 
@@ -1206,6 +1208,7 @@ The objective of the match is to destroy other players and/or conquer the major 
 \section{Summary}
 [...]
 \chapter{A whole galaxy}
+\label{whole_galaxy}
 [...]
 \section{Generating multiple planetary systems}
 [...]
@@ -1234,19 +1237,64 @@ have been fullfiled after the \textbf{implementation process}. Then, after that 
 \textbf{the solution obtained fullfills the main objective}.
 \section{Secondary objectives}
 \subsection{Develop an abstract game engine}
-...
+During the entire implementation process, one of the main concerns has been to avoid adding any game-specific code
+in the \textbf{engine} component.
+
+Moreover, the \textbf{engine architecture} is entirely decoupled from any game built on
+top of it.
+
+Furthermore, the \textbf{engine} provides an abstraction that games can override to customize certain aspects:
+like \textbf{world generation}, \textbf{game-loop timestep}, etc.
 \subsection{Allow hot-swapping of AIs}
-...
+This \textbf{\texttt{AI} hot-swapping} feature was implemented in \autoref{deployment_ai}. Also, it has been tested constantly
+thanks to the \textbf{implementation methodology} described in \autoref{methodology}.
 \subsection{Implement a real-time webviewer}
-...
+The \textbf{engine} was able to notify game events in real-time since the first prototype implemented in
+\autoref{first_prototype}.
 \subsection{Create a control panel}
-...
+The \textbf{control panel} was the last feature implemented, in \autoref{control_panel}.
+
+However, it might be too simplistic, as it only allows to \textbf{play and pause} the match.
+Hence, more features will probably be needed before using it in a production environment, like
+monitoring of players in real-time, banning players, etc. These features should be easy to implement by
+extending the \textbf{engine}, the \textbf{\texttt{API}} and the \textbf{client}.
 \subsection{Make the infrastructure scalable and stable}
-...
+First, the platform was designed with scalability in mind:
+\begin{enumerate}
+\item
+The \textbf{engine} and the \textbf{\texttt{API}} can work from different machines.
+\item
+Multiple \textbf{engine workers} can be used to distribute \textbf{\texttt{AI} calculations} in different machines.
+\item
+\textbf{Viewers} can be statically served by a simple service like \textbf{\texttt{Apache}} \cite{apache} or \textbf{\texttt{nginx}} \cite{nginx}.
+\end{enumerate}
+
+On the other hand, \textbf{stability} has ben assessed through \textbf{continuous integration} described in the \textbf{implementation
+methodology} in \autoref{methodology}. The platform has been working \textbf{24/7} since the first prototype was deployed, \textbf{without
+a single crash} and \textbf{without any anomaly}.
+
+\autoref{mmpg_cpu} and \autoref{mmpg_io} show the \textbf{CPU usage} and \textbf{disk IO} in a period of 30 days in
+the \textbf{integration server}, respectively. An increase in CPU usage and disk IO
+can be observed when \textbf{a whole galaxy} was generated but it was fixed later, as it is described in \autoref{whole_galaxy}.
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/mmpg_cpu.png}
+}
+\caption{CPU usage of the platform in a 30 day period}
+\label{mmpg_cpu}
+\end{figure}
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/mmpg_io.png}
+}
+\caption{Disk IO of the platform in a 30 day period}
+\label{mmpg_io}
+\end{figure}
 \section{Main objective}
 [...]
 \chapter{Time management}
 \section{Time table}
+[...]
 \begin{figure}[H]
 \begin{center}
 \noindent\resizebox{!}{16em}{
@@ -1317,8 +1365,8 @@ Oral presentation & 10\\
 \caption{Time table}
 \label{time_table}
 \end{figure}
-[...]
 \section{Timeline}
+[...]
 \begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{300pt}{!}{
@@ -1364,7 +1412,7 @@ Oral presentation & 10\\
 }
 }
 \caption{Final timeline}
-\label{gantt_current}
+\label{final_timeline}
 \end{figure}
 \section{Dedication}
 \autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.

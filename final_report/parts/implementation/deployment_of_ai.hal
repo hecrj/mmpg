@@ -1,4 +1,5 @@
 chapter "Deployment of AI"
+label :deployment_ai
 
 p "The next most basic feature that the platform needed to support was the **hot-swapping of AI**s. Players needed to be
 able to change their **AI**s during a match.

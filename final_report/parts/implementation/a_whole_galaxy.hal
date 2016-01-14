@@ -1,4 +1,6 @@
 chapter "A whole galaxy"
+label :whole_galaxy
+
 p "[...]"
 
 section "Generating multiple planetary systems"

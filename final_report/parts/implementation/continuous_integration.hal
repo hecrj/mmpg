@@ -14,7 +14,7 @@ There are many providers that present cloud-hosting solutions#footnote{AWS #cite
 At the end, **Linode** #cite{linode} was the provider chosen, as the project developer already had experience with it and
 the cheapest solution#footnote{This cost was covered with the contingency budget.} was enough to run the **integration server**.
 
-A **Linode 1GB**#footnote{https://www.linode.com/pricing} running |Ubuntu| was booted up to execute an
+A **Linode 1GB** #cite{linode} running |Ubuntu| was booted up to execute an
 instance of the platform."
 
 
@@ -25,7 +25,7 @@ Integration services keep track of some code repositories and can be configured 
 happens**. Additionally, most of them can be configured to **deploy changes when a build succeeds**.
 
 As it happened with cloud-hosting providers, there are many different **integration
-services**#footnote{TravisCI #cite{travis}, CircleCI #cite{circle}, etc.}. Fortunately, most of them
+services**#footnote{TravisCI #cite{travisci}, CircleCI #cite{circleci}, etc.}. Fortunately, most of them
 are **free** to use for open-source projects, like this one. At the end, **Semaphore** #cite{semaphoreci} was the chosen
 **integration service**. This decision was based in the experience the project developer had with the service, as it
 also happened with the cloud-hosting provider."
