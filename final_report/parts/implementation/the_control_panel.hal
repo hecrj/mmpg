@@ -1,0 +1,13 @@
+chapter "The control panel"
+label :control_panel
+
+p "[...]"
+
+section "Recognizing administrators"
+p "[...]"
+
+section "Assuming control"
+p "[...]"
+
+section "Summary"
+p "[...]"

@@ -31,9 +31,10 @@ class Kernel:
   def bold text:
     "\\textbf{%s}" % text
 
-  def total value, columns => 2:
+  def total *values, columns => 2:
     multicolumn columns - 1, "l |", bold("Total")
-    write " & ", value.decimals, "\n"
+    values.each{ value -> write " & ", value.decimals }
+    write "\n"
 
   def resizebox width => "!", height => "!":
     print "\\noindent\\resizebox{%s}{%s}{" % [width, height]

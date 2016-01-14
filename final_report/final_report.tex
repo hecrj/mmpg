@@ -129,6 +129,24 @@ It describes the \textbf{validation methodology}, it reviews the \textbf{time ma
 \end{description}
 \part{Formulation}
 \chapter{Analysis}
+This chapter \textbf{details the problem} that this project aims to solve and it decides whether there is some \textbf{existing
+solution} that may apply to solve this problem.
+\section{The requirement}
+\label{requirement}
+The director of this project is one of the founders of the \textbf{Jutge.org} platform. Also, he is deeply involved in the \texttt{AI}
+programming challenge organized in the \texttt{EDA} subject in the \textbf{Barcelona School of Informatics}.
+
+Currently, the contest strategy is based in a \textbf{round} system. All the students play at least one match per round. Players
+that lose a match play against other losers. At the end, the player that loses the last match is eliminated from the contest.
+
+Clearly, this strategy has one main drawback: eliminated students stop playing. Hence, their learning process halts completely.
+This could be solved using a simple \textbf{score} system, but it would still be patching the main issue: the
+programming games used \textbf{do not support a huge amount of players natively}.
+
+The aim of this project is to provide an easy way to develop multiplayer programming games featuring \textbf{huge worlds},
+\textbf{long matches} and a \textbf{massive amount of players in real-time}. This will make players feel attached to the match,
+programs will need to \textbf{adapt} constantly as they play with \textbf{everyone at the same time}. As a consequence, this project will
+finally allow to improve the strategy used in the \texttt{EDA} progamming challenge.
 \section{State of the art}
 \label{state_of_the_art}
 There are many platforms that offer \textbf{\texttt{AI}} programming challenges. Some examples are:
@@ -149,33 +167,28 @@ An \texttt{AI} programming challenge is held every semester in the \textbf{Barce
 However, all of this platforms feature multiplayer programming games with \textbf{short matches} played by a
 \textbf{small number of players}. As a consequence, multiple matches with different players are necessary to decide who wrote
 the best \textbf{\texttt{AI}}.
-\section{The requirement}
-The director of this project is one of the founders of the \textbf{Jutge.org} platform. Also, he is deeply involved in the \texttt{AI}
-programming challenge organized in the \texttt{EDA} subject in the \textbf{Barcelona School of Informatics}.
 
-Currently, the contest strategy is based in a \textbf{round} system. All the students play at least one match per round. Players
-that lose a match play against other losers. At the end, the player that loses the last match is eliminated from the contest.
-
-Clearly, this strategy has one main drawback: eliminated students stop playing. Hence, their learning process halts completely.
-This could be solved using a simple \textbf{score} system, but it would still be patching the main issue: the
-programming games used \textbf{do not support a huge amount of players natively}.
-
-The aim of this project is to provide an easy way to develop multiplayer programming games featuring \textbf{huge worlds},
-\textbf{long matches} and a \textbf{massive amount of players in real-time}. This will make players feel attached to the match,
-programs will need to \textbf{adapt} constantly as they play with \textbf{everyone at the same time}. As a consequence, this project will
-finally allow to improve the strategy used in the \texttt{EDA} progamming challenge.
-\section{Stakeholders}
-\subsection{Game programmers}
-Game programmers want to build \textbf{\texttt{MMPG}}s easily. They want to focus on programming the game logic and the
-game viewer, without worrying about internal aspects of the platform.
-\subsection{Players}
-Players will \textbf{develop \texttt{}AI\texttt{}s} for a concrete game and upload them to the web platform at any time during the game match.
-Also, they want to \textbf{watch the match unfold in real-time}.
-\subsection{Administrators}
-Administrators want to \textbf{control} the game. They want to supervise, start,
-stop or pause the game, and obtain the final scores of every player.
+Given that there is no \textbf{pre-made solution} that fits the project's requirement, a \textbf{new brand solution is necessary}.
 \clearpage
 \chapter{Specification}
+\label{specification}
+This chapter specifies the different \textbf{stakeholders} of the platform and the different objectives that the project must
+fullfill in order to satisfy the requirement stated in the previous chapter.
+\section{Stakeholders}
+Given the \textbf{requirement} described in \autoref{requirement}, the different users that will use the platform are considered:
+\begin{description}
+\item[Game programmers]
+They want to create \textbf{\texttt{MMPG}}s easily. They want to focus on programming the game logic and the
+  game viewer, without worrying about internal aspects of the platform.
+\item[Players]
+They will \textbf{develop \texttt{}AI\texttt{}s} for a concrete game and upload them to the web platform at any time during
+  the game match.
+\item[Viewers]
+They want to \textbf{watch the match unfold in real-time}.
+\item[Administrators]
+They want to \textbf{control} the game. They want to supervise, start, stop or pause the game, and obtain
+  the final scores of every player.
+\end{description}
 \section{Main objective}
 Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.
 \section{Secondary objectives}
@@ -252,8 +265,7 @@ the project will take approximately \textbf{4 months} to be completed.
 \section{Tasks}
 This section details the different tasks and subtasks that need to be completed in order
 to finish the project successfully. Every task is provided with a \textbf{description}, an \textbf{expected duration},
-\textbf{possible complications} and \textbf{task dependencies}. A \textbf{time table} and a \textbf{Gantt diagram}
-can be found in \autoref{planning_time_table} and \autoref{planning_timeline}, respectively.
+\textbf{possible complications} and \textbf{task dependencies}.
 \subsection{Project management course}
 The project management course aims to help lead the project in the right direction. In this task,
 different parts of the project are defined: \textbf{context and scope}, \textbf{temporal planning}, and
@@ -369,7 +381,11 @@ Executing live examples is risky, it might be useful to have a fallback strategy
 \item[Task dependencies]
 Project memory.
 \end{description}
+\clearpage
 \section{Time table}
+\autoref{planning_time_table} summarizes the duration of every task described in the previous section.
+The total duration of the project is expected to be \textbf{460 hours}. The student will need to work
+$\frac{460 \: hour}{16 \: week} \simeq 29 \: hour/week$ to finish the project before the deadline, which seems reasonable.
 \begin{figure}[H]
 \begin{center}
 \begin{tabular}{l | l}
@@ -438,10 +454,9 @@ Oral presentation & 10\\
 \caption{Planning time table}
 \label{planning_time_table}
 \end{figure}
-The total duration of the project is \textbf{460 hours}. The student will need to work
-$\frac{460 \: hour}{16 \: week} \simeq 29 \: hour/week$ to finish the project before the deadline,
-which seems reasonable.
 \section{Timeline}
+\autoref{planning_timeline} shows the expected timeline of the project, taking into consideration
+task dependencies.
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
 \begin{ganttchart}[hgrid, vgrid]{1}{25}
@@ -514,7 +529,18 @@ Keyboard Corsair K70 RGB & 170.00 & 4 & 2.23\\
 \label{Hardware budget}
 \end{table}
 \section{Software resources}
-All the software needed to develop the project can be used for free.
+
+The software to develop the project is: Ubuntu, Sublime Text, a web-browser, \texttt{CLion}, \LaTeX{}, \texttt{Makefile}, \texttt{git}, \texttt{evince},
+    \href{https://github.com/hecrj/hal/raw/master/doc/full/report.pdf}{\texttt{HAL}}, \texttt{}C\texttt{++}, \texttt{Go},
+    \texttt{}Javascript\texttt{}, \texttt{Coffeescript}, and \texttt{WebGL}.
+
+However, all that software can be used for free. \autoref{Software licenses} shows the licenses of most of the software needed.
+
+Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evince} is included in Ubuntu.
+Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
+\texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
+\texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
+Therefore, \textbf{there are no software costs}.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | l}
@@ -532,54 +558,45 @@ Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
 \caption{Software licenses}
 \label{Software licenses}
 \end{table}
-Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evince} is included in Ubuntu.
-Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
-\texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
-\texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
-Therefore, \textbf{there are no software costs}.
 \section{Human resources}
-\autoref{Tasks per role} shows the tasks assigned to each project role. \autoref{Human resources budget} shows the
+\autoref{Salary per role} the expected salary per project role. \autoref{Human resources budget} shows the
 expected cost of the human resources according to project roles and their respective tasks.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | l | S}
-\textbf{Role} & \textbf{Task} & \textbf{Time (h)}\\
+\begin{tabular}{l | S}
+\textbf{Role} & \textbf{Payment (\EURtm / h)}\\
 \hline
-\multirow{3}{*}{Project manager}
- & Project management course & 75\\
- & Project memory & 40\\
- & Oral presentation & 10\\
-\hline
-\multirow{1}{*}{Software engineer}
- & Analysis and design & 10\\
-\hline
-\multirow{6}{*}{Software developer}
- & Engine & 70\\
- & API & 50\\
- & Client & 30\\
- & Control panel & 35\\
- & Game example & 100\\
- & Testing and polishing & 40\\
-\hline
-\hline
-\multicolumn{2}{l |}{\textbf{Total}}
- & 460.00
+Project manager & 35.00\\
+Software engineer & 40.00\\
+Software developer & 30.00\\
 \end{tabular}
-\caption{Tasks per role}
-\label{Tasks per role}
+\caption{Salary per role}
+\label{Salary per role}
 \end{table}
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S | S}
-\textbf{Role} & \textbf{Payment (\EURtm / h)} & \textbf{Time (h)} & \textbf{Total (\EURtm)}\\
+\begin{tabular}{l | l | S | S}
+\textbf{Role} & \textbf{Task} & \textbf{Time (h)} & \textbf{Cost (\EURtm)}\\
 \hline
-Project manager & 35.00 & 125 & 4375.00\\
-Software engineer & 40.00 & 10 & 400.00\\
-Software developer & 30.00 & 325 & 9750.00\\
+\multirow{3}{*}{Project manager}
+ & Project management course & 75 & 2625.00\\
+ & Project memory & 40 & 1400.00\\
+ & Oral presentation & 10 & 350.00\\
+\hline
+\multirow{1}{*}{Software engineer}
+ & Analysis and design & 10 & 400.00\\
+\hline
+\multirow{6}{*}{Software developer}
+ & Engine & 70 & 2100.00\\
+ & API & 50 & 1500.00\\
+ & Client & 30 & 900.00\\
+ & Control panel & 35 & 1050.00\\
+ & Game example & 100 & 3000.00\\
+ & Testing and polishing & 40 & 1200.00\\
 \hline
 \hline
-\multicolumn{3}{l |}{\textbf{Total}}
- & 14525.00
+\multicolumn{2}{l |}{\textbf{Total}}
+ & 460.00 & 14525.00
 \end{tabular}
 \caption{Human resources budget}
 \label{Human resources budget}
@@ -1161,7 +1178,7 @@ At the end, it was chosen to implement a game inspired by \textbf{Galcon} \cite{
 (see \autoref{state_of_the_art}) sponsored by \textbf{Google} during 2010. The game rules were simple:
 \begin{enumerate}
 \item
-The game world consists of a determined number of planets.
+The game world consists in a system with a determined number of planets.
 \item
 Every player owns one planet before the match starts.
 \item
@@ -1173,6 +1190,7 @@ A player can conquer other planets by sending a greater number of ships than the
 \item
 The objective of the match is to destroy other players and/or conquer the major number of planets.
 \end{enumerate}
+[...]
 \section{Generating a planetary system procedurally}
 [...]
 \section{Rendering the planetary system}
@@ -1199,12 +1217,33 @@ The objective of the match is to destroy other players and/or conquer the major 
 [...]
 \section{Summary}
 [...]
+\chapter{The control panel}
+\label{control_panel}
+[...]
+\section{Recognizing administrators}
+[...]
+\section{Assuming control}
+[...]
+\section{Summary}
+[...]
 \part{Evaluation}
 \chapter{Validation}
 \label{validation}
-\section{Continuous integration}
-[...]
-\section{Testing}
+This chapter studies whether the project's \textbf{secondary objectives} described in \autoref{specification}
+have been fullfiled after the \textbf{implementation process}. Then, after that study, it ponders whether
+\textbf{the solution obtained fullfills the main objective}.
+\section{Secondary objectives}
+\subsection{Develop an abstract game engine}
+...
+\subsection{Allow hot-swapping of AIs}
+...
+\subsection{Implement a real-time webviewer}
+...
+\subsection{Create a control panel}
+...
+\subsection{Make the infrastructure scalable and stable}
+...
+\section{Main objective}
 [...]
 \chapter{Time management}
 \section{Time table}
@@ -1370,19 +1409,31 @@ As stated in the original planning, all the software needed to develop the proje
 \end{table}
 \section{Human resources}
 \autoref{Human resources cost} shows the final cost of the human resources according
-to the final task durations detailed in \autoref{time_table} and the task per role in \autoref{Tasks per role}.
+to the final task durations detailed in \autoref{time_table} and the salary per role in \autoref{Salary per role}.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S | S}
-\textbf{Role} & \textbf{Payment (\EURtm / h)} & \textbf{Time (h)} & \textbf{Total (\EURtm)}\\
+\begin{tabular}{l | l | S | S}
+\textbf{Role} & \textbf{Task} & \textbf{Time (h)} & \textbf{Cost (\EURtm)}\\
 \hline
-Project manager & 35.00 & 125 & 4375.00\\
-Software engineer & 40.00 & 10 & 400.00\\
-Software developer & 30.00 & 325 & 9750.00\\
+\multirow{3}{*}{Project manager}
+ & Project management course & 75 & 2625.00\\
+ & Project memory & 40 & 1400.00\\
+ & Oral presentation & 10 & 350.00\\
+\hline
+\multirow{1}{*}{Software engineer}
+ & Analysis and design & 10 & 400.00\\
+\hline
+\multirow{6}{*}{Software developer}
+ & Engine & 70 & 2100.00\\
+ & API & 50 & 1500.00\\
+ & Client & 30 & 900.00\\
+ & Control panel & 35 & 1050.00\\
+ & Game example & 100 & 3000.00\\
+ & Testing and polishing & 40 & 1200.00\\
 \hline
 \hline
-\multicolumn{3}{l |}{\textbf{Total}}
- & 14525.00
+\multicolumn{2}{l |}{\textbf{Total}}
+ & 460.00 & 14525.00
 \end{tabular}
 \caption{Human resources cost}
 \label{Human resources cost}
@@ -1431,53 +1482,45 @@ Internet & 7.28\\
 \label{Total cost}
 \end{table}
 \chapter{Sustainability}
-This section contains a sustainability report of the project based on the application of the matrix described by
-Christian Felber in `The economy of the common good' \cite{sustainability_report}. However, only the \textbf{planning}
-stage is considered.
+This section contains a basic sustainability report of the project based on the method described by
+Christian Felber in `The economy of the common good' \cite{sustainability_report}.
 \section{Economic analysis}
-The economical analysis is complete and thorough, all costs are assessed and reasonable.
-Resources are used efficiently, spending more time in the most important tasks. Moreover, the best technologies
-are chosen to produce the best results in the least amount of time possible. A contingency budget has been added
-to take care of any unexpected problems. However, the project is not aimed to be profitable, so there will be
-no direct economic benefit from it.
-\\[0.1cm]
-Overall, the project receives a 7 in economical viability because its efficency but lack of profitability.
+The economical analysis was complete and thorough, all costs are assessed and reasonable.
+Resources were used efficiently, more time was spenth in the most important tasks. Moreover, the best technologies
+were chosen to produce the best results in the least amount of time possible. A contingency budget was added
+to take care of any unexpected problems.
+
+However, the project is not aimed to be profitable, so there will be no direct economic benefit from it.
 \section{Social impact analysis}
 The project is directed to computer science students and teachers, and game progammers. The project
 will be used by students to learn different programming techniques, by teachers to evaluate these students, and
-by game programmers to create new content. Moreover, it will be used in the Data Structures and Algorithms subject
+by game programmers to create new content.
+
+Moreover, it will be used in the Data Structures and Algorithms subject
 at the Barcelona School of Informatics (\textbf{FIB}). The project will make the learning process more fun, it will also
 reduce the amount of work for teachers, and it will make game programmers able to create entertaining games easily.
+
 However, the project will not affect the mainstream consumer directly. It will only be relevant inside a specific
 community in computer science.
-\\[0.1cm]
-The project receives a 6 in social impact because it will be positive for a specific community but it will not
-have a direct impact on the global population.
 \section{Environmental impact analysis}
-The project will use 177kWh of electricity, which is approximately 174kg
-of CO\textsuperscript{2} \cite{co2}. This is the amount of CO\textsuperscript{2} that a car produces by driving only 7
+The project usef 177kWh of electricity, which is approximately 174kg of CO\textsuperscript{2} \cite{co2}.
+This is the amount of CO\textsuperscript{2} that a car produces by driving only 7
 hours\footnote{\url{http://www.yousustain.com/footprint/howmuchco2?co2=174+kg}}. Also, any source of
-information will be accessed digitally over the internet. However, the hardware can not be fully
-recycled and it will, eventually, become electronic waste with a high amount of contaminants.
-\\[0.1cm]
-The project obtains an 8 in environmental impact because its environmental footprint is almost negligible.
-\section{Matrix}
-\autoref{Sustainability matrix} shows the sustainability matrix and the total score obtained in the planning
-stage. The total score obtained is \textbf{21 out of 30}. Therefore, the project is planned to be \textbf{reasonably sustainable}.
-\begin{table}[H]
-\centering
-\begin{tabular}{c | c | c | c | c}
-\textbf{Sustainable?} & \textbf{Economic} & \textbf{Social} & \textbf{Environmental} & \textbf{Total}\\
-\hline
-Planning & 7 & 6 & 8 & \textbf{21}\\
-\end{tabular}
-\caption{Sustainability matrix}
-\label{Sustainability matrix}
-\end{table}
+information was accessed digitally over the internet.
+
+However, the hardware used can not be fully recycled and it will, eventually, become electronic waste
+with a high amount of contaminants.
 \chapter{Legality}
 There are no special laws that apply to this project. The entity using the platform
 is liable for the information inputted in it, as it is specified in the \textbf{code license}.
 \chapter{Conclusion}
+\section{Summary}
+...
+\section{Limitations}
+...
+\section{The future}
+...
+\section{Final thoughts}
 ...
 \bibliographystyle{plain}
 \bibliography{references}

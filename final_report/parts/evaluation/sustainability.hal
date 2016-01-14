@@ -1,43 +1,33 @@
 chapter "Sustainability"
 
-p "This section contains a sustainability report of the project based on the application of the matrix described by
-Christian Felber in `The economy of the common good' #cite{sustainability_report}. However, only the **planning**
-stage is considered."
+p "This section contains a basic sustainability report of the project based on the method described by
+Christian Felber in `The economy of the common good' #cite{sustainability_report}."
 
 section "Economic analysis"
-p "The economical analysis is complete and thorough, all costs are assessed and reasonable.
-Resources are used efficiently, spending more time in the most important tasks. Moreover, the best technologies
-are chosen to produce the best results in the least amount of time possible. A contingency budget has been added
-to take care of any unexpected problems. However, the project is not aimed to be profitable, so there will be
-no direct economic benefit from it."
-br 0.1
-p "Overall, the project receives a 7 in economical viability because its efficency but lack of profitability."
+p "The economical analysis was complete and thorough, all costs are assessed and reasonable.
+Resources were used efficiently, more time was spenth in the most important tasks. Moreover, the best technologies
+were chosen to produce the best results in the least amount of time possible. A contingency budget was added
+to take care of any unexpected problems.
+
+However, the project is not aimed to be profitable, so there will be no direct economic benefit from it."
 
 section "Social impact analysis"
 p "The project is directed to computer science students and teachers, and game progammers. The project
 will be used by students to learn different programming techniques, by teachers to evaluate these students, and
-by game programmers to create new content. Moreover, it will be used in the Data Structures and Algorithms subject
+by game programmers to create new content.
+
+Moreover, it will be used in the Data Structures and Algorithms subject
 at the Barcelona School of Informatics (**FIB**). The project will make the learning process more fun, it will also
 reduce the amount of work for teachers, and it will make game programmers able to create entertaining games easily.
+
 However, the project will not affect the mainstream consumer directly. It will only be relevant inside a specific
 community in computer science."
-br 0.1
-p "The project receives a 6 in social impact because it will be positive for a specific community but it will not
-have a direct impact on the global population."
 
 section "Environmental impact analysis"
-p "The project will use 177kWh of electricity, which is approximately 174kg
-of CO#textsuperscript{2} #cite{co2}. This is the amount of CO#textsuperscript{2} that a car produces by driving only 7
+p "The project usef 177kWh of electricity, which is approximately 174kg of CO#textsuperscript{2} #cite{co2}.
+This is the amount of CO#textsuperscript{2} that a car produces by driving only 7
 hours#footnote{#url{http://www.yousustain.com/footprint/howmuchco2?co2=174+kg}}. Also, any source of
-information will be accessed digitally over the internet. However, the hardware can not be fully
-recycled and it will, eventually, become electronic waste with a high amount of contaminants."
-br 0.1
-p "The project obtains an 8 in environmental impact because its environmental footprint is almost negligible."
+information was accessed digitally over the internet.
 
-section "Matrix"
-p "#autoref{Sustainability matrix} shows the sustainability matrix and the total score obtained in the planning
-stage. The total score obtained is **21 out of 30**. Therefore, the project is planned to be **reasonably sustainable**."
-
-table "Sustainability matrix", "c | c | c | c | c":
-  head "Sustainable?", "Economic", "Social", "Environmental", "Total"
-  row "Planning", 7, 6, 8, bold(7+6+8)
+However, the hardware used can not be fully recycled and it will, eventually, become electronic waste
+with a high amount of contaminants."

@@ -36,7 +36,7 @@ COST["Software"] = BUDGET["Software"]
 section "Human resources"
 
 p "#autoref{Human resources cost} shows the final cost of the human resources according
-to the final task durations detailed in #autoref{time_table} and the task per role in #autoref{Tasks per role}."
+to the final task durations detailed in #autoref{time_table} and the salary per role in #autoref{Salary per role}."
 
 task_durations = {
   "Project management course" => 75,
@@ -79,21 +79,21 @@ human_resources = {
   }
 }
 
-table "Human resources cost", "l | S | S | S":
-  head "Role", "Payment (\\EURtm / h)", "Time (h)", "Total (\\EURtm)"
+table "Human resources cost", "l | l | S | S":
+  head "Role", "Task", "Time (h)", "Cost (\\EURtm)"
+
   human_resources.each with role, data:
-    hours = data[:tasks].map{ task -> task_durations[task] }.sum
+    multirow data[:tasks].size, "*", role
 
-    row role,
-      data[:payment].decimals,
-      hours,
-      (data[:payment] * hours).decimals
+    (data[:tasks]).each with index, task:
+      row "", task, task_durations[task], (task_durations[task] * data[:payment]).decimals
 
-  hline
+    hline
+
   hline
 
   COST["Human"] = human_resources.map{ _, data -> data[:tasks].map{ task -> task_durations[task] }.sum * data[:payment] }.sum
-  total COST["Human"], columns => 4
+  total task_durations.values.sum, BUDGET["Human"], columns => 3
 
 section "Other resources"
 

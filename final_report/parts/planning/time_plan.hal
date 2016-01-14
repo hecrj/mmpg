@@ -7,8 +7,7 @@ the project will take approximately **4 months** to be completed."
 section "Tasks"
 p "This section details the different tasks and subtasks that need to be completed in order
 to finish the project successfully. Every task is provided with a **description**, an **expected duration**,
-**possible complications** and **task dependencies**. A **time table** and a **Gantt diagram**
-can be found in #autoref{planning_time_table} and #autoref{planning_timeline}, respectively."
+**possible complications** and **task dependencies**."
 
 subsection "Project management course"
 p "The project management course aims to help lead the project in the right direction. In this task,
@@ -109,7 +108,12 @@ description:
   item "Possible complications"; p "Executing live examples is risky, it might be useful to have a fallback strategy."
   item "Task dependencies"; p "Project memory."
 
+clearpage
 section "Time table"
+
+p "#autoref{planning_time_table} summarizes the duration of every task described in the previous section.
+The total duration of the project is expected to be **460 hours**. The student will need to work
+$#frac{460 #: hour}{16 #: week} #simeq 29 #: hour/week$ to finish the project before the deadline, which seems reasonable."
 
 figure!:
   center:
@@ -145,11 +149,10 @@ figure!:
   caption "Planning time table"
   label :planning_time_table
 
-p "The total duration of the project is **460 hours**. The student will need to work
-$#frac{460 #: hour}{16 #: week} #simeq 29 #: hour/week$ to finish the project before the deadline,
-which seems reasonable."
-
 section "Timeline"
+
+p "#autoref{planning_timeline} shows the expected timeline of the project, taking into consideration
+task dependencies."
 
 figure!:
   resizebox width => "\\textwidth":

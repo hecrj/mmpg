@@ -2,6 +2,8 @@ chapter "Time management"
 
 section "Time table"
 
+p "[...]"
+
 figure!:
   center:
     resizebox height => "16em":
@@ -37,10 +39,9 @@ figure!:
   caption "Time table"
   label :time_table
 
-p "[...]"
-
 
 section "Timeline"
+p "[...]"
 
 figure!:
   centered:
@@ -73,7 +74,7 @@ figure!:
         ganttlink "elem8", "elem9"
 
   caption "Final timeline"
-  label :gantt_current
+  label :final_timeline
 
 
 section "Dedication"

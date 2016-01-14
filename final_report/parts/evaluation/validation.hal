@@ -1,8 +1,25 @@
 chapter "Validation"
 label :validation
 
-section "Continuous integration"
-p "[...]"
+p "This chapter studies whether the project's **secondary objectives** described in #autoref{specification}
+have been fullfiled after the **implementation process**. Then, after that study, it ponders whether
+**the solution obtained fullfills the main objective**."
 
-section "Testing"
+section "Secondary objectives"
+subsection "Develop an abstract game engine"
+p "..."
+
+subsection "Allow hot-swapping of AIs"
+p "..."
+
+subsection "Implement a real-time webviewer"
+p "..."
+
+subsection "Create a control panel"
+p "..."
+
+subsection "Make the infrastructure scalable and stable"
+p "..."
+
+section "Main objective"
 p "[...]"

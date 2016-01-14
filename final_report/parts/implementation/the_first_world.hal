@@ -43,6 +43,8 @@ enumerate:
   item; p "A player can conquer other planets by sending a greater number of ships than the planet holds."
   item; p "The objective of the match is to destroy other players and/or conquer the major number of planets."
 
+p "[...]"
+
 section "Generating a planetary system procedurally"
 p "[...]"
 
