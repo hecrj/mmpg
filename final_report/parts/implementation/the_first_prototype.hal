@@ -55,38 +55,47 @@ the capacity to **represent abstractions and interfaces** easily. Hence, **C++**
 the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
 directly to **|UNIX|-based operative systems**."
 
-subsection "The first architecture"
+subsection "The architecture"
 p "When designing the first architecture of the **engine**, it was important to take its requirements into account:"
 
 enumerate:
   item; p "The **engine** must not allow **AI**s to cheat."
-  item; p "**AI**s may be hot-swapped during a match."
+  item; p "The **engine** must be **scalable**."
+  item; p "**AI**s may be **hot-swapped** during a match."
 
 p "Thus, if the game logic and all the **AI**s were executed in the same process:"
 
 enumerate: 
   item; p "**AI**s could access the memory related with the game logic or other **AI**s."
-  item; p "Updating an **AI** would require a rebuild of the entire **game logic** and other **AI**s."
-  item; p "Updating an **AI** would require to restart the process."
+  item; p "**AI**s must be executed in the same machine."
+  item; p "Updating an **AI** would require a rebuild of the entire **game logic** and other **AI**s, and a restart of the process."
 
-p "In other words, it would be really unsafe and it would couple all the **AI**s and the **game logic** together.
+p "In other words, it would be really **unsafe**, **inefficient** and it would couple all the **AI**s and the **game logic** together.
 
-Therefore, the initial architecture of the **engine** consisted of 2 types of processes:"
+Therefore, the architecture of the **engine** consisted of 3 types of processes:"
 
 description:
   item "Master process"; p "It represented the **game-world server**. The master process listened to requests coming from
-players and notified its actions accordingly. There was only **one master process per runtime**."
+  players and updated the game world accordingly. There was only **one master process per runtime**."
 
-  item "Player process"; p "It represented a **player program**. The player program contained some **AI** code that was
-  executed **30 times per second**."
+  item "Worker process"; p "It represented a **pool of players**. A worker process **executed** a set of players and
+  **managed** them. There could be **multiple workers per runtime**."
 
-p "#autoref{engine_first_arch} shows the hierarchy of the prototype's engine runtime with $M$ players."
+  item "Player process"; p "It represented a **player program**. A player process **read** the game world from the
+  **master process** and **performed requests** to **change** the game world."
+
+p "Processes comunicated with each other using **low-latency sockets**. Thus, different workers could be executed
+in different machines to achieve better performance.
+
+#autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = #sum_{i=0}^{N} M_i$ players."
 
 figure!:
   center:
-    input "graphs/engine_first_arch"
-  caption "Hierarchy of the protoype's engine processes"
-  label :engine_first_arch
+    resizebox width => "\\textwidth":
+      input "graphs/engine_arch"
+
+  caption "Hierarchy of engine processes"
+  label :engine_arch
 
 
 subsection "Inter-process communication"
@@ -113,10 +122,9 @@ Thus, **ZeroMQ** was the library chosen to implement all the inter-process commu
 
 
 subsection "The first master process"
-p "The first master process consisted of three basic components:"
+p "The first master process consisted of two basic components:"
 
 description:
-  item "The worker"; p "It compiled and executed **player processes** for each given **AI**."
   item "The notifier"; p "It sent any given message through a ZeroMQ socket."
   item "The server"; p "It listened requests made by **player processes** and notified them through the **notifier**."
 
@@ -138,7 +146,7 @@ Finally, once the **Javascript** console started showing the received events, a 
 
 figure!:
   center:
-    resizebox height => "20em":
+    resizebox height => "15em":
       includegraphics "images/cube_movement.png"
   caption "A cube that was moved by the player program"
   label :cube_movement

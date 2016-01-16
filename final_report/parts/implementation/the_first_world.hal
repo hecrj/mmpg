@@ -33,7 +33,7 @@ new ideas to **increase the game size** and make it **massive** could be added l
 
 At the end, it was chosen to implement a game inspired by **Galcon** #cite{galcon}, which also inspired
 **Planet Wars** #cite{planet_wars}. **Planet Wars** was a game used in the **AI programming challenge**
-(see #autoref{state_of_the_art}) sponsored by **Google** during 2010. The game rules were simple:"
+(see #autoref{state_of_the_art}) sponsored by **Google** during 2010. The game rules are simple:"
 
 enumerate:
   item; p "The game world consists in a system with a determined number of planets."
@@ -43,10 +43,10 @@ enumerate:
   item; p "A player can conquer other planets by sending a greater number of ships than the planet holds."
   item; p "The objective of the match is to destroy other players and/or conquer the major number of planets."
 
-p "[...]"
+p "These rules make an interesting **strategic game** that is quite convenient for a **programming game**." 
 
 section "Generating a planetary system procedurally"
-p "[...]"
+p ""
 
 section "Rendering the planetary system"
 p "[...]"

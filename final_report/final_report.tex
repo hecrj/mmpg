@@ -734,41 +734,51 @@ The most well-known programming languages that satisfiy these requirements are \
 the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
 the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
 directly to \textbf{\texttt{UNIX}-based operative systems}.
-\subsection{The first architecture}
+\subsection{The architecture}
 When designing the first architecture of the \textbf{engine}, it was important to take its requirements into account:
 \begin{enumerate}
 \item
 The \textbf{engine} must not allow \textbf{\texttt{AI}}s to cheat.
 \item
-\textbf{\texttt{AI}}s may be hot-swapped during a match.
+The \textbf{engine} must be \textbf{scalable}.
+\item
+\textbf{\texttt{AI}}s may be \textbf{hot-swapped} during a match.
 \end{enumerate}
 Thus, if the game logic and all the \textbf{\texttt{AI}}s were executed in the same process:
 \begin{enumerate}
 \item
 \textbf{\texttt{AI}}s could access the memory related with the game logic or other \textbf{\texttt{AI}}s.
 \item
-Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s.
+\textbf{\texttt{AI}}s must be executed in the same machine.
 \item
-Updating an \textbf{\texttt{AI}} would require to restart the process.
+Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s, and a restart of the process.
 \end{enumerate}
-In other words, it would be really unsafe and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
+In other words, it would be really \textbf{unsafe}, \textbf{inefficient} and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
 
-Therefore, the initial architecture of the \textbf{engine} consisted of 2 types of processes:
+Therefore, the architecture of the \textbf{engine} consisted of 3 types of processes:
 \begin{description}
 \item[Master process]
 It represented the \textbf{game-world server}. The master process listened to requests coming from
-players and notified its actions accordingly. There was only \textbf{one master process per runtime}.
+  players and updated the game world accordingly. There was only \textbf{one master process per runtime}.
+\item[Worker process]
+It represented a \textbf{pool of players}. A worker process \textbf{executed} a set of players and
+  \textbf{managed} them. There could be \textbf{multiple workers per runtime}.
 \item[Player process]
-It represented a \textbf{player program}. The player program contained some \textbf{\texttt{AI}} code that was
-  executed \textbf{30 times per second}.
+It represented a \textbf{player program}. A player process \textbf{read} the game world from the
+  \textbf{master process} and \textbf{performed requests} to \textbf{change} the game world.
 \end{description}
-\autoref{engine_first_arch} shows the hierarchy of the prototype's engine runtime with $M$ players.
+Processes comunicated with each other using \textbf{low-latency sockets}. Thus, different workers could be executed
+in different machines to achieve better performance.
+
+\autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = \sum_{i=0}^{N} M_i$ players.
 \begin{figure}[H]
 \begin{center}
-\input{graphs/engine_first_arch}
+\noindent\resizebox{\textwidth}{!}{
+\input{graphs/engine_arch}
+}
 \end{center}
-\caption{Hierarchy of the protoype's engine processes}
-\label{engine_first_arch}
+\caption{Hierarchy of engine processes}
+\label{engine_arch}
 \end{figure}
 \subsection{Inter-process communication}
 As it was explained previously, the \textbf{engine} featured a decoupled architecture. Different processes were
@@ -792,10 +802,8 @@ Also, \textbf{\texttt{ZeroMQ}} has bindings available for the most well-known pr
 
 Thus, \textbf{\texttt{ZeroMQ}} was the library chosen to implement all the inter-process communication.
 \subsection{The first master process}
-The first master process consisted of three basic components:
+The first master process consisted of two basic components:
 \begin{description}
-\item[The worker]
-It compiled and executed \textbf{player processes} for each given \textbf{\texttt{AI}}.
 \item[The notifier]
 It sent any given message through a \texttt{ZeroMQ} socket.
 \item[The server]
@@ -816,7 +824,7 @@ Finally, once the \textbf{\texttt{Javascript}} console started showing the recei
 \autoref{cube_movement} shows the observed result. \textbf{The prototype was finished}.
 \begin{figure}[H]
 \begin{center}
-\noindent\resizebox{!}{20em}{
+\noindent\resizebox{!}{15em}{
 \includegraphics{images/cube_movement.png}
 }
 \end{center}
@@ -1177,7 +1185,7 @@ new ideas to \textbf{increase the game size} and make it \textbf{massive} could 
 
 At the end, it was chosen to implement a game inspired by \textbf{Galcon} \cite{galcon}, which also inspired
 \textbf{Planet Wars} \cite{planet_wars}. \textbf{Planet Wars} was a game used in the \textbf{\texttt{AI} programming challenge}
-(see \autoref{state_of_the_art}) sponsored by \textbf{Google} during 2010. The game rules were simple:
+(see \autoref{state_of_the_art}) sponsored by \textbf{Google} during 2010. The game rules are simple:
 \begin{enumerate}
 \item
 The game world consists in a system with a determined number of planets.
@@ -1192,9 +1200,9 @@ A player can conquer other planets by sending a greater number of ships than the
 \item
 The objective of the match is to destroy other players and/or conquer the major number of planets.
 \end{enumerate}
-[...]
+These rules make an interesting \textbf{strategic game} that is quite convenient for a \textbf{programming game}.
 \section{Generating a planetary system procedurally}
-[...]
+
 \section{Rendering the planetary system}
 [...]
 \section{Summary}
