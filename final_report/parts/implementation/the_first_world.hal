@@ -24,7 +24,15 @@ enumerate:
   item; p "Create a game example (#autoref{game_example})"
 
 p "These two objectives could be **fullfilled both at the same time** by **creating a game example without adding any game-specific
-code in the engine**. Thus, the next step was decided."
+code in the engine**. To achieve that, a set of abstract classes were created in the **engine** to build game logic on top of them:"
+
+description:
+  item "|Game|"; p "Used to **configure** general aspects of the game and as a **factory** of game |World|s and |Action|s."
+  item "|World|"; p "Used to implement game **update logic** and world **serialization**."
+  item "AI"; p "Used to build the **interface** that players will have available when implementing **AI**s."
+  item "|Action|"; p "Used to implement action **logic** and **serialization**."
+
+p "These classes allow game developers to build **MMPG**s while **extending** the **engine** code, not **changing** it."
 
 section "Choosing a game: Space Wars"
 p "First, it was necessary to choose the game to implement. The best candidates were games with **simple rules**, but that
@@ -84,6 +92,7 @@ algorithm:
     STATE "$previous \\gets p$"
     ENDFOR
 
+clearpage
 section "Connecting planets"
 p "At this point, it was possible to generate a **planetary system** as the game world. However, there was one
 thing left: **planetary connections**.
@@ -112,11 +121,12 @@ algorithm options => "H":
     STATE "$num\\_connections \\gets in\\_range(\\text{Planet::MIN\\_CONNECTIONS}, max\\_connections)$"
 
     FOR "$i \\text{ in } (0, num\\_connections)$"
-    STATE "$\\text{add } p[i] \\text{ to } edge_{connections}$"
-    STATE "$\\text{add } edge \\text{ to } p[i]_{connections}$"
+    STATE "$c \\gets disconnected[in\\_range(0, disconnected_{length})]$"
+    STATE "$\\text{add } c \\text{ to } edge_{connections}$"
+    STATE "$\\text{add } edge \\text{ to } c_{connections}$"
 
-    STATE "$disconnected \\gets disconnected - p[i]$"
-    STATE "$\\text{push } p[i] \\text{ to } connected$"
+    STATE "$disconnected \\gets disconnected - c$"
+    STATE "$\\text{push } c \\text{ to } connected$"
     ENDFOR
 
     ENDWHILE

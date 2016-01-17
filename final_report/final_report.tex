@@ -1180,7 +1180,18 @@ Develop an abstract game engine (\autoref{abstract_engine})
 Create a game example (\autoref{game_example})
 \end{enumerate}
 These two objectives could be \textbf{fullfilled both at the same time} by \textbf{creating a game example without adding any game-specific
-code in the engine}. Thus, the next step was decided.
+code in the engine}. To achieve that, a set of abstract classes were created in the \textbf{engine} to build game logic on top of them:
+\begin{description}
+\item[\texttt{Game}]
+Used to \textbf{configure} general aspects of the game and as a \textbf{factory} of game \texttt{World}s and \texttt{Action}s.
+\item[\texttt{World}]
+Used to implement game \textbf{update logic} and world \textbf{serialization}.
+\item[\texttt{AI}]
+Used to build the \textbf{interface} that players will have available when implementing \textbf{\texttt{AI}}s.
+\item[\texttt{Action}]
+Used to implement action \textbf{logic} and \textbf{serialization}.
+\end{description}
+These classes allow game developers to build \textbf{\texttt{MMPG}}s while \textbf{extending} the \textbf{engine} code, not \textbf{changing} it.
 \section{Choosing a game: Space Wars}
 First, it was necessary to choose the game to implement. The best candidates were games with \textbf{simple rules}, but that
 also seemed \textbf{easy to extend}. Hence, development could start with the implementation of the original game rules while
@@ -1241,6 +1252,7 @@ and positioned them on a \textbf{random point of its orbit}.
 \ENDFOR
 \end{algorithmic}
 \end{algorithm}
+\clearpage
 \section{Connecting planets}
 At this point, it was possible to generate a \textbf{planetary system} as the game world. However, there was one
 thing left: \textbf{planetary connections}.
@@ -1265,10 +1277,11 @@ the algorithm used to generate the planetary connections procedurally.
 \STATE{$max\_connections \gets min(\text{Planet::MAX\_CONNECTIONS}, disconnected_{length})$}
 \STATE{$num\_connections \gets in\_range(\text{Planet::MIN\_CONNECTIONS}, max\_connections)$}
 \FOR{$i \text{ in } (0, num\_connections)$}
-\STATE{$\text{add } p[i] \text{ to } edge_{connections}$}
-\STATE{$\text{add } edge \text{ to } p[i]_{connections}$}
-\STATE{$disconnected \gets disconnected - p[i]$}
-\STATE{$\text{push } p[i] \text{ to } connected$}
+\STATE{$c \gets disconnected[in\_range(0, disconnected_{length})]$}
+\STATE{$\text{add } c \text{ to } edge_{connections}$}
+\STATE{$\text{add } edge \text{ to } c_{connections}$}
+\STATE{$disconnected \gets disconnected - c$}
+\STATE{$\text{push } c \text{ to } connected$}
 \ENDFOR
 \ENDWHILE
 \end{algorithmic}
