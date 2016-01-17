@@ -45,11 +45,103 @@ enumerate:
 
 p "These rules make an interesting **strategic game** that is quite convenient for a **programming game**." 
 
-section "Generating a planetary system procedurally"
-p ""
+section "Generating a planetary system"
+p "The first step to implement the game rules was to generate a game world: a **planetary system**.
+
+In order to make every match different, it was decided to **generate the game world procedurally** using a pseudo-random
+generator#footnote{Mersenne Twister #cite{mersenne_twister}}.
+
+A simplified model of a realistic **planetary system** was taken. A **planetary system** in the game had **one sun** and a
+determined number of **planets**. A **planet** was assumed to move describing an **ellipse** with the **sun** as its center.
+Thus, assuming the position of the **sun** was $(0, 0)$, then the coordinates $x$ and $y$ of the planet were
+
+$$x = a #: cos #theta$$
+$$y = b #: sin #theta$$
+
+where $a$ and $b$ were the major and minor axes of the ellipse, respectively, and $#theta$ was the **eccentric anomaly**.
+
+Algorithm #autoref{system_generation} shows the algorithm used to generate **planetary systems** procedurally in the game.
+Basically, the algorithm generated planets **outwards from the sun**, while ensuring **their orbits did not collide**,
+and positioned them on a **random point of its orbit**."
+
+algorithm:
+  caption "Procedural generation of planetary systems"
+  label :system_generation
+
+  algorithmic:
+    STATE "$sun \\gets Sun(in\\_range(\\text{Sun::MIN\\_RADIUS}, \\text{Sun::MAX\\_RADIUS}))$"
+    STATE "$num\\_planets \\gets in\\_range(\\text{System::MIN\\_SIZE}, \\text{System::MAX\\_SIZE})$"
+    STATE "$planets \\gets \\text{list of } num\\_planets \\text{ planets}$"
+    STATE "$previous \\gets sun$"
+
+    FOR "$p \\text{ in } planets$"
+    STATE "$p_{radius} \\gets in\\_range(\\text{Planet::MIN\\_RADIUS}, \\text{Planet::MAX\\_RADIUS})$"
+    STATE "$dist_x \\gets in\\_range(\\text{Planet::MIN\\_DIST\\_X}, \\text{Planet::MAX\\_DIST\\_X})$"
+    STATE "$dist_y \\gets in\\_range(\\text{Planet::MIN\\_DIST\\_Y}, \\text{Planet::MAX\\_DIST\\_Y})$"
+    STATE "$p_a \\gets previous_a + dist_x + p_{radius} + previous_{radius}$"
+    STATE "$p_b \\gets previous_b + dist_y + p_{radius} + previous_{radius}$"
+    STATE "$p_\\theta \\gets in\\_range(0, 2\\pi)$"
+    STATE "$previous \\gets p$"
+    ENDFOR
+
+section "Connecting planets"
+p "At this point, it was possible to generate a **planetary system** as the game world. However, there was one
+thing left: **planetary connections**.
+
+It was decided that a planet could not send ships to any other planet, but only to planets that were connected to it.
+As a consequence, the game became more interesting, encouraging players to learn **path-finding** techniques.
+
+Hence, it was necessary to also generate a **connected graph of planets**. Algorithm #autoref{connection_generation} shows
+the algorithm used to generate the planetary connections procedurally."
+
+algorithm options => "H":
+  caption "Procedural generation of planetary connections"
+  label :connection_generation
+
+  algorithmic:
+    REQUIRE "$p \\gets \\text{list of planets}$"
+    STATE "$relay \\gets in\\_range(0, p_{length})$"
+    STATE "$connected \\gets \\text{queue of planets}$"
+    STATE "$disconnected \\gets p - p[relay]$"
+    STATE "$\\text{push } p[relay] \\text{ to } connected$"
+
+    WHILE "$disconnected \\text{ is not empty}$"
+    STATE "$edge \\gets \\text{front of } connected$"
+    STATE "$\\text{pop front of } connected$"
+    STATE "$max\\_connections \\gets min(\\text{Planet::MAX\\_CONNECTIONS}, disconnected_{length})$"
+    STATE "$num\\_connections \\gets in\\_range(\\text{Planet::MIN\\_CONNECTIONS}, max\\_connections)$"
+
+    FOR "$i \\text{ in } (0, num\\_connections)$"
+    STATE "$\\text{add } p[i] \\text{ to } edge_{connections}$"
+    STATE "$\\text{add } edge \\text{ to } p[i]_{connections}$"
+
+    STATE "$disconnected \\gets disconnected - p[i]$"
+    STATE "$\\text{push } p[i] \\text{ to } connected$"
+    ENDFOR
+
+    ENDWHILE
+
 
 section "Rendering the planetary system"
-p "[...]"
+p "Finally, the viewer was upgraded to render the generated **planetary system** and its **connections**.
+
+Basically, OpenGL spheres were used to draw the **sun** and the **planets**, while **connections** were represented
+using **lines**. Additionally, a **light** was added in the center of the **sun** to give some depth to the scene.
+
+#autoref{render_system} shows a **planetary system** rendered by the viewer."
+
+figure!:
+  center:
+    resizebox height => "13em":
+      includegraphics "images/planets.png"
+
+  caption "Planetary system rendered by the viewer"
+  label :render_system
 
 section "Summary"
-p "[...]"
+p "This chapter detailed how the implementation of the **game example** started:"
+
+enumerate:
+  item; p "It was chosen to create a game **inspired** by **Galcon** #cite{galcon}."
+  item; p "A simple algorithm was implemented to **procedurally generate** the game world."
+  item; p "The **viewer** was upgraded to **render** the generated game world."

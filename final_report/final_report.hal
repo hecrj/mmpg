@@ -25,6 +25,8 @@ usepackage "tabularx"
 usepackage "tikz"
 usepackage "appendix", options => "toc,page"
 usepackage "svg"
+usepackage "algorithm", options => "chapter"
+usepackage "algorithmic"
 usetikzlibrary "arrows,positioning"
 
 include :style
