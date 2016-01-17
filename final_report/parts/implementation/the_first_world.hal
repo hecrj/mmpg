@@ -1,4 +1,6 @@
 chapter "The first game world"
+label :first_game_world
+
 p "Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
 the platform was able to:"
 
@@ -141,9 +143,8 @@ using **lines**. Additionally, a **light** was added in the center of the **sun*
 #autoref{render_system} shows a **planetary system** rendered by the viewer."
 
 figure!:
-  center:
-    resizebox height => "13em":
-      includegraphics "images/planets.png"
+  resizebox width => "\\textwidth":
+    includegraphics "images/planets.png"
 
   caption "Planetary system rendered by the viewer"
   label :render_system

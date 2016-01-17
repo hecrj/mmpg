@@ -1,10 +1,51 @@
 chapter "Fleets and planets"
-p "[...]"
+p "At this point, a **planetary system** was being generated as the game world. Thus, it was possible to start developing 
+the main game mechanics: **ship generation** and **fleet movement**."
 
 section "Generating ships in conquered planets"
-p "[...]"
+p "The **ship generation** mechanic states that **conquered planets** generate **ships** at a **rate proportional to the
+radius of the planet**. Hence, **the bigger the planet**, **the more ships it will generate** during a specific timeframe.
+
+The nature of this mechanic is periodical: **conquered planets** need to be updated quite frequently. Games can easily
+implement this type of mechanics because their entire logic is executed in a **game loop**.
+
+A **game loop** is the central code of a **game**. It is a **loop** that is executed constantly to update the state of
+the game accordingly. A **good game loop** computes the **time between iterations** and has a **fixed timestep**, which ensures
+that the update logic always advances the state of the game in the same amount.
+
+Algorithm #autoref{game_loop} shows an example of a **game loop** with a **fixed timestep**. This type of **game loop**
+avoids **differences in game speed** between different hardware, while it also avoids passing a **big timestep** to the
+update logic, which could break game calculations#footnote{like collision detection}.
+
+Therefore, the **engine** was upgraded to support a **game loop** with fixed timestep. The **timestep** could be configured
+by extending the **|Game|** class described in #autoref{first_game_world}. Then, the corresponding **update logic** was
+implemented in the **game logic** to generate ships in **conquered planets** as described by the game mechanic."
+
+algorithm:
+  caption "Game loop with a fixed timestep"
+  label :game_loop
+
+  algorithmic:
+    STATE "$accum \\gets 0$"
+    STATE "$time_{current} \\gets current\\_time()$"
+
+    WHILE "$\\text{not } quit$"
+    STATE "$time_{new} \\gets current\\_time()$"
+    STATE "$time_{frame} \\gets time_{new} - time_{current}$"
+    STATE "$time_{current} \\gets time_{new}$"
+    STATE "$accum \\gets accum + time_{frame}$"
+
+    WHILE "$accum \\geq timestep$"
+    STATE "$update\\_state(timestep)$"
+    STATE "$accum \\gets accum - timestep$"
+    ENDWHILE
+
+    ENDWHILE
 
 section "Moving fleets between planets"
+p "[...]"
+
+section "Rendering fleets and planet information"
 p "[...]"
 
 section "Summary"

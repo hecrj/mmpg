@@ -1151,6 +1151,7 @@ The \textbf{\texttt{/auth}} and \textbf{\texttt{/player}} endpoint in the \textb
 The \textbf{login form}, \textbf{player menu}, and \textbf{deployment form} in the \textbf{viewer}.
 \end{enumerate}
 \chapter{The first game world}
+\label{first_game_world}
 Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
 the platform was able to:
 \begin{enumerate}
@@ -1294,11 +1295,9 @@ using \textbf{lines}. Additionally, a \textbf{light} was added in the center of 
 
 \autoref{render_system} shows a \textbf{planetary system} rendered by the viewer.
 \begin{figure}[H]
-\begin{center}
-\noindent\resizebox{!}{13em}{
+\noindent\resizebox{\textwidth}{!}{
 \includegraphics{images/planets.png}
 }
-\end{center}
 \caption{Planetary system rendered by the viewer}
 \label{render_system}
 \end{figure}
@@ -1313,10 +1312,47 @@ A simple algorithm was implemented to \textbf{procedurally generate} the game wo
 The \textbf{viewer} was upgraded to \textbf{render} the generated game world.
 \end{enumerate}
 \chapter{Fleets and planets}
-[...]
+At this point, a \textbf{planetary system} was being generated as the game world. Thus, it was possible to start developing 
+the main game mechanics: \textbf{ship generation} and \textbf{fleet movement}.
 \section{Generating ships in conquered planets}
-[...]
+The \textbf{ship generation} mechanic states that \textbf{conquered planets} generate \textbf{ships} at a \textbf{rate proportional to the
+radius of the planet}. Hence, \textbf{the bigger the planet}, \textbf{the more ships it will generate} during a specific timeframe.
+
+The nature of this mechanic is periodical: \textbf{conquered planets} need to be updated quite frequently. Games can easily
+implement this type of mechanics because their entire logic is executed in a \textbf{game loop}.
+
+A \textbf{game loop} is the central code of a \textbf{game}. It is a \textbf{loop} that is executed constantly to update the state of
+the game accordingly. A \textbf{good game loop} computes the \textbf{time between iterations} and has a \textbf{fixed timestep}, which ensures
+that the update logic always advances the state of the game in the same amount.
+
+Algorithm \autoref{game_loop} shows an example of a \textbf{game loop} with a \textbf{fixed timestep}. This type of \textbf{game loop}
+avoids \textbf{differences in game speed} between different hardware, while it also avoids passing a \textbf{big timestep} to the
+update logic, which could break game calculations\footnote{like collision detection}.
+
+Therefore, the \textbf{engine} was upgraded to support a \textbf{game loop} with fixed timestep. The \textbf{timestep} could be configured
+by extending the \textbf{\texttt{Game}} class described in \autoref{first_game_world}. Then, the corresponding \textbf{update logic} was
+implemented in the \textbf{game logic} to generate ships in \textbf{conquered planets} as described by the game mechanic.
+\begin{algorithm}
+\caption{Game loop with a fixed timestep}
+\label{game_loop}
+\begin{algorithmic}
+\STATE{$accum \gets 0$}
+\STATE{$time_{current} \gets current\_time()$}
+\WHILE{$\text{not } quit$}
+\STATE{$time_{new} \gets current\_time()$}
+\STATE{$time_{frame} \gets time_{new} - time_{current}$}
+\STATE{$time_{current} \gets time_{new}$}
+\STATE{$accum \gets accum + time_{frame}$}
+\WHILE{$accum \geq timestep$}
+\STATE{$update\_state(timestep)$}
+\STATE{$accum \gets accum - timestep$}
+\ENDWHILE
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
 \section{Moving fleets between planets}
+[...]
+\section{Rendering fleets and planet information}
 [...]
 \section{Summary}
 [...]
