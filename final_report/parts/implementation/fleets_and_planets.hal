@@ -15,9 +15,9 @@ that the update logic always advances the state of the game in the same amount.
 
 Algorithm #autoref{game_loop} shows an example of a **game loop** with a **fixed timestep**. This type of **game loop**
 avoids **differences in game speed** between different hardware, while it also avoids passing a **big timestep** to the
-update logic, which could break game calculations#footnote{like collision detection}.
+update logic, which could break game calculations#footnote{like collision detection, movement, etc.}.
 
-Therefore, the **engine** was upgraded to support a **game loop** with fixed timestep. The **timestep** could be configured
+At the end, the **engine** was upgraded to support a **game loop** with a fixed timestep. The **timestep** could be configured
 by extending the **|Game|** class described in #autoref{first_game_world}. Then, the corresponding **update logic** was
 implemented in the **game logic** to generate ships in **conquered planets** as described by the game mechanic."
 
@@ -43,10 +43,83 @@ algorithm:
     ENDWHILE
 
 section "Moving fleets between planets"
-p "[...]"
+p "The **fleet movement** mechanic describes how players can **send ships from a planet to another**.
+
+Basically, it was implemented assuming that a **fleet trip** is defined by:"
+
+itemize:
+  item "Planet origin"
+  item "Planet destination"
+  item "Fleet owner"
+  item "Number of ships"
+  item "Travel time"
+
+p "The travel time was proportional to the **euclidean distance** between the **planet origin** $o$ and the **planet destination** $d$,
+assuming that every fleet moves at the same **velocity** $v$:
+
+$$t_{time} = #frac{#sqrt{(d_x - o_x)^2 + (d_y - o_y)^2}}{v}$$
+
+The **velocity** value was constant in the game, but it could be easily changed to experiment with different values.
+
+Then, in the **update logic**, every **on-going fleet trip** was updated properly, applying changes to the destination planets
+when a trip finished. Algorithm #autoref{trip_algorithm} and #autoref{planet_algorithm} give a basic idea of how the **trip and planet
+update logics** were implemented, respectively."
+
+algorithm options => "H":
+  caption "Fleet trip update logic"
+  label :trip_algorithm
+
+  algorithmic:
+    FOR "$t \\text{ in } current\\_trips$"
+    STATE "$t_{time} \\gets t_{time} - timestep$"
+
+    IF "$t_{time} \\leq 0$"
+    STATE "$update\\_planet(t_{destination}, t)$"
+    STATE "$current\\_trips \\gets current\\_trips - t$"
+    ENDIF
+
+    ENDFOR
+
+algorithm options => "H":
+  caption "Planet update logic"
+  label :planet_algorithm
+
+  algorithmic:
+    REQUIRE "$p \\text{ is a planet}$"
+    REQUIRE "$t \\text{ is a fleet trip}$"
+
+    IF "$\\text{not } p_{owner}$"
+    STATE "$p_{owner} \\gets t_{owner}$"
+    ENDIF
+
+    IF "$p_{owner} = t_{owner}$"
+    STATE "$p_{ships} \\gets p_{ships} + t_{ships}$"
+    ELSE
+    IF "$p_{ships} \\geq t_{ships}$"
+    STATE "$p_{ships} \\gets p_{ships} - t_{ships}$"
+    ELSE
+    STATE "$p_{owner} \\gets t_{owner}$"
+    STATE "$p_{ships} \\gets t_{ships} - p_{ships}$"
+    ENDIF
+    ENDIF
 
 section "Rendering fleets and planet information"
-p "[...]"
+p "Finally, the **viewer** was upgraded to render **fleets** moving between planets. **Octahedrons** were used to represent
+**fleets**, scaling them proportionally to the number of ships. **Fleets** movement was animated using the **planet origin**,
+**planet destination** and **travel time**.
+
+Additionally, the **viewer** was modified to show planet information: **number of ships** and **owner**. These elements were
+**projected** on top of the **|3D| viewer** using **HTML elements**.
+
+A simple **AI** was implemented and two players were confronted with each other to test these mechanics and the viewer together.
+#autoref{viewer_fleets} shows an example of a match played by these two players."
+
+figure!:
+  resizebox width => "\\textwidth":
+    includegraphics "images/viewer_fleets.png"
+
+  caption "The viewer showing fleets and planet information"
+  label :viewer_fleets
 
 section "Summary"
 p "[...]"

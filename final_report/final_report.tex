@@ -1192,7 +1192,7 @@ Used to build the \textbf{interface} that players will have available when imple
 \item[\texttt{Action}]
 Used to implement action \textbf{logic} and \textbf{serialization}.
 \end{description}
-These classes allow game developers to build \textbf{\texttt{MMPG}}s while \textbf{extending} the \textbf{engine} code, not \textbf{changing} it.
+These classes allowed game developers to build \textbf{\texttt{MMPG}}s while \textbf{extending} the \textbf{engine} code, not \textbf{changing} it.
 \section{Choosing a game: Space Wars}
 First, it was necessary to choose the game to implement. The best candidates were games with \textbf{simple rules}, but that
 also seemed \textbf{easy to extend}. Hence, development could start with the implementation of the original game rules while
@@ -1255,10 +1255,8 @@ and positioned them on a \textbf{random point of its orbit}.
 \end{algorithm}
 \clearpage
 \section{Connecting planets}
-At this point, it was possible to generate a \textbf{planetary system} as the game world. However, there was one
-thing left: \textbf{planetary connections}.
-
-It was decided that a planet could not send ships to any other planet, but only to planets that were connected to it.
+At this point, it was possible to generate a \textbf{planetary system} as the game world. However, it was decided that a planet
+could not send ships to any other planet, but only to planets that were connected to it, unlike the original \textbf{Galcon} \cite{galcon}.
 As a consequence, the game became more interesting, encouraging players to learn \textbf{path-finding} techniques.
 
 Hence, it was necessary to also generate a \textbf{connected graph of planets}. Algorithm \autoref{connection_generation} shows
@@ -1267,11 +1265,11 @@ the algorithm used to generate the planetary connections procedurally.
 \caption{Procedural generation of planetary connections}
 \label{connection_generation}
 \begin{algorithmic}
-\REQUIRE{$p \gets \text{list of planets}$}
-\STATE{$relay \gets in\_range(0, p_{length})$}
+\REQUIRE{$p \text{ is a list of planets}$}
+\STATE{$relay \gets p[in\_range(0, p_{length})]$}
 \STATE{$connected \gets \text{queue of planets}$}
-\STATE{$disconnected \gets p - p[relay]$}
-\STATE{$\text{push } p[relay] \text{ to } connected$}
+\STATE{$disconnected \gets p - relay$}
+\STATE{$\text{push } relay \text{ to } connected$}
 \WHILE{$disconnected \text{ is not empty}$}
 \STATE{$edge \gets \text{front of } connected$}
 \STATE{$\text{pop front of } connected$}
@@ -1327,9 +1325,9 @@ that the update logic always advances the state of the game in the same amount.
 
 Algorithm \autoref{game_loop} shows an example of a \textbf{game loop} with a \textbf{fixed timestep}. This type of \textbf{game loop}
 avoids \textbf{differences in game speed} between different hardware, while it also avoids passing a \textbf{big timestep} to the
-update logic, which could break game calculations\footnote{like collision detection}.
+update logic, which could break game calculations\footnote{like collision detection, movement, etc.}.
 
-Therefore, the \textbf{engine} was upgraded to support a \textbf{game loop} with fixed timestep. The \textbf{timestep} could be configured
+At the end, the \textbf{engine} was upgraded to support a \textbf{game loop} with a fixed timestep. The \textbf{timestep} could be configured
 by extending the \textbf{\texttt{Game}} class described in \autoref{first_game_world}. Then, the corresponding \textbf{update logic} was
 implemented in the \textbf{game logic} to generate ships in \textbf{conquered planets} as described by the game mechanic.
 \begin{algorithm}
@@ -1351,9 +1349,82 @@ implemented in the \textbf{game logic} to generate ships in \textbf{conquered pl
 \end{algorithmic}
 \end{algorithm}
 \section{Moving fleets between planets}
-[...]
+The \textbf{fleet movement} mechanic describes how players can \textbf{send ships from a planet to another}.
+
+Basically, it was implemented assuming that a \textbf{fleet trip} is defined by:
+\begin{itemize}
+\item
+Planet origin
+\item
+Planet destination
+\item
+Fleet owner
+\item
+Number of ships
+\item
+Travel time
+\end{itemize}
+The travel time was proportional to the \textbf{euclidean distance} between the \textbf{planet origin} $o$ and the \textbf{planet destination} $d$,
+assuming that every fleet moves at the same \textbf{velocity} $v$:
+
+$$t_{time} = \frac{\sqrt{(d_x - o_x)^2 + (d_y - o_y)^2}}{v}$$
+
+The \textbf{velocity} value was constant in the game, but it could be easily changed to experiment with different values.
+
+Then, in the \textbf{update logic}, every \textbf{on-going fleet trip} was updated properly, applying changes to the destination planets
+when a trip finished. Algorithm \autoref{trip_algorithm} and \autoref{planet_algorithm} give a basic idea of how the \textbf{trip and planet
+update logics} were implemented, respectively.
+\begin{algorithm}[H]
+\caption{Fleet trip update logic}
+\label{trip_algorithm}
+\begin{algorithmic}
+\FOR{$t \text{ in } current\_trips$}
+\STATE{$t_{time} \gets t_{time} - timestep$}
+\IF{$t_{time} \leq 0$}
+\STATE{$update\_planet(t_{destination}, t)$}
+\STATE{$current\_trips \gets current\_trips - t$}
+\ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[H]
+\caption{Planet update logic}
+\label{planet_algorithm}
+\begin{algorithmic}
+\REQUIRE{$p \text{ is a planet}$}
+\REQUIRE{$t \text{ is a fleet trip}$}
+\IF{$\text{not } p_{owner}$}
+\STATE{$p_{owner} \gets t_{owner}$}
+\ENDIF
+\IF{$p_{owner} = t_{owner}$}
+\STATE{$p_{ships} \gets p_{ships} + t_{ships}$}
+\ELSE
+\IF{$p_{ships} \geq t_{ships}$}
+\STATE{$p_{ships} \gets p_{ships} - t_{ships}$}
+\ELSE
+\STATE{$p_{owner} \gets t_{owner}$}
+\STATE{$p_{ships} \gets t_{ships} - p_{ships}$}
+\ENDIF
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
 \section{Rendering fleets and planet information}
-[...]
+Finally, the \textbf{viewer} was upgraded to render \textbf{fleets} moving between planets. \textbf{Octahedrons} were used to represent
+\textbf{fleets}, scaling them proportionally to the number of ships. \textbf{Fleets} movement was animated using the \textbf{planet origin},
+\textbf{planet destination} and \textbf{travel time}.
+
+Additionally, the \textbf{viewer} was modified to show planet information: \textbf{number of ships} and \textbf{owner}. These elements were
+\textbf{projected} on top of the \textbf{\texttt{3D} viewer} using \textbf{\texttt{HTML} elements}.
+
+A simple \textbf{\texttt{AI}} was implemented and two players were confronted with each other to test these mechanics and the viewer together.
+\autoref{viewer_fleets} shows an example of a match played by these two players.
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/viewer_fleets.png}
+}
+\caption{The viewer showing fleets and planet information}
+\label{viewer_fleets}
+\end{figure}
 \section{Summary}
 [...]
 \chapter{A whole galaxy}
@@ -1364,8 +1435,6 @@ implemented in the \textbf{game logic} to generate ships in \textbf{conquered pl
 \section{Separating world structure from dynamic data}
 [...]
 \section{Rendering a galaxy}
-[...]
-\section{Connecting planetary systems}
 [...]
 \section{Summary}
 [...]

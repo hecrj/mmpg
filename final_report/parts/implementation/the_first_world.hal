@@ -34,7 +34,7 @@ description:
   item "AI"; p "Used to build the **interface** that players will have available when implementing **AI**s."
   item "|Action|"; p "Used to implement action **logic** and **serialization**."
 
-p "These classes allow game developers to build **MMPG**s while **extending** the **engine** code, not **changing** it."
+p "These classes allowed game developers to build **MMPG**s while **extending** the **engine** code, not **changing** it."
 
 section "Choosing a game: Space Wars"
 p "First, it was necessary to choose the game to implement. The best candidates were games with **simple rules**, but that
@@ -96,10 +96,8 @@ algorithm:
 
 clearpage
 section "Connecting planets"
-p "At this point, it was possible to generate a **planetary system** as the game world. However, there was one
-thing left: **planetary connections**.
-
-It was decided that a planet could not send ships to any other planet, but only to planets that were connected to it.
+p "At this point, it was possible to generate a **planetary system** as the game world. However, it was decided that a planet
+could not send ships to any other planet, but only to planets that were connected to it, unlike the original **Galcon** #cite{galcon}.
 As a consequence, the game became more interesting, encouraging players to learn **path-finding** techniques.
 
 Hence, it was necessary to also generate a **connected graph of planets**. Algorithm #autoref{connection_generation} shows
@@ -110,11 +108,11 @@ algorithm options => "H":
   label :connection_generation
 
   algorithmic:
-    REQUIRE "$p \\gets \\text{list of planets}$"
-    STATE "$relay \\gets in\\_range(0, p_{length})$"
+    REQUIRE "$p \\text{ is a list of planets}$"
+    STATE "$relay \\gets p[in\\_range(0, p_{length})]$"
     STATE "$connected \\gets \\text{queue of planets}$"
-    STATE "$disconnected \\gets p - p[relay]$"
-    STATE "$\\text{push } p[relay] \\text{ to } connected$"
+    STATE "$disconnected \\gets p - relay$"
+    STATE "$\\text{push } relay \\text{ to } connected$"
 
     WHILE "$disconnected \\text{ is not empty}$"
     STATE "$edge \\gets \\text{front of } connected$"
