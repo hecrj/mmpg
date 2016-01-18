@@ -122,4 +122,10 @@ figure!:
   label :viewer_fleets
 
 section "Summary"
-p "[...]"
+p "In this chapter, the **basic mechanics** of the game example were developed. The implementation process consisted in:"
+
+enumerate:
+  item; p "Adding **game loop** support to the **engine**"
+  item; p "Implementing the **ship generation** logic"
+  item; p "Implementing the **fleet movement** logic"
+  item; p "Upgrading the **viewer** to show **fleets** and **planet information**"

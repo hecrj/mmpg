@@ -102,6 +102,11 @@ task_durations = {
   "Oral presentation"         => 10
 }
 
+class Kernel:
+  @planned_task_durations = {}
+
+Kernel.planned_task_durations = task_durations
+
 human_resources = {
   "Project manager" => {
     :payment => 35,

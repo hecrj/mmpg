@@ -15,12 +15,12 @@ detect and fix issues as soon as possible, the project was developed using an **
 **continuous integration**. This methodology consisted in:"
 
 enumerate:
-  item; p "Develop a simple prototype of the platform"
-  item; p "Run the prototype in some external server"
+  item; p "Develop a simple prototype of the platform."
+  item; p "Run the prototype in some external server."
   item; p "When a change is made to any component:"
   enumerate:
-    item; p "Apply and integrate the change in the server"
-    item; p "Test that the prototype keeps working as expected"
+    item; p "Apply and integrate the change in the server."
+    item; p "Test that the prototype keeps working as expected."
 
 p "This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
 a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and

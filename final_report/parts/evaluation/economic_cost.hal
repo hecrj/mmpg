@@ -18,7 +18,7 @@ table "Hardware cost", "l | S":
 section "Software resources"
 
 p "As stated in the original planning, all the software needed to develop the project can be used for free.
-  #autoref{additional_software} shows additional software that was used but it was not listed in the original planning."
+  #autoref{Additional software} shows additional software that was used but it was not listed in the original planning."
 
 software = {
   "Three.js" => "https://github.com/mrdoob/three.js/blob/master/LICENSE"
@@ -37,19 +37,6 @@ section "Human resources"
 
 p "#autoref{Human resources cost} shows the final cost of the human resources according
 to the final task durations detailed in #autoref{time_table} and the salary per role in #autoref{Salary per role}."
-
-task_durations = {
-  "Project management course" => 75,
-  "Analysis and design"       => 10,
-  "Engine"                    => 70,
-  "API"                       => 50,
-  "Client"                    => 30,
-  "Control panel"             => 35,
-  "Game example"              => 100,
-  "Testing and polishing"     => 40,
-  "Project memory"            => 40,
-  "Oral presentation"         => 10
-}
 
 human_resources = {
   "Project manager" => {
@@ -139,16 +126,21 @@ p "The project was developed using the internet connection described in #fullref
 approximately during the 30\\% of the total project's duration, as expected.
 Thus, the final cost of the internet connection was 460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + COST["Internet"].decimals + "\\EURtm**."
 
-section "Total"
-p "#autoref{Total cost} shows the total cost of the project."
+clearpage
 
-table "Total cost", "l | S":
-  head "Resource", "Total cost (\\EURtm)"
+section "Total"
+p "#autoref{Total cost} shows the **total cost** of the project compared to the **budget** of the planning stage."
+
+table "Total cost", "l | S | S":
+  head "Resource", "Budget (\\EURtm)", "Total cost (\\EURtm)"
 
   COST.each with type, total:
-    row type, total.decimals
+    row type, budget[type].decimals, total.decimals
+
+  hline
+  row "Contingency (10\\%)", (budget.values.sum * 0.1).decimals, 0.decimals
 
   hline
   hline
 
-  total COST.values.sum, columns => 2
+  total budget.values.sum * 1.1, COST.values.sum, columns => 2

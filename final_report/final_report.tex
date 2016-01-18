@@ -671,16 +671,16 @@ detect and fix issues as soon as possible, the project was developed using an \t
 \textbf{continuous integration}. This methodology consisted in:
 \begin{enumerate}
 \item
-Develop a simple prototype of the platform
+Develop a simple prototype of the platform.
 \item
-Run the prototype in some external server
+Run the prototype in some external server.
 \item
 When a change is made to any component:
 \begin{enumerate}
 \item
-Apply and integrate the change in the server
+Apply and integrate the change in the server.
 \item
-Test that the prototype keeps working as expected
+Test that the prototype keeps working as expected.
 \end{enumerate}
 \end{enumerate}
 This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
@@ -1426,7 +1426,17 @@ A simple \textbf{\texttt{AI}} was implemented and two players were confronted wi
 \label{viewer_fleets}
 \end{figure}
 \section{Summary}
-[...]
+In this chapter, the \textbf{basic mechanics} of the game example were developed. The implementation process consisted in:
+\begin{enumerate}
+\item
+Adding \textbf{game loop} support to the \textbf{engine}
+\item
+Implementing the \textbf{ship generation} logic
+\item
+Implementing the \textbf{fleet movement} logic
+\item
+Upgrading the \textbf{viewer} to show \textbf{fleets} and \textbf{planet information}
+\end{enumerate}
 \chapter{A whole galaxy}
 \label{whole_galaxy}
 [...]
@@ -1511,83 +1521,53 @@ can be observed when \textbf{a whole galaxy} was generated but it was fixed late
 \section{Main objective}
 [...]
 \chapter{Time management}
+This chapter details the final time arrengement of the project and compares it with the original time planning.
+It shows the final duration for every task in a \textbf{timetable} and a \textbf{timeline} of how tasks were performed, while it
+also studies the \textbf{dedication} given to the project.
 \section{Time table}
-[...]
 \begin{figure}[H]
 \begin{center}
-\noindent\resizebox{!}{16em}{
-\begin{tabular}{l | l}
-\textbf{Task} & \textbf{Expected duration (h)}\\
+\begin{tabular}{l | l | l}
+\textbf{Task} & \textbf{Planned duration (h)} & \textbf{Final duration (h)}\\
 \hline
-Project management course & 75\\
-\hline
-Analysis and design & 10\\
-\hline
-Game engine & -\\
-\hspace{1em}
-Learning & 5\\
-\hspace{1em}
-Implementation & 50\\
-\hspace{1em}
-Testing & 14\\
-\hspace{1em}
-Integration & 1\\
-\hline
-Real-time notifier & -\\
-\hspace{1em}
-Learning & 10\\
-\hspace{1em}
-Implementation & 25\\
-\hspace{1em}
-Testing & 10\\
-\hspace{1em}
-Integration & 5\\
-\hline
-Notifier subscriber & -\\
-\hspace{1em}
-Learning & 5\\
-\hspace{1em}
-Implementation & 20\\
-\hspace{1em}
-Testing & 3\\
-\hspace{1em}
-Integration & 2\\
-\hline
-Control panel & -\\
-\hspace{1em}
-Learning & 5\\
-\hspace{1em}
-Implementation & 20\\
-\hspace{1em}
-Testing & 5\\
-\hspace{1em}
-Integration & 5\\
-\hline
-Game example & -\\
-\hspace{1em}
-Logic & 50\\
-\hspace{1em}
-Real-time viewer & 50\\
-\hline
-Testing and polishing & 40\\
-\hline
-Project memory & 40\\
-\hline
-Oral presentation & 10\\
+Project management course & 75 & 70\\
+Analysis and design & 10 & 20\\
+Engine & 70 & 100\\
+API & 50 & 30\\
+Client & 30 & 30\\
+Control panel & 35 & 15\\
+Game example & 100 & 100\\
+Testing and polishing & 40 & 40\\
+Project memory & 40 & 50\\
+Oral presentation & 10 & 10\\
 \hline
 \hline
-\textbf{Total} & 460\\
+\textbf{Total} & 460 & 465\\
 \end{tabular}
-}
 \end{center}
 \caption{Time table}
 \label{time_table}
 \end{figure}
+\autoref{time_table} shows the final duration for every task of the project.
+
+The main differences with the original time planning are:
+\begin{itemize}
+\item
+The \textbf{engine} took more time to implement than it was expected. Mainly because of the optimization
+  performed in \autoref{whole_galaxy}.
+\item
+The \textbf{\texttt{API}} was implemented faster than planned. The \textbf{Go} programming language resulted really \textbf{easy to
+  learn and use}, while the \textbf{native libraries} made the entire implementation process really \textbf{productive}.
+\item
+The \textbf{control panel} was integrated in the \textbf{viewer}, not in the \textbf{Jutge.org} platform. As a result,
+  it took less time to implement it, as learning the \textbf{Jutge.org} environment was not necessary.
+\item
+The \textbf{project memory} took more time to write than expected.
+\end{itemize}
 \section{Timeline}
-[...]
 \begin{figure}[H]
 \makebox[\textwidth]{
-\noindent\resizebox{300pt}{!}{
+\noindent\resizebox{\textwidth}{!}{
 \begin{ganttchart}[hgrid, vgrid]{1}{25}
 \gantttitle{2015}{20}
 \gantttitle{2016}{5}
@@ -1602,17 +1582,17 @@ Oral presentation & 10\\
 \\
 \ganttbar{Analysis and design}{6}{7}
 \\
-\ganttbar{Engine}{9}{15}
+\ganttbar{Engine}{11}{20}
 \\
-\ganttbar{API}{9}{13}
+\ganttbar{API}{11}{20}
 \\
-\ganttbar{Client}{9}{13}
+\ganttbar{Client}{11}{20}
 \\
-\ganttbar{Space Wars - logic}{16}{19}
+\ganttbar{Space Wars - logic}{16}{21}
 \\
-\ganttbar{Space Wars - viewer}{16}{20}
+\ganttbar{Space Wars - viewer}{16}{21}
 \\
-\ganttbar{Testing and polishing}{21}{22}
+\ganttbar{Testing and polishing}{13}{22}
 \\
 \ganttbar{Project memory}{16}{23}
 \\
@@ -1620,11 +1600,6 @@ Oral presentation & 10\\
 \ganttlink{elem1}{elem2}
 \ganttlink{elem1}{elem3}
 \ganttlink{elem1}{elem4}
-\ganttlink{elem2}{elem5}
-\ganttlink{elem3}{elem6}
-\ganttlink{elem4}{elem6}
-\ganttlink{elem5}{elem7}
-\ganttlink{elem6}{elem7}
 \ganttlink{elem8}{elem9}
 \end{ganttchart}
 }
@@ -1632,6 +1607,12 @@ Oral presentation & 10\\
 \caption{Final timeline}
 \label{final_timeline}
 \end{figure}
+\autoref{final_timeline} shows the final timeline for every task of the project.
+
+The main difference can be observed in the \textbf{testing and polishing} task. As the implementation methodology
+used \textbf{continuous integration} (\autoref{methodology}), the \textbf{testing and polishing} of the platform has been
+constant since the first prototype (\autoref{first_prototype}). Also, the different \textbf{components} have been developed
+at the same time, in order to have a \textbf{fully-functional prototype} after each iteration.
 \section{Dedication}
 \autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.
 \begin{figure}[H]
@@ -1641,9 +1622,8 @@ Oral presentation & 10\\
 \caption{GitHub contributions to the \texttt{MMPG} project \url{https://github.com/hecrj}}
 \label{dedication}
 \end{figure}
-As it can be observed, there is \textbf{at least one contribution per day since November 4}. However, while dedication has
-been constant, there are many days where \textbf{contributions were minimal}. Hence, \textbf{dedication and productivity are expected
-to increase} during the incoming holidays.
+Contributions to the project have been constant since the 2nd of November of 2015. At least one contribution was made
+every day since then, with only two days being the exception. Thus, progress was \textbf{constant}.
 \chapter{Economic cost}
 \section{Hardware resources}
 The project used the hardware resources specified in \fullref{budget}. However, a \textbf{Linode 1GB} was needed during \textbf{3 months}.
@@ -1662,7 +1642,7 @@ Linode 1GB & 27.47\\
 \end{table}
 \section{Software resources}
 As stated in the original planning, all the software needed to develop the project can be used for free.
-  \autoref{additional_software} shows additional software that was used but it was not listed in the original planning.
+  \autoref{Additional software} shows additional software that was used but it was not listed in the original planning.
 \begin{table}[H]
 \centering
 \begin{tabular}{l | l}
@@ -1682,24 +1662,24 @@ to the final task durations detailed in \autoref{time_table} and the salary per 
 \textbf{Role} & \textbf{Task} & \textbf{Time (h)} & \textbf{Cost (\EURtm)}\\
 \hline
 \multirow{3}{*}{Project manager}
- & Project management course & 75 & 2625.00\\
- & Project memory & 40 & 1400.00\\
+ & Project management course & 70 & 2450.00\\
+ & Project memory & 50 & 1750.00\\
  & Oral presentation & 10 & 350.00\\
 \hline
 \multirow{1}{*}{Software engineer}
- & Analysis and design & 10 & 400.00\\
+ & Analysis and design & 20 & 800.00\\
 \hline
 \multirow{6}{*}{Software developer}
- & Engine & 70 & 2100.00\\
- & API & 50 & 1500.00\\
+ & Engine & 100 & 3000.00\\
+ & API & 30 & 900.00\\
  & Client & 30 & 900.00\\
- & Control panel & 35 & 1050.00\\
+ & Control panel & 15 & 450.00\\
  & Game example & 100 & 3000.00\\
  & Testing and polishing & 40 & 1200.00\\
 \hline
 \hline
 \multicolumn{2}{l |}{\textbf{Total}}
- & 460.00 & 14525.00
+ & 465.00 & 14525.00
 \end{tabular}
 \caption{Human resources cost}
 \label{Human resources cost}
@@ -1727,22 +1707,25 @@ Monitor Acer XB270HU & 30 & 400 & 1.77\\
 The project was developed using the internet connection described in \fullref{budget}. The internet connection was used
 approximately during the 30\% of the total project's duration, as expected.
 Thus, the final cost of the internet connection was 460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.28\EURtm}.
+\clearpage
 \section{Total}
-\autoref{Total cost} shows the total cost of the project.
+\autoref{Total cost} shows the \textbf{total cost} of the project compared to the \textbf{budget} of the planning stage.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S}
-\textbf{Resource} & \textbf{Total cost (\EURtm)}\\
+\begin{tabular}{l | S | S}
+\textbf{Resource} & \textbf{Budget (\EURtm)} & \textbf{Total cost (\EURtm)}\\
 \hline
-Hardware & 87.60\\
-Software & 0.00\\
-Human & 14525.00\\
-Electricity & 26.08\\
-Internet & 7.28\\
+Hardware & 60.13 & 87.60\\
+Software & 0.00 & 0.00\\
+Human & 14525.00 & 14800.00\\
+Electricity & 26.08 & 26.08\\
+Internet & 7.28 & 7.28\\
+\hline
+Contingency (10\%) & 1461.85 & 0.00\\
 \hline
 \hline
 \multicolumn{1}{l |}{\textbf{Total}}
- & 14645.96
+ & 16080.34 & 14920.96
 \end{tabular}
 \caption{Total cost}
 \label{Total cost}
