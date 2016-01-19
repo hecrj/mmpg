@@ -97,5 +97,11 @@ figure!:
   caption "GitHub contributions to the MMPG project \\url{https://github.com/hecrj}"
   label :dedication
 
-p "Contributions to the project have been constant since the 2nd of November of 2015. At least one contribution was made
-every day since then, with only two days being the exception. Thus, progress was **constant**."
+p "At least one contribution was made every day since the 2nd of November of 2015, with only two days being the exception.
+As a consequence, the project has been in **constant progress**; new features were added to the fully-functional
+prototype and were reported to the project director on a weekly basis.
+
+**Contribution peaks** (*greenest squares*) happened when some **important feature or optimization** was implemented, which
+**increased the dedication** to the project during a specific timeframe.
+
+Overall, the amount of work has been **distributed properly** and the project has been developed at a **steady pace**."
