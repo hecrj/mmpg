@@ -55,7 +55,7 @@ itemize:
   item "Travel time"
 
 p "The travel time was proportional to the **euclidean distance** between the **planet origin** $o$ and the **planet destination** $d$,
-assuming that every fleet moves at the same **velocity** $v$:
+assuming that every fleet moved at the same **velocity** $v$:
 
 $$t_{time} = #frac{#sqrt{(d_x - o_x)^2 + (d_y - o_y)^2}}{v}$$
 
