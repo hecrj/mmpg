@@ -92,15 +92,15 @@ p "#autoref{Electricity cost} shows the electricity cost of the project."
 electricity = {
   "Desktop computer" => {
     :consumption => 400,
-    :usage       => 400
+    :usage       => 440
   },
   "Laptop"           => {
     :consumption => 100,
-    :usage       => 50
+    :usage       => 5
   },
   "Monitor Acer XB270HU" => {
     :consumption => 30,
-    :usage       => 400
+    :usage       => 440
   }
 }
 
@@ -120,11 +120,11 @@ subsection "Internet connection"
 internet_month = 38
 internet_hour = internet_month / (30.0 * 24)
 
-COST["Internet"] = internet_hour * 460 * 0.3
+COST["Internet"] = internet_hour * task_durations.values.sum * 0.3
 
-p "The project was developed using the internet connection described in #fullref{budget}. The internet connection was used
+p "The project was developed using the internet connection described in #autoref{budget}. The internet connection was used
 approximately during the 30\\% of the total project's duration, as expected.
-Thus, the final cost of the internet connection was 460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + COST["Internet"].decimals + "\\EURtm**."
+Thus, the final cost of the internet connection was " + task_durations.values.sum.str + "h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + COST["Internet"].decimals + "\\EURtm**."
 
 clearpage
 

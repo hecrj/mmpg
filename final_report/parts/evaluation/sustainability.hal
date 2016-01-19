@@ -1,6 +1,6 @@
 chapter "Sustainability"
 
-p "This section contains a basic sustainability report of the project based on the method described by
+p "This chapter contains a basic sustainability report of the project based on the method described by
 Christian Felber in `The economy of the common good' #cite{sustainability_report}."
 
 section "Economic analysis"
@@ -24,7 +24,7 @@ However, the project will not affect the mainstream consumer directly. It will o
 community in computer science."
 
 section "Environmental impact analysis"
-p "The project usef 177kWh of electricity, which is approximately 174kg of CO#textsuperscript{2} #cite{co2}.
+p "The project used 177kWh of electricity, which is approximately 174kg of CO#textsuperscript{2} #cite{co2}.
 This is the amount of CO#textsuperscript{2} that a car produces by driving only 7
 hours#footnote{#url{http://www.yousustain.com/footprint/howmuchco2?co2=174+kg}}. Also, any source of
 information was accessed digitally over the internet.
