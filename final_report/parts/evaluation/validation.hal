@@ -15,23 +15,31 @@ Moreover, the **engine architecture** is entirely decoupled from any game built 
 top of it.
 
 Furthermore, the **engine** provides an abstraction that games can override to customize certain aspects:
-like **world generation**, **game-loop timestep**, etc."
+like **world generation**, **game-loop timestep**, etc.
+
+Hence, the objective has been achieved."
 
 subsection "Allow hot-swapping of AIs"
 p "This **AI hot-swapping** feature was implemented in #autoref{deployment_ai}. Also, it has been tested constantly
-thanks to the **implementation methodology** described in #autoref{methodology}."
+thanks to the **implementation methodology** described in #autoref{methodology}.
+
+The objective has been achieved."
 
 subsection "Implement a real-time webviewer"
 p "The **engine** was able to notify game events in real-time since the first prototype implemented in
-#autoref{first_prototype}."
+#autoref{first_prototype}.
+
+The objective has been achieved."
 
 subsection "Create a control panel"
-p "The **control panel** was the last feature implemented, in #autoref{control_panel}.
+p "The **control panel** was a feature implemented in #autoref{control_panel}.
 
 However, it might be too simplistic, as it only allows to **play and pause** the match.
 Hence, more features will probably be needed before using it in a production environment, like
-monitoring of players in real-time, banning players, etc. These features should be easy to implement by
-extending the **engine**, the **API** and the **client**."
+monitoring players in real-time, banning players, etc. These features should be easy to implement by
+extending the **engine**, the **API** and the **client**.
+
+The objective has been achieved, but the planned objective was too simple and the control panel needs to be extended."
 
 subsection "Make the infrastructure scalable and stable"
 p "First, the platform was designed with scalability in mind:"

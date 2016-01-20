@@ -1163,7 +1163,7 @@ administrators. Then, the \texttt{/auth} endpoint was changed to allow administr
 player in the engine.
 \section{Assuming control}
 New types of request handlers were added to the engine app-server that allowed to pause and play the match: \texttt{PLAY\_MATCH} and
-\texttt{PAUSE\_MATCH} respectively.
+\texttt{PAUSE\_MATCH}, respectively.
 
 These new handlers were exposed through the \texttt{API} in the new endpoints: \texttt{/control/play} and \texttt{/control/stop}. Obviously,
 these endpoints checked that the authenticated user requesting the action was an administrator. If not, a \texttt{403 Forbidden}
@@ -1608,19 +1608,27 @@ top of it.
 
 Furthermore, the \textbf{engine} provides an abstraction that games can override to customize certain aspects:
 like \textbf{world generation}, \textbf{game-loop timestep}, etc.
+
+Hence, the objective has been achieved.
 \subsection{Allow hot-swapping of AIs}
 This \textbf{\texttt{AI} hot-swapping} feature was implemented in \autoref{deployment_ai}. Also, it has been tested constantly
 thanks to the \textbf{implementation methodology} described in \autoref{methodology}.
+
+The objective has been achieved.
 \subsection{Implement a real-time webviewer}
 The \textbf{engine} was able to notify game events in real-time since the first prototype implemented in
 \autoref{first_prototype}.
+
+The objective has been achieved.
 \subsection{Create a control panel}
-The \textbf{control panel} was the last feature implemented, in \autoref{control_panel}.
+The \textbf{control panel} was a feature implemented in \autoref{control_panel}.
 
 However, it might be too simplistic, as it only allows to \textbf{play and pause} the match.
 Hence, more features will probably be needed before using it in a production environment, like
-monitoring of players in real-time, banning players, etc. These features should be easy to implement by
+monitoring players in real-time, banning players, etc. These features should be easy to implement by
 extending the \textbf{engine}, the \textbf{\texttt{API}} and the \textbf{client}.
+
+The objective has been achieved, but the planned objective was too simple and the control panel needs to be extended.
 \subsection{Make the infrastructure scalable and stable}
 First, the platform was designed with scalability in mind:
 \begin{enumerate}
