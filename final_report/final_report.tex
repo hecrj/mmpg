@@ -1147,6 +1147,29 @@ The \textbf{\texttt{/auth}} and \textbf{\texttt{/player}} endpoint in the \textb
 \item
 The \textbf{login form}, \textbf{player menu}, and \textbf{deployment form} in the \textbf{viewer}.
 \end{enumerate}
+\chapter{The control panel}
+\label{control_panel}
+Given that an authentication system was available, it was then possible to create a control panel
+to allow administrators control the current match.
+\section{Recognizing administrators}
+At this point, the platform did not know anything about administrators, only players.
+
+An administrator is a user that has privilege to control the current match. Given that administrators were not used
+in the game logic, it did not make sense to add them in the engine. Hence, the concept was added in the \texttt{API}, as a way
+to control access to some engine operations.
+
+The \texttt{API} was changed to read a file when booting up that contained a list of user identifiers that should be considered
+administrators. Then, the \texttt{/auth} endpoint was changed to allow administrators login even if they did not have an associated
+player in the engine.
+\section{Assuming control}
+New types of request handlers were added to the engine app-server that allowed to pause and play the match: \texttt{PLAY\_MATCH} and
+\texttt{PAUSE\_MATCH} respectively.
+
+These new handlers were exposed through the \texttt{API} in the new endpoints: \texttt{/control/play} and \texttt{/control/stop}. Obviously,
+these endpoints checked that the authenticated user requesting the action was an administrator. If not, a \texttt{403 Forbidden}
+error was returned.
+
+Finally, a simple control panel was added in the viewer to allow administrators control the match easily.
 \chapter{The first game world}
 \label{first_game_world}
 Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
@@ -1163,9 +1186,9 @@ These features alone, fullfilled \textbf{2} of the \textbf{6} secondary objectiv
 specifically:
 \begin{enumerate}
 \item
-Allow hot-swapping of AIs (\autoref{hotswap_ais})
+Allow hot-swapping of AIs
 \item
-Implement a real-time webviewer (\autoref{real_time_viewer})
+Implement a real-time webviewer
 \end{enumerate}
 Therefore, there were still \textbf{four} secondary objectives to fullfill. However, one of these objectives talked about
 \textbf{stability and scalability}, features that could only be validated at the end of the project (see \autoref{validation}).
@@ -1173,9 +1196,9 @@ Therefore, there were still \textbf{four} secondary objectives to fullfill. Howe
 For this reason, it was decided that the next implemented features \textbf{aimed to fullfill} the objectives:
 \begin{enumerate}
 \item
-Develop an abstract game engine (\autoref{abstract_engine})
+Develop an abstract game engine
 \item
-Create a game example (\autoref{game_example})
+Create a game example
 \end{enumerate}
 These two objectives could be \textbf{fullfilled both at the same time} by \textbf{creating a game example without adding any game-specific
 code in the engine}. To achieve that, a set of abstract classes were created in the \textbf{engine} to build game logic on top of them:
@@ -1569,15 +1592,6 @@ Separating world structure from dynamic data
 Rendering a spiral galaxy using \texttt{Identicons}
 \end{enumerate}
 Once this was achieved, the first \texttt{MMPG} was finished.
-\chapter{The control panel}
-\label{control_panel}
-[...]
-\section{Recognizing administrators}
-[...]
-\section{Assuming control}
-[...]
-\section{Summary}
-[...]
 \part{Evaluation}
 \chapter{Validation}
 \label{validation}

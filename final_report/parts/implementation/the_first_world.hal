@@ -13,8 +13,8 @@ p "These features alone, fullfilled **2** of the **6** secondary objectives deta
 specifically:"
 
 enumerate:
-  item; p "Allow hot-swapping of AIs (#autoref{hotswap_ais})"
-  item; p "Implement a real-time webviewer (#autoref{real_time_viewer})"
+  item; p "Allow hot-swapping of AIs"
+  item; p "Implement a real-time webviewer"
 
 p "Therefore, there were still **four** secondary objectives to fullfill. However, one of these objectives talked about
 **stability and scalability**, features that could only be validated at the end of the project (see #autoref{validation}).
@@ -22,8 +22,8 @@ p "Therefore, there were still **four** secondary objectives to fullfill. Howeve
 For this reason, it was decided that the next implemented features **aimed to fullfill** the objectives:"
 
 enumerate:
-  item; p "Develop an abstract game engine (#autoref{abstract_engine})"
-  item; p "Create a game example (#autoref{game_example})"
+  item; p "Develop an abstract game engine"
+  item; p "Create a game example"
 
 p "These two objectives could be **fullfilled both at the same time** by **creating a game example without adding any game-specific
 code in the engine**. To achieve that, a set of abstract classes were created in the **engine** to build game logic on top of them:"

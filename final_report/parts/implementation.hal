@@ -5,7 +5,7 @@ import parts.implementation.the_first_prototype
 import parts.implementation.continuous_integration
 import parts.implementation.the_log_system
 import parts.implementation.deployment_of_ai
+import parts.implementation.the_control_panel
 import parts.implementation.the_first_world
 import parts.implementation.fleets_and_planets
 import parts.implementation.a_whole_galaxy
-import parts.implementation.the_control_panel

@@ -1,13 +1,26 @@
 chapter "The control panel"
 label :control_panel
 
-p "[...]"
+p "Given that an authentication system was available, it was then possible to create a control panel
+to allow administrators control the current match."
 
 section "Recognizing administrators"
-p "[...]"
+p "At this point, the platform did not know anything about administrators, only players.
+
+An administrator is a user that has privilege to control the current match. Given that administrators were not used
+in the game logic, it did not make sense to add them in the engine. Hence, the concept was added in the API, as a way
+to control access to some engine operations.
+
+The API was changed to read a file when booting up that contained a list of user identifiers that should be considered
+administrators. Then, the |/auth| endpoint was changed to allow administrators login even if they did not have an associated
+player in the engine."
 
 section "Assuming control"
-p "[...]"
+p "New types of request handlers were added to the engine app-server that allowed to pause and play the match: |PLAY\\_MATCH| and
+|PAUSE\\_MATCH|, respectively.
 
-section "Summary"
-p "[...]"
+These new handlers were exposed through the API in the new endpoints: |/control/play| and |/control/stop|. Obviously,
+these endpoints checked that the authenticated user requesting the action was an administrator. If not, a |403 Forbidden|
+error was returned.
+
+Finally, a simple control panel was added in the viewer to allow administrators control the match easily."
