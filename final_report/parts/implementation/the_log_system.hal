@@ -1,4 +1,5 @@
 chapter "The log system"
+label :log_system
 
 p "Matches of **MMPG**s are expected to last days or weeks, and while allowing viewers to watch the current state of
 the match is mandatory, **AI**s will keep playing while players sleep. Therefore, **players will miss parts of the match**.

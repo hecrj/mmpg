@@ -1,4 +1,6 @@
 chapter "Fleets and planets"
+label :fleets_planets
+
 p "At this point, a **planetary system** was being generated as the game world. Thus, it was possible to start developing 
 the main game mechanics: **ship generation** and **fleet movement**."
 

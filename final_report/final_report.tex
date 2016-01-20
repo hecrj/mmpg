@@ -114,19 +114,19 @@ able to show how its code works \textbf{visually} is truly fascinating.
 
 Programming games mix two of my passions: \textbf{videogames} and \textbf{programming}. So when this project was offered to me,
 I thought it was the \textbf{perfect fit}.
-\section{Summary}
+\section{Report structure}
 This report consists of four different parts. Each one of them describes a vital phase in the development of
 the project:
 \begin{description}
 \item[Formulation]
-It identifies and analyzes the \textbf{problem to solve}, it \textbf{specifies} the scope of
+Identifies and analyzes the \textbf{problem to solve}, it \textbf{specifies} the scope of
   the project, and it shows the \textbf{design} of the solution.
 \item[Planning]
-It details the \textbf{time plan} and the \textbf{budget} to develop the project.
+Details the \textbf{time plan} and the \textbf{budget} to develop the project.
 \item[Implementation]
-It describes the development of the different \textbf{components} that compose the solution.
+Describes the development of the different \textbf{components} that compose the solution.
 \item[Evaluation]
-It describes the \textbf{validation methodology}, it reviews the \textbf{time management} and \textbf{economic cost},
+Describes the \textbf{validation methodology}, it reviews the \textbf{time management} and \textbf{economic cost},
   and it discusses the \textbf{sustainability} and \textbf{legality} of the project.
 \end{description}
 \part{Formulation}
@@ -901,6 +901,7 @@ its deployment process.
 \label{deployment_process}
 \end{figure}
 \chapter{The log system}
+\label{log_system}
 Matches of \textbf{\texttt{MMPG}}s are expected to last days or weeks, and while allowing viewers to watch the current state of
 the match is mandatory, \textbf{\texttt{AI}}s will keep playing while players sleep. Therefore, \textbf{players will miss parts of the match}.
 For this reason, it is important to allow viewers to replay the \textbf{past of the match}. This feature is especially
@@ -1310,6 +1311,7 @@ A simple algorithm was implemented to \textbf{procedurally generate} the game wo
 The \textbf{viewer} was upgraded to \textbf{render} the generated game world.
 \end{enumerate}
 \chapter{Fleets and planets}
+\label{fleets_planets}
 At this point, a \textbf{planetary system} was being generated as the game world. Thus, it was possible to start developing 
 the main game mechanics: \textbf{ship generation} and \textbf{fleet movement}.
 \section{Generating ships in conquered planets}
@@ -1439,11 +1441,50 @@ Upgrading the \textbf{viewer} to show \textbf{fleets} and \textbf{planet informa
 \end{enumerate}
 \chapter{A whole galaxy}
 \label{whole_galaxy}
-[...]
+At this point, the integration server was running a game similar to Galcon: a small number of players could
+compete to win control over the generated planetary system. However, it was necessary to increase the game size
+in order to add support for a high amount of players.
 \section{Generating multiple planetary systems}
-[...]
+At this moment, the game world was a planetary system. Therefore, the logical step to increase the game size
+was to think about a \textbf{galaxy}.
+
+The game size was increased by generating a number of planetary systems proportional to the amount
+of players of the match. Different systems were connected using an algorithm similar to the one used to
+connect planets (described in \autoref{fleet_planets}). A new type of celestial body was added to each system that
+allowed ships to travel to its connected systems: the \textbf{relay}.
+
+In order to simplify the galaxy generation, it was decided that the system position would not affect travel time between
+systems. Specifically, travelling from one relay to another was instantaneous. This way, a galaxy could be simplified
+to an ordered set of systems, with no need to positionate the systems correctly inside the game logic.
 \section{Separating world structure from dynamic data}
-[...]
+Once the new world generation was ready, a new prototype was deployed to the integration server. This prototype
+generated \textbf{300 systems} as a game world.
+
+After deploying the prototype, the CPU usage in the server increased from 1-2\% to \textbf{20\%}. While an increase
+in the CPU usage was expected, it was not expected to be that much. Hence, an analysis was performed to detect
+any possible bottlenecks:
+The main symptom was that the \texttt{API} was notifying 200 kbits of events per second, when before deploying the bandwidth
+needed was 10-12 kbps. The events that changed after the deployment were the \textbf{snapshots} (see \autoref{log_system}).
+The game world increased its size by 300 times, thus the snapshots were approximately 300 times bigger. These snapshots
+are also sent to players quite often to keep their copies of game worlds updated.
+
+Given that the snapshot generation turned expensive, an optimization was needed. Most of the generated game world was static,
+it did not change: a system stayed with the same structure the entire match. The only data that could potentially change
+was the number of ships and the owner of every planet. Thus, there was no reason to constantly generate snapshots where most of
+its data was static. Instead, \textbf{static data and dynamic data could be separated}.
+
+Therefore, the optimization consisted in generating a world structure snapshot only once, and notify it to players and
+viewers only once. Then, snapshots containing dynamic data were generated and notified periodically, as before.
+
+The optimization reduced the CPU usage from 20\% to \textbf{2\%} consistently and the bandwidth from 200kbps to \textbf{20kbps}.
+\autoref{cpu_galaxy} shows the CPU usage drop after the optimization was deployed.
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/cpu_galaxy.png}
+}
+\caption{CPU usage drop after the separating world structure from dynamic data}
+\label{cpu_galaxy}
+\end{figure}
 \section{Rendering a galaxy}
 [...]
 \section{Summary}

@@ -61,15 +61,15 @@ able to show how its code works **visually** is truly fascinating.
 Programming games mix two of my passions: **videogames** and **programming**. So when this project was offered to me,
 I thought it was the **perfect fit**."
 
-section "Summary"
+section "Report structure"
 
 p "This report consists of four different parts. Each one of them describes a vital phase in the development of
 the project:"
 
 description:
-  item "Formulation"; p "It identifies and analyzes the **problem to solve**, it **specifies** the scope of
+  item "Formulation"; p "Identifies and analyzes the **problem to solve**, it **specifies** the scope of
   the project, and it shows the **design** of the solution."
-  item "Planning"; p "It details the **time plan** and the **budget** to develop the project."
-  item "Implementation"; p "It describes the development of the different **components** that compose the solution."
-  item "Evaluation"; p "It describes the **validation methodology**, it reviews the **time management** and **economic cost**,
+  item "Planning"; p "Details the **time plan** and the **budget** to develop the project."
+  item "Implementation"; p "Describes the development of the different **components** that compose the solution."
+  item "Evaluation"; p "Describes the **validation methodology**, it reviews the **time management** and **economic cost**,
   and it discusses the **sustainability** and **legality** of the project."
