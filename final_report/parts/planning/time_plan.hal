@@ -37,7 +37,7 @@ easily. The codebase will implement the features that are independent of the fin
 
 description:
   item "Expected duration"; p "70 hours"
-  item "Possible complications"; p "AI memory management might be tricky.
+  item "Possible complications"; p "AI memory management might be difficult.
   The student may need to learn low-level instructions to control OS's processes."
 
 subsubsection "API"
@@ -61,7 +61,7 @@ scores of every player."
 
 description:
   item "Expected duration"; p "35 hours"
-  item "Possible complications"; p "The student may need some time to understand the codebase of **Jutge.org**."
+  item "Possible complications"; p "None."
 
 subsection "Game example"
 p "A **massive multiplayer programming game** will be developed to test that the underlying
@@ -105,7 +105,7 @@ p "Once the project memory is finished, the student will prepare the final oral 
 
 description:
   item "Expected duration"; p "10 hours"
-  item "Possible complications"; p "Executing live examples is risky, it might be useful to have a fallback strategy."
+  item "Possible complications"; p "Live examples must be well-prepared beforehand."
   item "Task dependencies"; p "Project memory."
 
 clearpage

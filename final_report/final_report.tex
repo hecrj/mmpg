@@ -171,11 +171,6 @@ However, all of this platforms feature multiplayer programming games with \textb
 the best \textbf{\texttt{AI}}.
 
 Given that there is no \textbf{pre-made solution} that fits the project's requirement, a \textbf{new brand solution is necessary}.
-\clearpage
-\chapter{Specification}
-\label{specification}
-This chapter specifies the different \textbf{stakeholders} of the platform and the different objectives that the project must
-fullfill in order to satisfy the requirement stated in the previous chapter.
 \section{Stakeholders}
 Given the \textbf{requirement} described in \autoref{requirement}, the different users that will use the platform are considered:
 \begin{description}
@@ -191,30 +186,31 @@ They want to \textbf{watch the match unfold in real-time}.
 They want to \textbf{control} the game. They want to supervise, start, stop or pause the game, and obtain
   the final scores of every player.
 \end{description}
+\clearpage
+\chapter{Objectives}
+\label{specification}
+This chapter details the different objectives that the project must fullfill in order to satisfy the requirement stated in
+the previous chapter.
 \section{Main objective}
 Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.
 \section{Secondary objectives}
 \label{secondary_objectives}
-\subsection{Develop an abstract game engine}
-\label{abstract_engine}
-Any experienced programmer must be able to create new games for the platform easily.
-\subsection{Allow hot-swapping of AIs}
-\label{hotswap_ais}
+\begin{description}
+\item[Develop an abstract game engine]
+Any experienced programmer must be able to create new games for the platform easily
+\item[Allow hot-swapping of AIs]
 Players must be able to change the code of their current AIs in the middle of a match.
-\subsection{Implement a real-time webviewer}
-\label{real_time_viewer}
+\item[Implement a real-time webviewer]
 Players must be able to watch in real-time how the game unfolds in a web browser.
-\subsection{Create a control panel}
-\label{control_panel_obj}
+\item[Create a control panel]
 Administrators must be able to play, pause and stop the game and also see a ranking of the current match.
-\subsection{Make the infrastructure scalable and stable}
-\label{it_scalable_stable}
+\item[Make the infrastructure scalable and stable]
 The underlying infrastructure must be able to handle huge worlds and a large number of \texttt{}AI\texttt{}s without
-hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
-or affect the platform negatively.
-\subsection{Create a game example}
-\label{game_example}
+  hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
+  or affect the platform negatively.
+\item[Create a game example]
 A multiplayer programming game will be created to test and show that the platform works correctly.
+\end{description}
 \clearpage
 \chapter{Design}
 \label{design}
@@ -300,7 +296,7 @@ easily. The codebase will implement the features that are independent of the fin
 \item[Expected duration]
 70 hours
 \item[Possible complications]
-\texttt{AI} memory management might be tricky.
+\texttt{AI} memory management might be difficult.
   The student may need to learn low-level instructions to control OS's processes.
 \end{description}
 \subsubsection{API}
@@ -327,7 +323,7 @@ scores of every player.
 \item[Expected duration]
 35 hours
 \item[Possible complications]
-The student may need some time to understand the codebase of \textbf{Jutge.org}.
+None.
 \end{description}
 \subsection{Game example}
 A \textbf{massive multiplayer programming game} will be developed to test that the underlying
@@ -379,7 +375,7 @@ Once the project memory is finished, the student will prepare the final oral pre
 \item[Expected duration]
 10 hours
 \item[Possible complications]
-Executing live examples is risky, it might be useful to have a fallback strategy.
+Live examples must be well-prepared beforehand.
 \item[Task dependencies]
 Project memory.
 \end{description}

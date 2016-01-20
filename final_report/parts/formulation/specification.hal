@@ -1,21 +1,9 @@
-chapter "Specification"
+chapter "Objectives"
 label :specification
 
-p "This chapter specifies the different **stakeholders** of the platform and the different objectives that the project must
-fullfill in order to satisfy the requirement stated in the previous chapter."
+p "This chapter details the different objectives that the project must fullfill in order to satisfy the requirement stated in
+the previous chapter."
 
-section "Stakeholders"
-
-p "Given the **requirement** described in #autoref{requirement}, the different users that will use the platform are considered:"
-
-description:
-  item "Game programmers"; p "They want to create **MMPG**s easily. They want to focus on programming the game logic and the
-  game viewer, without worrying about internal aspects of the platform."
-  item "Players"; p "They will **develop |AI|s** for a concrete game and upload them to the web platform at any time during
-  the game match."
-  item "Viewers"; p "They want to **watch the match unfold in real-time**."
-  item "Administrators"; p "They want to **control** the game. They want to supervise, start, stop or pause the game, and obtain
-  the final scores of every player."
 
 section "Main objective"
 
@@ -24,28 +12,23 @@ p "Develop a set of components that ease the creation and the usage of **massive
 section "Secondary objectives"
 label :secondary_objectives
 
-subsection "Develop an abstract game engine"
-label :abstract_engine
-p "Any experienced programmer must be able to create new games for the platform easily."
+description:
+  item "Develop an abstract game engine"
+  p "Any experienced programmer must be able to create new games for the platform easily"
 
-subsection "Allow hot-swapping of AIs"
-label :hotswap_ais
-p "Players must be able to change the code of their current AIs in the middle of a match."
+  item "Allow hot-swapping of AIs"
+  p "Players must be able to change the code of their current AIs in the middle of a match."
 
-subsection "Implement a real-time webviewer"
-label :real_time_viewer
-p "Players must be able to watch in real-time how the game unfolds in a web browser."
+  item "Implement a real-time webviewer"
+  p "Players must be able to watch in real-time how the game unfolds in a web browser."
 
-subsection "Create a control panel"
-label :control_panel_obj
-p "Administrators must be able to play, pause and stop the game and also see a ranking of the current match."
+  item "Create a control panel"
+  p "Administrators must be able to play, pause and stop the game and also see a ranking of the current match."
+  
+  item "Make the infrastructure scalable and stable"
+  p "The underlying infrastructure must be able to handle huge worlds and a large number of |AI|s without
+  hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
+  or affect the platform negatively."
 
-subsection "Make the infrastructure scalable and stable"
-label :it_scalable_stable
-p "The underlying infrastructure must be able to handle huge worlds and a large number of |AI|s without
-hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
-or affect the platform negatively."
-
-subsection "Create a game example"
-label :game_example
-p "A multiplayer programming game will be created to test and show that the platform works correctly."
+  item "Create a game example"
+  p "A multiplayer programming game will be created to test and show that the platform works correctly."

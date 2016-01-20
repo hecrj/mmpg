@@ -41,3 +41,16 @@ p "However, all of this platforms feature multiplayer programming games with **s
 the best **AI**.
 
 Given that there is no **pre-made solution** that fits the project's requirement, a **new brand solution is necessary**."
+
+section "Stakeholders"
+
+p "Given the **requirement** described in #autoref{requirement}, the different users that will use the platform are considered:"
+
+description:
+  item "Game programmers"; p "They want to create **MMPG**s easily. They want to focus on programming the game logic and the
+  game viewer, without worrying about internal aspects of the platform."
+  item "Players"; p "They will **develop |AI|s** for a concrete game and upload them to the web platform at any time during
+  the game match."
+  item "Viewers"; p "They want to **watch the match unfold in real-time**."
+  item "Administrators"; p "They want to **control** the game. They want to supervise, start, stop or pause the game, and obtain
+  the final scores of every player."
