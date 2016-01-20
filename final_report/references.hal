@@ -192,3 +192,33 @@ bibtex :references:
     author "Nginx, Inc."
     url "http://nginx.org/"
     online "January 14, 2016"
+
+  misc :milky_way_concept:
+    title "{Artist's impression of the Milky Way}"
+    author "NASA/JPL-Caltech/ESO/R. Hurt"
+    url "http://www.eso.org/public/images/eso1339e/"
+    online "January 20, 2016"
+
+  misc :galaxy_shapes:
+    title "{Types and Classification of Galaxies}"
+    author "Cornell University"
+    url "http://www.astro.cornell.edu/academics/courses/astro201/galaxies/types.htm"
+    online "January 20, 2016"
+
+  misc :spiral_equations:
+    title "{Spirals}"
+    author "Jürgen Köller"
+    url "http://www.mathematische-basteleien.de/spiral.htm"
+    online "January 20, 2016"
+
+  misc :identicons:
+    title "{Identicons!}"
+    author "GitHub, Inc."
+    url "https://github.com/blog/1586-identicons"
+    online "January 20, 2016"
+
+  misc :mersenne_twister:
+    title "{What \\& how is MT?}"
+    author "Makoto Matsumoto"
+    url "http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ewhat-is-mt.html"
+    online "January 20, 2016"

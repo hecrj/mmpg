@@ -32,7 +32,7 @@ usetikzlibrary "arrows,positioning"
 include :style
 
 typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js",
-  "Javascript", "gzip", "POST", "GET", "base64", "HTML"
+  "Javascript", "gzip", "POST", "GET", "base64", "HTML", "Identicons", "Identicon"
 
 document:
   cover title    => "Platform for massive multiplayer programming games",

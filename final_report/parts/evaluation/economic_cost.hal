@@ -21,7 +21,8 @@ p "As stated in the original planning, all the software needed to develop the pr
   #autoref{Additional software} shows additional software that was used but it was not listed in the original planning."
 
 software = {
-  "Three.js" => "https://github.com/mrdoob/three.js/blob/master/LICENSE"
+  "Three.js" => "https://github.com/mrdoob/three.js/blob/master/LICENSE",
+  "Identicon.js" => "https://github.com/hecrj/identicon.js/blob/master/LICENSE"
 }
 
 

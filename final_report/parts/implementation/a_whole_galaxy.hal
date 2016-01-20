@@ -11,7 +11,7 @@ was to think about a **galaxy**.
 
 The game size was increased by generating a number of planetary systems proportional to the amount
 of players of the match. Different systems were connected using an algorithm similar to the one used to
-connect planets (described in #autoref{fleet_planets}). A new type of celestial body was added to each system that
+connect planets (described in #autoref{fleets_planets}). A new type of celestial body was added to each system that
 allowed ships to travel to its connected systems: the **relay**.
 
 In order to simplify the galaxy generation, it was decided that the system position would not affect travel time between
@@ -20,37 +20,121 @@ to an ordered set of systems, with no need to positionate the systems correctly 
 
 section "Separating world structure from dynamic data"
 p "Once the new world generation was ready, a new prototype was deployed to the integration server. This prototype
-generated **300 systems** as a game world.
+generated **300 systems** as the game world.
 
 After deploying the prototype, the CPU usage in the server increased from 1-2\\% to **20\\%**. While an increase
-in the CPU usage was expected, it was not expected to be that much. Hence, an analysis was performed to detect
-any possible bottlenecks:"
+in the CPU usage was expected, it was not expected to be that high. Hence, an analysis was performed to detect
+any possible bottlenecks.
 
-p "The main symptom was that the API was notifying 200 kbits of events per second, when before deploying the bandwidth
-needed was 10-12 kbps. The events that changed after the deployment were the **snapshots** (see #autoref{log_system}).
+The main detected symptom was that the API was notifying 200 kbits of events per second, when the bandwidth needed was 10-12 kbps
+before deploying. The events that changed after the deployment were the **snapshots** (see #autoref{log_system}).
 The game world increased its size by 300 times, thus the snapshots were approximately 300 times bigger. These snapshots
-are also sent to players quite often to keep their copies of game worlds updated.
+were also sent to players quite often to keep their copies of game worlds updated.
 
 Given that the snapshot generation turned expensive, an optimization was needed. Most of the generated game world was static,
 it did not change: a system stayed with the same structure the entire match. The only data that could potentially change
 was the number of ships and the owner of every planet. Thus, there was no reason to constantly generate snapshots where most of
-its data was static. Instead, **static data and dynamic data could be separated**.
+their data was static. Instead, **static data and dynamic data could be separated**.
 
 Therefore, the optimization consisted in generating a world structure snapshot only once, and notify it to players and
 viewers only once. Then, snapshots containing dynamic data were generated and notified periodically, as before.
 
-The optimization reduced the CPU usage from 20\\% to **2\\%** consistently and the bandwidth from 200kbps to **20kbps**.
+The optimization reduced the CPU usage from 20\\% to **3\\%** consistently and the bandwidth from 200kbps to **20kbps**.
 #autoref{cpu_galaxy} shows the CPU usage drop after the optimization was deployed."
 
 figure!:
   resizebox width => "\\textwidth":
     includegraphics "images/cpu_galaxy.png"
 
-  caption "CPU usage drop after the separating world structure from dynamic data"
+  caption "CPU usage drop after separating world structure from dynamic data"
   label :cpu_galaxy
 
 section "Rendering a galaxy"
-p "[...]"
+p "After the optimization, the game logic was mostly finished. Space Wars was able to scale its size with the number of players
+efficiently. Hence, the last task left to finish the game was to upgrade the game viewer so it could show the generated galaxy.
+
+The idea was to show a **galaxy map**. Basically, the galaxy map would show a general view of all the game world. In other words,
+it would show every system in a clear way. However, as it was said before, the galaxy is just an ordered set of systems.
+A system did not have a particular position in the game logic. As a consequence, the viewer had the responsibility to turn this
+ordered set into a galaxy.
+
+Now, galaxies come in different shapes #cite{galaxy_shapes}, but the most familiar of them is the spiral shape. Our galaxy,
+the Milky Way has an spiral shape, as shown by #autoref{milky_way}."
+
+figure!:
+  center:
+    resizebox width => ".9\\textwidth":
+      includegraphics "images/milky_way.jpg"
+
+  caption "Artist's conception of the spiral structure of the Milky Way \\cite{milky_way_concept}"
+  label :milky_way
+
+p "Hence, in order to simulate an spiral galaxy, it was necessary to study the spiral equations #cite{spiral_equations} first.
+
+Basically, the coordinates of the points in a spiral are defined by
+
+$$x(t) = at \\: cos(t)$$
+$$y(t) = at \\: sin(t)$$
+
+where $t$ is an angle and $a$ is a constant that controls the spiral density.
+
+However, spiral galaxies can have multiple arms. This means that they can be formed by multiple spirals with different rotations.
+A spiral can be easily rotated by an angle $\\theta$:
+
+$$x(t) = at \\: cos(t + \\theta)$$
+$$y(t) = at \\: sin(t + \\theta)$$
+
+Using these last equations, it was relatively easy to build a simple algorithm that assigned a position $(x, y)$ to every
+planetary system of the game world, while generating a galaxy with a number of arms proportional to the number of systems.
+Algorithm #autoref{spiral_algorithm} shows the algorithm used to generate the galaxy map."
+
+algorithm options => "H":
+  caption "Galaxy map generation"
+  label :spiral_algorithm
+
+  algorithmic:
+    REQUIRE "$systems \\text{ is a list of systems}$"
+    REQUIRE "$\\alpha \\text{ is the initial angle}$"
+    REQUIRE "$arm_{systems} \\text{ is the amount of systems per arm}$"
+    STATE "$\\theta \\gets 0$"
+    STATE "$t \\gets \\alpha$"
+    STATE "$\\theta_{inc} \\gets 2 \\pi \\frac{arm_{systems}}{systems_{length}}$"
+    STATE "$t_{inc} \\gets \\frac{2 \\pi}{arm_{systems}}$"
+
+    FOR "$s \\text{ in } systems$"
+    STATE "$s_x \\gets a \\cdot t \\cdot cos(t + \\theta)$"
+    STATE "$s_y \\gets a \\cdot t \\cdot sin(t + \\theta)$"
+    STATE "$t \\gets t + t_{inc}$"
+
+    IF "$t \\geq 2 \\pi + \\alpha$"
+    STATE "$t \\gets \\alpha$"
+    STATE "$\\theta \\gets \\theta + \\theta_{inc}$"
+    ENDIF
+
+    ENDFOR
+
+p "Additionally, an ideal way to represent players uniquely was needed. Given that the number
+of players could be really high, using colors would have been a bad idea, as some players would share shades of the same
+color. Hence, |GitHub|-based **Identicons** #cite{identicons} were used to identify different players easily. The Identicons are
+generated using player identifiers, thus players can keep the same Identicon in different matches.
+
+#autoref{galaxy_map} shows an example of a galaxy rendered by the game viewer."
+
+figure!:
+  center:
+    resizebox width => ".75\\textwidth":
+      includegraphics "images/galaxy_map.png"
+
+  caption "The Space Wars galaxy map showing an spiral galaxy with 6 arms and 300 systems"
+  label :galaxy_map
 
 section "Summary"
-p "[...]"
+p "This chapter detailed how Space Wars was made scalable with the number of players. Basically, the implementation
+process consisted in:"
+
+enumerate:
+  item; p "Generating multiple planetary systems"
+  item; p "Separating world structure from dynamic data"
+  item; p "Rendering a spiral galaxy using Identicons"
+
+p "Once this was achieved, the first MMPG was finished."
