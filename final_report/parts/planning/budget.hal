@@ -160,11 +160,11 @@ table "Human resources budget", "l l S S":
 section "Other resources"
 
 subsection "Electricity"
-kwh = 0.147358
+kwh = 0.10
 
 p "Electricity will be needed to power the hardware. #autoref{Electricity budget} shows the power consumption,
 the estimated time of usage, and the cost for every piece of hardware that needs an external source of power,
-assuming %f #EURtm / kWh in Spain." % kwh
+assuming %s #EURtm / kWh in Spain #cite{electricity_spain}." % kwh.decimals
 
 electricity = {
   "Desktop computer" => {

@@ -24,9 +24,7 @@ community in computer science and education."
 
 section "Environmental impact analysis"
 p "The project used 177kWh of electricity, which is approximately 174kg of CO#textsuperscript{2} #cite{co2}.
-This is the amount of CO#textsuperscript{2} that a car produces by driving only 7
-hours#footnote{#url{http://www.yousustain.com/footprint/howmuchco2?co2=174+kg}}. Also, any source of
-information was accessed digitally over the internet.
+Also, any source of information was accessed digitally over the internet.
 
 However, the hardware used can not be fully recycled and it will, eventually, become electronic waste
 with a high amount of contaminants."

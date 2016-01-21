@@ -86,9 +86,9 @@ table "Human resources cost", "l l S S":
 section "Other resources"
 
 subsection "Electricity"
-kwh = 0.147358
+kwh = 0.10
 
-p "#autoref{Electricity cost} shows the electricity cost of the project."
+p "#autoref{Electricity cost} shows the electricity cost of the project, assuming the same cost per kWh stated in #autoref{budget}."
 
 electricity = {
   "Desktop computer" => {

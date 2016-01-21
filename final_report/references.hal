@@ -236,3 +236,9 @@ bibtex :references:
     title "{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}"
     url "http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt"
     online "January 20, 2016"
+
+  misc :electricity_spain:
+    title "{Electricity prices in selected countries}"
+    author "Statista Inc."
+    url "http://www.statista.com/statistics/263492/electricity-prices-in-selected-countries/"
+    online "January 20, 2016"
