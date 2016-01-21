@@ -36,10 +36,11 @@ typewrite "MMPG", "MMPGs", "AIs", "PHP", "AI", "API", "Python", "Ruby", "Elixir"
 
 document:
   cover title    => "Platform for massive multiplayer programming games",
+        subtitle => "Computation",
         subject  => "Degree Final Project",
         authors  => ["Héctor Ramón Jiménez"],
-        footer   => "Facultat d'Informàtica de Barcelona",
-        extra    => "Directed by Jordi Petit Silvestre"
+        footer   => "Facultat d'Informàtica de Barcelona\\\\\\small Universitat Politècnica de Catalunya",
+        extra    => "{\\small \\emph{Advisor}}\\\\Jordi Petit Silvestre"
   clearpage
 
   import parts.abstract

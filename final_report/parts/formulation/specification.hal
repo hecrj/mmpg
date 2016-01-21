@@ -7,7 +7,7 @@ the previous chapter."
 
 section "Main objective"
 
-p "Develop a set of components that ease the creation and the usage of **massive multiplayer programming games**."
+p "Develop a set of components that ease the creation and the usage of massive multiplayer programming games."
 
 section "Secondary objectives"
 label :secondary_objectives

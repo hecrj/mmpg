@@ -12,7 +12,7 @@ class Kernel:
     row *cols.map{ x -> bold x }
 
   def component task, learning, implementation, testing, integration:
-    row task, "-"
+    row task, ""
     irow "Learning", learning
     irow "Implementation", implementation
     irow "Testing", testing
@@ -32,7 +32,7 @@ class Kernel:
     "\\textbf{%s}" % text
 
   def total *values, columns => 2:
-    multicolumn columns - 1, "l |", bold("Total")
+    multicolumn columns - 1, "l ", bold("Total")
     values.each{ value -> write " & ", value.decimals }
     write "\n"
 

@@ -6,13 +6,13 @@ each other. Developing a single piece of software is a difficult task, but it be
 communicates with other software, especially when both are being developed at the same time; changes made in
 the public interface of some component can easily break other components.
 
-Therefore, components **will** break. Developers are humans, and **humans make mistakes**. Thus, in order to be productive,
-it is necessary to **detect when a component breaks as soon as possible**. That way, components can be fixed before more changes
+Therefore, components will break. Developers are humans, and humans make mistakes. Thus, in order to be productive,
+it is necessary to detect when a component breaks as soon as possible. That way, components can be fixed before more changes
 are made and fixing it becomes a nightmare.
 
 In order to ensure that all the components of the platform keep working during the entire implementation process, and also
-detect and fix issues as soon as possible, the project was developed using an **iterative methodology** with
-**continuous integration**. This methodology consisted in:"
+detect and fix issues as soon as possible, the project was developed using an iterative methodology based on
+continuous integration #autoref{ci}. This methodology consisted in:"
 
 enumerate:
   item; p "Develop a simple prototype of the platform."
@@ -24,5 +24,5 @@ enumerate:
 
 p "This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
 a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
-transparently. **Stakeholders** can try the software easily while it is being developed and give **feedback**. In this case,
-the prototype was available to the director of the project to assess and follow any progress closely."
+transparently. Stakeholders can try the software easily while it is being developed and give feedback. In this case,
+the prototype was available to the advisor of the project to assess and follow any progress closely."

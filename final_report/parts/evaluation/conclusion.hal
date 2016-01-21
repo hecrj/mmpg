@@ -1,13 +1,45 @@
 chapter "Conclusion"
 
-section "Summary"
-p "..."
+p "This last chapter closes the project by summarizing the document, detailing the future of the project and
+giving the author personal thoughts."
 
-section "Limitations"
-p "..."
+section "Summary"
+p "This document detailed the building process of a platform for MMPGs.
+
+Firstly, the requirement for MMPGs games was established. Then, it was shown that there was not
+an existing solution to satisfy it. Thus, the requirement was analyzed and a solution was designed. This solution
+featured a set of different components that allowed the creation of MMPGs.
+
+Secondly, the development of the solution was planned. A time plan and a budget for the solution were shown.
+
+Next, the implementation of the solution was detailed. Starting with a prototype and using continuous integration, the different
+features that the solution needed were developed.
+
+Finally, the implemented solution was evaluated. The solution was checked against the objectives of the project,
+while also showing the time management during its implemenation and its final economic cost."
 
 section "The future"
-p "..."
+p "The future of this project is promising. Given that the platform is released as open source, the project will be maintained
+by the author and, hopefully, by the community in the future.
 
-section "Final thoughts"
+Some of the tasks that will be performed in the near-future are:"
+
+description:
+  item "Documentation"; p "Different types of documentation will be written:"
+  enumerate:
+    item; p "A guide for developers will explain how to start developing a game with the platform with detail."
+    item; p "A guide for contributors will help developers to contribute to the project."
+    item; p "A guide for Space Wars will teach players how to install Space Wars and develop AIs locally."
+    item; p "|README|s in every component will explain its responsibility in the platform."
+
+  item "Widget library"; p "A library containing predefined viewer widgets will be implemented. Game developers will be
+  able to use this widgets to implement viewer functionalities; like a login form, or the time control, for example."
+
+  item "Game template"; p "A simple game will be created. This game might be used by game developers as a starting point.
+  Forking the repository of this game will give game developers a simple fully-functional game out-of-the-box."
+
+  item "Game-logic testing suite"; p "The engine will get its own testing suite, so game developers will be able test the logic
+  of their games easily."
+
+section "Personal thoughts"
 p "..."

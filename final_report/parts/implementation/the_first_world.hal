@@ -5,45 +5,45 @@ p "Before going any further, it was convenient to make a quick review of the cur
 the platform was able to:"
 
 enumerate:
-  item; p "**Notify** game events in **real-time**"
-  item; p "**Replay** the past of the current match"
-  item; p "**Hotswap AIs** during a match"
+  item; p "Notify game events in real-time"
+  item; p "Replay the past of the current match"
+  item; p "Hotswap AIs during a match"
 
-p "These features alone, fullfilled **2** of the **6** secondary objectives detailed in #autoref{secondary_objectives},
+p "These features alone, fullfilled 2 of the 6 secondary objectives detailed in #autoref{secondary_objectives},
 specifically:"
 
 enumerate:
   item; p "Allow hot-swapping of AIs"
   item; p "Implement a real-time webviewer"
 
-p "Therefore, there were still **four** secondary objectives to fullfill. However, one of these objectives talked about
-**stability and scalability**, features that could only be validated at the end of the project (see #autoref{validation}).
+p "Therefore, there were still four secondary objectives to fullfill. However, one of these objectives talked about
+stability and scalability, features that could only be validated at the end of the project (see #autoref{validation}).
 
-For this reason, it was decided that the next implemented features **aimed to fullfill** the objectives:"
+For this reason, it was decided that the next implemented features aimed to fullfill the objectives:"
 
 enumerate:
   item; p "Develop an abstract game engine"
   item; p "Create a game example"
 
-p "These two objectives could be **fullfilled both at the same time** by **creating a game example without adding any game-specific
-code in the engine**. To achieve that, a set of abstract classes were created in the **engine** to build game logic on top of them:"
+p "These two objectives could be fullfilled both at the same time by creating a game example without adding any game-specific
+code in the engine. To achieve that, a set of abstract classes were created in the engine to build game logic on top of them:"
 
 description:
-  item "|Game|"; p "Used to **configure** general aspects of the game and as a **factory** of game |World|s and |Action|s."
-  item "|World|"; p "Used to implement game **update logic** and world **serialization**."
-  item "AI"; p "Used to build the **interface** that players will have available when implementing **AI**s."
-  item "|Action|"; p "Used to implement action **logic** and **serialization**."
+  item "|Game|"; p "Used to configure general aspects of the game and as a factory of game |World|s and |Action|s."
+  item "|World|"; p "Used to implement game update logic and world serialization."
+  item "AI"; p "Used to build the interface that players will have available when implementing AIs."
+  item "|Action|"; p "Used to implement action logic and serialization."
 
-p "These classes allowed game developers to build **MMPG**s while **extending** the **engine** code, not **changing** it."
+p "These classes allowed game developers to build MMPGs while extending the engine code, not changing it."
 
 section "Choosing a game: Space Wars"
-p "First, it was necessary to choose the game to implement. The best candidates were games with **simple rules**, but that
-also seemed **easy to extend**. Hence, development could start with the implementation of the original game rules while
-new ideas to **increase the game size** and make it **massive** could be added later.
+p "First, it was necessary to choose the game to implement. The best candidates were games with simple rules, but that
+also seemed easy to extend. Hence, development could start with the implementation of the original game rules while
+new ideas to increase the game size and make it massive could be added later.
 
-At the end, it was chosen to implement a game inspired by **Galcon** #cite{galcon}, which also inspired
-**Planet Wars** #cite{planet_wars}. **Planet Wars** was a game used in the **AI programming challenge**
-(see #autoref{state_of_the_art}) sponsored by **Google** during 2010. The game rules are simple:"
+At the end, it was chosen to implement a game inspired by Galcon #cite{galcon}, which also inspired
+Planet Wars #cite{planet_wars}. Planet Wars was a game used in the AI programming challenge
+(see #autoref{state_of_the_art}) sponsored by Google during 2010. The game rules are simple:"
 
 enumerate:
   item; p "The game world consists in a system with a determined number of planets."
@@ -53,26 +53,26 @@ enumerate:
   item; p "A player can conquer other planets by sending a greater number of ships than the planet holds."
   item; p "The objective of the match is to destroy other players and/or conquer the major number of planets."
 
-p "These rules make an interesting **strategic game** that is quite convenient for a **programming game**." 
+p "These rules make an interesting strategic game that is quite convenient for a programming game." 
 
 section "Generating a planetary system"
-p "The first step to implement the game rules was to generate a game world: a **planetary system**.
+p "The first step to implement the game rules was to generate a game world: a planetary system.
 
-In order to make every match different, it was decided to **generate the game world procedurally** using a pseudo-random
+In order to make every match different, it was decided to generate the game world procedurally using a pseudo-random
 generator#footnote{Mersenne Twister #cite{mersenne_twister}}.
 
-A simplified model of a realistic **planetary system** was taken. A **planetary system** in the game had **one sun** and a
-determined number of **planets**. A **planet** was assumed to move describing an **ellipse** with the **sun** as its center.
-Thus, assuming the position of the **sun** was $(0, 0)$, then the coordinates $x$ and $y$ of the planet were
+A simplified model of a realistic planetary system was taken. A planetary system in the game had one sun and a
+determined number of planets. A planet was assumed to move describing an ellipse with the sun as its center.
+Thus, assuming the position of the sun was $(0, 0)$, then the coordinates $x$ and $y$ of the planet were
 
 $$x = a #: cos #theta$$
 $$y = b #: sin #theta$$
 
-where $a$ and $b$ were the major and minor axes of the ellipse, respectively, and $#theta$ was the **eccentric anomaly**.
+where $a$ and $b$ were the major and minor axes of the ellipse, respectively, and $#theta$ was the eccentric anomaly.
 
-Algorithm #autoref{system_generation} shows the algorithm used to generate **planetary systems** procedurally in the game.
-Basically, the algorithm generated planets **outwards from the sun**, while ensuring **their orbits did not collide**,
-and positioned them on a **random point of its orbit**."
+Algorithm #autoref{system_generation} shows the algorithm used to generate planetary systems procedurally in the game.
+Basically, the algorithm generated planets outwards from the sun, while ensuring their orbits did not collide,
+and positioned them on a random point of its orbit."
 
 algorithm:
   caption "Procedural generation of planetary systems"
@@ -96,11 +96,11 @@ algorithm:
 
 clearpage
 section "Connecting planets"
-p "At this point, it was possible to generate a **planetary system** as the game world. However, it was decided that a planet
-could not send ships to any other planet, but only to planets that were connected to it, unlike the original **Galcon** #cite{galcon}.
-As a consequence, the game became more interesting, encouraging players to learn **path-finding** techniques.
+p "At this point, it was possible to generate a planetary system as the game world. However, it was decided that a planet
+could not send ships to any other planet, but only to planets that were connected to it, unlike the original Galcon #cite{galcon}.
+As a consequence, the game became more interesting, encouraging players to learn path-finding techniques.
 
-Hence, it was necessary to also generate a **connected graph of planets**. Algorithm #autoref{connection_generation} shows
+Hence, it was necessary to also generate a connected graph of planets. Algorithm #autoref{connection_generation} shows
 the algorithm used to generate the planetary connections procedurally."
 
 algorithm options => "H":
@@ -133,12 +133,12 @@ algorithm options => "H":
 
 
 section "Rendering the planetary system"
-p "Finally, the viewer was upgraded to render the generated **planetary system** and its **connections**.
+p "Finally, the viewer was upgraded to render the generated planetary system and its connections.
 
-Basically, OpenGL spheres were used to draw the **sun** and the **planets**, while **connections** were represented
-using **lines**. Additionally, a **light** was added in the center of the **sun** to give some depth to the scene.
+Basically, OpenGL spheres were used to draw the sun and the planets, while connections were represented
+using lines. Additionally, a light was added in the center of the sun to give some depth to the scene.
 
-#autoref{render_system} shows a **planetary system** rendered by the viewer."
+#autoref{render_system} shows a planetary system rendered by the viewer."
 
 figure!:
   resizebox width => "\\textwidth":
@@ -148,9 +148,9 @@ figure!:
   label :render_system
 
 section "Summary"
-p "This chapter detailed how the implementation of the **game example** started:"
+p "This chapter detailed how the implementation of the game example started:"
 
 enumerate:
-  item; p "It was chosen to create a game **inspired** by **Galcon** #cite{galcon}."
-  item; p "A simple algorithm was implemented to **procedurally generate** the game world."
-  item; p "The **viewer** was upgraded to **render** the generated game world."
+  item; p "It was chosen to create a game inspired by Galcon #cite{galcon}."
+  item; p "A simple algorithm was implemented to procedurally generate the game world."
+  item; p "The viewer was upgraded to render the generated game world."

@@ -1,11 +1,11 @@
 chapter "API"
 
-p "The **|API|** component exposes **|HTTP|** endpoints that allow to interact with an underlying **engine**. It
+p "The |API| component exposes |HTTP| endpoints that allow to interact with an underlying engine. It
 usually handles requests from the game viewer.
 
 There are many programming languages that allow to create |HTTP API|s easily, like |Pyhton|, |Ruby|, |Elixir|... However,
-the |API| component is implemented using the **|Go|** programming language because it includes **native**
-libraries to build |REST API|s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives.
+the |API| component is implemented using the |Go| programming language because it includes native
+libraries to build |REST API|s and it is simpler, faster and easier-to-deploy than the alternatives.
 
 Its source code is available here: #url{https://github.com/mmpg/api}"
 

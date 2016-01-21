@@ -1,27 +1,27 @@
 chapter "Fleets and planets"
 label :fleets_planets
 
-p "At this point, a **planetary system** was being generated as the game world. Thus, it was possible to start developing 
-the main game mechanics: **ship generation** and **fleet movement**."
+p "At this point, a planetary system was being generated as the game world. Thus, it was possible to start developing 
+the main game mechanics: ship generation and fleet movement."
 
 section "Generating ships in conquered planets"
-p "The **ship generation** mechanic states that **conquered planets** generate **ships** at a **rate proportional to the
-radius of the planet**. Hence, **the bigger the planet**, **the more ships it will generate** during a specific timeframe.
+p "The ship generation mechanic states that conquered planets generate ships at a rate proportional to the
+radius of the planet. Hence, the bigger the planet, the more ships it will generate during a specific timeframe.
 
-The nature of this mechanic is periodical: **conquered planets** need to be updated quite frequently. Games can easily
-implement this type of mechanics because their entire logic is executed in a **game loop**.
+The nature of this mechanic is periodical: conquered planets need to be updated quite frequently. Games can easily
+implement this type of mechanics because their entire logic is executed in a game loop.
 
-A **game loop** is the central code of a **game**. It is a **loop** that is executed constantly to update the state of
-the game accordingly. A **good game loop** computes the **time between iterations** and has a **fixed timestep**, which ensures
+A game loop is the central code of a game. It is a loop that is executed constantly to update the state of
+the game accordingly. A good game loop computes the time between iterations and has a fixed timestep, which ensures
 that the update logic always advances the state of the game in the same amount.
 
-Algorithm #autoref{game_loop} shows an example of a **game loop** with a **fixed timestep**. This type of **game loop**
-avoids **differences in game speed** between different hardware, while it also avoids passing a **big timestep** to the
+Algorithm #autoref{game_loop} shows an example of a game loop with a fixed timestep. This type of game loop
+avoids differences in game speed between different hardware, while it also avoids passing a big timestep to the
 update logic, which could break game calculations#footnote{like collision detection, movement, etc.}.
 
-At the end, the **engine** was upgraded to support a **game loop** with a fixed timestep. The **timestep** could be configured
-by extending the **|Game|** class described in #autoref{first_game_world}. Then, the corresponding **update logic** was
-implemented in the **game logic** to generate ships in **conquered planets** as described by the game mechanic."
+At the end, the engine was upgraded to support a game loop with a fixed timestep. The timestep could be configured
+by extending the |Game| class described in #autoref{first_game_world}. Then, the corresponding update logic was
+implemented in the game logic to generate ships in conquered planets as described by the game mechanic."
 
 algorithm:
   caption "Game loop with a fixed timestep"
@@ -45,9 +45,9 @@ algorithm:
     ENDWHILE
 
 section "Moving fleets between planets"
-p "The **fleet movement** mechanic describes how players can **send ships from a planet to another**.
+p "The fleet movement mechanic describes how players can send ships from a planet to another.
 
-Basically, it was implemented assuming that a **fleet trip** is defined by:"
+Basically, it was implemented assuming that a fleet trip is defined by:"
 
 itemize:
   item "Planet origin"
@@ -56,16 +56,16 @@ itemize:
   item "Number of ships"
   item "Travel time"
 
-p "The travel time was proportional to the **euclidean distance** between the **planet origin** $o$ and the **planet destination** $d$,
-assuming that every fleet moved at the same **velocity** $v$:
+p "The travel time was proportional to the euclidean distance between the planet origin $o$ and the planet destination $d$,
+assuming that every fleet moved at the same velocity $v$:
 
 $$t_{time} = #frac{#sqrt{(d_x - o_x)^2 + (d_y - o_y)^2}}{v}$$
 
-The **velocity** value was constant in the game, but it could be easily changed to experiment with different values.
+The velocity value was constant in the game, but it could be easily changed to experiment with different values.
 
-Then, in the **update logic**, every **on-going fleet trip** was updated properly, applying changes to the destination planets
-when a trip finished. Algorithm #autoref{trip_algorithm} and #autoref{planet_algorithm} give a basic idea of how the **trip and planet
-update logics** were implemented, respectively."
+Then, in the update logic, every on-going fleet trip was updated properly, applying changes to the destination planets
+when a trip finished. Algorithm #autoref{trip_algorithm} and #autoref{planet_algorithm} give a basic idea of how the trip and planet
+update logics were implemented, respectively."
 
 algorithm options => "H":
   caption "Fleet trip update logic"
@@ -106,15 +106,22 @@ algorithm options => "H":
     ENDIF
 
 section "Rendering fleets and planet information"
-p "Finally, the **viewer** was upgraded to render **fleets** moving between planets. **Octahedrons** were used to represent
-**fleets**, scaling them proportionally to the number of ships. **Fleets** movement was animated using the **planet origin**,
-**planet destination** and **travel time**.
+p "Finally, the viewer was upgraded to render fleets moving between planets. Octahedrons were used to represent
+fleets, scaling them proportionally to the number of ships. Fleets movement was animated using the planet origin,
+planet destination and travel time.
 
-Additionally, the **viewer** was modified to show planet information: **number of ships** and **owner**. These elements were
-**projected** on top of the **|3D| viewer** using **HTML elements**.
+Additionally, the viewer was modified to show planet information: number of ships and owner. These elements were
+projected on top of the |3D| viewer using HTML elements.
 
-A simple **AI** was implemented and two players were confronted with each other to test these mechanics and the viewer together.
-#autoref{viewer_fleets} shows an example of a match played by these two players."
+A simple AI was implemented and two players were confronted with each other to test these mechanics and the viewer together.
+#autoref{player_ai} shows the code of the developed AI, while #autoref{viewer_fleets} shows an example of a match
+played by two players using this AI."
+
+figure!:
+  inputminted "c++", "code/ai.cpp", options => "linenos,fontsize=\\small,frame=lines,framesep=2mm"
+
+  caption "A simple AI that tries to conquer all the planets"
+  label :player_ai
 
 figure!:
   resizebox width => "\\textwidth":
@@ -124,10 +131,10 @@ figure!:
   label :viewer_fleets
 
 section "Summary"
-p "In this chapter, the **basic mechanics** of the game example were developed. The implementation process consisted in:"
+p "In this chapter, the basic mechanics of the game example were developed. The implementation process consisted in:"
 
 enumerate:
-  item; p "Adding **game loop** support to the **engine**"
-  item; p "Implementing the **ship generation** logic"
-  item; p "Implementing the **fleet movement** logic"
-  item; p "Upgrading the **viewer** to show **fleets** and **planet information**"
+  item; p "Adding game loop support to the engine"
+  item; p "Implementing the ship generation logic"
+  item; p "Implementing the fleet movement logic"
+  item; p "Upgrading the viewer to show fleets and planet information"

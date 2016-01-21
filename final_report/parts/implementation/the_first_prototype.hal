@@ -7,84 +7,84 @@ This first prototype must implement the most basic feature of the platform and i
 it easily. Therefore, it was decided that the first prototype should feature the first working versions of:"
 
 enumerate:
-  item; p "The **engine**, running one simple player and notifying its actions to any subscribers."
-  item; p "The **API**, subscribed to the **engine** and notifying its actions to **client**s."
-  item; p "The **client** library, subscribed to the **API** and drawing the player actions in a web-browser."
+  item; p "The engine, running one simple player and notifying its actions to any subscribers."
+  item; p "The API, subscribed to the engine and notifying its actions to clients."
+  item; p "The client library, subscribed to the API and drawing the player actions in a web-browser."
 
-p "It is important to note that the **engine** and the **client** are libraries that can be used to build
+p "It is important to note that the engine and the client are libraries that can be used to build
 game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
 game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity#footnote{i.e.
 creating game logic and game viewer components}."
 
 section "The first API"
 subsection "Programming language"
-p "There are many programming languages that allow to create **HTTP API**s easily, like Pyhton, Ruby, Elixir... However,
-the language chosen to implement the **API** was the **|Go|** programming language because it includes **native**
-libraries to build concurrent **REST API**s and it is **simpler**, **faster** and **easier-to-deploy** than the alternatives."
+p "There are many programming languages that allow to create HTTP APIs easily, like Pyhton, Ruby, Elixir... However,
+the language chosen to implement the API was the |Go| programming language because it includes native
+libraries to build concurrent REST APIs and it is simpler, faster and easier-to-deploy than the alternatives."
 
 subsection "The subscriber hub"
-p "The **API** needs to keep track of the different **client**s subscribed to it, and it also needs to be able to send data
+p "The API needs to keep track of the different clients subscribed to it, and it also needs to be able to send data
 to them.
 
-A **subscriber hub** was developed using the native concurrency of **Go**. Basically, the **hub** runs an infinite loop in the
-background that smartly monitors the connected **client**s; sending data or closing connections accordingly."
+A subscriber hub was developed using the native concurrency of Go. Basically, the hub runs an infinite loop in the
+background that smartly monitors the connected clients; sending data or closing connections accordingly."
 
 subsection "The events endpoint"
-p "A simple HTTP endpoint was created: **|/events|**. This endpoint accepted WebSocket connections and delegated them to the
-**hub**.
+p "A simple HTTP endpoint was created: |/events|. This endpoint accepted WebSocket connections and delegated them to the
+hub.
 
-After that, the **API** was ready to send data to **game viewers** in **real-time**."
+After that, the API was ready to send data to game viewers in real-time."
 
 
 section "The first client"
 subsection "Programming language"
-p "The **client** code needs to be executed by web-browsers, as **game viewers** are web-based.
-Thus, it has to be written in **Javascript**, as it is supported by web-browsers natively."
+p "The client code needs to be executed by web-browsers, as game viewers are web-based.
+Thus, it has to be written in Javascript, as it is supported by web-browsers natively."
 
 subsection "API subscription"
-p "A **WebSocket** was connected to the **|/events|** endpoint, printing any received data in the **Javascript** console."
+p "A WebSocket was connected to the |/events| endpoint, printing any received data in the Javascript console."
 
 
 section "The first engine"
 subsection "Programming language"
-p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
-**low-level** operative system operations, so it can limit how player programs are executed.
+p "The engine needs to be fast, as the game logic will be built on top of it, and it also needs to access
+low-level operative system operations, so it can limit how player programs are executed.
 
 The most well-known programming languages that satisfiy these requirements are C and C++. However, C  is lacking
-the capacity to **represent abstractions and interfaces** easily. Hence, **C++** is the perfect alternative to implement
-the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
-directly to **|UNIX|-based operative systems**."
+the capacity to represent abstractions and interfaces easily. Hence, C++ is the perfect alternative to implement
+the engine, as it is efficient, object-oriented and it has access to the |C POSIX API|, which allows to talk
+directly to |UNIX|-based operative systems."
 
 subsection "The architecture"
-p "When designing the first architecture of the **engine**, it was important to take its requirements into account:"
+p "When designing the first architecture of the engine, it was important to take its requirements into account:"
 
 enumerate:
-  item; p "The **engine** must not allow **AI**s to cheat."
-  item; p "The **engine** must be **scalable**."
-  item; p "**AI**s may be **hot-swapped** during a match."
+  item; p "The engine must not allow AIs to cheat."
+  item; p "The engine must be scalable."
+  item; p "AIs may be hot-swapped during a match."
 
-p "Thus, if the game logic and all the **AI**s were executed in the same process:"
+p "Thus, if the game logic and all the AIs were executed in the same process:"
 
 enumerate: 
-  item; p "**AI**s could access the memory related with the game logic or other **AI**s."
-  item; p "**AI**s must be executed in the same machine."
-  item; p "Updating an **AI** would require a rebuild of the entire **game logic** and other **AI**s, and a restart of the process."
+  item; p "AIs could access the memory related with the game logic or other AIs."
+  item; p "AIs must be executed in the same machine."
+  item; p "Updating an AI would require a rebuild of the entire game logic and other AIs, and a restart of the process."
 
-p "In other words, it would be really **unsafe**, **inefficient** and it would couple all the **AI**s and the **game logic** together.
+p "In other words, it would be really unsafe, inefficient and it would couple all the AIs and the game logic together.
 
-Therefore, the architecture of the **engine** consisted of 3 types of processes:"
+Therefore, the architecture of the engine consisted of 3 types of processes:"
 
 description:
-  item "Master process"; p "It represented the **game-world server**. The master process listened to requests coming from
-  players and updated the game world accordingly. There was only **one master process per runtime**."
+  item "Master process"; p "It represented the game-world server. The master process listened to requests coming from
+  players and updated the game world accordingly. There was only one master process per runtime."
 
-  item "Worker process"; p "It represented a **pool of players**. A worker process **executed** a set of players and
-  **managed** them. There could be **multiple workers per runtime**."
+  item "Worker process"; p "It represented a pool of players. A worker process executed a set of players and
+  managed them. There could be multiple workers per runtime."
 
-  item "Player process"; p "It represented a **player program**. A player process **read** the game world from the
-  **master process** and **performed requests** to **change** the game world."
+  item "Player process"; p "It represented a player program. A player process read the game world from the
+  master process and performed requests to change the game world."
 
-p "Processes comunicated with each other using **low-latency sockets**. Thus, different workers could be executed
+p "Processes comunicated with each other using low-latency sockets. Thus, different workers could be executed
 in different machines to achieve better performance.
 
 #autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = #sum_{i=0}^{N} M_i$ players."
@@ -99,26 +99,26 @@ figure!:
 
 
 subsection "Inter-process communication"
-p "As it was explained previously, the **engine** featured a decoupled architecture. Different processes were
-executed and communicated with each other using **sockets**. However, implementing inter-process communication from
+p "As it was explained previously, the engine featured a decoupled architecture. Different processes were
+executed and communicated with each other using sockets. However, implementing inter-process communication from
 scratch would have been a real challenge by itself, and it was not the subject of this project. This is where a
-**messaging technology** came in.
+messaging technology came in.
 
-The most well-known **messaging technologies** out there are: |RabbitMQ|, ZeroMQ and |ActiveMQ|.
+The most well-known messaging technologies out there are: |RabbitMQ|, ZeroMQ and |ActiveMQ|.
 
 |RabbitMQ| implements
-a **broker architecture**, which means that messages are queued on a central node before being sent to its destination.
-This architecture is totally unnecessary for the **engine**, as we want to decouple components, and it would also add
-some **latency**.
+a broker architecture, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the engine, as we want to decouple components, and it would also add
+some latency.
 
-|ActiveMQ| can be used with a **peer-to-peer architecture** but, when compared with ZeroMQ, it is a
-**high-level** library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
+|ActiveMQ| can be used with a peer-to-peer architecture but, when compared with ZeroMQ, it is a
+high-level library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
 
-On the other hand, **ZeroMQ** #cite{zeromq} is an embeddable networking library that implements
-**low-latency socket communication**. It manages **low-level** communication, while providing a flexible and easy-to-use interface.
-Also, **ZeroMQ** has bindings available for the most well-known programming languages.
+On the other hand, ZeroMQ #cite{zeromq} is an embeddable networking library that implements
+low-latency socket communication. It manages low-level communication, while providing a flexible and easy-to-use interface.
+Also, ZeroMQ has bindings available for the most well-known programming languages.
 
-Thus, **ZeroMQ** was the library chosen to implement all the inter-process communication."
+Thus, ZeroMQ was the library chosen to implement all the inter-process communication."
 
 
 subsection "The first master process"
@@ -126,23 +126,23 @@ p "The first master process consisted of two basic components:"
 
 description:
   item "The notifier"; p "It sent any given message through a ZeroMQ socket."
-  item "The server"; p "It listened requests made by **player processes** and notified them through the **notifier**."
+  item "The server"; p "It listened requests made by player processes and notified them through the notifier."
 
-p "This components allowed the master process to act as a **game server**, while notifying the actions of the players to any
+p "This components allowed the master process to act as a game server, while notifying the actions of the players to any
 subscribers."
 
 
 section "Putting it all together"
-p "Once the initial engine was finished, a simple **AI** was developed to simulate a player moving
+p "Once the initial engine was finished, a simple AI was developed to simulate a player moving
 while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
 to show this movement.
 
-Then, the **API** was connected to the **engine notifier** and the received messages were directly delegated to the **API hub**,
-which in turn were sent to any open **client**s.
+Then, the API was connected to the engine notifier and the received messages were directly delegated to the API hub,
+which in turn were sent to any open clients.
 
-Finally, once the **Javascript** console started showing the received events, a simple scene using **Three.js** was created in the
-**client**. This scene featured a cube representing the **player**, whose position was updated with every received event.
-#autoref{cube_movement} shows the observed result. **The prototype was finished**."
+Finally, once the Javascript console started showing the received events, a simple scene using Three.js was created in the
+client. This scene featured a cube representing the player, whose position was updated with every received event.
+#autoref{cube_movement} shows the observed result. The prototype was finished."
 
 figure!:
   center:
@@ -157,8 +157,8 @@ p "In this chapter, it is been described how the first prototype of the platform
 most basic features of every component:"
 
 enumerate:
-  item; p "The **engine** compiled and run players, and notified their actions to subscribers."
-  item; p "The **API** subscribed to the engine and delegated the received events to all the connected clients."
-  item; p "The **client** was able to connect to the **API** and receive events from the **engine**."
+  item; p "The engine compiled and run players, and notified their actions to subscribers."
+  item; p "The API subscribed to the engine and delegated the received events to all the connected clients."
+  item; p "The client was able to connect to the API and receive events from the engine."
 
 p "The foundations of the platform were ready."

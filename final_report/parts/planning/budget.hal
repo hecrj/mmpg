@@ -36,7 +36,7 @@ hardware = {
   }
 }
 
-table "Hardware budget", "l | S | S | S":
+table "Hardware budget", "l S S S":
   head "Hardware", "Cost (\\EURtm)", "Useful life (years)", "Amortized cost (\\EURtm)"
 
   hardware.each with product, data:
@@ -62,7 +62,7 @@ Mozilla Firefox includes a |Javascript| engine and |evince| is included in Ubunt
 Also, the |HAL| programming language is owned by the author of the project. |Jetbrains| allows students to use
 |CLion| for free#footnote{#url{https://www.jetbrains.com/student/}} and
 |Sublime Text| can be used without registration with no limitations#footnote{#url{http://www.sublimetext.com/2}}.
-Therefore, **there are no software costs**."
+Therefore, there are no software costs."
 
 software = {
   "Ubuntu"   => "http://www.ubuntu.com/about/about-ubuntu/our-philosophy",
@@ -76,7 +76,7 @@ software = {
 }
 
 
-table "Software licenses", "l | l":
+table "Software licenses", "l l":
   head "Software", "License"
 
   software.each with name, license:
@@ -135,13 +135,13 @@ human_resources = {
   }
 }
 
-table "Salary per role", "l | S":
+table "Salary per role", "l S":
   head "Role", "Payment (\\EURtm / h)"
 
   human_resources.each with role, data:
     row role, data[:payment].decimals
 
-table "Human resources budget", "l | l | S | S":
+table "Human resources budget", "l l S S":
   head "Role", "Task", "Time (h)", "Cost (\\EURtm)"
 
   human_resources.each with role, data:
@@ -181,7 +181,7 @@ electricity = {
   }
 }
 
-table "Electricity budget", "l | S | S | S":
+table "Electricity budget", "l S S S":
   head "Hardware", "Consumption (W)", "Time of usage (h)", "Cost (\\EURtm)"
 
   electricity.each with hardware, data:
@@ -199,18 +199,18 @@ internet_hour = internet_month / (30.0 * 24)
 
 BUDGET["Internet"] = internet_hour * 460 * 0.3
 
-p "An Internet connection will be necessary to perform all the tasks. The student will use its personal
+p "An Internet connection will be necessary to perform all the tasks. The author will use its personal
 internet connection most of the time, which costs " + internet_month.str + "\\EURtm/month $#simeq$ " + \
 internet_hour.decimals + "\\EURtm/h. It is expected to use the internet connection during the 30\\% of the
 total project's duration.
 Thus, the estimated budget for the internet connection is
-460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + BUDGET["Internet"].decimals + "\\EURtm**."
+460h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ " + BUDGET["Internet"].decimals + "\\EURtm."
 
 section "Total"
 p "#autoref{Total budget} shows the total budget needed to develop the project. The 10\\% of the total cost
 is added to face any unforeseen contingencies."
 
-table "Total budget", "l | S":
+table "Total budget", "l S":
   head "Resource", "Total cost (\\EURtm)"
 
   BUDGET.each with type, total:

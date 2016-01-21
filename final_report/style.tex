@@ -42,3 +42,6 @@ SlantedFont=lmmonoslant10-regular.otf]{lmmono10-regular.otf}
 \let\Oldpart\part
 \newcommand{\parttitle}{}
 \renewcommand{\part}[1]{\Oldpart{#1}\renewcommand{\parttitle}{\thepart. #1}}
+\renewcommand{\descriptionlabel}[1]{%
+  \hspace\labelsep \upshape\bfseries #1:%
+}

@@ -4,9 +4,9 @@ BUDGET = budget
 COST = {}
 
 section "Hardware resources"
-p "The project used the hardware resources specified in #fullref{budget}. However, a **Linode 1GB** was needed during **3 months**."
+p "The project used the hardware resources specified in #fullref{budget}. However, a Linode 1GB was needed during 3 months."
 
-table "Hardware cost", "l | S":
+table "Hardware cost", "l S":
   head "Hardware", "Cost (\\EURtm)"
 
   row "Hardware budget", BUDGET["Hardware"].decimals
@@ -26,7 +26,7 @@ software = {
 }
 
 
-table "Additional software", "l | l":
+table "Additional software", "l l":
   head "Software", "License"
 
   software.each with name, license:
@@ -67,7 +67,7 @@ human_resources = {
   }
 }
 
-table "Human resources cost", "l | l | S | S":
+table "Human resources cost", "l l S S":
   head "Role", "Task", "Time (h)", "Cost (\\EURtm)"
 
   human_resources.each with role, data:
@@ -105,7 +105,7 @@ electricity = {
   }
 }
 
-table "Electricity cost", "l | S | S | S":
+table "Electricity cost", "l S S S":
   head "Hardware", "Consumption (W)", "Time of usage (h)", "Cost (\\EURtm)"
 
   electricity.each with hardware, data:
@@ -125,14 +125,14 @@ COST["Internet"] = internet_hour * task_durations.values.sum * 0.3
 
 p "The project was developed using the internet connection described in #autoref{budget}. The internet connection was used
 approximately during the 30\\% of the total project's duration, as expected.
-Thus, the final cost of the internet connection was " + task_durations.values.sum.str + "h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ **" + COST["Internet"].decimals + "\\EURtm**."
+Thus, the final cost of the internet connection was " + task_durations.values.sum.str + "h $#cdot$ " + internet_hour.decimals + "\\EURtm/h $#cdot$ 0.3 $=$ " + COST["Internet"].decimals + "\\EURtm."
 
 clearpage
 
 section "Total"
-p "#autoref{Total cost} shows the **total cost** of the project compared to the **budget** of the planning stage."
+p "#autoref{Total cost} shows the total cost of the project compared to the budget of the planning stage."
 
-table "Total cost", "l | S | S":
+table "Total cost", "l S S":
   head "Resource", "Budget (\\EURtm)", "Total cost (\\EURtm)"
 
   COST.each with type, total:

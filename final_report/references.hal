@@ -21,7 +21,6 @@ bibtex :references:
 
   misc :eda:
     title "{EDA, Estructures de Dades i Algorismes}"
-    author "Jordi Petit"
     url "http://www.cs.upc.edu/eda/"
     online "September 23, 2015"
 
@@ -221,4 +220,9 @@ bibtex :references:
     title "{What \\& how is MT?}"
     author "Makoto Matsumoto"
     url "http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ewhat-is-mt.html"
+    online "January 20, 2016"
+
+  misc :gamification:
+    title "{Gamification}"
+    url "https://badgeville.com/wiki/Gamification"
     online "January 20, 2016"

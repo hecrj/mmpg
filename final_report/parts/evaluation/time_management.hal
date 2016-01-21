@@ -15,14 +15,14 @@ class Kernel:
 chapter "Time management"
 
 p "This chapter details the final time arrengement of the project and compares it with the original time planning.
-It shows the final duration for every task in a **timetable** and a **timeline** of how tasks were performed, while it
-also studies the **dedication** given to the project."
+It shows the final duration for every task in a timetable and a timeline of how tasks were performed, while it
+also studies the dedication given to the project."
 
 section "Time table"
 
 figure!:
   center:
-      tabular "l | l | l":
+      tabular "l S S":
         head "Task", "Planned duration (h)", "Final duration (h)"
 
         task_durations.each with task, duration:
@@ -40,13 +40,13 @@ p "#autoref{time_table} shows the final duration for every task of the project.
 The main differences with the original time planning are:"
 
 itemize:
-  item "The **engine** took more time to implement than it was expected. Mainly because of the optimization
+  item "The engine took more time to implement than it was expected. Mainly because of the optimization
   performed in #autoref{whole_galaxy}."
-  item "The **API** was implemented faster than planned. The **Go** programming language resulted really **easy to
-  learn and use**, while the **native libraries** made the entire implementation process really **productive**."
-  item "The **control panel** was integrated in the **viewer**, not in the **Jutge.org** platform. As a result,
-  it took less time to implement it, as learning the **Jutge.org** environment was not necessary."
-  item "The **project memory** took more time to write than expected."
+  item "The API was implemented faster than planned. The Go programming language resulted really easy to
+  learn and use, while the native libraries made the entire implementation process really productive."
+  item "The control panel was integrated in the viewer, not in the Jutge.org platform. As a result,
+  it took less time to implement it, as learning the Jutge.org environment was not necessary."
+  item "The project memory took more time to write than expected."
 
 section "Timeline"
 
@@ -80,15 +80,15 @@ figure!:
 
 p "#autoref{final_timeline} shows the final timeline for every task of the project.
 
-The main difference can be observed in the **testing and polishing** task. As the implementation methodology
-used **continuous integration** (#autoref{methodology}), the **testing and polishing** of the platform has been
-constant since the first prototype (#autoref{first_prototype}). Also, the different **components** have been developed
-at the same time, in order to have a **fully-functional prototype** after each iteration."
+The main difference can be observed in the testing and polishing task. As the implementation methodology
+used continuous integration (#autoref{methodology}), the testing and polishing of the platform has been
+constant since the first prototype (#autoref{first_prototype}). Also, the different components have been developed
+at the same time, in order to have a fully-functional prototype after each iteration."
 
 
 section "Dedication"
 
-p "#autoref{dedication} shows the **relative amount of contributions per day** to this project."
+p "#autoref{dedication} shows the relative amount of contributions per day to this project."
 
 figure!:
   centered:
@@ -98,10 +98,10 @@ figure!:
   label :dedication
 
 p "At least one contribution was made every day since the 2nd of November of 2015, with only two days being the exception.
-As a consequence, the project has been in **constant progress**; new features were added to the fully-functional
-prototype and were reported to the project director on a weekly basis.
+As a consequence, the project has been in constant progress; new features were added to the fully-functional
+prototype and were reported to the project advisor on a weekly basis.
 
-**Contribution peaks** (*greenest squares*) happened when some **important feature or optimization** was implemented, which
-**increased the dedication** to the project during a specific timeframe.
+Contribution peaks (*greenest squares*) happened when some important feature or optimization was implemented, which
+increased the dedication to the project during a specific timeframe.
 
-Overall, the amount of work has been **distributed properly** and the project has been developed at a **steady pace**."
+Overall, the amount of work has been distributed properly and the project has been developed at a steady pace."

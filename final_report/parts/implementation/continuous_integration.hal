@@ -1,45 +1,45 @@
 chapter "Continuous integration"
 
-p "Once the first prototype was finished, it was time to set up the **integration server**, as described in
+p "Once the first prototype was finished, it was time to set up the integration server, as described in
 #autoref{methodology}."
 
 section "The dedicated server"
-p "First things first, an **integration server** to run the prototype was needed.
+p "First things first, an integration server to run the prototype was needed.
 
-Initially, a server was requested to the project director. However, the university policy did not allow professors
+Initially, a server was requested to the project advisor. However, the university policy did not allow professors
 to give root access to students. Root access was necessary because many different services might need to be installed during the
-development of the platform#footnote{ZeroMQ, for example}. Therefore, it was decided to use an external **cloud-host provider**.
+development of the platform#footnote{ZeroMQ, for example}. Therefore, it was decided to use an external cloud-host provider.
 
 There are many providers that present cloud-hosting solutions#footnote{AWS #cite{aws}, DigitalOcean #cite{digital_ocean}, etc.}.
-At the end, **Linode** #cite{linode} was the provider chosen, as the project developer already had experience with it and
-the cheapest solution#footnote{This cost was covered with the contingency budget.} was enough to run the **integration server**.
+At the end, Linode #cite{linode} was the provider chosen, as the project developer already had experience with it and
+the cheapest solution#footnote{This cost was covered with the contingency budget.} was enough to run the integration server.
 
-A **Linode 1GB** #cite{linode} running |Ubuntu| was booted up to execute an
+A Linode 1GB #cite{linode} running |Ubuntu| was booted up to execute an
 instance of the platform."
 
 
 section "The integration service"
-p "The next step consisted in setting up an **integration service**.
+p "The next step consisted in setting up an integration service.
 
-Integration services keep track of some code repositories and can be configured to **build and test the code when a change 
-happens**. Additionally, most of them can be configured to **deploy changes when a build succeeds**.
+Integration services keep track of some code repositories and can be configured to build and test the code when a change 
+happens. Additionally, most of them can be configured to deploy changes when a build succeeds.
 
-As it happened with cloud-hosting providers, there are many different **integration
-services**#footnote{TravisCI #cite{travisci}, CircleCI #cite{circleci}, etc.}. Fortunately, most of them
-are **free** to use for open-source projects, like this one. At the end, **Semaphore** #cite{semaphoreci} was the chosen
-**integration service**. This decision was based in the experience the project developer had with the service, as it
+As it happened with cloud-hosting providers, there are many different integration
+services#footnote{TravisCI #cite{travisci}, CircleCI #cite{circleci}, etc.}. Fortunately, most of them
+are free to use for open-source projects, like this one. At the end, Semaphore #cite{semaphoreci} was the chosen
+integration service. This decision was based in the experience the project developer had with the service, as it
 also happened with the cloud-hosting provider."
 
 
 section "The integration process"
-p "**Semaphore** was configured to trigger a build when any component
-changed. If a build succeeded, then **Semaphore** deployed the changes to the **Linode**, where the changes were applied.
+p "Semaphore was configured to trigger a build when any component
+changed. If a build succeeded, then Semaphore deployed the changes to the Linode, where the changes were applied.
 
-Changes were applied in the **Linode** using **bare |git| repositories** and **script hooks**. Basically,
-when some changes were pushed to the repository, a script was executed that **built and restarted the component**.
-These scripts were located in the **repository itself**, so they could be updated easily with the same process.
+Changes were applied in the Linode using bare |git| repositories and script hooks. Basically,
+when some changes were pushed to the repository, a script was executed that built and restarted the component.
+These scripts were located in the repository itself, so they could be updated easily with the same process.
 
-#autoref{build_process} shows the build process of the **engine**, while #autoref{deployment_process} shows
+#autoref{build_process} shows the build process of the engine, while #autoref{deployment_process} shows
 its deployment process."
 
 figure!:

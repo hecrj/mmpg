@@ -16,12 +16,11 @@ p "The project is directed to computer science students and teachers, and game p
 will be used by students to learn different programming techniques, by teachers to evaluate these students, and
 by game programmers to create new content.
 
-Moreover, it will be used in the Data Structures and Algorithms subject
-at the Barcelona School of Informatics (**FIB**). The project will make the learning process more fun, it will also
+Moreover, it will be used in the EDA subject at the FIB. The project will make the learning process more fun, it will also
 reduce the amount of work for teachers, and it will make game programmers able to create entertaining games easily.
 
 However, the project will not affect the mainstream consumer directly. It will only be relevant inside a specific
-community in computer science."
+community in computer science and education."
 
 section "Environmental impact analysis"
 p "The project used 177kWh of electricity, which is approximately 174kg of CO#textsuperscript{2} #cite{co2}.

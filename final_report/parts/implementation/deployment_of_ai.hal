@@ -1,70 +1,70 @@
 chapter "Deployment of AI"
 label :deployment_ai
 
-p "The next most basic feature that the platform needed to support was the **hot-swapping of AI**s. Players needed to be
-able to change their **AI**s during a match.
+p "The next most basic feature that the platform needed to support was the hot-swapping of AIs. Players needed to be
+able to change their AIs during a match.
 
-However, it was also necessary to provide some security, so players could not change the **AI**s of other players. Hence,
-a method to **authenticate players** was needed.
+However, it was also necessary to provide some security, so players could not change the AIs of other players. Hence,
+a method to authenticate players was needed.
 
 This chapter details the implementation of the authentication system and the deployment system."
 
 section "Recognizing players"
-p "The first step consisted in making the **engine** acknowledge the different players by some identifier. When the **engine**
-was booted up, it read a file containing a list of **user identifiers**. Then, each one of these identifiers was internally
+p "The first step consisted in making the engine acknowledge the different players by some identifier. When the engine
+was booted up, it read a file containing a list of user identifiers. Then, each one of these identifiers was internally
 linked with a match player.
 
-Afterwards, a new type of request handler was added to the **app-server** developed in the previous chapter: **|PLAYER\\_EXISTS|**.
+Afterwards, a new type of request handler was added to the app-server developed in the previous chapter: |PLAYER\\_EXISTS|.
 This request consisted of the |PLAYER\\_EXISTS| keyword followed by a space, and then a user identifier. For example:"
 
 verbatim:
   p "PLAYER_EXISTS hector.ramon@est.fib.upc.edu"
 
 p "In this example, the user identifier is an e-mail. But it is important to note that the engine was not limited to e-mails,
-it was able to work with **any type of string**.
+it was able to work with any type of string.
 
-When the **engine** received a **|PLAYER\\_EXISTS|** request, it checked if the given identifier was linked to some player in
-the current match and replied **|YES|** or **|NO|** accordingly."
+When the engine received a |PLAYER\\_EXISTS| request, it checked if the given identifier was linked to some player in
+the current match and replied |YES| or |NO| accordingly."
 
 section "Authenticating players"
-p "The authentication system was implemented in the **API** component. Mainly because authentication solved an environment
-limitation of the component that exposed the **engine**: the **API**. Hence, the **engine** did not need to know how to authenticate
-users, the **API** did.
+p "The authentication system was implemented in the API component. Mainly because authentication solved an environment
+limitation of the component that exposed the engine: the API. Hence, the engine did not need to know how to authenticate
+users, the API did.
 
-A new endpoint **|/auth|** was created in the **API**. This endpoint accepted two types of requests:"
+A new endpoint |/auth| was created in the API. This endpoint accepted two types of requests:"
 
 description:
-  item "POST"; p "It **validated player credentials**:"
+  item "POST"; p "It validated player credentials:"
   enumerate:
-    item; p "Accepted an **identifier** and a **password**."
-    item; p "Checked whether the **identifier** and the **password** were valid using a **credentials validator**."
+    item; p "Accepted an identifier and a password."
+    item; p "Checked whether the identifier and the password were valid using a credentials validator."
     item; p "Returned a |403 Forbidden| error if the credentials were not valid."
-    item; p "Checked if the player existed in the **engine** using the **|PLAYER\\_EXISTS|** request."
+    item; p "Checked if the player existed in the engine using the |PLAYER\\_EXISTS| request."
     item; p "Returned a |403 Forbidden| error if the player did not exist."
-    item; p "Returned a **digitally-signed authentication token** for the given **identifier**."
+    item; p "Returned a digitally-signed authentication token for the given identifier."
 
-  item "GET"; p "It **renewed authentication token**s"
+  item "GET"; p "It renewed authentication tokens"
   enumerate:
-    item; p "Accepted an **authentication token**."
-    item; p "Checked if the **authentication token** was valid."
-    item; p "Returned a |400 Bad Request| error if the **authentication token** was not valid."
-    item; p "Returned a new **authentication token**."
+    item; p "Accepted an authentication token."
+    item; p "Checked if the authentication token was valid."
+    item; p "Returned a |400 Bad Request| error if the authentication token was not valid."
+    item; p "Returned a new authentication token."
 
-p "The **authentication tokens** were implemented using **|JSON WebTokens|** #cite{jwt}. This tokens have an expìration date,
-hence the necessity to **renew** them.
+p "The authentication tokens were implemented using |JSON WebTokens| #cite{jwt}. This tokens have an expìration date,
+hence the necessity to renew them.
 
-A **credentials validator** is a simple |Go| function that tells whether the given **identifier** and
-**password** are valid or not. A **credential validator** can be injected in the **API** easily. Hence, anyone can
-implement its own **credentials validator** and customize the authentication system.
+A credentials validator is a simple |Go| function that tells whether the given identifier and
+password are valid or not. A credential validator can be injected in the API easily. Hence, anyone can
+implement its own credentials validator and customize the authentication system.
 
-Finally, a **credentials validator** for the **Jutge.org** platform was developed using an endpoint provided by the project
-director. Thus, to authenticate properly it was necessary to provide a valid **e-mail** and **password** of a
-**Jutge.org account**."
+Finally, a credentials validator for the Jutge.org platform was developed using an endpoint provided by the project
+advisor. Thus, to authenticate properly it was necessary to provide a valid e-mail and password of a
+Jutge.org account."
 
 section "Logging in players"
-p "Once the **authentication system** was implemented, the **client** library was updated to add support to the new **|/auth|**
-endpoint. Also, a **login form** was designed in the **viewer** to allow players to **login**. #autoref{login_form}
-shows how this **login form** looks."
+p "Once the authentication system was implemented, the client library was updated to add support to the new |/auth|
+endpoint. Also, a login form was designed in the viewer to allow players to login. #autoref{login_form}
+shows how this login form looks."
 
 figure!:
   centered:
@@ -77,40 +77,40 @@ figure!:
   caption "Login form. Valid (left). Invalid (right)"
   label :login_form
 
-p "When a **login succeeded** the returned **authentication token** was saved in the **local storage** of the browser and renewed
-when the **viewer** was reaccessed, or every **30 minutes** if it was kept open."
+p "When a login succeeded the returned authentication token was saved in the local storage of the browser and renewed
+when the viewer was reaccessed, or every 30 minutes if it was kept open."
 
 section "Hot-swapping AI"
-p "Once, players were able to login, the deployment of new **AI**s could be implemented.
+p "Once, players were able to login, the deployment of new AIs could be implemented.
 
-Firstly, a new request handler in the **app-server** was needed: **|DEPLOY\\_PLAYER|**. This type of request had two
-parameters: the **player identifier** and the **code of the new AI encoded in base64**. After receiving a **|DEPLOY\\_PLAYER|**
-request, the **engine** tried to **compile** the **code**, assigned the new executable to the player with the given **identifier**,
-and **restarted** its **player process**. In case the compilation failed, then the compilation error was returned.
+Firstly, a new request handler in the app-server was needed: |DEPLOY\\_PLAYER|. This type of request had two
+parameters: the player identifier and the code of the new AI encoded in base64. After receiving a |DEPLOY\\_PLAYER|
+request, the engine tried to compile the code, assigned the new executable to the player with the given identifier,
+and restarted its player process. In case the compilation failed, then the compilation error was returned.
 
-Secondly, a new **API** endpoint **|/player|** was implemented to expose the new **engine** functionality and
-allow **authenticated players** to change their **AI**s. This endpoint was pretty simple:"
+Secondly, a new API endpoint |/player| was implemented to expose the new engine functionality and
+allow authenticated players to change their AIs. This endpoint was pretty simple:"
 
 enumerate:
-  item; p "Accepted an **authentication token** and an **uploaded file**."
-  item; p "Checked whether the **authentication token** was valid or not."
-  item; p "Returned a **|401 Unauthorized|** error if the **authentication token** was invalid."
-  item; p "Encoded the **uploaded file** in **base64**."
-  item; p "Issued a |DEPLOY\\_PLAYER| request to the engine using the **identifier** in the **authentication token** and the
-  **encoded file** as parameters."
+  item; p "Accepted an authentication token and an uploaded file."
+  item; p "Checked whether the authentication token was valid or not."
+  item; p "Returned a |401 Unauthorized| error if the authentication token was invalid."
+  item; p "Encoded the uploaded file in base64."
+  item; p "Issued a |DEPLOY\\_PLAYER| request to the engine using the identifier in the authentication token and the
+  encoded file as parameters."
   item; p "Returned a descriptive error if the deploymet failed."
-  item; p "Returned a **|200 OK|** response."
+  item; p "Returned a |200 OK| response."
 
-p "As it is been shown multiple times now. There is an **API** endpoint for almost every request that the **engine app-server**
-can handle. Hence, the **API** exposes the **engine** with an **access layer** on top of it."
+p "As it is been shown multiple times now. There is an API endpoint for almost every request that the engine app-server
+can handle. Hence, the API exposes the engine with an access layer on top of it."
 
 section "Deploying new AI"
-p "Finally, the **client** was updated to support the new **API** endpoint and a **deployment form** was created in the **viewer**.
-This form was designed having in mind that **the deployment process should be fun**, so players feel encouraged to
-**improve its code**. #autoref{deploy_error} shows how the **deployment form** looks.
+p "Finally, the client was updated to support the new API endpoint and a deployment form was created in the viewer.
+This form was designed having in mind that the deployment process should be fun, so players feel encouraged to
+improve its code. #autoref{deploy_error} shows how the deployment form looks.
 
-Also, a **player menu** was designed to welcome authenticated players. From this menu, players can access the **deployment form**
-and they can also **logout**. #autoref{player_menu} shows how the **player menu** looks."
+Also, a player menu was designed to welcome authenticated players. From this menu, players can access the deployment form
+and they can also logout. #autoref{player_menu} shows how the player menu looks."
 
 figure!:
   minipage ".5\\textwidth":
@@ -133,10 +133,10 @@ figure!:
 
 
 section "Summary"
-p "This capter detailed the implementation of the **AI hot-swapping** feature, which needed an
-**authentication system** first. Summarizing, the most important implemented components are:"
+p "This chapter detailed the implementation of the AI hot-swapping feature, which needed an
+authentication system first. Summarizing, the most important implemented components are:"
 
 enumerate:
-  item; p "The **|PLAYER\\_EXISTS|** and **|DEPLOY\\_PLAYER|** request handlers in the **engine app-server**"
-  item; p "The **|/auth|** and **|/player|** endpoint in the **API**"
-  item; p "The **login form**, **player menu**, and **deployment form** in the **viewer**."
+  item; p "The |PLAYER\\_EXISTS| and |DEPLOY\\_PLAYER| request handlers in the engine app-server"
+  item; p "The |/auth| and |/player| endpoint in the API"
+  item; p "The login form, player menu, and deployment form in the viewer."

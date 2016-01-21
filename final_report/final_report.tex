@@ -37,15 +37,19 @@ Platform for massive multiplayer programming games
 \\[0.4cm]
 }
 \rule{\linewidth}{0.5mm}
+\\[0.3cm]
+{\bfseries
+Computation
+}
 \\[2.5cm]
 \begin{center}
 \large
 Héctor Ramón Jiménez
 \end{center}
-Directed by Jordi Petit Silvestre
+{\small \emph{Advisor}}\\Jordi Petit Silvestre
 \vfill
 {\large
-Facultat d'Informàtica de Barcelona
+Facultat d'Informàtica de Barcelona\\\small Universitat Politècnica de Catalunya
 }
 \\[0.5cm]
 {\large
@@ -61,101 +65,103 @@ Facultat d'Informàtica de Barcelona
 \tableofcontents
 \clearpage
 \chapter{Introduction}
-\section{Brief history}
+This chapter reviews the history of programming games, states the
+personal motivation of the author, and details the structure of this report.
+\section{Brief history of programming games}
 \subsection{Playing games while programming}
-In 1961, \textbf{Victor Vyssotsky}, a mathematician and computer scientist working at Bell Labs, had an idea. He devised
-a computer game, but not a traditional one where the player inputs the different actions from a controller to play it.
-No. He wanted to create a game that it could only be played by writing a \textbf{computer program}. And so, along with \textbf{Robert
-Morris Sr.} and \textbf{Doug McIlroy}, they created \textbf{Darwin} \cite{darwin}: the first programming game.
+In 1961, Victor Vyssotsky, a mathematician and computer scientist working at Bell Labs, along with Robert Morris Sr. and 
+Doug McIlroy, created Darwin \cite{darwin}: the \textbf{first programming game}. This game was not played by a player with a controller.
+Instead, Darwin could only be played by writing a computer program.
 
-A \textbf{programming game} is a computer game where the player does not directly interact with the game. Instead, the
-player writes a \textbf{computer program} that plays the game. These \textbf{computer programs} are usually called \textbf{artifficial
-intelligences} (\textbf{\texttt{AI}}s) because they try to make intelligent decisions to win the game.
+A \emph{programming game} is a computer game where the player does not directly interact with the game. Instead, the
+player writes a computer program that plays the game. These computer programs are usually called artifficial
+intelligences (\texttt{AIs}) because they try to make intelligent decisions to win the game.
 
-\textbf{Darwin} consisted of two or more small programs, written by the players, that were loaded in memory. The main goal
+Darwin consisted of two or more small programs, written by the players, that were loaded in memory. The main goal
 of the game was to spread copies of your own program and find and kill the copies of other players. The game was only
 played for a few weeks before Morris developed an ultimate program, as no-one managed to produce anything that could
 defeat it.
 
 Since then, many other programming games have been created \cite{pg}. Some of them are even commercial games, like
-\textbf{SpaceChem} \cite{spacechem}.
+SpaceChem \cite{spacechem}.
 \subsection{Playing with other people}
-With the arrival of the \textbf{Internet} and the \textbf{W}orld \textbf{W}ide \textbf{W}eb, there was nothing stopping people from
-developing web platforms for \textbf{multiplayer programming games}.
+With the arrival of the Internet and the World Wide Web, there was nothing stopping people from
+developing web platforms for multiplayer programming games.
 
-A \textbf{multiplayer programming game} is a \textbf{programming game} where multiple players compete with each other to win the
+A \emph{multiplayer programming game} is a programming game where multiple players compete with each other to win the
 game. Thus, the game becomes a challenge where strategy and programming skills make the difference.
 
-These web platforms allow players to compete with each other easily. For example, \textbf{Robot Game}
-\cite{robotgame} is a website where anyone can upload an \textbf{\texttt{AI}} written in \texttt{}Python\texttt{} and compete with other people.
+These web platforms allow players to compete with each other easily. For example, Robot Game
+\cite{robotgame} is a website where anyone can upload an \texttt{AI} written in \texttt{}Python\texttt{} and compete with other people.
 \subsection{Playing while learning}
-Writing \textbf{\texttt{AI}}s can be a really fun and rewarding experience because the game allows the players to see how their
-\textbf{algorithms work visually}, while competition motivates them to \textbf{learn and improve}.
+Writing \texttt{AIs} can be a really fun and rewarding experience because the game allows the players to see how their
+algorithms work visually, while competition motivates them to learn and improve.
 
-It is not a surprise, then, that programming games are being used in schools to teach students different programming
-techniques. For instance, an \textbf{\texttt{AI} programming challenge} is held every semester in the \textbf{Barcelona School of
-Informatics} (\textbf{FIB}) where students enrolled in the subject \textbf{Data Structures and Algorithms} (\textbf{EDA}) \cite{eda}
-compete with each other in a multiplayer programming game using the \textbf{Jutge} platform \cite{jutge}.
+It comes as no surprise, then, that programming games are being used in schools, as gamification \cite{gamification},
+to teach students different programming techniques.
+For instance, an \texttt{AI} programming challenge is held every semester in the Barcelona School of
+Informatics (FIB) where students enrolled in the subject Data Structures and Algorithms (EDA) \cite{eda}
+compete with each other in a multiplayer programming game using the Jutge.org platform \cite{jutge}.
 \section{Personal motivation}
-\textbf{I love videogames}. Ever since my father introduced me to my first computer when I was 3 years old.
+I love videogames. Ever since my father introduced me to my first computer when I was 3 years old.
 I was immediately hooked. I started playing simple puzzle games, while discovering first person shooters and strategic
 games soon after.
 
-\textbf{Videogames were the main reason I chose to study computer science}. I learned my first
-programming language\footnote{\textbf{\texttt{PHP}}} because I wanted to open a website
-to share my passion about videogames. I was 10 years old back then. \textbf{Programming} is a really important
+Videogames were the main reason I chose to study computer science. I learned my first
+programming language because I wanted to open a website
+to share my passion about videogames. I was 10 years old back then. Programming is a really important
 facet of my life.
 
-\textbf{Studying computer science has made me love videogames even more}. When I a see videogame now, I can try to
+Studying computer science has made me love videogames even more. When I a see videogame now, I can try to
 imagine the logic
 behind it. I can try to picture the different algorithms involved. I imagine thousands of bits correctly aligned,
-flowing and changing constantly, while they follow some complex logic. For me, the fact that a \textbf{videogame} is
-able to show how its code works \textbf{visually} is truly fascinating.
+flowing and changing constantly, while they follow some complex logic. For me, the fact that a videogame is
+able to show how its code works visually is truly fascinating.
 
-Programming games mix two of my passions: \textbf{videogames} and \textbf{programming}. So when this project was offered to me,
+Programming games mix two of my passions: videogames and programming. So when this project was offered to me,
 I thought it was the \textbf{perfect fit}.
 \section{Report structure}
 This report consists of four different parts. Each one of them describes a vital phase in the development of
 the project:
 \begin{description}
 \item[Formulation]
-Identifies and analyzes the \textbf{problem to solve}, it \textbf{specifies} the scope of
-  the project, and it shows the \textbf{design} of the solution.
+Identifies and analyzes the problem to solve, it specifies the scope of
+  the project, and it shows the design of the solution.
 \item[Planning]
-Details the \textbf{time plan} and the \textbf{budget} to develop the project.
+Details the time plan and the budget to develop the project.
 \item[Implementation]
-Describes the development of the different \textbf{components} that compose the solution.
+Describes the development of the different components that compose the solution.
 \item[Evaluation]
-Describes the \textbf{validation methodology}, it reviews the \textbf{time management} and \textbf{economic cost},
-  and it discusses the \textbf{sustainability} and \textbf{legality} of the project.
+Describes the validation methodology, it reviews the time management and economic cost,
+  and it discusses the sustainability and legality issues of the project.
 \end{description}
 \part{Formulation}
 \chapter{Analysis}
-This chapter \textbf{details the problem} that this project aims to solve and it decides whether there is some \textbf{existing
-solution} that may apply to solve this problem.
+This chapter details the problem that this project aims to solve and it decides whether there is some existing
+solution that may apply to solve this problem.
 \section{The requirement}
 \label{requirement}
-The director of this project is one of the founders of the \textbf{Jutge.org} platform. Also, he is deeply involved in the \texttt{AI}
-programming challenge organized in the \texttt{EDA} subject in the \textbf{Barcelona School of Informatics}.
+The advisor of this project is one of the founders of the Jutge.org platform. Also, he is deeply involved in the \texttt{AI}
+programming challenge organized in the \texttt{EDA} subject in the FIB.
 
-Currently, the contest strategy is based in a \textbf{round} system. All the students play at least one match per round. Players
+Currently, the contest strategy is based on a round system. All the students play at least one match per round. Players
 that lose a match play against other losers. At the end, the player that loses the last match is eliminated from the contest.
 
 Clearly, this strategy has one main drawback: eliminated students stop playing. Hence, their learning process halts completely.
-This could be solved using a simple \textbf{score} system, but it would still be patching the main issue: the
-programming games used \textbf{do not support a huge amount of players natively}.
+This could be solved using a simple score system, but it would still be patching the main issue: the
+programming games used do not support a huge amount of players natively.
 
-The aim of this project is to provide an easy way to develop multiplayer programming games featuring \textbf{huge worlds},
-\textbf{long matches} and a \textbf{massive amount of players in real-time}. This will make players feel attached to the match,
-programs will need to \textbf{adapt} constantly as they play with \textbf{everyone at the same time}. As a consequence, this project will
+The aim of this project is to provide an easy way to develop multiplayer programming games featuring huge worlds,
+long matches and a massive amount of players in real-time. This will make players feel attached to the match,
+programs will need to adapt constantly as they play with everyone at the same time. As a consequence, this project will
 finally allow to improve the strategy used in the \texttt{EDA} progamming challenge.
 \section{State of the art}
 \label{state_of_the_art}
-There are many platforms that offer \textbf{\texttt{AI}} programming challenges. Some examples are:
+There are many platforms that offer \texttt{AI} programming challenges. Some examples are:
 \begin{description}
 \item[Google's \texttt{AI} programming challenge \cite{google_ai}]
 The university of Waterloo organized some \texttt{AI} programming challenges
-  sponsored by \textbf{Google} during 2010-2011.
+  sponsored by Google during 2010-2011.
 \item[Battlecode \cite{battlecode}]
 A website that organizes an \texttt{AI} programming challenge every year where anyone can
   compete alone or in a team.
@@ -163,27 +169,27 @@ A website that organizes an \texttt{AI} programming challenge every year where a
 A website that has many \texttt{AI} programming contests, which can help players to apply for
   specific jobs.
 \item[\texttt{EDA} competition \cite{eda}]
-An \texttt{AI} programming challenge is held every semester in the \textbf{Barcelona School of
-  Informatics} (\textbf{FIB}) where students compete with each other using the \textbf{Jutge.org} platform \cite{jutge}.
+An \texttt{AI} programming challenge is held every semester in the Barcelona School of
+  Informatics (FIB) where students compete with each other using the Jutge.org platform \cite{jutge}.
 \end{description}
-However, all of this platforms feature multiplayer programming games with \textbf{short matches} played by a
-\textbf{small number of players}. As a consequence, multiple matches with different players are necessary to decide who wrote
-the best \textbf{\texttt{AI}}.
+However, all of these platforms feature multiplayer programming games with short matches played by a
+small number of players. As a consequence, multiple matches with different players are necessary to decide who wrote
+the best \texttt{AI}.
 
-Given that there is no \textbf{pre-made solution} that fits the project's requirement, a \textbf{new brand solution is necessary}.
+Given that there is no pre-made solution that fits the project's requirement, a new brand solution is necessary.
 \section{Stakeholders}
-Given the \textbf{requirement} described in \autoref{requirement}, the different users that will use the platform are considered:
+Given the requirement described in \autoref{requirement}, the different users that will use the platform are considered:
 \begin{description}
 \item[Game programmers]
-They want to create \textbf{\texttt{MMPG}}s easily. They want to focus on programming the game logic and the
+They want to create \texttt{MMPGs} easily. They want to focus on programming the game logic and the
   game viewer, without worrying about internal aspects of the platform.
 \item[Players]
-They will \textbf{develop \texttt{}AI\texttt{}s} for a concrete game and upload them to the web platform at any time during
+They will develop \texttt{}AI\texttt{}s for a concrete game and upload them to the web platform at any time during
   the game match.
 \item[Viewers]
-They want to \textbf{watch the match unfold in real-time}.
+They want to watch the match unfold in real-time.
 \item[Administrators]
-They want to \textbf{control} the game. They want to supervise, start, stop or pause the game, and obtain
+They want to control the game. They want to supervise, start, stop or pause the game, and obtain
   the final scores of every player.
 \end{description}
 \clearpage
@@ -192,7 +198,7 @@ They want to \textbf{control} the game. They want to supervise, start, stop or p
 This chapter details the different objectives that the project must fullfill in order to satisfy the requirement stated in
 the previous chapter.
 \section{Main objective}
-Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.
+Develop a set of components that ease the creation and the usage of massive multiplayer programming games.
 \section{Secondary objectives}
 \label{secondary_objectives}
 \begin{description}
@@ -214,7 +220,7 @@ A multiplayer programming game will be created to test and show that the platfor
 \clearpage
 \chapter{Design}
 \label{design}
-The design of the platform has to allow game developers to implement \textbf{\texttt{MMPG}}s easily. Hence, it is necessary to keep
+The design of the platform has to allow game developers to implement \texttt{MMPGs} easily. Hence, it is necessary to keep
 the number of components and dependencies at bay.
 \begin{figure}[H]
 \begin{center}
@@ -223,57 +229,57 @@ the number of components and dependencies at bay.
 \caption{The design of an \texttt{MMPG}}
 \label{mmpg_graph}
 \end{figure}
-\autoref{mmpg_graph} shows a diagram of the different components that compose an \textbf{\texttt{MMPG}} and their dependencies. As it is shown,
-game developers only need to implement two components to create an \textbf{\texttt{MMPG}}: the \textbf{game logic} and the \textbf{game viewer}. This is
+\autoref{mmpg_graph} shows a diagram of the different components that compose an \texttt{MMPG} and their dependencies. As it is shown,
+game developers only need to implement two components to create an \texttt{MMPG}: the game logic and the game viewer. This is
 quite logical, since these are the only two components that are game-specific.
 
-Hence, a \textbf{massive multiplayer programming game} using the platform consists of:
+Hence, a massive multiplayer programming game using the platform consists of:
 \begin{description}
 \item[Engine]
-A library that implements basic features needed by any \texttt{MMPG}. The \textbf{engine} exposes a set
-  of classes that must be extended to build the \textbf{game logic}.
+A library that implements basic features needed by any \texttt{MMPG}. The engine exposes a set
+  of classes that must be extended to build the game logic.
 \item[\texttt{API}]
-A component that exposes \textbf{\texttt{HTTP}} endpoints that allow to interact with an underlying \textbf{engine}. It
-  usually handles requests from a \textbf{game viewer} using the \textbf{client} library.
+A component that exposes \texttt{HTTP} endpoints that allow to interact with an underlying engine. It
+  usually handles requests from a game viewer using the client library.
 \item[Client]
-A library that implements a set of useful classes to communicate with an \textbf{\texttt{API}} and implement
-  \textbf{game viewers}.
+A library that implements a set of useful classes to communicate with an \texttt{API} and implement
+  game viewers.
 \item[Game logic]
-It includes the game world definition and the rules of the game. It is built on top of the \textbf{engine}.
+It includes the game world definition and the rules of the game. It is built on top of the engine.
 \item[Game viewer]
-It allows viewers to watch game matches. Also, it makes players able to upload new \textbf{\texttt{AI}}s. It uses
-    the \textbf{client} library to connect to the \textbf{\texttt{API}}.
+It allows viewers to watch game matches. Also, it makes players able to upload new \texttt{AIs}. It uses
+    the client library to connect to the \texttt{API}.
 \end{description}
 \clearpage
 \chapter{License}
 \section{Code}
 The \texttt{MMPG} platform code hosted in \url{https://github.com/mmpg} will be released under
-\href{https://opensource.org/licenses/MIT}{\textbf{The MIT License}}.
+\href{https://opensource.org/licenses/MIT}{The MIT License}.
 \section{Documents}
 This monitoring report and the final document related with the \texttt{MMPG} platform and hosted in
 \url{https://github.com/hecrj/mmpg} will be released under the
-\href{http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt}{\textbf{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}}
+\href{http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt}{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}
 license.
 \clearpage
 \part{Planning}
 \chapter{Time plan}
 \section{Estimated project duration}
-The project starts the \textbf{September 15th, 2015} and its deadline is the \textbf{January 25th, 2016}. Thus,
-the project will take approximately \textbf{4 months} to be completed.
+The project starts the September 15th, 2015 and its deadline is the January 25th, 2016. Thus,
+the project will take approximately 4 months to be completed.
 \section{Tasks}
 This section details the different tasks and subtasks that need to be completed in order
-to finish the project successfully. Every task is provided with a \textbf{description}, an \textbf{expected duration},
-\textbf{possible complications} and \textbf{task dependencies}.
+to finish the project successfully. Every task is provided with a description, an expected duration,
+possible complications and task dependencies.
 \subsection{Project management course}
 The project management course aims to help lead the project in the right direction. In this task,
-different parts of the project are defined: \textbf{context and scope}, \textbf{temporal planning}, and
-\textbf{economic viability}.
+different parts of the project are defined: context and scope, temporal planning, and
+economic viability.
 \begin{description}
 \item[Expected duration]
 75 hours.
 \item[Possible complications]
 None. The course is entirely guided and feedback is
-  regularly provided to ensure the student can finish it properly.
+  regularly provided to ensure the author can finish it properly.
 \item[Task dependencies]
 None.
 \end{description}
@@ -290,34 +296,34 @@ None.
 \end{description}
 \subsection{Component development}
 \subsubsection{Engine}
-A library that will allow \textbf{game programmers} to build games and wire them to the platform
+A library that will allow game programmers to build games and wire them to the platform
 easily. The codebase will implement the features that are independent of the final game and, therefore, can be reused.
 \begin{description}
 \item[Expected duration]
 70 hours
 \item[Possible complications]
 \texttt{AI} memory management might be difficult.
-  The student may need to learn low-level instructions to control OS's processes.
+  The author may need to learn low-level instructions to control OS's processes.
 \end{description}
 \subsubsection{API}
-A web-server that \textbf{notifies its subscribers of the changes that occur in the game world}.
+A web-server that notifies its subscribers of the changes that occur in the game world.
 \begin{description}
 \item[Expected duration]
 50 hours
 \item[Possible complications]
-The student needs to learn \texttt{Go}, which might take some time.
+The author needs to learn \texttt{Go}, which might take some time.
 \end{description}
 \subsubsection{Client}
-A library that handles a connection with the \textbf{\texttt{API}}. \textbf{Game programmers} will be able to use it to build
-the \textbf{real-time webviewers} of their games. It will be programmed in \texttt{}Javascript\texttt{}, using \texttt{Coffeescript}.
+A library that handles a connection with the \texttt{API}. Game programmers will be able to use it to build
+the real-time webviewers of their games. It will be programmed in \texttt{}Javascript\texttt{}, using \texttt{Coffeescript}.
 \begin{description}
 \item[Expected duration]
 30 hours
 \item[Possible complications]
-The student needs to learn \texttt{Coffeescript}, which might take some time.
+The author needs to learn \texttt{Coffeescript}, which might take some time.
 \end{description}
 \subsubsection{Control panel}
-Allows \textbf{administrators} to supervise the games, start, stop and pause current matches, and obtain the
+Allows administrators to supervise the games, start, stop and pause current matches, and obtain the
 scores of every player.
 \begin{description}
 \item[Expected duration]
@@ -326,31 +332,31 @@ scores of every player.
 None.
 \end{description}
 \subsection{Game example}
-A \textbf{massive multiplayer programming game} will be developed to test that the underlying
-engine and infrastructure work as intended. This task will be splitted in other two: \textbf{logic} and \textbf{viewer}.
+A massive multiplayer programming game will be developed to test that the underlying
+engine and infrastructure work as intended. This task will be splitted in other two: logic and viewer.
 \subsubsection{Logic}
-During this task, the main logic of the game will be developed on top of the \textbf{engine}.
-This includes the different game \textbf{rules} and the game \textbf{world}.
+During this task, the main logic of the game will be developed on top of the engine.
+This includes the different game rules and the game world.
 \begin{description}
 \item[Expected duration]
 50 hours
 \item[Possible complications]
-Balancing the game could be \textbf{really} hard.
+Balancing the game could be really hard.
 \item[Task dependencies]
 Engine.
 \end{description}
 \subsubsection{Viewer}
-In this task, a web-viewer that shows the game world in \textbf{real-time} will be developed using the \textbf{\texttt{API}}.
+In this task, a web-viewer that shows the game world in real-time will be developed using the \texttt{API}.
 \begin{description}
 \item[Expected duration]
 50 hours
 \item[Possible complications]
-Loading a \textbf{huge} game world might be complicated.
+Loading a huge game world might be complicated.
 \item[Task dependencies]
 \texttt{API}.
 \end{description}
 \subsection{Testing and polishing}
-In this task, the platform will be tested under heavy load to ensure its \textbf{stability} and \textbf{scalability}.
+In this task, the platform will be tested under heavy load to ensure its stability and scalability.
 \begin{description}
 \item[Expected duration]
 40 hours
@@ -370,7 +376,7 @@ None.
 Engine. It will be written in different parts, after each task is finished.
 \end{description}
 \subsection{Oral presentation}
-Once the project memory is finished, the student will prepare the final oral presentation.
+Once the project memory is finished, the author will prepare the final oral presentation.
 \begin{description}
 \item[Expected duration]
 10 hours
@@ -382,18 +388,18 @@ Project memory.
 \clearpage
 \section{Time table}
 \autoref{planning_time_table} summarizes the duration of every task described in the previous section.
-The total duration of the project is expected to be \textbf{460 hours}. The student will need to work
+The total duration of the project is expected to be 460 hours. The author will need to work
 $\frac{460 \: hour}{16 \: week} \simeq 29 \: hour/week$ to finish the project before the deadline, which seems reasonable.
 \begin{figure}[H]
 \begin{center}
-\begin{tabular}{l | l}
+\begin{tabular}{l S}
 \textbf{Task} & \textbf{Expected duration (h)}\\
 \hline
 Project management course & 75\\
 \hline
 Analysis and design & 10\\
 \hline
-Engine & -\\
+Engine & \\
 \hspace{1em}
 Learning & 5\\
 \hspace{1em}
@@ -403,7 +409,7 @@ Testing & 14\\
 \hspace{1em}
 Integration & 1\\
 \hline
-Client & -\\
+Client & \\
 \hspace{1em}
 Learning & 10\\
 \hspace{1em}
@@ -413,7 +419,7 @@ Testing & 10\\
 \hspace{1em}
 Integration & 5\\
 \hline
-API & -\\
+API & \\
 \hspace{1em}
 Learning & 5\\
 \hspace{1em}
@@ -423,7 +429,7 @@ Testing & 3\\
 \hspace{1em}
 Integration & 2\\
 \hline
-Control panel & -\\
+Control panel & \\
 \hspace{1em}
 Learning & 5\\
 \hspace{1em}
@@ -433,7 +439,7 @@ Testing & 5\\
 \hspace{1em}
 Integration & 5\\
 \hline
-Game example & -\\
+Game example & \\
 \hspace{1em}
 Logic & 50\\
 \hspace{1em}
@@ -510,7 +516,7 @@ The project will be developed using a personal desktop computer and a laptop. Al
 a keyboard and a mouse are needed to use the desktop computer. There is no other hardware needed.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S | S}
+\begin{tabular}{l S S S}
 \textbf{Hardware} & \textbf{Cost (\EURtm)} & \textbf{Useful life (years)} & \textbf{Amortized cost (\EURtm)}\\
 \hline
 Desktop computer & 2600.00 & 4 & 34.13\\
@@ -520,7 +526,7 @@ Mouse Corsair M60 & 60.00 & 4 & 0.79\\
 Keyboard Corsair K70 RGB & 170.00 & 4 & 2.23\\
 \hline
 \hline
-\multicolumn{3}{l |}{\textbf{Total}}
+\multicolumn{3}{l }{\textbf{Total}}
  & 60.13
 \end{tabular}
 \caption{Hardware budget}
@@ -538,10 +544,10 @@ Mozilla Firefox includes a \texttt{}Javascript\texttt{} engine and \texttt{evinc
 Also, the \texttt{HAL} programming language is owned by the author of the project. \texttt{Jetbrains} allows students to use
 \texttt{CLion} for free\footnote{\url{https://www.jetbrains.com/student/}} and
 \texttt{Sublime Text} can be used without registration with no limitations\footnote{\url{http://www.sublimetext.com/2}}.
-Therefore, \textbf{there are no software costs}.
+Therefore, there are no software costs.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | l}
+\begin{tabular}{l l}
 \textbf{Software} & \textbf{License}\\
 \hline
 Ubuntu & \url{http://www.ubuntu.com/about/about-ubuntu/our-philosophy}\\
@@ -561,7 +567,7 @@ Mozilla Firefox & \url{https://www.mozilla.org/en-US/foundation/licensing/}\\
 expected cost of the human resources according to project roles and their respective tasks.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S}
+\begin{tabular}{l S}
 \textbf{Role} & \textbf{Payment (\EURtm / h)}\\
 \hline
 Project manager & 35.00\\
@@ -573,7 +579,7 @@ Software developer & 30.00\\
 \end{table}
 \begin{table}[H]
 \centering
-\begin{tabular}{l | l | S | S}
+\begin{tabular}{l l S S}
 \textbf{Role} & \textbf{Task} & \textbf{Time (h)} & \textbf{Cost (\EURtm)}\\
 \hline
 \multirow{3}{*}{Project manager}
@@ -593,7 +599,7 @@ Software developer & 30.00\\
  & Testing and polishing & 40 & 1200.00\\
 \hline
 \hline
-\multicolumn{2}{l |}{\textbf{Total}}
+\multicolumn{2}{l }{\textbf{Total}}
  & 460.00 & 14525.00
 \end{tabular}
 \caption{Human resources budget}
@@ -606,7 +612,7 @@ the estimated time of usage, and the cost for every piece of hardware that needs
 assuming 0.147358 \EURtm / kWh in Spain.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S | S}
+\begin{tabular}{l S S S}
 \textbf{Hardware} & \textbf{Consumption (W)} & \textbf{Time of usage (h)} & \textbf{Cost (\EURtm)}\\
 \hline
 Desktop computer & 400 & 400 & 23.58\\
@@ -614,24 +620,24 @@ Laptop & 100 & 50 & 0.74\\
 Monitor Acer XB270HU & 30 & 400 & 1.77\\
 \hline
 \hline
-\multicolumn{3}{l |}{\textbf{Total}}
+\multicolumn{3}{l }{\textbf{Total}}
  & 26.08
 \end{tabular}
 \caption{Electricity budget}
 \label{Electricity budget}
 \end{table}
 \subsection{Internet connection}
-An Internet connection will be necessary to perform all the tasks. The student will use its personal
+An Internet connection will be necessary to perform all the tasks. The author will use its personal
 internet connection most of the time, which costs 38\EURtm/month $\simeq$ 0.05\EURtm/h. It is expected to use the internet connection during the 30\% of the
 total project's duration.
 Thus, the estimated budget for the internet connection is
-460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.28\EURtm}.
+460h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ 7.28\EURtm.
 \section{Total}
 \autoref{Total budget} shows the total budget needed to develop the project. The 10\% of the total cost
 is added to face any unforeseen contingencies.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S}
+\begin{tabular}{l S}
 \textbf{Resource} & \textbf{Total cost (\EURtm)}\\
 \hline
 Hardware & 60.13\\
@@ -644,7 +650,7 @@ Internet & 7.28\\
 Subtotal & 14618.49\\
 Contingency (10\%) & 1461.85\\
 \hline
-\multicolumn{1}{l |}{\textbf{Total}}
+\multicolumn{1}{l }{\textbf{Total}}
  & 16080.34
 \end{tabular}
 \caption{Total budget}
@@ -658,13 +664,13 @@ each other. Developing a single piece of software is a difficult task, but it be
 communicates with other software, especially when both are being developed at the same time; changes made in
 the public interface of some component can easily break other components.
 
-Therefore, components \textbf{will} break. Developers are humans, and \textbf{humans make mistakes}. Thus, in order to be productive,
-it is necessary to \textbf{detect when a component breaks as soon as possible}. That way, components can be fixed before more changes
+Therefore, components will break. Developers are humans, and humans make mistakes. Thus, in order to be productive,
+it is necessary to detect when a component breaks as soon as possible. That way, components can be fixed before more changes
 are made and fixing it becomes a nightmare.
 
 In order to ensure that all the components of the platform keep working during the entire implementation process, and also
-detect and fix issues as soon as possible, the project was developed using an \textbf{iterative methodology} with
-\textbf{continuous integration}. This methodology consisted in:
+detect and fix issues as soon as possible, the project was developed using an iterative methodology based on
+continuous integration \autoref{ci}. This methodology consisted in:
 \begin{enumerate}
 \item
 Develop a simple prototype of the platform.
@@ -681,8 +687,8 @@ Test that the prototype keeps working as expected.
 \end{enumerate}
 This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
 a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
-transparently. \textbf{Stakeholders} can try the software easily while it is being developed and give \textbf{feedback}. In this case,
-the prototype was available to the director of the project to assess and follow any progress closely.
+transparently. Stakeholders can try the software easily while it is being developed and give feedback. In this case,
+the prototype was available to the advisor of the project to assess and follow any progress closely.
 \chapter{The first prototype}
 \label{first_prototype}
 The first step of the implementation process was to build a simple prototype of the platform.
@@ -691,81 +697,81 @@ This first prototype must implement the most basic feature of the platform and i
 it easily. Therefore, it was decided that the first prototype should feature the first working versions of:
 \begin{enumerate}
 \item
-The \textbf{engine}, running one simple player and notifying its actions to any subscribers.
+The engine, running one simple player and notifying its actions to any subscribers.
 \item
-The \textbf{\texttt{API}}, subscribed to the \textbf{engine} and notifying its actions to \textbf{client}s.
+The \texttt{API}, subscribed to the engine and notifying its actions to clients.
 \item
-The \textbf{client} library, subscribed to the \textbf{\texttt{API}} and drawing the player actions in a web-browser.
+The client library, subscribed to the \texttt{API} and drawing the player actions in a web-browser.
 \end{enumerate}
-It is important to note that the \textbf{engine} and the \textbf{client} are libraries that can be used to build
+It is important to note that the engine and the client are libraries that can be used to build
 game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
 game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity\footnote{i.e.
 creating game logic and game viewer components}.
 \section{The first API}
 \subsection{Programming language}
-There are many programming languages that allow to create \textbf{HTTP \texttt{API}}s easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
-the language chosen to implement the \textbf{\texttt{API}} was the \textbf{\texttt{Go}} programming language because it includes \textbf{native}
-libraries to build concurrent \textbf{\texttt{REST} \texttt{API}}s and it is \textbf{simpler}, \textbf{faster} and \textbf{easier-to-deploy} than the alternatives.
+There are many programming languages that allow to create HTTP APIs easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
+the language chosen to implement the \texttt{API} was the \texttt{Go} programming language because it includes native
+libraries to build concurrent \texttt{REST} APIs and it is simpler, faster and easier-to-deploy than the alternatives.
 \subsection{The subscriber hub}
-The \textbf{\texttt{API}} needs to keep track of the different \textbf{client}s subscribed to it, and it also needs to be able to send data
+The \texttt{API} needs to keep track of the different clients subscribed to it, and it also needs to be able to send data
 to them.
 
-A \textbf{subscriber hub} was developed using the native concurrency of \textbf{Go}. Basically, the \textbf{hub} runs an infinite loop in the
-background that smartly monitors the connected \textbf{client}s; sending data or closing connections accordingly.
+A subscriber hub was developed using the native concurrency of Go. Basically, the hub runs an infinite loop in the
+background that smartly monitors the connected clients; sending data or closing connections accordingly.
 \subsection{The events endpoint}
-A simple HTTP endpoint was created: \textbf{\texttt{/events}}. This endpoint accepted WebSocket connections and delegated them to the
-\textbf{hub}.
+A simple HTTP endpoint was created: \texttt{/events}. This endpoint accepted WebSocket connections and delegated them to the
+hub.
 
-After that, the \textbf{\texttt{API}} was ready to send data to \textbf{game viewers} in \textbf{real-time}.
+After that, the \texttt{API} was ready to send data to game viewers in real-time.
 \section{The first client}
 \subsection{Programming language}
-The \textbf{client} code needs to be executed by web-browsers, as \textbf{game viewers} are web-based.
-Thus, it has to be written in \textbf{\texttt{Javascript}}, as it is supported by web-browsers natively.
+The client code needs to be executed by web-browsers, as game viewers are web-based.
+Thus, it has to be written in \texttt{Javascript}, as it is supported by web-browsers natively.
 \subsection{API subscription}
-A \textbf{WebSocket} was connected to the \textbf{\texttt{/events}} endpoint, printing any received data in the \textbf{\texttt{Javascript}} console.
+A WebSocket was connected to the \texttt{/events} endpoint, printing any received data in the \texttt{Javascript} console.
 \section{The first engine}
 \subsection{Programming language}
-The \textbf{engine} needs to be \textbf{fast}, as the game logic will be built on top of it, and it also needs to access
-\textbf{low-level} operative system operations, so it can limit how player programs are executed.
+The engine needs to be fast, as the game logic will be built on top of it, and it also needs to access
+low-level operative system operations, so it can limit how player programs are executed.
 
 The most well-known programming languages that satisfiy these requirements are \texttt{C} and \texttt{C}++. However, \texttt{C}  is lacking
-the capacity to \textbf{represent abstractions and interfaces} easily. Hence, \textbf{\texttt{C}++} is the perfect alternative to implement
-the engine, as it is \textbf{efficient}, \textbf{object-oriented} and it has access to the \textbf{\texttt{}C\texttt{ POSIX }API\texttt{}}, which allows to talk
-directly to \textbf{\texttt{UNIX}-based operative systems}.
+the capacity to represent abstractions and interfaces easily. Hence, \texttt{C}++ is the perfect alternative to implement
+the engine, as it is efficient, object-oriented and it has access to the \texttt{}C\texttt{ POSIX }API\texttt{}, which allows to talk
+directly to \texttt{UNIX}-based operative systems.
 \subsection{The architecture}
-When designing the first architecture of the \textbf{engine}, it was important to take its requirements into account:
+When designing the first architecture of the engine, it was important to take its requirements into account:
 \begin{enumerate}
 \item
-The \textbf{engine} must not allow \textbf{\texttt{AI}}s to cheat.
+The engine must not allow \texttt{AIs} to cheat.
 \item
-The \textbf{engine} must be \textbf{scalable}.
+The engine must be scalable.
 \item
-\textbf{\texttt{AI}}s may be \textbf{hot-swapped} during a match.
+\texttt{AIs} may be hot-swapped during a match.
 \end{enumerate}
-Thus, if the game logic and all the \textbf{\texttt{AI}}s were executed in the same process:
+Thus, if the game logic and all the \texttt{AIs} were executed in the same process:
 \begin{enumerate}
 \item
-\textbf{\texttt{AI}}s could access the memory related with the game logic or other \textbf{\texttt{AI}}s.
+\texttt{AIs} could access the memory related with the game logic or other \texttt{AIs}.
 \item
-\textbf{\texttt{AI}}s must be executed in the same machine.
+\texttt{AIs} must be executed in the same machine.
 \item
-Updating an \textbf{\texttt{AI}} would require a rebuild of the entire \textbf{game logic} and other \textbf{\texttt{AI}}s, and a restart of the process.
+Updating an \texttt{AI} would require a rebuild of the entire game logic and other \texttt{AIs}, and a restart of the process.
 \end{enumerate}
-In other words, it would be really \textbf{unsafe}, \textbf{inefficient} and it would couple all the \textbf{\texttt{AI}}s and the \textbf{game logic} together.
+In other words, it would be really unsafe, inefficient and it would couple all the \texttt{AIs} and the game logic together.
 
-Therefore, the architecture of the \textbf{engine} consisted of 3 types of processes:
+Therefore, the architecture of the engine consisted of 3 types of processes:
 \begin{description}
 \item[Master process]
-It represented the \textbf{game-world server}. The master process listened to requests coming from
-  players and updated the game world accordingly. There was only \textbf{one master process per runtime}.
+It represented the game-world server. The master process listened to requests coming from
+  players and updated the game world accordingly. There was only one master process per runtime.
 \item[Worker process]
-It represented a \textbf{pool of players}. A worker process \textbf{executed} a set of players and
-  \textbf{managed} them. There could be \textbf{multiple workers per runtime}.
+It represented a pool of players. A worker process executed a set of players and
+  managed them. There could be multiple workers per runtime.
 \item[Player process]
-It represented a \textbf{player program}. A player process \textbf{read} the game world from the
-  \textbf{master process} and \textbf{performed requests} to \textbf{change} the game world.
+It represented a player program. A player process read the game world from the
+  master process and performed requests to change the game world.
 \end{description}
-Processes comunicated with each other using \textbf{low-latency sockets}. Thus, different workers could be executed
+Processes comunicated with each other using low-latency sockets. Thus, different workers could be executed
 in different machines to achieve better performance.
 
 \autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = \sum_{i=0}^{N} M_i$ players.
@@ -779,47 +785,47 @@ in different machines to achieve better performance.
 \label{engine_arch}
 \end{figure}
 \subsection{Inter-process communication}
-As it was explained previously, the \textbf{engine} featured a decoupled architecture. Different processes were
-executed and communicated with each other using \textbf{sockets}. However, implementing inter-process communication from
+As it was explained previously, the engine featured a decoupled architecture. Different processes were
+executed and communicated with each other using sockets. However, implementing inter-process communication from
 scratch would have been a real challenge by itself, and it was not the subject of this project. This is where a
-\textbf{messaging technology} came in.
+messaging technology came in.
 
-The most well-known \textbf{messaging technologies} out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
+The most well-known messaging technologies out there are: \texttt{RabbitMQ}, \texttt{ZeroMQ} and \texttt{ActiveMQ}.
 
 \texttt{RabbitMQ} implements
-a \textbf{broker architecture}, which means that messages are queued on a central node before being sent to its destination.
-This architecture is totally unnecessary for the \textbf{engine}, as we want to decouple components, and it would also add
-some \textbf{latency}.
+a broker architecture, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the engine, as we want to decouple components, and it would also add
+some latency.
 
-\texttt{ActiveMQ} can be used with a \textbf{peer-to-peer architecture} but, when compared with \texttt{ZeroMQ}, it is a
-\textbf{high-level} library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
+\texttt{ActiveMQ} can be used with a peer-to-peer architecture but, when compared with \texttt{ZeroMQ}, it is a
+high-level library. Thus, controlling the type of communication or socket behaviour is not easy with \texttt{ActiveMQ}.
 
-On the other hand, \textbf{\texttt{ZeroMQ}} \cite{zeromq} is an embeddable networking library that implements
-\textbf{low-latency socket communication}. It manages \textbf{low-level} communication, while providing a flexible and easy-to-use interface.
-Also, \textbf{\texttt{ZeroMQ}} has bindings available for the most well-known programming languages.
+On the other hand, \texttt{ZeroMQ} \cite{zeromq} is an embeddable networking library that implements
+low-latency socket communication. It manages low-level communication, while providing a flexible and easy-to-use interface.
+Also, \texttt{ZeroMQ} has bindings available for the most well-known programming languages.
 
-Thus, \textbf{\texttt{ZeroMQ}} was the library chosen to implement all the inter-process communication.
+Thus, \texttt{ZeroMQ} was the library chosen to implement all the inter-process communication.
 \subsection{The first master process}
 The first master process consisted of two basic components:
 \begin{description}
 \item[The notifier]
 It sent any given message through a \texttt{ZeroMQ} socket.
 \item[The server]
-It listened requests made by \textbf{player processes} and notified them through the \textbf{notifier}.
+It listened requests made by player processes and notified them through the notifier.
 \end{description}
-This components allowed the master process to act as a \textbf{game server}, while notifying the actions of the players to any
+This components allowed the master process to act as a game server, while notifying the actions of the players to any
 subscribers.
 \section{Putting it all together}
-Once the initial engine was finished, a simple \textbf{\texttt{AI}} was developed to simulate a player moving
+Once the initial engine was finished, a simple \texttt{AI} was developed to simulate a player moving
 while following a square shape. This way, it would be clear if the prototype worked correctly or not, as the web-viewer would need
 to show this movement.
 
-Then, the \textbf{\texttt{API}} was connected to the \textbf{engine notifier} and the received messages were directly delegated to the \textbf{\texttt{API} hub},
-which in turn were sent to any open \textbf{client}s.
+Then, the \texttt{API} was connected to the engine notifier and the received messages were directly delegated to the \texttt{API} hub,
+which in turn were sent to any open clients.
 
-Finally, once the \textbf{\texttt{Javascript}} console started showing the received events, a simple scene using \textbf{\texttt{Three.js}} was created in the
-\textbf{client}. This scene featured a cube representing the \textbf{player}, whose position was updated with every received event.
-\autoref{cube_movement} shows the observed result. \textbf{The prototype was finished}.
+Finally, once the \texttt{Javascript} console started showing the received events, a simple scene using \texttt{Three.js} was created in the
+client. This scene featured a cube representing the player, whose position was updated with every received event.
+\autoref{cube_movement} shows the observed result. The prototype was finished.
 \begin{figure}[H]
 \begin{center}
 \noindent\resizebox{!}{15em}{
@@ -834,49 +840,49 @@ In this chapter, it is been described how the first prototype of the platform wa
 most basic features of every component:
 \begin{enumerate}
 \item
-The \textbf{engine} compiled and run players, and notified their actions to subscribers.
+The engine compiled and run players, and notified their actions to subscribers.
 \item
-The \textbf{\texttt{API}} subscribed to the engine and delegated the received events to all the connected clients.
+The \texttt{API} subscribed to the engine and delegated the received events to all the connected clients.
 \item
-The \textbf{client} was able to connect to the \textbf{\texttt{API}} and receive events from the \textbf{engine}.
+The client was able to connect to the \texttt{API} and receive events from the engine.
 \end{enumerate}
 The foundations of the platform were ready.
 \chapter{Continuous integration}
-Once the first prototype was finished, it was time to set up the \textbf{integration server}, as described in
+Once the first prototype was finished, it was time to set up the integration server, as described in
 \autoref{methodology}.
 \section{The dedicated server}
-First things first, an \textbf{integration server} to run the prototype was needed.
+First things first, an integration server to run the prototype was needed.
 
-Initially, a server was requested to the project director. However, the university policy did not allow professors
+Initially, a server was requested to the project advisor. However, the university policy did not allow professors
 to give root access to students. Root access was necessary because many different services might need to be installed during the
-development of the platform\footnote{\texttt{ZeroMQ}, for example}. Therefore, it was decided to use an external \textbf{cloud-host provider}.
+development of the platform\footnote{\texttt{ZeroMQ}, for example}. Therefore, it was decided to use an external cloud-host provider.
 
 There are many providers that present cloud-hosting solutions\footnote{AWS \cite{aws}, DigitalOcean \cite{digital_ocean}, etc.}.
-At the end, \textbf{Linode} \cite{linode} was the provider chosen, as the project developer already had experience with it and
-the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the \textbf{integration server}.
+At the end, Linode \cite{linode} was the provider chosen, as the project developer already had experience with it and
+the cheapest solution\footnote{This cost was covered with the contingency budget.} was enough to run the integration server.
 
-A \textbf{Linode 1GB} \cite{linode} running \texttt{Ubuntu} was booted up to execute an
+A Linode 1GB \cite{linode} running \texttt{Ubuntu} was booted up to execute an
 instance of the platform.
 \section{The integration service}
-The next step consisted in setting up an \textbf{integration service}.
+The next step consisted in setting up an integration service.
 
-Integration services keep track of some code repositories and can be configured to \textbf{build and test the code when a change 
-happens}. Additionally, most of them can be configured to \textbf{deploy changes when a build succeeds}.
+Integration services keep track of some code repositories and can be configured to build and test the code when a change 
+happens. Additionally, most of them can be configured to deploy changes when a build succeeds.
 
-As it happened with cloud-hosting providers, there are many different \textbf{integration
-services}\footnote{TravisCI \cite{travisci}, CircleCI \cite{circleci}, etc.}. Fortunately, most of them
-are \textbf{free} to use for open-source projects, like this one. At the end, \textbf{Semaphore} \cite{semaphoreci} was the chosen
-\textbf{integration service}. This decision was based in the experience the project developer had with the service, as it
+As it happened with cloud-hosting providers, there are many different integration
+services\footnote{TravisCI \cite{travisci}, CircleCI \cite{circleci}, etc.}. Fortunately, most of them
+are free to use for open-source projects, like this one. At the end, Semaphore \cite{semaphoreci} was the chosen
+integration service. This decision was based in the experience the project developer had with the service, as it
 also happened with the cloud-hosting provider.
 \section{The integration process}
-\textbf{Semaphore} was configured to trigger a build when any component
-changed. If a build succeeded, then \textbf{Semaphore} deployed the changes to the \textbf{Linode}, where the changes were applied.
+Semaphore was configured to trigger a build when any component
+changed. If a build succeeded, then Semaphore deployed the changes to the Linode, where the changes were applied.
 
-Changes were applied in the \textbf{Linode} using \textbf{bare \texttt{git} repositories} and \textbf{script hooks}. Basically,
-when some changes were pushed to the repository, a script was executed that \textbf{built and restarted the component}.
-These scripts were located in the \textbf{repository itself}, so they could be updated easily with the same process.
+Changes were applied in the Linode using bare \texttt{git} repositories and script hooks. Basically,
+when some changes were pushed to the repository, a script was executed that built and restarted the component.
+These scripts were located in the repository itself, so they could be updated easily with the same process.
 
-\autoref{build_process} shows the build process of the \textbf{engine}, while \autoref{deployment_process} shows
+\autoref{build_process} shows the build process of the engine, while \autoref{deployment_process} shows
 its deployment process.
 \begin{figure}[H]
 \begin{center}
@@ -898,72 +904,72 @@ its deployment process.
 \end{figure}
 \chapter{The log system}
 \label{log_system}
-Matches of \textbf{\texttt{MMPG}}s are expected to last days or weeks, and while allowing viewers to watch the current state of
-the match is mandatory, \textbf{\texttt{AI}}s will keep playing while players sleep. Therefore, \textbf{players will miss parts of the match}.
-For this reason, it is important to allow viewers to replay the \textbf{past of the match}. This feature is especially
+Matches of \texttt{MMPGs} are expected to last days or weeks, and while allowing viewers to watch the current state of
+the match is mandatory, \texttt{AIs} will keep playing while players sleep. Therefore, players will miss parts of the match.
+For this reason, it is important to allow viewers to replay the past of the match. This feature is especially
 interesting, as it allows players to detect long-term strategies and learn from mistakes without the need to watch the
 match constantly.
 
-This chapter details how the replay feature was added to the platform by creating the \textbf{log system}.
+This chapter details how the replay feature was added to the platform by creating the log system.
 \section{Event sourcing}
-\textbf{Event sourcing} \cite{event_sourcing} is a technique that consists in \textbf{saving the state changes of an application as a
-sequence of events}. Hence, instead of saving the current state of the application, its entire history is saved. This technique
-has one main benefit: \textbf{it allows to reconstruct the state of the application at any given time}.
+Event sourcing \cite{event_sourcing} is a technique that consists in saving the state changes of an application as a
+sequence of events. Hence, instead of saving the current state of the application, its entire history is saved. This technique
+has one main benefit: it allows to reconstruct the state of the application at any given time.
 
-\textbf{Event sourcing} can be applied to the \texttt{MMPG} platform. A match can be seen as a \textbf{sequence of immutable events}:
+Event sourcing can be applied to the \texttt{MMPG} platform. A match can be seen as a sequence of immutable events:
 \begin{description}
 \item[Player actions]
-Triggered by the different \textbf{\texttt{AI}}s.
+Triggered by the different \texttt{AIs}.
 \item[World updates]
-Triggered by the \textbf{master process} to update the game world.
+Triggered by the master process to update the game world.
 \end{description}
-Thus, it would be possible to \textbf{recreate the match state at any given time}, if such sequence were available, by applying
-all the events \textbf{from the start until that point in time}. But, as it was said before, matches can be quite long. Therefore,
+Thus, it would be possible to recreate the match state at any given time, if such sequence were available, by applying
+all the events from the start until that point in time. But, as it was said before, matches can be quite long. Therefore,
 processing all the events might become really time consuming.
 
-An efficient way to solve this problem consists in saving a \textbf{snapshot} of the match periodically. That is, a big event
-containing the \textbf{current state} of the match. As a consequence, it is possible to start from the \textbf{closest snapshot} in order
+An efficient way to solve this problem consists in saving a snapshot of the match periodically. That is, a big event
+containing the current state of the match. As a consequence, it is possible to start from the closest snapshot in order
 to recreate the state of the match at a given time.
 
-The \textbf{event sourcing} technique with the \textbf{snapshot strategy} was used to implement replays of a match \textbf{efficiently} in
+The event sourcing technique with the snapshot strategy was used to implement replays of a match efficiently in
 the \texttt{MMPG} platform.
 \section{Logging events}
-The first step to implement the replay feature was to log events in the \textbf{engine}.
+The first step to implement the replay feature was to log events in the engine.
 
-The log system saved every \textbf{player action}. Additionally, a \textbf{snapshot} was also saved every second.
-These \textbf{snapshots} allowed to recreate the state of the match easily and also allowed \textbf{viewers} to synchronize its state.
+The log system saved every player action. Additionally, a snapshot was also saved every second.
+These snapshots allowed to recreate the state of the match easily and also allowed viewers to synchronize its state.
 
-Internally, the log system consisted of multiple log files, where every file represented a \textbf{5-minute interval}, allowing the
+Internally, the log system consisted of multiple log files, where every file represented a 5-minute interval, allowing the
 retrieval of events for a particular interval of time.
 \section{Delivering log files}
-While \textbf{the notifier} of the \textbf{engine master process} implemented in the \textbf{first prototype} is well suited for publishing
+While the notifier of the engine master process implemented in the first prototype is well suited for publishing
 events to subscribers, it is not able to receive data from them. For this reason, a new component was implemented in the
-\textbf{master process}: the \textbf{engine app-server}.
+master process: the engine app-server.
 
-The \textbf{app-server} was able to receive requests from another application and reply accordingly. This component creates a channel that
-allows external applications to interact directly with the \textbf{engine}. The first version of this component only was able to handle
-\textbf{log requests}.
+The app-server was able to receive requests from another application and reply accordingly. This component creates a channel that
+allows external applications to interact directly with the engine. The first version of this component only was able to handle
+log requests.
 
-A \textbf{log request} was represented by a string of characters: the \texttt{LOG} keyword followed by a space and then the UNIX time
+A log request was represented by a string of characters: the \texttt{LOG} keyword followed by a space and then the UNIX time
 of the log to be retrieved. For example:
 \begin{verbatim}
 LOG 1451606400
 \end{verbatim}
-This request would ask for the \textbf{log file} that contains events created at \texttt{01/01/2016 @ 00:00 (UTC)}.
+This request would ask for the log file that contains events created at \texttt{01/01/2016 @ 00:00 (UTC)}.
 
-Once the \textbf{engine} was able to reply to log requests, a new endpoint \textbf{\texttt{/log}} was created in the \textbf{\texttt{API}} component. This
-endpoint accepted a \textbf{\texttt{time}} parameter, which was used to request the correct log file to the \textbf{engine}. Then, the log
+Once the engine was able to reply to log requests, a new endpoint \texttt{/log} was created in the \texttt{API} component. This
+endpoint accepted a \texttt{time} parameter, which was used to request the correct log file to the engine. Then, the log
 file was sent back to the client that requested it.
 
-Finally, the \textbf{client} library was updated to enable \textbf{log requests} in \textbf{viewers}.
+Finally, the client library was updated to enable log requests in viewers.
 \section{Compressing log files}
-\textbf{Log files} had a repetitive structure, given that multiple events of the same type were stored in it. Hence, they were
-really \textbf{compressible}. Moreover, \textbf{log files} were directly delivered to web-browsers through the \textbf{\texttt{API}}, and most modern
-web-browsers are able to decompress \textbf{\texttt{gzip}} natively. For this reason, \textbf{log files} were compressed using \textbf{\texttt{gzip}},
-\textbf{reducing both disk and bandwidth usage}.
+Log files had a repetitive structure, given that multiple events of the same type were stored in it. Hence, they were
+really compressible. Moreover, log files were directly delivered to web-browsers through the \texttt{API}, and most modern
+web-browsers are able to decompress \texttt{gzip} natively. For this reason, log files were compressed using \texttt{gzip},
+reducing both disk and bandwidth usage.
 \section{Controlling time}
-Finally, a \textbf{widget} was created in the \textbf{viewer} to control the \textbf{game time}. This widget allowed to \textbf{start}, \textbf{pause},
-\textbf{rewind} and \textbf{forward} the game timer. \autoref{game_time} shows the design of this widget.
+Finally, a widget was created in the viewer to control the game time. This widget allowed to start, pause,
+rewind and forward the game timer. \autoref{game_time} shows the design of this widget.
 \begin{figure}[H]
 \begin{center}
 \includegraphics{images/game_time.png}
@@ -971,97 +977,97 @@ Finally, a \textbf{widget} was created in the \textbf{viewer} to control the \te
 \caption{Game time widget}
 \label{game_time}
 \end{figure}
-The \textbf{game time widget} performed \textbf{log requests} under the scenes when necessary. Then, it created a \textbf{buffer} of events
-from the log and started consuming them at the \textbf{same rate they were created}. When the buffer begun to empty, the \textbf{next log file
-was requested to refill the buffer}.
+The game time widget performed log requests under the scenes when necessary. Then, it created a buffer of events
+from the log and started consuming them at the same rate they were created. When the buffer begun to empty, the next log file
+was requested to refill the buffer.
 \section{Summary}
 In this chapter, the replay feature was implemented. The implementation process featured:
 \begin{enumerate}
 \item
-Saving \textbf{player actions and snapshots} in log files.
+Saving player actions and snapshots in log files.
 \item
-Creating an \textbf{app-server} in the \textbf{engine} to handle \textbf{log requests}.
+Creating an app-server in the engine to handle log requests.
 \item
-Creating a \textbf{\texttt{/log}} endpoint in the \textbf{\texttt{API}} to allow \textbf{clients} to request log files.
+Creating a \texttt{/log} endpoint in the \texttt{API} to allow clients to request log files.
 \item
-\textbf{Compressing} log files using \textbf{\texttt{gzip}}.
+Compressing log files using \texttt{gzip}.
 \item
-Developing a \textbf{game time widget} in the \textbf{viewer} to control \textbf{game time}.
+Developing a game time widget in the viewer to control game time.
 \end{enumerate}
 \chapter{Deployment of AI}
 \label{deployment_ai}
-The next most basic feature that the platform needed to support was the \textbf{hot-swapping of \texttt{AI}}s. Players needed to be
-able to change their \textbf{\texttt{AI}}s during a match.
+The next most basic feature that the platform needed to support was the hot-swapping of \texttt{AIs}. Players needed to be
+able to change their \texttt{AIs} during a match.
 
-However, it was also necessary to provide some security, so players could not change the \textbf{\texttt{AI}}s of other players. Hence,
-a method to \textbf{authenticate players} was needed.
+However, it was also necessary to provide some security, so players could not change the \texttt{AIs} of other players. Hence,
+a method to authenticate players was needed.
 
 This chapter details the implementation of the authentication system and the deployment system.
 \section{Recognizing players}
-The first step consisted in making the \textbf{engine} acknowledge the different players by some identifier. When the \textbf{engine}
-was booted up, it read a file containing a list of \textbf{user identifiers}. Then, each one of these identifiers was internally
+The first step consisted in making the engine acknowledge the different players by some identifier. When the engine
+was booted up, it read a file containing a list of user identifiers. Then, each one of these identifiers was internally
 linked with a match player.
 
-Afterwards, a new type of request handler was added to the \textbf{app-server} developed in the previous chapter: \textbf{\texttt{PLAYER\_EXISTS}}.
+Afterwards, a new type of request handler was added to the app-server developed in the previous chapter: \texttt{PLAYER\_EXISTS}.
 This request consisted of the \texttt{PLAYER\_EXISTS} keyword followed by a space, and then a user identifier. For example:
 \begin{verbatim}
 PLAYER_EXISTS hector.ramon@est.fib.upc.edu
 \end{verbatim}
 In this example, the user identifier is an e-mail. But it is important to note that the engine was not limited to e-mails,
-it was able to work with \textbf{any type of string}.
+it was able to work with any type of string.
 
-When the \textbf{engine} received a \textbf{\texttt{PLAYER\_EXISTS}} request, it checked if the given identifier was linked to some player in
-the current match and replied \textbf{\texttt{YES}} or \textbf{\texttt{NO}} accordingly.
+When the engine received a \texttt{PLAYER\_EXISTS} request, it checked if the given identifier was linked to some player in
+the current match and replied \texttt{YES} or \texttt{NO} accordingly.
 \section{Authenticating players}
-The authentication system was implemented in the \textbf{\texttt{API}} component. Mainly because authentication solved an environment
-limitation of the component that exposed the \textbf{engine}: the \textbf{\texttt{API}}. Hence, the \textbf{engine} did not need to know how to authenticate
-users, the \textbf{\texttt{API}} did.
+The authentication system was implemented in the \texttt{API} component. Mainly because authentication solved an environment
+limitation of the component that exposed the engine: the \texttt{API}. Hence, the engine did not need to know how to authenticate
+users, the \texttt{API} did.
 
-A new endpoint \textbf{\texttt{/auth}} was created in the \textbf{\texttt{API}}. This endpoint accepted two types of requests:
+A new endpoint \texttt{/auth} was created in the \texttt{API}. This endpoint accepted two types of requests:
 \begin{description}
 \item[\texttt{POST}]
-It \textbf{validated player credentials}:
+It validated player credentials:
 \begin{enumerate}
 \item
-Accepted an \textbf{identifier} and a \textbf{password}.
+Accepted an identifier and a password.
 \item
-Checked whether the \textbf{identifier} and the \textbf{password} were valid using a \textbf{credentials validator}.
+Checked whether the identifier and the password were valid using a credentials validator.
 \item
 Returned a \texttt{403 Forbidden} error if the credentials were not valid.
 \item
-Checked if the player existed in the \textbf{engine} using the \textbf{\texttt{PLAYER\_EXISTS}} request.
+Checked if the player existed in the engine using the \texttt{PLAYER\_EXISTS} request.
 \item
 Returned a \texttt{403 Forbidden} error if the player did not exist.
 \item
-Returned a \textbf{digitally-signed authentication token} for the given \textbf{identifier}.
+Returned a digitally-signed authentication token for the given identifier.
 \end{enumerate}
 \item[\texttt{GET}]
-It \textbf{renewed authentication token}s
+It renewed authentication tokens
 \begin{enumerate}
 \item
-Accepted an \textbf{authentication token}.
+Accepted an authentication token.
 \item
-Checked if the \textbf{authentication token} was valid.
+Checked if the authentication token was valid.
 \item
-Returned a \texttt{400 Bad Request} error if the \textbf{authentication token} was not valid.
+Returned a \texttt{400 Bad Request} error if the authentication token was not valid.
 \item
-Returned a new \textbf{authentication token}.
+Returned a new authentication token.
 \end{enumerate}
 \end{description}
-The \textbf{authentication tokens} were implemented using \textbf{\texttt{JSON WebTokens}} \cite{jwt}. This tokens have an expìration date,
-hence the necessity to \textbf{renew} them.
+The authentication tokens were implemented using \texttt{JSON WebTokens} \cite{jwt}. This tokens have an expìration date,
+hence the necessity to renew them.
 
-A \textbf{credentials validator} is a simple \texttt{Go} function that tells whether the given \textbf{identifier} and
-\textbf{password} are valid or not. A \textbf{credential validator} can be injected in the \textbf{\texttt{API}} easily. Hence, anyone can
-implement its own \textbf{credentials validator} and customize the authentication system.
+A credentials validator is a simple \texttt{Go} function that tells whether the given identifier and
+password are valid or not. A credential validator can be injected in the \texttt{API} easily. Hence, anyone can
+implement its own credentials validator and customize the authentication system.
 
-Finally, a \textbf{credentials validator} for the \textbf{Jutge.org} platform was developed using an endpoint provided by the project
-director. Thus, to authenticate properly it was necessary to provide a valid \textbf{e-mail} and \textbf{password} of a
-\textbf{Jutge.org account}.
+Finally, a credentials validator for the Jutge.org platform was developed using an endpoint provided by the project
+advisor. Thus, to authenticate properly it was necessary to provide a valid e-mail and password of a
+Jutge.org account.
 \section{Logging in players}
-Once the \textbf{authentication system} was implemented, the \textbf{client} library was updated to add support to the new \textbf{\texttt{/auth}}
-endpoint. Also, a \textbf{login form} was designed in the \textbf{viewer} to allow players to \textbf{login}. \autoref{login_form}
-shows how this \textbf{login form} looks.
+Once the authentication system was implemented, the client library was updated to add support to the new \texttt{/auth}
+endpoint. Also, a login form was designed in the viewer to allow players to login. \autoref{login_form}
+shows how this login form looks.
 \begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{!}{250pt}{
@@ -1074,44 +1080,44 @@ shows how this \textbf{login form} looks.
 \caption{Login form. Valid (left). Invalid (right)}
 \label{login_form}
 \end{figure}
-When a \textbf{login succeeded} the returned \textbf{authentication token} was saved in the \textbf{local storage} of the browser and renewed
-when the \textbf{viewer} was reaccessed, or every \textbf{30 minutes} if it was kept open.
+When a login succeeded the returned authentication token was saved in the local storage of the browser and renewed
+when the viewer was reaccessed, or every 30 minutes if it was kept open.
 \section{Hot-swapping AI}
-Once, players were able to login, the deployment of new \textbf{\texttt{AI}}s could be implemented.
+Once, players were able to login, the deployment of new \texttt{AIs} could be implemented.
 
-Firstly, a new request handler in the \textbf{app-server} was needed: \textbf{\texttt{DEPLOY\_PLAYER}}. This type of request had two
-parameters: the \textbf{player identifier} and the \textbf{code of the new \texttt{AI} encoded in \texttt{base64}}. After receiving a \textbf{\texttt{DEPLOY\_PLAYER}}
-request, the \textbf{engine} tried to \textbf{compile} the \textbf{code}, assigned the new executable to the player with the given \textbf{identifier},
-and \textbf{restarted} its \textbf{player process}. In case the compilation failed, then the compilation error was returned.
+Firstly, a new request handler in the app-server was needed: \texttt{DEPLOY\_PLAYER}. This type of request had two
+parameters: the player identifier and the code of the new \texttt{AI} encoded in \texttt{base64}. After receiving a \texttt{DEPLOY\_PLAYER}
+request, the engine tried to compile the code, assigned the new executable to the player with the given identifier,
+and restarted its player process. In case the compilation failed, then the compilation error was returned.
 
-Secondly, a new \textbf{\texttt{API}} endpoint \textbf{\texttt{/player}} was implemented to expose the new \textbf{engine} functionality and
-allow \textbf{authenticated players} to change their \textbf{\texttt{AI}}s. This endpoint was pretty simple:
+Secondly, a new \texttt{API} endpoint \texttt{/player} was implemented to expose the new engine functionality and
+allow authenticated players to change their \texttt{AIs}. This endpoint was pretty simple:
 \begin{enumerate}
 \item
-Accepted an \textbf{authentication token} and an \textbf{uploaded file}.
+Accepted an authentication token and an uploaded file.
 \item
-Checked whether the \textbf{authentication token} was valid or not.
+Checked whether the authentication token was valid or not.
 \item
-Returned a \textbf{\texttt{401 Unauthorized}} error if the \textbf{authentication token} was invalid.
+Returned a \texttt{401 Unauthorized} error if the authentication token was invalid.
 \item
-Encoded the \textbf{uploaded file} in \textbf{\texttt{base64}}.
+Encoded the uploaded file in \texttt{base64}.
 \item
-Issued a \texttt{DEPLOY\_PLAYER} request to the engine using the \textbf{identifier} in the \textbf{authentication token} and the
-  \textbf{encoded file} as parameters.
+Issued a \texttt{DEPLOY\_PLAYER} request to the engine using the identifier in the authentication token and the
+  encoded file as parameters.
 \item
 Returned a descriptive error if the deploymet failed.
 \item
-Returned a \textbf{\texttt{200 OK}} response.
+Returned a \texttt{200 OK} response.
 \end{enumerate}
-As it is been shown multiple times now. There is an \textbf{\texttt{API}} endpoint for almost every request that the \textbf{engine app-server}
-can handle. Hence, the \textbf{\texttt{API}} exposes the \textbf{engine} with an \textbf{access layer} on top of it.
+As it is been shown multiple times now. There is an \texttt{API} endpoint for almost every request that the engine app-server
+can handle. Hence, the \texttt{API} exposes the engine with an access layer on top of it.
 \section{Deploying new AI}
-Finally, the \textbf{client} was updated to support the new \textbf{\texttt{API}} endpoint and a \textbf{deployment form} was created in the \textbf{viewer}.
-This form was designed having in mind that \textbf{the deployment process should be fun}, so players feel encouraged to
-\textbf{improve its code}. \autoref{deploy_error} shows how the \textbf{deployment form} looks.
+Finally, the client was updated to support the new \texttt{API} endpoint and a deployment form was created in the viewer.
+This form was designed having in mind that the deployment process should be fun, so players feel encouraged to
+improve its code. \autoref{deploy_error} shows how the deployment form looks.
 
-Also, a \textbf{player menu} was designed to welcome authenticated players. From this menu, players can access the \textbf{deployment form}
-and they can also \textbf{logout}. \autoref{player_menu} shows how the \textbf{player menu} looks.
+Also, a player menu was designed to welcome authenticated players. From this menu, players can access the deployment form
+and they can also logout. \autoref{player_menu} shows how the player menu looks.
 \begin{figure}[H]
 \begin{minipage}{.5\textwidth}
 \begin{figure}[H]
@@ -1137,15 +1143,15 @@ and they can also \textbf{logout}. \autoref{player_menu} shows how the \textbf{p
 \end{minipage}
 \end{figure}
 \section{Summary}
-This capter detailed the implementation of the \textbf{\texttt{AI} hot-swapping} feature, which needed an
-\textbf{authentication system} first. Summarizing, the most important implemented components are:
+This chapter detailed the implementation of the \texttt{AI} hot-swapping feature, which needed an
+authentication system first. Summarizing, the most important implemented components are:
 \begin{enumerate}
 \item
-The \textbf{\texttt{PLAYER\_EXISTS}} and \textbf{\texttt{DEPLOY\_PLAYER}} request handlers in the \textbf{engine app-server}
+The \texttt{PLAYER\_EXISTS} and \texttt{DEPLOY\_PLAYER} request handlers in the engine app-server
 \item
-The \textbf{\texttt{/auth}} and \textbf{\texttt{/player}} endpoint in the \textbf{\texttt{API}}
+The \texttt{/auth} and \texttt{/player} endpoint in the \texttt{API}
 \item
-The \textbf{login form}, \textbf{player menu}, and \textbf{deployment form} in the \textbf{viewer}.
+The login form, player menu, and deployment form in the viewer.
 \end{enumerate}
 \chapter{The control panel}
 \label{control_panel}
@@ -1176,13 +1182,13 @@ Before going any further, it was convenient to make a quick review of the curren
 the platform was able to:
 \begin{enumerate}
 \item
-\textbf{Notify} game events in \textbf{real-time}
+Notify game events in real-time
 \item
-\textbf{Replay} the past of the current match
+Replay the past of the current match
 \item
-\textbf{Hotswap \texttt{AIs}} during a match
+Hotswap \texttt{AIs} during a match
 \end{enumerate}
-These features alone, fullfilled \textbf{2} of the \textbf{6} secondary objectives detailed in \autoref{secondary_objectives},
+These features alone, fullfilled 2 of the 6 secondary objectives detailed in \autoref{secondary_objectives},
 specifically:
 \begin{enumerate}
 \item
@@ -1190,37 +1196,37 @@ Allow hot-swapping of \texttt{AIs}
 \item
 Implement a real-time webviewer
 \end{enumerate}
-Therefore, there were still \textbf{four} secondary objectives to fullfill. However, one of these objectives talked about
-\textbf{stability and scalability}, features that could only be validated at the end of the project (see \autoref{validation}).
+Therefore, there were still four secondary objectives to fullfill. However, one of these objectives talked about
+stability and scalability, features that could only be validated at the end of the project (see \autoref{validation}).
 
-For this reason, it was decided that the next implemented features \textbf{aimed to fullfill} the objectives:
+For this reason, it was decided that the next implemented features aimed to fullfill the objectives:
 \begin{enumerate}
 \item
 Develop an abstract game engine
 \item
 Create a game example
 \end{enumerate}
-These two objectives could be \textbf{fullfilled both at the same time} by \textbf{creating a game example without adding any game-specific
-code in the engine}. To achieve that, a set of abstract classes were created in the \textbf{engine} to build game logic on top of them:
+These two objectives could be fullfilled both at the same time by creating a game example without adding any game-specific
+code in the engine. To achieve that, a set of abstract classes were created in the engine to build game logic on top of them:
 \begin{description}
 \item[\texttt{Game}]
-Used to \textbf{configure} general aspects of the game and as a \textbf{factory} of game \texttt{World}s and \texttt{Action}s.
+Used to configure general aspects of the game and as a factory of game \texttt{World}s and \texttt{Action}s.
 \item[\texttt{World}]
-Used to implement game \textbf{update logic} and world \textbf{serialization}.
+Used to implement game update logic and world serialization.
 \item[\texttt{AI}]
-Used to build the \textbf{interface} that players will have available when implementing \textbf{\texttt{AI}}s.
+Used to build the interface that players will have available when implementing \texttt{AIs}.
 \item[\texttt{Action}]
-Used to implement action \textbf{logic} and \textbf{serialization}.
+Used to implement action logic and serialization.
 \end{description}
-These classes allowed game developers to build \textbf{\texttt{MMPG}}s while \textbf{extending} the \textbf{engine} code, not \textbf{changing} it.
+These classes allowed game developers to build \texttt{MMPGs} while extending the engine code, not changing it.
 \section{Choosing a game: Space Wars}
-First, it was necessary to choose the game to implement. The best candidates were games with \textbf{simple rules}, but that
-also seemed \textbf{easy to extend}. Hence, development could start with the implementation of the original game rules while
-new ideas to \textbf{increase the game size} and make it \textbf{massive} could be added later.
+First, it was necessary to choose the game to implement. The best candidates were games with simple rules, but that
+also seemed easy to extend. Hence, development could start with the implementation of the original game rules while
+new ideas to increase the game size and make it massive could be added later.
 
-At the end, it was chosen to implement a game inspired by \textbf{Galcon} \cite{galcon}, which also inspired
-\textbf{Planet Wars} \cite{planet_wars}. \textbf{Planet Wars} was a game used in the \textbf{\texttt{AI} programming challenge}
-(see \autoref{state_of_the_art}) sponsored by \textbf{Google} during 2010. The game rules are simple:
+At the end, it was chosen to implement a game inspired by Galcon \cite{galcon}, which also inspired
+Planet Wars \cite{planet_wars}. Planet Wars was a game used in the \texttt{AI} programming challenge
+(see \autoref{state_of_the_art}) sponsored by Google during 2010. The game rules are simple:
 \begin{enumerate}
 \item
 The game world consists in a system with a determined number of planets.
@@ -1235,25 +1241,25 @@ A player can conquer other planets by sending a greater number of ships than the
 \item
 The objective of the match is to destroy other players and/or conquer the major number of planets.
 \end{enumerate}
-These rules make an interesting \textbf{strategic game} that is quite convenient for a \textbf{programming game}.
+These rules make an interesting strategic game that is quite convenient for a programming game.
 \section{Generating a planetary system}
-The first step to implement the game rules was to generate a game world: a \textbf{planetary system}.
+The first step to implement the game rules was to generate a game world: a planetary system.
 
-In order to make every match different, it was decided to \textbf{generate the game world procedurally} using a pseudo-random
+In order to make every match different, it was decided to generate the game world procedurally using a pseudo-random
 generator\footnote{Mersenne Twister \cite{mersenne_twister}}.
 
-A simplified model of a realistic \textbf{planetary system} was taken. A \textbf{planetary system} in the game had \textbf{one sun} and a
-determined number of \textbf{planets}. A \textbf{planet} was assumed to move describing an \textbf{ellipse} with the \textbf{sun} as its center.
-Thus, assuming the position of the \textbf{sun} was $(0, 0)$, then the coordinates $x$ and $y$ of the planet were
+A simplified model of a realistic planetary system was taken. A planetary system in the game had one sun and a
+determined number of planets. A planet was assumed to move describing an ellipse with the sun as its center.
+Thus, assuming the position of the sun was $(0, 0)$, then the coordinates $x$ and $y$ of the planet were
 
 $$x = a \: cos \theta$$
 $$y = b \: sin \theta$$
 
-where $a$ and $b$ were the major and minor axes of the ellipse, respectively, and $\theta$ was the \textbf{eccentric anomaly}.
+where $a$ and $b$ were the major and minor axes of the ellipse, respectively, and $\theta$ was the eccentric anomaly.
 
-Algorithm \autoref{system_generation} shows the algorithm used to generate \textbf{planetary systems} procedurally in the game.
-Basically, the algorithm generated planets \textbf{outwards from the sun}, while ensuring \textbf{their orbits did not collide},
-and positioned them on a \textbf{random point of its orbit}.
+Algorithm \autoref{system_generation} shows the algorithm used to generate planetary systems procedurally in the game.
+Basically, the algorithm generated planets outwards from the sun, while ensuring their orbits did not collide,
+and positioned them on a random point of its orbit.
 \begin{algorithm}
 \caption{Procedural generation of planetary systems}
 \label{system_generation}
@@ -1275,11 +1281,11 @@ and positioned them on a \textbf{random point of its orbit}.
 \end{algorithm}
 \clearpage
 \section{Connecting planets}
-At this point, it was possible to generate a \textbf{planetary system} as the game world. However, it was decided that a planet
-could not send ships to any other planet, but only to planets that were connected to it, unlike the original \textbf{Galcon} \cite{galcon}.
-As a consequence, the game became more interesting, encouraging players to learn \textbf{path-finding} techniques.
+At this point, it was possible to generate a planetary system as the game world. However, it was decided that a planet
+could not send ships to any other planet, but only to planets that were connected to it, unlike the original Galcon \cite{galcon}.
+As a consequence, the game became more interesting, encouraging players to learn path-finding techniques.
 
-Hence, it was necessary to also generate a \textbf{connected graph of planets}. Algorithm \autoref{connection_generation} shows
+Hence, it was necessary to also generate a connected graph of planets. Algorithm \autoref{connection_generation} shows
 the algorithm used to generate the planetary connections procedurally.
 \begin{algorithm}[H]
 \caption{Procedural generation of planetary connections}
@@ -1306,12 +1312,12 @@ the algorithm used to generate the planetary connections procedurally.
 \end{algorithmic}
 \end{algorithm}
 \section{Rendering the planetary system}
-Finally, the viewer was upgraded to render the generated \textbf{planetary system} and its \textbf{connections}.
+Finally, the viewer was upgraded to render the generated planetary system and its connections.
 
-Basically, OpenGL spheres were used to draw the \textbf{sun} and the \textbf{planets}, while \textbf{connections} were represented
-using \textbf{lines}. Additionally, a \textbf{light} was added in the center of the \textbf{sun} to give some depth to the scene.
+Basically, OpenGL spheres were used to draw the sun and the planets, while connections were represented
+using lines. Additionally, a light was added in the center of the sun to give some depth to the scene.
 
-\autoref{render_system} shows a \textbf{planetary system} rendered by the viewer.
+\autoref{render_system} shows a planetary system rendered by the viewer.
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
 \includegraphics{images/planets.png}
@@ -1320,37 +1326,37 @@ using \textbf{lines}. Additionally, a \textbf{light} was added in the center of 
 \label{render_system}
 \end{figure}
 \section{Summary}
-This chapter detailed how the implementation of the \textbf{game example} started:
+This chapter detailed how the implementation of the game example started:
 \begin{enumerate}
 \item
-It was chosen to create a game \textbf{inspired} by \textbf{Galcon} \cite{galcon}.
+It was chosen to create a game inspired by Galcon \cite{galcon}.
 \item
-A simple algorithm was implemented to \textbf{procedurally generate} the game world.
+A simple algorithm was implemented to procedurally generate the game world.
 \item
-The \textbf{viewer} was upgraded to \textbf{render} the generated game world.
+The viewer was upgraded to render the generated game world.
 \end{enumerate}
 \chapter{Fleets and planets}
 \label{fleets_planets}
-At this point, a \textbf{planetary system} was being generated as the game world. Thus, it was possible to start developing 
-the main game mechanics: \textbf{ship generation} and \textbf{fleet movement}.
+At this point, a planetary system was being generated as the game world. Thus, it was possible to start developing 
+the main game mechanics: ship generation and fleet movement.
 \section{Generating ships in conquered planets}
-The \textbf{ship generation} mechanic states that \textbf{conquered planets} generate \textbf{ships} at a \textbf{rate proportional to the
-radius of the planet}. Hence, \textbf{the bigger the planet}, \textbf{the more ships it will generate} during a specific timeframe.
+The ship generation mechanic states that conquered planets generate ships at a rate proportional to the
+radius of the planet. Hence, the bigger the planet, the more ships it will generate during a specific timeframe.
 
-The nature of this mechanic is periodical: \textbf{conquered planets} need to be updated quite frequently. Games can easily
-implement this type of mechanics because their entire logic is executed in a \textbf{game loop}.
+The nature of this mechanic is periodical: conquered planets need to be updated quite frequently. Games can easily
+implement this type of mechanics because their entire logic is executed in a game loop.
 
-A \textbf{game loop} is the central code of a \textbf{game}. It is a \textbf{loop} that is executed constantly to update the state of
-the game accordingly. A \textbf{good game loop} computes the \textbf{time between iterations} and has a \textbf{fixed timestep}, which ensures
+A game loop is the central code of a game. It is a loop that is executed constantly to update the state of
+the game accordingly. A good game loop computes the time between iterations and has a fixed timestep, which ensures
 that the update logic always advances the state of the game in the same amount.
 
-Algorithm \autoref{game_loop} shows an example of a \textbf{game loop} with a \textbf{fixed timestep}. This type of \textbf{game loop}
-avoids \textbf{differences in game speed} between different hardware, while it also avoids passing a \textbf{big timestep} to the
+Algorithm \autoref{game_loop} shows an example of a game loop with a fixed timestep. This type of game loop
+avoids differences in game speed between different hardware, while it also avoids passing a big timestep to the
 update logic, which could break game calculations\footnote{like collision detection, movement, etc.}.
 
-At the end, the \textbf{engine} was upgraded to support a \textbf{game loop} with a fixed timestep. The \textbf{timestep} could be configured
-by extending the \textbf{\texttt{Game}} class described in \autoref{first_game_world}. Then, the corresponding \textbf{update logic} was
-implemented in the \textbf{game logic} to generate ships in \textbf{conquered planets} as described by the game mechanic.
+At the end, the engine was upgraded to support a game loop with a fixed timestep. The timestep could be configured
+by extending the \texttt{Game} class described in \autoref{first_game_world}. Then, the corresponding update logic was
+implemented in the game logic to generate ships in conquered planets as described by the game mechanic.
 \begin{algorithm}
 \caption{Game loop with a fixed timestep}
 \label{game_loop}
@@ -1370,9 +1376,9 @@ implemented in the \textbf{game logic} to generate ships in \textbf{conquered pl
 \end{algorithmic}
 \end{algorithm}
 \section{Moving fleets between planets}
-The \textbf{fleet movement} mechanic describes how players can \textbf{send ships from a planet to another}.
+The fleet movement mechanic describes how players can send ships from a planet to another.
 
-Basically, it was implemented assuming that a \textbf{fleet trip} is defined by:
+Basically, it was implemented assuming that a fleet trip is defined by:
 \begin{itemize}
 \item
 Planet origin
@@ -1385,16 +1391,16 @@ Number of ships
 \item
 Travel time
 \end{itemize}
-The travel time was proportional to the \textbf{euclidean distance} between the \textbf{planet origin} $o$ and the \textbf{planet destination} $d$,
-assuming that every fleet moved at the same \textbf{velocity} $v$:
+The travel time was proportional to the euclidean distance between the planet origin $o$ and the planet destination $d$,
+assuming that every fleet moved at the same velocity $v$:
 
 $$t_{time} = \frac{\sqrt{(d_x - o_x)^2 + (d_y - o_y)^2}}{v}$$
 
-The \textbf{velocity} value was constant in the game, but it could be easily changed to experiment with different values.
+The velocity value was constant in the game, but it could be easily changed to experiment with different values.
 
-Then, in the \textbf{update logic}, every \textbf{on-going fleet trip} was updated properly, applying changes to the destination planets
-when a trip finished. Algorithm \autoref{trip_algorithm} and \autoref{planet_algorithm} give a basic idea of how the \textbf{trip and planet
-update logics} were implemented, respectively.
+Then, in the update logic, every on-going fleet trip was updated properly, applying changes to the destination planets
+when a trip finished. Algorithm \autoref{trip_algorithm} and \autoref{planet_algorithm} give a basic idea of how the trip and planet
+update logics were implemented, respectively.
 \begin{algorithm}[H]
 \caption{Fleet trip update logic}
 \label{trip_algorithm}
@@ -1430,15 +1436,21 @@ update logics} were implemented, respectively.
 \end{algorithmic}
 \end{algorithm}
 \section{Rendering fleets and planet information}
-Finally, the \textbf{viewer} was upgraded to render \textbf{fleets} moving between planets. \textbf{Octahedrons} were used to represent
-\textbf{fleets}, scaling them proportionally to the number of ships. \textbf{Fleets} movement was animated using the \textbf{planet origin},
-\textbf{planet destination} and \textbf{travel time}.
+Finally, the viewer was upgraded to render fleets moving between planets. Octahedrons were used to represent
+fleets, scaling them proportionally to the number of ships. Fleets movement was animated using the planet origin,
+planet destination and travel time.
 
-Additionally, the \textbf{viewer} was modified to show planet information: \textbf{number of ships} and \textbf{owner}. These elements were
-\textbf{projected} on top of the \textbf{\texttt{3D} viewer} using \textbf{\texttt{HTML} elements}.
+Additionally, the viewer was modified to show planet information: number of ships and owner. These elements were
+projected on top of the \texttt{3D} viewer using \texttt{HTML} elements.
 
-A simple \textbf{\texttt{AI}} was implemented and two players were confronted with each other to test these mechanics and the viewer together.
-\autoref{viewer_fleets} shows an example of a match played by these two players.
+A simple \texttt{AI} was implemented and two players were confronted with each other to test these mechanics and the viewer together.
+\autoref{player_ai} shows the code of the developed \texttt{AI}, while \autoref{viewer_fleets} shows an example of a match
+played by two players using this \texttt{AI}.
+\begin{figure}[H]
+\inputminted[linenos,fontsize=\small,frame=lines,framesep=2mm]{c++}{code/ai.cpp}
+\caption{A simple \texttt{AI} that tries to conquer all the planets}
+\label{player_ai}
+\end{figure}
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
 \includegraphics{images/viewer_fleets.png}
@@ -1447,16 +1459,16 @@ A simple \textbf{\texttt{AI}} was implemented and two players were confronted wi
 \label{viewer_fleets}
 \end{figure}
 \section{Summary}
-In this chapter, the \textbf{basic mechanics} of the game example were developed. The implementation process consisted in:
+In this chapter, the basic mechanics of the game example were developed. The implementation process consisted in:
 \begin{enumerate}
 \item
-Adding \textbf{game loop} support to the \textbf{engine}
+Adding game loop support to the engine
 \item
-Implementing the \textbf{ship generation} logic
+Implementing the ship generation logic
 \item
-Implementing the \textbf{fleet movement} logic
+Implementing the fleet movement logic
 \item
-Upgrading the \textbf{viewer} to show \textbf{fleets} and \textbf{planet information}
+Upgrading the viewer to show fleets and planet information
 \end{enumerate}
 \chapter{A whole galaxy}
 \label{whole_galaxy}
@@ -1465,38 +1477,38 @@ compete to win control over the generated planetary system. However, it was nece
 in order to add support for a high amount of players.
 \section{Generating multiple planetary systems}
 At this moment, the game world was a planetary system. Therefore, the logical step to increase the game size
-was to think about a \textbf{galaxy}.
+was to think about a galaxy.
 
 The game size was increased by generating a number of planetary systems proportional to the amount
 of players of the match. Different systems were connected using an algorithm similar to the one used to
 connect planets (described in \autoref{fleets_planets}). A new type of celestial body was added to each system that
-allowed ships to travel to its connected systems: the \textbf{relay}.
+allowed ships to travel to its connected systems: the relay.
 
 In order to simplify the galaxy generation, it was decided that the system position would not affect travel time between
 systems. Specifically, travelling from one relay to another was instantaneous. This way, a galaxy could be simplified
 to an ordered set of systems, with no need to positionate the systems correctly inside the game logic.
 \section{Separating world structure from dynamic data}
 Once the new world generation was ready, a new prototype was deployed to the integration server. This prototype
-generated \textbf{300 systems} as the game world.
+generated 300 systems as the game world.
 
-After deploying the prototype, the CPU usage in the server increased from 1-2\% to \textbf{20\%}. While an increase
+After deploying the prototype, the CPU usage in the server increased from 1-2\% to 20\%. While an increase
 in the CPU usage was expected, it was not expected to be that high. Hence, an analysis was performed to detect
 any possible bottlenecks.
 
 The main detected symptom was that the \texttt{API} was notifying 200 kbits of events per second, when the bandwidth needed was 10-12 kbps
-before deploying. The events that changed after the deployment were the \textbf{snapshots} (see \autoref{log_system}).
+before deploying. The events that changed after the deployment were the snapshots (see \autoref{log_system}).
 The game world increased its size by 300 times, thus the snapshots were approximately 300 times bigger. These snapshots
 were also sent to players quite often to keep their copies of game worlds updated.
 
 Given that the snapshot generation turned expensive, an optimization was needed. Most of the generated game world was static,
 it did not change: a system stayed with the same structure the entire match. The only data that could potentially change
 was the number of ships and the owner of every planet. Thus, there was no reason to constantly generate snapshots where most of
-their data was static. Instead, \textbf{static data and dynamic data could be separated}.
+their data was static. Instead, static data and dynamic data could be separated.
 
 Therefore, the optimization consisted in generating a world structure snapshot only once, and notify it to players and
 viewers only once. Then, snapshots containing dynamic data were generated and notified periodically, as before.
 
-The optimization reduced the CPU usage from 20\% to \textbf{3\%} consistently and the bandwidth from 200kbps to \textbf{20kbps}.
+The optimization reduced the CPU usage from 20\% to 3\% consistently and the bandwidth from 200kbps to 20kbps.
 \autoref{cpu_galaxy} shows the CPU usage drop after the optimization was deployed.
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
@@ -1509,7 +1521,7 @@ The optimization reduced the CPU usage from 20\% to \textbf{3\%} consistently an
 After the optimization, the game logic was mostly finished. Space Wars was able to scale its size with the number of players
 efficiently. Hence, the last task left to finish the game was to upgrade the game viewer so it could show the generated galaxy.
 
-The idea was to show a \textbf{galaxy map}. Basically, the galaxy map would show a general view of all the game world. In other words,
+The idea was to show a galaxy map. Basically, the galaxy map would show a general view of all the game world. In other words,
 it would show every system in a clear way. However, as it was said before, the galaxy is just an ordered set of systems.
 A system did not have a particular position in the game logic. As a consequence, the viewer had the responsibility to turn this
 ordered set into a galaxy.
@@ -1567,7 +1579,7 @@ Algorithm \autoref{spiral_algorithm} shows the algorithm used to generate the ga
 \end{algorithm}
 Additionally, an ideal way to represent players uniquely was needed. Given that the number
 of players could be really high, using colors would have been a bad idea, as some players would share shades of the same
-color. Hence, \texttt{GitHub}-based \textbf{\texttt{Identicons}} \cite{identicons} were used to identify different players easily. The \texttt{Identicons} are
+color. Hence, \texttt{GitHub}-based \texttt{Identicons} \cite{identicons} were used to identify different players easily. The \texttt{Identicons} are
 generated using player identifiers, thus players can keep the same \texttt{Identicon} in different matches.
 
 \autoref{galaxy_map} shows an example of a galaxy rendered by the game viewer.
@@ -1595,34 +1607,34 @@ Once this was achieved, the first \texttt{MMPG} was finished.
 \part{Evaluation}
 \chapter{Validation}
 \label{validation}
-This chapter studies whether the project's \textbf{secondary objectives} described in \autoref{specification}
-have been fullfiled after the \textbf{implementation process}. Then, after that study, it ponders whether
-\textbf{the solution obtained fullfills the main objective}.
+This chapter studies whether the project's secondary objectives described in \autoref{specification}
+have been fullfiled after the implementation process. Then, after that study, it ponders whether
+the solution obtained fullfills the main objective.
 \section{Secondary objectives}
 \subsection{Develop an abstract game engine}
 During the entire implementation process, one of the main concerns has been to avoid adding any game-specific code
-in the \textbf{engine} component.
+in the engine component.
 
-Moreover, the \textbf{engine architecture} is entirely decoupled from any game built on
+Moreover, the engine architecture is entirely decoupled from any game built on
 top of it.
 
-Furthermore, the \textbf{engine} provides an abstraction that games can override to customize certain aspects:
-like \textbf{world generation}, \textbf{game-loop timestep}, etc.
+Furthermore, the engine provides an abstraction that games can override to customize certain aspects:
+like world generation, game-loop timestep, etc.
 
 Hence, the objective has been achieved.
 \subsection{Allow hot-swapping of AIs}
-This \textbf{\texttt{AI} hot-swapping} feature was implemented in \autoref{deployment_ai}. Also, it has been tested constantly
-thanks to the \textbf{implementation methodology} described in \autoref{methodology}. Thus, the objective has been achieved.
+This \texttt{AI} hot-swapping feature was implemented in \autoref{deployment_ai}. Also, it has been tested constantly
+thanks to the implementation methodology described in \autoref{methodology}. Thus, the objective has been achieved.
 \subsection{Implement a real-time webviewer}
-The \textbf{engine} was able to notify game events in real-time since the first prototype implemented in
+The engine was able to notify game events in real-time since the first prototype implemented in
 \autoref{first_prototype}. Therefore, the objective has been achieved.
 \subsection{Create a control panel}
-The \textbf{control panel} was a feature implemented in \autoref{control_panel}. Hence, the objective has been achieved.
+The control panel was a feature implemented in \autoref{control_panel}. Hence, the objective has been achieved.
 
-However, it might be too simplistic, as it only allows to \textbf{play and pause} the match.
+However, it might be too simplistic, as it only allows to play and pause the match.
 Hence, more features will probably be needed before using it in a production environment, like
 monitoring players in real-time, banning players, etc. These features should be easy to implement by
-extending the \textbf{engine}, the \textbf{\texttt{API}} and the \textbf{client}.
+extending the engine, the \texttt{API} and the client.
 \subsection{Create a game example}
 Space Wars, the game example, was implemented during \autoref{first_game_world}, \autoref{fleets_planets},
 and \autoref{whole_galaxy}. Therefore, the objective has been achieved.
@@ -1633,20 +1645,20 @@ be organised to test it properly.
 First, the platform was designed with scalability in mind:
 \begin{enumerate}
 \item
-The \textbf{engine} and the \textbf{\texttt{API}} can work from different machines.
+The engine and the \texttt{API} can work from different machines.
 \item
-Multiple \textbf{engine workers} can be used to distribute \textbf{\texttt{AI} calculations} in different machines.
+Multiple engine workers can be used to distribute \texttt{AI} calculations in different machines.
 \item
-\textbf{Viewers} can be statically served by a simple service like \textbf{\texttt{Apache}} \cite{apache} or \textbf{\texttt{nginx}} \cite{nginx}.
+Viewers can be statically served by a simple service like \texttt{Apache} \cite{apache} or \texttt{nginx} \cite{nginx}.
 \end{enumerate}
 
-On the other hand, \textbf{stability} has ben assessed through \textbf{continuous integration} described in the \textbf{implementation
-methodology} in \autoref{methodology}. The platform has been working \textbf{24/7} since the first prototype was deployed, \textbf{without
-a single crash} and \textbf{without any anomaly}.
+On the other hand, stability has ben assessed through continuous integration described in the implementation
+methodology in \autoref{methodology}. The platform has been working 24/7 since the first prototype was deployed, without
+a single crash and without any anomaly.
 
-\autoref{mmpg_cpu} and \autoref{mmpg_io} show the \textbf{CPU usage} and \textbf{disk IO} in a period of 30 days in
-the \textbf{integration server}, respectively. An increase in CPU usage and disk IO
-can be observed when \textbf{a whole galaxy} was generated but it was fixed later, as it is described in \autoref{whole_galaxy}.
+\autoref{mmpg_cpu} and \autoref{mmpg_io} show the CPU usage and disk IO in a period of 30 days in
+the integration server, respectively. An increase in CPU usage and disk IO
+can be observed when a whole galaxy was generated but it was fixed later, as it is described in \autoref{whole_galaxy}.
 
 For these reasons, the objective has been achieved.
 \begin{figure}[H]
@@ -1666,7 +1678,7 @@ For these reasons, the objective has been achieved.
 \section{Main objective}
 The main objective of the project is:
 \begin{quote}
-\emph{Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.}
+\emph{Develop a set of components that ease the creation and the usage of massive multiplayer programming games.}
 \end{quote}
 The abstract game engine allows game developers to build the logic of an \texttt{MMPG} easily, while the client library allows them
 to build the viewer of an \texttt{MMPG}. Moreover, the engine supports \texttt{AI} hot-swapping natively, allowing players to change their
@@ -1681,12 +1693,12 @@ new type of programming games: the \texttt{MMPGs}, while providing a useful set 
 the main objective will be achieved.
 \chapter{Time management}
 This chapter details the final time arrengement of the project and compares it with the original time planning.
-It shows the final duration for every task in a \textbf{timetable} and a \textbf{timeline} of how tasks were performed, while it
-also studies the \textbf{dedication} given to the project.
+It shows the final duration for every task in a timetable and a timeline of how tasks were performed, while it
+also studies the dedication given to the project.
 \section{Time table}
 \begin{figure}[H]
 \begin{center}
-\begin{tabular}{l | l | l}
+\begin{tabular}{l S S}
 \textbf{Task} & \textbf{Planned duration (h)} & \textbf{Final duration (h)}\\
 \hline
 Project management course & 75 & 70\\
@@ -1712,16 +1724,16 @@ Oral presentation & 10 & 10\\
 The main differences with the original time planning are:
 \begin{itemize}
 \item
-The \textbf{engine} took more time to implement than it was expected. Mainly because of the optimization
+The engine took more time to implement than it was expected. Mainly because of the optimization
   performed in \autoref{whole_galaxy}.
 \item
-The \textbf{\texttt{API}} was implemented faster than planned. The \textbf{Go} programming language resulted really \textbf{easy to
-  learn and use}, while the \textbf{native libraries} made the entire implementation process really \textbf{productive}.
+The \texttt{API} was implemented faster than planned. The Go programming language resulted really easy to
+  learn and use, while the native libraries made the entire implementation process really productive.
 \item
-The \textbf{control panel} was integrated in the \textbf{viewer}, not in the \textbf{Jutge.org} platform. As a result,
-  it took less time to implement it, as learning the \textbf{Jutge.org} environment was not necessary.
+The control panel was integrated in the viewer, not in the Jutge.org platform. As a result,
+  it took less time to implement it, as learning the Jutge.org environment was not necessary.
 \item
-The \textbf{project memory} took more time to write than expected.
+The project memory took more time to write than expected.
 \end{itemize}
 \section{Timeline}
 \begin{figure}[H]
@@ -1768,12 +1780,12 @@ The \textbf{project memory} took more time to write than expected.
 \end{figure}
 \autoref{final_timeline} shows the final timeline for every task of the project.
 
-The main difference can be observed in the \textbf{testing and polishing} task. As the implementation methodology
-used \textbf{continuous integration} (\autoref{methodology}), the \textbf{testing and polishing} of the platform has been
-constant since the first prototype (\autoref{first_prototype}). Also, the different \textbf{components} have been developed
-at the same time, in order to have a \textbf{fully-functional prototype} after each iteration.
+The main difference can be observed in the testing and polishing task. As the implementation methodology
+used continuous integration (\autoref{methodology}), the testing and polishing of the platform has been
+constant since the first prototype (\autoref{first_prototype}). Also, the different components have been developed
+at the same time, in order to have a fully-functional prototype after each iteration.
 \section{Dedication}
-\autoref{dedication} shows the \textbf{relative amount of contributions per day} to this project.
+\autoref{dedication} shows the relative amount of contributions per day to this project.
 \begin{figure}[H]
 \makebox[\textwidth]{
 \includegraphics[scale=0.6]{images/dedication.png}
@@ -1782,24 +1794,24 @@ at the same time, in order to have a \textbf{fully-functional prototype} after e
 \label{dedication}
 \end{figure}
 At least one contribution was made every day since the 2nd of November of 2015, with only two days being the exception.
-As a consequence, the project has been in \textbf{constant progress}; new features were added to the fully-functional
-prototype and were reported to the project director on a weekly basis.
+As a consequence, the project has been in constant progress; new features were added to the fully-functional
+prototype and were reported to the project advisor on a weekly basis.
 
-\textbf{Contribution peaks} (\emph{greenest squares}) happened when some \textbf{important feature or optimization} was implemented, which
-\textbf{increased the dedication} to the project during a specific timeframe.
+Contribution peaks (\emph{greenest squares}) happened when some important feature or optimization was implemented, which
+increased the dedication to the project during a specific timeframe.
 
-Overall, the amount of work has been \textbf{distributed properly} and the project has been developed at a \textbf{steady pace}.
+Overall, the amount of work has been distributed properly and the project has been developed at a steady pace.
 \chapter{Economic cost}
 \section{Hardware resources}
-The project used the hardware resources specified in \fullref{budget}. However, a \textbf{Linode 1GB} was needed during \textbf{3 months}.
+The project used the hardware resources specified in \fullref{budget}. However, a Linode 1GB was needed during 3 months.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S}
+\begin{tabular}{l S}
 \textbf{Hardware} & \textbf{Cost (\EURtm)}\\
 \hline
 Hardware budget & 60.13\\
 Linode 1GB & 27.47\\
-\multicolumn{1}{l |}{\textbf{Total}}
+\multicolumn{1}{l }{\textbf{Total}}
  & 87.60
 \end{tabular}
 \caption{Hardware cost}
@@ -1810,7 +1822,7 @@ As stated in the original planning, all the software needed to develop the proje
   \autoref{Additional software} shows additional software that was used but it was not listed in the original planning.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | l}
+\begin{tabular}{l l}
 \textbf{Software} & \textbf{License}\\
 \hline
 \texttt{Three.js} & \url{https://github.com/mrdoob/three.js/blob/master/LICENSE}\\
@@ -1824,7 +1836,7 @@ As stated in the original planning, all the software needed to develop the proje
 to the final task durations detailed in \autoref{time_table} and the salary per role in \autoref{Salary per role}.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | l | S | S}
+\begin{tabular}{l l S S}
 \textbf{Role} & \textbf{Task} & \textbf{Time (h)} & \textbf{Cost (\EURtm)}\\
 \hline
 \multirow{3}{*}{Project manager}
@@ -1844,7 +1856,7 @@ to the final task durations detailed in \autoref{time_table} and the salary per 
  & Testing and polishing & 40 & 1200.00\\
 \hline
 \hline
-\multicolumn{2}{l |}{\textbf{Total}}
+\multicolumn{2}{l }{\textbf{Total}}
  & 465.00 & 14525.00
 \end{tabular}
 \caption{Human resources cost}
@@ -1855,7 +1867,7 @@ to the final task durations detailed in \autoref{time_table} and the salary per 
 \autoref{Electricity cost} shows the electricity cost of the project.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S | S}
+\begin{tabular}{l S S S}
 \textbf{Hardware} & \textbf{Consumption (W)} & \textbf{Time of usage (h)} & \textbf{Cost (\EURtm)}\\
 \hline
 Desktop computer & 400 & 440 & 25.94\\
@@ -1863,7 +1875,7 @@ Laptop & 100 & 5 & 0.07\\
 Monitor Acer XB270HU & 30 & 440 & 1.95\\
 \hline
 \hline
-\multicolumn{3}{l |}{\textbf{Total}}
+\multicolumn{3}{l }{\textbf{Total}}
  & 27.95
 \end{tabular}
 \caption{Electricity cost}
@@ -1872,13 +1884,13 @@ Monitor Acer XB270HU & 30 & 440 & 1.95\\
 \subsection{Internet connection}
 The project was developed using the internet connection described in \autoref{budget}. The internet connection was used
 approximately during the 30\% of the total project's duration, as expected.
-Thus, the final cost of the internet connection was 465h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ \textbf{7.36\EURtm}.
+Thus, the final cost of the internet connection was 465h $\cdot$ 0.05\EURtm/h $\cdot$ 0.3 $=$ 7.36\EURtm.
 \clearpage
 \section{Total}
-\autoref{Total cost} shows the \textbf{total cost} of the project compared to the \textbf{budget} of the planning stage.
+\autoref{Total cost} shows the total cost of the project compared to the budget of the planning stage.
 \begin{table}[H]
 \centering
-\begin{tabular}{l | S | S}
+\begin{tabular}{l S S}
 \textbf{Resource} & \textbf{Budget (\EURtm)} & \textbf{Total cost (\EURtm)}\\
 \hline
 Hardware & 60.13 & 87.60\\
@@ -1890,7 +1902,7 @@ Internet & 7.28 & 7.36\\
 Contingency (10\%) & 1461.85 & 0.00\\
 \hline
 \hline
-\multicolumn{1}{l |}{\textbf{Total}}
+\multicolumn{1}{l }{\textbf{Total}}
  & 16080.34 & 14922.91
 \end{tabular}
 \caption{Total cost}
@@ -1911,12 +1923,11 @@ The project is directed to computer science students and teachers, and game prog
 will be used by students to learn different programming techniques, by teachers to evaluate these students, and
 by game programmers to create new content.
 
-Moreover, it will be used in the Data Structures and Algorithms subject
-at the Barcelona School of Informatics (\textbf{FIB}). The project will make the learning process more fun, it will also
+Moreover, it will be used in the EDA subject at the FIB. The project will make the learning process more fun, it will also
 reduce the amount of work for teachers, and it will make game programmers able to create entertaining games easily.
 
 However, the project will not affect the mainstream consumer directly. It will only be relevant inside a specific
-community in computer science.
+community in computer science and education.
 \section{Environmental impact analysis}
 The project used 177kWh of electricity, which is approximately 174kg of CO\textsuperscript{2} \cite{co2}.
 This is the amount of CO\textsuperscript{2} that a car produces by driving only 7
@@ -1927,15 +1938,53 @@ However, the hardware used can not be fully recycled and it will, eventually, be
 with a high amount of contaminants.
 \chapter{Legality}
 There are no special laws that apply to this project. The entity using the platform
-is liable for the information inputted in it, as it is specified in the \textbf{code license}.
+is liable for the information inputted in it, as it is specified in the code license.
 \chapter{Conclusion}
+This last chapter closes the project by summarizing the document, detailing the future of the project and
+giving the author personal thoughts.
 \section{Summary}
-...
-\section{Limitations}
-...
+This document detailed the building process of a platform for \texttt{MMPGs}.
+
+Firstly, the requirement for \texttt{MMPGs} games was established. Then, it was shown that there was not
+an existing solution to satisfy it. Thus, the requirement was analyzed and a solution was designed. This solution
+featured a set of different components that allowed the creation of \texttt{MMPGs}.
+
+Secondly, the development of the solution was planned. A time plan and a budget for the solution were shown.
+
+Next, the implementation of the solution was detailed. Starting with a prototype and using continuous integration, the different
+features that the solution needed were developed.
+
+Finally, the implemented solution was evaluated. The solution was checked against the objectives of the project,
+while also showing the time management during its implemenation and its final economic cost.
 \section{The future}
-...
-\section{Final thoughts}
+The future of this project is promising. Given that the platform is released as open source, the project will be maintained
+by the author and, hopefully, by the community in the future.
+
+Some of the tasks that will be performed in the near-future are:
+\begin{description}
+\item[Documentation]
+Different types of documentation will be written:
+\begin{enumerate}
+\item
+A guide for developers will explain how to start developing a game with the platform with detail.
+\item
+A guide for contributors will help developers to contribute to the project.
+\item
+A guide for Space Wars will teach players how to install Space Wars and develop \texttt{AIs} locally.
+\item
+\texttt{README}s in every component will explain its responsibility in the platform.
+\end{enumerate}
+\item[Widget library]
+A library containing predefined viewer widgets will be implemented. Game developers will be
+  able to use this widgets to implement viewer functionalities; like a login form, or the time control, for example.
+\item[Game template]
+A simple game will be created. This game might be used by game developers as a starting point.
+  Forking the repository of this game will give game developers a simple fully-functional game out-of-the-box.
+\item[Game-logic testing suite]
+The engine will get its own testing suite, so game developers will be able test the logic
+  of their games easily.
+\end{description}
+\section{Personal thoughts}
 ...
 \bibliographystyle{plain}
 \bibliography{references}

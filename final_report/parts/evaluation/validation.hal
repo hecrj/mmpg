@@ -1,39 +1,39 @@
 chapter "Validation"
 label :validation
 
-p "This chapter studies whether the project's **secondary objectives** described in #autoref{specification}
-have been fullfiled after the **implementation process**. Then, after that study, it ponders whether
-**the solution obtained fullfills the main objective**."
+p "This chapter studies whether the project's secondary objectives described in #autoref{specification}
+have been fullfiled after the implementation process. Then, after that study, it ponders whether
+the solution obtained fullfills the main objective."
 
 section "Secondary objectives"
 subsection "Develop an abstract game engine"
 
 p "During the entire implementation process, one of the main concerns has been to avoid adding any game-specific code
-in the **engine** component.
+in the engine component.
 
-Moreover, the **engine architecture** is entirely decoupled from any game built on
+Moreover, the engine architecture is entirely decoupled from any game built on
 top of it.
 
-Furthermore, the **engine** provides an abstraction that games can override to customize certain aspects:
-like **world generation**, **game-loop timestep**, etc.
+Furthermore, the engine provides an abstraction that games can override to customize certain aspects:
+like world generation, game-loop timestep, etc.
 
 Hence, the objective has been achieved."
 
 subsection "Allow hot-swapping of AIs"
-p "This **AI hot-swapping** feature was implemented in #autoref{deployment_ai}. Also, it has been tested constantly
-thanks to the **implementation methodology** described in #autoref{methodology}. Thus, the objective has been achieved."
+p "This AI hot-swapping feature was implemented in #autoref{deployment_ai}. Also, it has been tested constantly
+thanks to the implementation methodology described in #autoref{methodology}. Thus, the objective has been achieved."
 
 subsection "Implement a real-time webviewer"
-p "The **engine** was able to notify game events in real-time since the first prototype implemented in
+p "The engine was able to notify game events in real-time since the first prototype implemented in
 #autoref{first_prototype}. Therefore, the objective has been achieved."
 
 subsection "Create a control panel"
-p "The **control panel** was a feature implemented in #autoref{control_panel}. Hence, the objective has been achieved.
+p "The control panel was a feature implemented in #autoref{control_panel}. Hence, the objective has been achieved.
 
-However, it might be too simplistic, as it only allows to **play and pause** the match.
+However, it might be too simplistic, as it only allows to play and pause the match.
 Hence, more features will probably be needed before using it in a production environment, like
 monitoring players in real-time, banning players, etc. These features should be easy to implement by
-extending the **engine**, the **API** and the **client**."
+extending the engine, the API and the client."
 
 subsection "Create a game example"
 p "Space Wars, the game example, was implemented during #autoref{first_game_world}, #autoref{fleets_planets},
@@ -46,18 +46,18 @@ subsection "Make the infrastructure scalable and stable"
 p "First, the platform was designed with scalability in mind:"
 
 enumerate:
-  item; p "The **engine** and the **API** can work from different machines."
-  item; p "Multiple **engine workers** can be used to distribute **AI calculations** in different machines."
-  item; p "**Viewers** can be statically served by a simple service like **|Apache|** #cite{apache} or **|nginx|** #cite{nginx}."
+  item; p "The engine and the API can work from different machines."
+  item; p "Multiple engine workers can be used to distribute AI calculations in different machines."
+  item; p "Viewers can be statically served by a simple service like |Apache| #cite{apache} or |nginx| #cite{nginx}."
 
 p "
-On the other hand, **stability** has ben assessed through **continuous integration** described in the **implementation
-methodology** in #autoref{methodology}. The platform has been working **24/7** since the first prototype was deployed, **without
-a single crash** and **without any anomaly**.
+On the other hand, stability has ben assessed through continuous integration described in the implementation
+methodology in #autoref{methodology}. The platform has been working 24/7 since the first prototype was deployed, without
+a single crash and without any anomaly.
 
-#autoref{mmpg_cpu} and #autoref{mmpg_io} show the **CPU usage** and **disk IO** in a period of 30 days in
-the **integration server**, respectively. An increase in CPU usage and disk IO
-can be observed when **a whole galaxy** was generated but it was fixed later, as it is described in #autoref{whole_galaxy}.
+#autoref{mmpg_cpu} and #autoref{mmpg_io} show the CPU usage and disk IO in a period of 30 days in
+the integration server, respectively. An increase in CPU usage and disk IO
+can be observed when a whole galaxy was generated but it was fixed later, as it is described in #autoref{whole_galaxy}.
 
 For these reasons, the objective has been achieved."
 
@@ -79,7 +79,7 @@ section "Main objective"
 p "The main objective of the project is:"
 
 quote:
-  p "*Develop a set of components that ease the creation and the usage of **massive multiplayer programming games**.*"
+  p "*Develop a set of components that ease the creation and the usage of massive multiplayer programming games.*"
 
 p "The abstract game engine allows game developers to build the logic of an MMPG easily, while the client library allows them
 to build the viewer of an MMPG. Moreover, the engine supports AI hot-swapping natively, allowing players to change their

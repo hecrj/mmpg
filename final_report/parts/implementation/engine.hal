@@ -1,25 +1,25 @@
 chapter "Engine"
 
-p "The MMPG **engine** is a library that implements basic features needed by any MMPG. The **engine** exposes a set
+p "The MMPG engine is a library that implements basic features needed by any MMPG. The engine exposes a set
 of classes that can be used and extended to build the logic of the game.
 
 Its source code is available here: #url{https://github.com/mmpg/engine}"
 
 section "Architecture"
 
-p "The runtime of an MMPG **engine** consists of 3 types of processes:"
+p "The runtime of an MMPG engine consists of 3 types of processes:"
 
 description:
-  item "Master process"; p "It represents the **game-world server**. The master process listens to requests coming from
-players and updates the game world accordingly. There is only **one master process per runtime**."
+  item "Master process"; p "It represents the game-world server. The master process listens to requests coming from
+players and updates the game world accordingly. There is only one master process per runtime."
 
-  item "Worker process"; p "It represents a **pool of players**. A worker process **executes** a set of players and
-  **manages** them. There can be **multiple workers per runtime**."
+  item "Worker process"; p "It represents a pool of players. A worker process executes a set of players and
+  manages them. There can be multiple workers per runtime."
 
-  item "Player process"; p "It represents a **player program**. A player process **reads** the game world from the
-  **master process** and **performs requests** to **change** the game world."
+  item "Player process"; p "It represents a player program. A player process reads the game world from the
+  master process and performs requests to change the game world."
 
-p "Processes comunicate with each other using **low-latency sockets**. Thus, different workers can be executed
+p "Processes comunicate with each other using low-latency sockets. Thus, different workers can be executed
 in different machines to achieve better performance.
 
 #autoref{engine_arch} shows the hierarchy of an engine runtime with $N$ workers and $M = #sum_{i=0}^{N} M_i$ players."
@@ -31,39 +31,39 @@ figure!:
   label "engine_arch"
 
 section "Programming language"
-p "The **engine** needs to be **fast**, as the game logic will be built on top of it, and it also needs to access
-**low-level** operative system operations, so it can limit how player programs are executed.
+p "The engine needs to be fast, as the game logic will be built on top of it, and it also needs to access
+low-level operative system operations, so it can limit how player programs are executed.
 
 The most well-known programming languages that satisfiy these requirements are |C| and |C++|. However, |C|  is lacking
-the capacity to **represent abstractions and interfaces** easily. Hence, **C++** is the perfect alternative to implement
-the engine, as it is **efficient**, **object-oriented** and it has access to the **|C POSIX API|**, which allows to talk
-directly to **|UNIX|-based operative systems**."
+the capacity to represent abstractions and interfaces easily. Hence, C++ is the perfect alternative to implement
+the engine, as it is efficient, object-oriented and it has access to the |C POSIX API|, which allows to talk
+directly to |UNIX|-based operative systems."
 
 
 section "Inter-process communication"
-p "As it was explained previously, the **engine** features a decoupled architecture. Different processes are
-executed and communicate with each other using **sockets**. However, implementing inter-process communication from
+p "As it was explained previously, the engine features a decoupled architecture. Different processes are
+executed and communicate with each other using sockets. However, implementing inter-process communication from
 scratch would be a real challenge by itself, and it is not the subject of this project. This is where a
-**messaging technology** comes in.
+messaging technology comes in.
 
-The most well-known **messaging technologies** out there are: |RabbitMQ|, |ZeroMQ| and |ActiveMQ|.
+The most well-known messaging technologies out there are: |RabbitMQ|, |ZeroMQ| and |ActiveMQ|.
 
 |RabbitMQ| implements
-a **broker architecture**, which means that messages are queued on a central node before being sent to its destination.
-This architecture is totally unnecessary for the **engine**, as we want to decouple components, and it would also add
-some **latency**.
+a broker architecture, which means that messages are queued on a central node before being sent to its destination.
+This architecture is totally unnecessary for the engine, as we want to decouple components, and it would also add
+some latency.
 
-|ActiveMQ| can be used with a **peer-to-peer architecture** but, when compared with |ZeroMQ|, it is a
-**high-level** library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
+|ActiveMQ| can be used with a peer-to-peer architecture but, when compared with |ZeroMQ|, it is a
+high-level library. Thus, controlling the type of communication or socket behaviour is not easy with |ActiveMQ|.
 
-On the other hand, **|ZeroMQ|** #cite{zeromq} is an embeddable networking library that implements **low-latency socket communication**. It manages
-**low-level** communication, while providing a flexible and easy-to-use interface. Also, **|ZeroMQ|** has bindings available
+On the other hand, |ZeroMQ| #cite{zeromq} is an embeddable networking library that implements low-latency socket communication. It manages
+low-level communication, while providing a flexible and easy-to-use interface. Also, |ZeroMQ| has bindings available
 for the most well-known programming languages.
 
-Thus, the **engine** uses **|ZeroMQ|** for all the inter-process communication. As a consequence, the architecture becomes
-decoupled. For instance, a **player process** could be programmed in **any programming language**, as it
-only performs requests to the master process. Therefore, it would be **relatively easy** to allow players to develop
-**AI**s using **different programming languages**."
+Thus, the engine uses |ZeroMQ| for all the inter-process communication. As a consequence, the architecture becomes
+decoupled. For instance, a player process could be programmed in any programming language, as it
+only performs requests to the master process. Therefore, it would be relatively easy to allow players to develop
+AIs using different programming languages."
 
 section "Hot-swapping AIs"
 
@@ -76,17 +76,17 @@ p "The engine listens to requests made through a |REQ/REP| socket connection. Ot
   easily connect to the engine and interact with it."
 
 section "Game logic abstraction"
-p "The **engine** exposes a set of **abstract classes** to build game logic on top of it:"
+p "The engine exposes a set of abstract classes to build game logic on top of it:"
 
 description:
   item "|AI|"; p "Defines the interface that any MMPG AI needs to implement: a |play| method. Games can extend
-  this class to define **|AI API|s** that players can use to write their programs."
+  this class to define |AI API|s that players can use to write their programs."
   item "|World|"; p "Represents a game world. Games need to extend this class and implement methods to
-  **generate**, **serialize** and **update** the world."
-  item "|Action|"; p "Represents an action that an **AI** can perform. Normally, these actions try to **update**
+  generate, serialize and update the world."
+  item "|Action|"; p "Represents an action that an AI can perform. Normally, these actions try to update
   the game world."
 
-p "On the other hand, the **engine** also provides two **fully-implemented classes** to run **master and player
-processes**. As #autoref{world_injection} shows, a game world needs to be injected to run these processes.
+p "On the other hand, the engine also provides two fully-implemented classes to run master and player
+processes. As #autoref{world_injection} shows, a game world needs to be injected to run these processes.
 
-The **worker** executable is **independent of the game logic** and it can be built **directly from the library**."
+The worker executable is independent of the game logic and it can be built directly from the library."
