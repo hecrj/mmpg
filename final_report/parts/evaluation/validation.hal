@@ -21,25 +21,26 @@ Hence, the objective has been achieved."
 
 subsection "Allow hot-swapping of AIs"
 p "This **AI hot-swapping** feature was implemented in #autoref{deployment_ai}. Also, it has been tested constantly
-thanks to the **implementation methodology** described in #autoref{methodology}.
-
-The objective has been achieved."
+thanks to the **implementation methodology** described in #autoref{methodology}. Thus, the objective has been achieved."
 
 subsection "Implement a real-time webviewer"
 p "The **engine** was able to notify game events in real-time since the first prototype implemented in
-#autoref{first_prototype}.
-
-The objective has been achieved."
+#autoref{first_prototype}. Therefore, the objective has been achieved."
 
 subsection "Create a control panel"
-p "The **control panel** was a feature implemented in #autoref{control_panel}.
+p "The **control panel** was a feature implemented in #autoref{control_panel}. Hence, the objective has been achieved.
 
 However, it might be too simplistic, as it only allows to **play and pause** the match.
 Hence, more features will probably be needed before using it in a production environment, like
 monitoring players in real-time, banning players, etc. These features should be easy to implement by
-extending the **engine**, the **API** and the **client**.
+extending the **engine**, the **API** and the **client**."
 
-The objective has been achieved, but the planned objective was too simple and the control panel needs to be extended."
+subsection "Create a game example"
+p "Space Wars, the game example, was implemented during #autoref{first_game_world}, #autoref{fleets_planets},
+and #autoref{whole_galaxy}. Therefore, the objective has been achieved.
+
+However, the game might need some tweaking and balancing before using it in the EDA subject. Private tournaments could
+be organised to test it properly."
 
 subsection "Make the infrastructure scalable and stable"
 p "First, the platform was designed with scalability in mind:"
@@ -56,7 +57,9 @@ a single crash** and **without any anomaly**.
 
 #autoref{mmpg_cpu} and #autoref{mmpg_io} show the **CPU usage** and **disk IO** in a period of 30 days in
 the **integration server**, respectively. An increase in CPU usage and disk IO
-can be observed when **a whole galaxy** was generated but it was fixed later, as it is described in #autoref{whole_galaxy}."
+can be observed when **a whole galaxy** was generated but it was fixed later, as it is described in #autoref{whole_galaxy}.
+
+For these reasons, the objective has been achieved."
 
 figure!:
   resizebox width => "\\textwidth":
@@ -73,4 +76,19 @@ figure!:
   label :mmpg_io
 
 section "Main objective"
-p "[...]"
+p "The main objective of the project is:"
+
+quote:
+  p "*Develop a set of components that ease the creation and the usage of **massive multiplayer programming games**.*"
+
+p "The abstract game engine allows game developers to build the logic of an MMPG easily, while the client library allows them
+to build the viewer of an MMPG. Moreover, the engine supports AI hot-swapping natively, allowing players to change their
+programs. Also, a game example has been developed to show that the platform works: Space Wars.
+
+However, real documentation about how to use the platform is lacking. While the game example could be used by developers to
+learn about the platform, it is not easy to learn from code. Thus, the main objective might not be
+achieved completely until some documentation is written.
+
+Once the lack of documentation is solved, it will be possible to say that the platform sets the foundations for a
+new type of programming games: the MMPGs, while providing a useful set of components to create them and use them. Thus,
+the main objective will be achieved."

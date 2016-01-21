@@ -198,15 +198,15 @@ Develop a set of components that ease the creation and the usage of \textbf{mass
 \begin{description}
 \item[Develop an abstract game engine]
 Any experienced programmer must be able to create new games for the platform easily
-\item[Allow hot-swapping of AIs]
-Players must be able to change the code of their current AIs in the middle of a match.
+\item[Allow hot-swapping of \texttt{AIs}]
+Players must be able to change the code of their current \texttt{AIs} in the middle of a match.
 \item[Implement a real-time webviewer]
 Players must be able to watch in real-time how the game unfolds in a web browser.
 \item[Create a control panel]
 Administrators must be able to play, pause and stop the game and also see a ranking of the current match.
 \item[Make the infrastructure scalable and stable]
 The underlying infrastructure must be able to handle huge worlds and a large number of \texttt{}AI\texttt{}s without
-  hindering performance. Moreover, the platform must be secure and fault-tolerant; AIs must not be able to cheat
+  hindering performance. Moreover, the platform must be secure and fault-tolerant; \texttt{AIs} must not be able to cheat
   or affect the platform negatively.
 \item[Create a game example]
 A multiplayer programming game will be created to test and show that the platform works correctly.
@@ -1180,13 +1180,13 @@ the platform was able to:
 \item
 \textbf{Replay} the past of the current match
 \item
-\textbf{Hotswap AIs} during a match
+\textbf{Hotswap \texttt{AIs}} during a match
 \end{enumerate}
 These features alone, fullfilled \textbf{2} of the \textbf{6} secondary objectives detailed in \autoref{secondary_objectives},
 specifically:
 \begin{enumerate}
 \item
-Allow hot-swapping of AIs
+Allow hot-swapping of \texttt{AIs}
 \item
 Implement a real-time webviewer
 \end{enumerate}
@@ -1612,23 +1612,23 @@ like \textbf{world generation}, \textbf{game-loop timestep}, etc.
 Hence, the objective has been achieved.
 \subsection{Allow hot-swapping of AIs}
 This \textbf{\texttt{AI} hot-swapping} feature was implemented in \autoref{deployment_ai}. Also, it has been tested constantly
-thanks to the \textbf{implementation methodology} described in \autoref{methodology}.
-
-The objective has been achieved.
+thanks to the \textbf{implementation methodology} described in \autoref{methodology}. Thus, the objective has been achieved.
 \subsection{Implement a real-time webviewer}
 The \textbf{engine} was able to notify game events in real-time since the first prototype implemented in
-\autoref{first_prototype}.
-
-The objective has been achieved.
+\autoref{first_prototype}. Therefore, the objective has been achieved.
 \subsection{Create a control panel}
-The \textbf{control panel} was a feature implemented in \autoref{control_panel}.
+The \textbf{control panel} was a feature implemented in \autoref{control_panel}. Hence, the objective has been achieved.
 
 However, it might be too simplistic, as it only allows to \textbf{play and pause} the match.
 Hence, more features will probably be needed before using it in a production environment, like
 monitoring players in real-time, banning players, etc. These features should be easy to implement by
 extending the \textbf{engine}, the \textbf{\texttt{API}} and the \textbf{client}.
+\subsection{Create a game example}
+Space Wars, the game example, was implemented during \autoref{first_game_world}, \autoref{fleets_planets},
+and \autoref{whole_galaxy}. Therefore, the objective has been achieved.
 
-The objective has been achieved, but the planned objective was too simple and the control panel needs to be extended.
+However, the game might need some tweaking and balancing before using it in the EDA subject. Private tournaments could
+be organised to test it properly.
 \subsection{Make the infrastructure scalable and stable}
 First, the platform was designed with scalability in mind:
 \begin{enumerate}
@@ -1647,6 +1647,8 @@ a single crash} and \textbf{without any anomaly}.
 \autoref{mmpg_cpu} and \autoref{mmpg_io} show the \textbf{CPU usage} and \textbf{disk IO} in a period of 30 days in
 the \textbf{integration server}, respectively. An increase in CPU usage and disk IO
 can be observed when \textbf{a whole galaxy} was generated but it was fixed later, as it is described in \autoref{whole_galaxy}.
+
+For these reasons, the objective has been achieved.
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
 \includegraphics{images/mmpg_cpu.png}
@@ -1662,7 +1664,21 @@ can be observed when \textbf{a whole galaxy} was generated but it was fixed late
 \label{mmpg_io}
 \end{figure}
 \section{Main objective}
-[...]
+The main objective of the project is:
+\begin{quote}
+\emph{Develop a set of components that ease the creation and the usage of \textbf{massive multiplayer programming games}.}
+\end{quote}
+The abstract game engine allows game developers to build the logic of an \texttt{MMPG} easily, while the client library allows them
+to build the viewer of an \texttt{MMPG}. Moreover, the engine supports \texttt{AI} hot-swapping natively, allowing players to change their
+programs. Also, a game example has been developed to show that the platform works: Space Wars.
+
+However, real documentation about how to use the platform is lacking. While the game example could be used by developers to
+learn about the platform, it is not easy to learn from code. Thus, the main objective might not be
+achieved completely until some documentation is written.
+
+Once the lack of documentation is solved, it will be possible to say that the platform sets the foundations for a
+new type of programming games: the \texttt{MMPGs}, while providing a useful set of components to create them and use them. Thus,
+the main objective will be achieved.
 \chapter{Time management}
 This chapter details the final time arrengement of the project and compares it with the original time planning.
 It shows the final duration for every task in a \textbf{timetable} and a \textbf{timeline} of how tasks were performed, while it

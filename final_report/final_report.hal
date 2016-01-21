@@ -31,7 +31,7 @@ usetikzlibrary "arrows,positioning"
 
 include :style
 
-typewrite "MMPG", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js",
+typewrite "MMPG", "MMPGs", "AIs", "PHP", "AI", "API", "Python", "Ruby", "Elixir", "C", "C++", "REST", "ZeroMQ", "Three.js",
   "Javascript", "gzip", "POST", "GET", "base64", "HTML", "Identicons", "Identicon"
 
 document:
