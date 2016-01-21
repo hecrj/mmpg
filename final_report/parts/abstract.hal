@@ -1,2 +1,5 @@
 abstract:
-  p "..."
+  p "This project states that a platform for multiplayer programming games with a high
+  number of players and long matches is needed. It provides a design of an open-source solution to satisfy this necessity
+  and describes its implementation using a methodology based on continuous integration. Finally, the implemented solution
+  is evaluated, concluding that it is a good candidate for such a platform."
