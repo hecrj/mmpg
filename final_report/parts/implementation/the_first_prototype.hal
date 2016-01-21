@@ -14,11 +14,13 @@ enumerate:
 p "It is important to note that the engine and the client are libraries that can be used to build
 game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
 game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity#footnote{i.e.
-creating game logic and game viewer components}."
+creating game logic and game viewer components}.
+
+The entire code of the MMPG platform can be found under the |mmpg| GitHub organization: #url{https://github.com/mmpg}."
 
 section "The first API"
 subsection "Programming language"
-p "There are many programming languages that allow to create HTTP APIs easily, like Pyhton, Ruby, Elixir... However,
+p "There are many programming languages that allow to create HTTP APIs, like Pyhton, Ruby, Elixir... However,
 the language chosen to implement the API was the |Go| programming language because it includes native
 libraries to build concurrent REST APIs and it is simpler, faster and easier-to-deploy than the alternatives."
 

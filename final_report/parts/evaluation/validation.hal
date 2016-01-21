@@ -81,7 +81,7 @@ p "The main objective of the project is:"
 quote:
   p "*Develop a set of components that ease the creation and the usage of massive multiplayer programming games.*"
 
-p "The abstract game engine allows game developers to build the logic of an MMPG easily, while the client library allows them
+p "The abstract game engine allows game developers to build the logic of an MMPG, while the client library allows them
 to build the viewer of an MMPG. Moreover, the engine supports AI hot-swapping natively, allowing players to change their
 programs. Also, a game example has been developed to show that the platform works: Space Wars.
 

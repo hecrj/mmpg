@@ -53,7 +53,9 @@ enumerate:
   item; p "A player can conquer other planets by sending a greater number of ships than the planet holds."
   item; p "The objective of the match is to destroy other players and/or conquer the major number of planets."
 
-p "These rules make an interesting strategic game that is quite convenient for a programming game." 
+p "These rules make an interesting strategic game that is quite convenient for a programming game.
+
+The code of the game example can be found in the |space-wars-game| GitHub organization: #url{https://github.com/space-wars-game}." 
 
 section "Generating a planetary system"
 p "The first step to implement the game rules was to generate a game world: a planetary system.

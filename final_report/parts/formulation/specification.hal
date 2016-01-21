@@ -14,7 +14,7 @@ label :secondary_objectives
 
 description:
   item "Develop an abstract game engine"
-  p "Any experienced programmer must be able to create new games for the platform easily"
+  p "Any experienced programmer must be able to create new games for the platform."
 
   item "Allow hot-swapping of AIs"
   p "Players must be able to change the code of their current AIs in the middle of a match."

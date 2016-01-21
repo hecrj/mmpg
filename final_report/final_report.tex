@@ -203,7 +203,7 @@ Develop a set of components that ease the creation and the usage of massive mult
 \label{secondary_objectives}
 \begin{description}
 \item[Develop an abstract game engine]
-Any experienced programmer must be able to create new games for the platform easily
+Any experienced programmer must be able to create new games for the platform.
 \item[Allow hot-swapping of \texttt{AIs}]
 Players must be able to change the code of their current \texttt{AIs} in the middle of a match.
 \item[Implement a real-time webviewer]
@@ -245,21 +245,20 @@ A component that exposes \texttt{HTTP} endpoints that allow to interact with an 
 A library that implements a set of useful classes to communicate with an \texttt{API} and implement
   game viewers.
 \item[Game logic]
-It includes the game world definition and the rules of the game. It is built on top of the engine.
+It includes the game world definition and the rules of the game and executes the different \texttt{AIs}.
+  It is built on top of the engine.
 \item[Game viewer]
 It allows viewers to watch game matches. Also, it makes players able to upload new \texttt{AIs}. It uses
-    the client library to connect to the \texttt{API}.
+  the client library to connect to the \texttt{API}.
 \end{description}
 \clearpage
 \chapter{License}
 \section{Code}
-The \texttt{MMPG} platform code hosted in \url{https://github.com/mmpg} will be released under
-\href{https://opensource.org/licenses/MIT}{The MIT License}.
+The \texttt{MMPG} platform code and the game example will be released under The MIT License \cite{mit_license}.
 \section{Documents}
-This monitoring report and the final document related with the \texttt{MMPG} platform and hosted in
+This monitoring report and the final document related with the \texttt{MMPG} platform hosted in
 \url{https://github.com/hecrj/mmpg} will be released under the
-\href{http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt}{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}
-license.
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International \cite{cc_license} license.
 \clearpage
 \part{Planning}
 \chapter{Time plan}
@@ -294,10 +293,8 @@ Some minor details might change during the implementation. It is
 \item[Task dependencies]
 None.
 \end{description}
-\subsection{Component development}
-\subsubsection{Engine}
-A library that will allow game programmers to build games and wire them to the platform
-easily. The codebase will implement the features that are independent of the final game and, therefore, can be reused.
+\subsection{Engine}
+A library that will allow game programmers to build games and wire them to the platform. The codebase will implement the features that are independent of the final game and, therefore, can be reused.
 \begin{description}
 \item[Expected duration]
 70 hours
@@ -313,7 +310,7 @@ A web-server that notifies its subscribers of the changes that occur in the game
 \item[Possible complications]
 The author needs to learn \texttt{Go}, which might take some time.
 \end{description}
-\subsubsection{Client}
+\subsection{Client}
 A library that handles a connection with the \texttt{API}. Game programmers will be able to use it to build
 the real-time webviewers of their games. It will be programmed in \texttt{}Javascript\texttt{}, using \texttt{Coffeescript}.
 \begin{description}
@@ -322,7 +319,7 @@ the real-time webviewers of their games. It will be programmed in \texttt{}Javas
 \item[Possible complications]
 The author needs to learn \texttt{Coffeescript}, which might take some time.
 \end{description}
-\subsubsection{Control panel}
+\subsection{Control panel}
 Allows administrators to supervise the games, start, stop and pause current matches, and obtain the
 scores of every player.
 \begin{description}
@@ -662,7 +659,7 @@ Contingency (10\%) & 1461.85\\
 As seen in \autoref{design}, the platform to be implemented is composed of different components that communicate with
 each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
 communicates with other software, especially when both are being developed at the same time; changes made in
-the public interface of some component can easily break other components.
+the public interface of some component can break other components.
 
 Therefore, components will break. Developers are humans, and humans make mistakes. Thus, in order to be productive,
 it is necessary to detect when a component breaks as soon as possible. That way, components can be fixed before more changes
@@ -686,8 +683,8 @@ Test that the prototype keeps working as expected.
 \end{enumerate}
 \end{enumerate}
 This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
-a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
-transparently. Stakeholders can try the software easily while it is being developed and give feedback. In this case,
+a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown
+transparently. Stakeholders can try the software while it is being developed and give feedback. In this case,
 the prototype was available to the advisor of the project to assess and follow any progress closely.
 \chapter{The first prototype}
 \label{first_prototype}
@@ -707,9 +704,11 @@ It is important to note that the engine and the client are libraries that can be
 game logic and game viewers, respectively. They cannot be executed as a stand-alone component. However,
 game-specific code was included temporarily in this first prototype, which avoided unnecessary complexity\footnote{i.e.
 creating game logic and game viewer components}.
+
+The entire code of the \texttt{MMPG} platform can be found under the \texttt{mmpg} GitHub organization: \url{https://github.com/mmpg}.
 \section{The first API}
 \subsection{Programming language}
-There are many programming languages that allow to create HTTP APIs easily, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
+There are many programming languages that allow to create HTTP APIs, like Pyhton, \texttt{Ruby}, \texttt{Elixir}... However,
 the language chosen to implement the \texttt{API} was the \texttt{Go} programming language because it includes native
 libraries to build concurrent \texttt{REST} APIs and it is simpler, faster and easier-to-deploy than the alternatives.
 \subsection{The subscriber hub}
@@ -1058,7 +1057,7 @@ The authentication tokens were implemented using \texttt{JSON WebTokens} \cite{j
 hence the necessity to renew them.
 
 A credentials validator is a simple \texttt{Go} function that tells whether the given identifier and
-password are valid or not. A credential validator can be injected in the \texttt{API} easily. Hence, anyone can
+password are valid or not. A credential validator can be injected in the \texttt{API}. Hence, anyone can
 implement its own credentials validator and customize the authentication system.
 
 Finally, a credentials validator for the Jutge.org platform was developed using an endpoint provided by the project
@@ -1175,7 +1174,7 @@ These new handlers were exposed through the \texttt{API} in the new endpoints: \
 these endpoints checked that the authenticated user requesting the action was an administrator. If not, a \texttt{403 Forbidden}
 error was returned.
 
-Finally, a simple control panel was added in the viewer to allow administrators control the match easily.
+Finally, a simple control panel was added in the viewer to allow administrators control the match.
 \chapter{The first game world}
 \label{first_game_world}
 Before going any further, it was convenient to make a quick review of the current state of the platform. At this point,
@@ -1242,6 +1241,8 @@ A player can conquer other planets by sending a greater number of ships than the
 The objective of the match is to destroy other players and/or conquer the major number of planets.
 \end{enumerate}
 These rules make an interesting strategic game that is quite convenient for a programming game.
+
+The code of the game example can be found in the \texttt{space-wars-game} GitHub organization: \url{https://github.com/space-wars-game}.
 \section{Generating a planetary system}
 The first step to implement the game rules was to generate a game world: a planetary system.
 
@@ -1579,7 +1580,7 @@ Algorithm \autoref{spiral_algorithm} shows the algorithm used to generate the ga
 \end{algorithm}
 Additionally, an ideal way to represent players uniquely was needed. Given that the number
 of players could be really high, using colors would have been a bad idea, as some players would share shades of the same
-color. Hence, \texttt{GitHub}-based \texttt{Identicons} \cite{identicons} were used to identify different players easily. The \texttt{Identicons} are
+color. Hence, \texttt{GitHub}-based \texttt{Identicons} \cite{identicons} were used to identify different players. The \texttt{Identicons} are
 generated using player identifiers, thus players can keep the same \texttt{Identicon} in different matches.
 
 \autoref{galaxy_map} shows an example of a galaxy rendered by the game viewer.
@@ -1680,7 +1681,7 @@ The main objective of the project is:
 \begin{quote}
 \emph{Develop a set of components that ease the creation and the usage of massive multiplayer programming games.}
 \end{quote}
-The abstract game engine allows game developers to build the logic of an \texttt{MMPG} easily, while the client library allows them
+The abstract game engine allows game developers to build the logic of an \texttt{MMPG}, while the client library allows them
 to build the viewer of an \texttt{MMPG}. Moreover, the engine supports \texttt{AI} hot-swapping natively, allowing players to change their
 programs. Also, a game example has been developed to show that the platform works: Space Wars.
 
@@ -1799,6 +1800,9 @@ prototype and were reported to the project advisor on a weekly basis.
 
 Contribution peaks (\emph{greenest squares}) happened when some important feature or optimization was implemented, which
 increased the dedication to the project during a specific timeframe.
+
+It should be noted that \autoref{dedication} does not give any type of feedback about the testing tasks performed
+in the platform during its implementation.
 
 Overall, the amount of work has been distributed properly and the project has been developed at a steady pace.
 \chapter{Economic cost}
@@ -1945,11 +1949,11 @@ giving the author personal thoughts.
 \section{Summary}
 This document detailed the building process of a platform for \texttt{MMPGs}.
 
-Firstly, the requirement for \texttt{MMPGs} games was established. Then, it was shown that there was not
+First, the requirement for \texttt{MMPGs} games was established. Then, it was shown that there was not
 an existing solution to satisfy it. Thus, the requirement was analyzed and a solution was designed. This solution
 featured a set of different components that allowed the creation of \texttt{MMPGs}.
 
-Secondly, the development of the solution was planned. A time plan and a budget for the solution were shown.
+Second, the development of the solution was planned. A time plan and a budget for the solution were shown.
 
 Next, the implementation of the solution was detailed. Starting with a prototype and using continuous integration, the different
 features that the solution needed were developed.
@@ -1982,10 +1986,27 @@ A simple game will be created. This game might be used by game developers as a s
   Forking the repository of this game will give game developers a simple fully-functional game out-of-the-box.
 \item[Game-logic testing suite]
 The engine will get its own testing suite, so game developers will be able test the logic
-  of their games easily.
+  of their games effortlessly.
 \end{description}
 \section{Personal thoughts}
-...
+It is difficult to express my thoughts after such a long project.
+
+When I started, I did not imagine I would have to develop so many different components at the same time. However, I really
+liked the implementation methodology used in the project. Being able to deploy changes automatically and show them
+to anyone was motivating. Also, it surprises me how low the time spent debugging has been. Bugs were detected
+and fixed really fast.
+
+I have learned a lot during this project. I did not know how to code in \texttt{Go} when I started. Right now, it is
+another tool in my toolbox. \texttt{Three.js} was also new to me, and I've been amazed by how powerful it is. I have also learned about 
+the different low-level libraries to implement inter-process communication, which I had never used for anything serious
+before this project. Moreover, procedural generation was one of those topics that interested me but never tried.
+I have been constantly learning and mixing my knowledge with new concepts.
+
+I have mixed feelings with the outcome of this project. I think it is really promising, but I would have liked to
+offer a more finished and better documented solution.
+
+At the end, though, developing this project has been a really fun and rewarding experience and I am sure it will
+benefit me deeply in my professional career.
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}

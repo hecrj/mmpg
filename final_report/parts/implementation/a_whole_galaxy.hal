@@ -115,7 +115,7 @@ algorithm options => "H":
 
 p "Additionally, an ideal way to represent players uniquely was needed. Given that the number
 of players could be really high, using colors would have been a bad idea, as some players would share shades of the same
-color. Hence, |GitHub|-based Identicons #cite{identicons} were used to identify different players easily. The Identicons are
+color. Hence, |GitHub|-based Identicons #cite{identicons} were used to identify different players. The Identicons are
 generated using player identifiers, thus players can keep the same Identicon in different matches.
 
 #autoref{galaxy_map} shows an example of a galaxy rendered by the game viewer."

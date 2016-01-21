@@ -226,3 +226,13 @@ bibtex :references:
     title "{Gamification}"
     url "https://badgeville.com/wiki/Gamification"
     online "January 20, 2016"
+
+  misc :mit_license:
+    title "{The MIT License}"
+    url "https://opensource.org/licenses/MIT"
+    online "January 20, 2016"
+
+  misc :cc_license:
+    title "{Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International}"
+    url "http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt"
+    online "January 20, 2016"

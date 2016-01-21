@@ -4,7 +4,7 @@ label :methodology
 p "As seen in #autoref{design}, the platform to be implemented is composed of different components that communicate with
 each other. Developing a single piece of software is a difficult task, but it becomes even harder when this piece of software
 communicates with other software, especially when both are being developed at the same time; changes made in
-the public interface of some component can easily break other components.
+the public interface of some component can break other components.
 
 Therefore, components will break. Developers are humans, and humans make mistakes. Thus, in order to be productive,
 it is necessary to detect when a component breaks as soon as possible. That way, components can be fixed before more changes
@@ -23,6 +23,6 @@ enumerate:
     item; p "Test that the prototype keeps working as expected."
 
 p "This methodology has a lot of benefits. Not only it allows to detect mistakes as soon as they are made, but it also provides
-a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown easily and
-transparently. Stakeholders can try the software easily while it is being developed and give feedback. In this case,
+a fully working prototype of the platform that can be shown to anyone. Thus, the development progress can be shown
+transparently. Stakeholders can try the software while it is being developed and give feedback. In this case,
 the prototype was available to the advisor of the project to assess and follow any progress closely."

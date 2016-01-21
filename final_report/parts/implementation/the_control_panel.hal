@@ -23,4 +23,4 @@ These new handlers were exposed through the API in the new endpoints: |/control/
 these endpoints checked that the authenticated user requesting the action was an administrator. If not, a |403 Forbidden|
 error was returned.
 
-Finally, a simple control panel was added in the viewer to allow administrators control the match easily."
+Finally, a simple control panel was added in the viewer to allow administrators control the match."

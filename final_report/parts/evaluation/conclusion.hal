@@ -6,11 +6,11 @@ giving the author personal thoughts."
 section "Summary"
 p "This document detailed the building process of a platform for MMPGs.
 
-Firstly, the requirement for MMPGs games was established. Then, it was shown that there was not
+First, the requirement for MMPGs games was established. Then, it was shown that there was not
 an existing solution to satisfy it. Thus, the requirement was analyzed and a solution was designed. This solution
 featured a set of different components that allowed the creation of MMPGs.
 
-Secondly, the development of the solution was planned. A time plan and a budget for the solution were shown.
+Second, the development of the solution was planned. A time plan and a budget for the solution were shown.
 
 Next, the implementation of the solution was detailed. Starting with a prototype and using continuous integration, the different
 features that the solution needed were developed.
@@ -39,7 +39,24 @@ description:
   Forking the repository of this game will give game developers a simple fully-functional game out-of-the-box."
 
   item "Game-logic testing suite"; p "The engine will get its own testing suite, so game developers will be able test the logic
-  of their games easily."
+  of their games effortlessly."
 
 section "Personal thoughts"
-p "..."
+p "It is difficult to express my thoughts after such a long project.
+
+When I started, I did not imagine I would have to develop so many different components at the same time. However, I really
+liked the implementation methodology used in the project. Being able to deploy changes automatically and show them
+to anyone was motivating. Also, it surprises me how low the time spent debugging has been. Bugs were detected
+and fixed really fast.
+
+I have learned a lot during this project. I did not know how to code in |Go| when I started. Right now, it is
+another tool in my toolbox. Three.js was also new to me, and I've been amazed by how powerful it is. I have also learned about 
+the different low-level libraries to implement inter-process communication, which I had never used for anything serious
+before this project. Moreover, procedural generation was one of those topics that interested me but never tried.
+I have been constantly learning and mixing my knowledge with new concepts.
+
+I have mixed feelings with the outcome of this project. I think it is really promising, but I would have liked to
+offer a more finished and better documented solution.
+
+At the end, though, developing this project has been a really fun and rewarding experience and I am sure it will
+benefit me deeply in my incoming professional career."

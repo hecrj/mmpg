@@ -29,11 +29,8 @@ description:
   important to focus on the *big picture* of the project."
   item "Task dependencies"; p "None."
 
-subsection "Component development"
-
-subsubsection "Engine"
-p "A library that will allow game programmers to build games and wire them to the platform
-easily. The codebase will implement the features that are independent of the final game and, therefore, can be reused."
+subsection "Engine"
+p "A library that will allow game programmers to build games and wire them to the platform. The codebase will implement the features that are independent of the final game and, therefore, can be reused."
 
 description:
   item "Expected duration"; p "70 hours"
@@ -47,7 +44,7 @@ description:
   item "Expected duration"; p "50 hours"
   item "Possible complications"; p "The author needs to learn |Go|, which might take some time."
 
-subsubsection "Client"
+subsection "Client"
 p "A library that handles a connection with the API. Game programmers will be able to use it to build
 the real-time webviewers of their games. It will be programmed in |Javascript|, using |Coffeescript|."
 
@@ -55,7 +52,7 @@ description:
   item "Expected duration"; p "30 hours"
   item "Possible complications"; p "The author needs to learn |Coffeescript|, which might take some time."
 
-subsubsection "Control panel"
+subsection "Control panel"
 p "Allows administrators to supervise the games, start, stop and pause current matches, and obtain the
 scores of every player."
 

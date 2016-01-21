@@ -104,4 +104,7 @@ prototype and were reported to the project advisor on a weekly basis.
 Contribution peaks (*greenest squares*) happened when some important feature or optimization was implemented, which
 increased the dedication to the project during a specific timeframe.
 
+It should be noted that #autoref{dedication} does not give any type of feedback about the testing tasks performed
+in the platform during its implementation.
+
 Overall, the amount of work has been distributed properly and the project has been developed at a steady pace."

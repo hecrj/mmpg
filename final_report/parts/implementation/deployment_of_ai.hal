@@ -54,7 +54,7 @@ p "The authentication tokens were implemented using |JSON WebTokens| #cite{jwt}.
 hence the necessity to renew them.
 
 A credentials validator is a simple |Go| function that tells whether the given identifier and
-password are valid or not. A credential validator can be injected in the API easily. Hence, anyone can
+password are valid or not. A credential validator can be injected in the API. Hence, anyone can
 implement its own credentials validator and customize the authentication system.
 
 Finally, a credentials validator for the Jutge.org platform was developed using an endpoint provided by the project

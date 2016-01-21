@@ -26,7 +26,8 @@ description:
   item "Client"; p "A library that implements a set of useful classes to communicate with an API and implement
   game viewers."
 
-  item "Game logic"; p "It includes the game world definition and the rules of the game. It is built on top of the engine."
+  item "Game logic"; p "It includes the game world definition and the rules of the game and executes the different AIs.
+  It is built on top of the engine."
 
   item "Game viewer"; p "It allows viewers to watch game matches. Also, it makes players able to upload new AIs. It uses
-    the client library to connect to the API."
+  the client library to connect to the API."
