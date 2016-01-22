@@ -36,7 +36,7 @@ typewrite "MMPG", "MMPGs", "AIs", "PHP", "AI", "API", "Python", "Ruby", "Elixir"
 
 document:
   cover title    => "Platform for massive multiplayer programming games",
-        subtitle => "Computation",
+        subtitle => "Computing",
         subject  => "Degree Final Project",
         authors  => ["Héctor Ramón Jiménez"],
         footer   => "Facultat d'Informàtica de Barcelona\\\\\\small Universitat Politècnica de Catalunya",

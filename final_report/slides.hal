@@ -1,0 +1,99 @@
+import haltex
+import utils
+
+documentclass "beamer"
+
+usepackage "babel", options => "english"
+usepackage "unicode-math"
+usepackage "xunicode"
+usepackage "url"
+usepackage "cite"
+usepackage "graphicx"
+usepackage "caption", options => "justification=centering, labelfont=bf"
+usepackage "float"
+usepackage "pgfgantt"
+usepackage "marvosym"
+usepackage "siunitx"
+usepackage "multirow"
+usepackage "svg"
+
+import haltex.beamer
+
+usetheme :Berlin
+setbeamertemplate "navigation symbols", ""
+
+title "Platform for massive multiplayer programming games"
+institute "Facultat d'Informàtica de Barcelona"
+author "Héctor Ramón Jiménez"
+date "January 28, 2016"
+
+document:
+  frame "\\titlepage"
+  
+  frame "Overview":
+    tableofcontents
+
+  section "Introduction"
+
+  frame "Programming games":
+    p "..."
+
+  section "Formulation"
+  frame "The problem":
+    p "..."
+
+  frame "The state of the art":
+    p "..."
+
+  frame "The solution":
+    p "..."
+
+  section "Planning"
+  frame "Time plan":
+    p "..."
+
+  frame "Budget":
+    p "..."
+
+  section "Implementation"
+  frame "Methodology":
+    p "..."
+
+  frame "The first prototype":
+    p "..."
+
+  frame "The dedicated server":
+    p "..."
+
+  frame "The log system":
+    p "..."
+
+  frame "Deployment of AI":
+    p "..."
+
+  frame "The control panel":
+    p "..."
+
+  frame "The first world":
+    p "..."
+
+  frame "Fleets and planets":
+    p "..."
+
+  frame "A whole galaxy":
+    p "..."
+
+  section "Demonstration"
+  frame "Space Wars":
+    p "..."
+
+  section "Evaluation"
+  frame "Validation":
+    p "..."
+
+  section "Conclusion"
+  frame "Summary":
+    p "..."
+
+  frame "Final thoughts":
+    p "..."
