@@ -12,8 +12,10 @@
 \usepackage{siunitx}
 \usepackage{multirow}
 \usepackage{svg}
-\usetheme{Berlin}
+\usetheme{Antibes}
 \setbeamertemplate{navigation symbols}{}
+\captionsetup[figure]{labelformat=empty}
+\setcounter{tocdepth}{1}
 \title{Platform for massive multiplayer programming games}
 \institute{Facultat d'Informàtica de Barcelona}
 \author{Héctor Ramón Jiménez}
@@ -24,52 +26,124 @@
 \tableofcontents
 \end{frame}
 \section{Introduction}
-\begin{frame}{Programming games}
+\subsection{Programming games}
+\begin{frame}{What is a programming game?}
 ...
 \end{frame}
 \section{Formulation}
+\subsection{Analysis}
 \begin{frame}{The problem}
 ...
 \end{frame}
 \begin{frame}{The state of the art}
 ...
 \end{frame}
+\subsection{Design}
 \begin{frame}{The solution}
 ...
 \end{frame}
 \section{Planning}
-\begin{frame}{Time plan}
+\subsection{Time plan}
+\begin{frame}{Time table}
 ...
 \end{frame}
-\begin{frame}{Budget}
+\begin{frame}{Time line}
+...
+\end{frame}
+\subsection{Budget}
+\begin{frame}{Total budget}
 ...
 \end{frame}
 \section{Implementation}
-\begin{frame}{Methodology}
+\subsection{Methodology}
+\begin{frame}{Continuous integration}
 ...
 \end{frame}
-\begin{frame}{The first prototype}
+\subsection{The first prototype}
+\begin{frame}{A simple prototype}
 ...
 \end{frame}
-\begin{frame}{The dedicated server}
+\begin{frame}{The engine architecture}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{\textwidth}{!}{
+\input{graphs/engine_arch}
+}
+\end{center}
+\caption{Hierarchy of engine processes with $N$ workers and $\sum_{i=1}^N M_i$ players}
+\label{engine_arch}
+\end{figure}
+\end{frame}
+\begin{frame}{The prototype result}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{15em}{
+\includegraphics{images/cube_movement.png}
+}
+\end{center}
+\caption{A cube that was moved by the player program}
+\label{cube_movement}
+\end{figure}
+\end{frame}
+\subsection{Continuous integration}
+\begin{frame}{Continuous integration setup}
 ...
 \end{frame}
-\begin{frame}{The log system}
+\subsection{The log system}
+\begin{frame}{Match replay}
 ...
 \end{frame}
-\begin{frame}{Deployment of AI}
+\begin{frame}{Event sourcing}
 ...
 \end{frame}
-\begin{frame}{The control panel}
+\begin{frame}{Snapshots}
 ...
 \end{frame}
-\begin{frame}{The first world}
+\begin{frame}{Log compression}
 ...
 \end{frame}
-\begin{frame}{Fleets and planets}
+\subsection{Deployment of AI}
+\begin{frame}{Authentication}
 ...
 \end{frame}
-\begin{frame}{A whole galaxy}
+\begin{frame}{Player login}
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{180pt}{
+\includegraphics{images/login_ok.png}
+}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{images/login_error.png}
+}
+}
+\caption{Login form. Valid (left). Invalid (right)}
+\label{login_form}
+\end{figure}
+\end{frame}
+\begin{frame}{AI hot-swapping}
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{180pt}{
+\includegraphics{images/deploy_error.png}
+}
+}
+\caption{Player deployment with a compilation error}
+\label{deploy_error}
+\end{figure}
+\end{frame}
+\subsection{The first world}
+\begin{frame}{Galcon and Planet Wars}
+...
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+...
+\end{frame}
+\subsection{Fleets and planets}
+\begin{frame}{Game loop support}
+...
+\end{frame}
+\subsection{A whole galaxy}
+\begin{frame}{From a system to a galaxy}
 ...
 \end{frame}
 \section{Demonstration}
@@ -77,10 +151,11 @@
 ...
 \end{frame}
 \section{Evaluation}
-\begin{frame}{Validation}
+\subsection{Validation}
+\begin{frame}{Stable and scalable}
 ...
 \end{frame}
-\section{Conclusion}
+\subsection{Conclusion}
 \begin{frame}{Summary}
 ...
 \end{frame}

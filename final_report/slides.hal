@@ -19,8 +19,10 @@ usepackage "svg"
 
 import haltex.beamer
 
-usetheme :Berlin
+usetheme :Antibes
 setbeamertemplate "navigation symbols", ""
+captionsetup "labelformat=empty", options => "figure"
+setcounter :tocdepth, 1
 
 title "Platform for massive multiplayer programming games"
 institute "Facultat d'Informàtica de Barcelona"
@@ -35,52 +37,118 @@ document:
 
   section "Introduction"
 
-  frame "Programming games":
+  subsection "Programming games"
+  frame "What is a programming game?":
     p "..."
 
   section "Formulation"
+  subsection "Analysis"
+
   frame "The problem":
     p "..."
 
   frame "The state of the art":
     p "..."
 
+  subsection "Design"
   frame "The solution":
     p "..."
 
   section "Planning"
-  frame "Time plan":
+  subsection "Time plan"
+
+  frame "Time table":
     p "..."
 
-  frame "Budget":
+  frame "Time line":
+    p "..."
+
+  subsection "Budget"
+  frame "Total budget":
     p "..."
 
   section "Implementation"
-  frame "Methodology":
+  subsection "Methodology"
+  frame "Continuous integration":
     p "..."
 
-  frame "The first prototype":
+  subsection "The first prototype"
+  frame "A simple prototype":
     p "..."
 
-  frame "The dedicated server":
+  frame "The engine architecture":
+    figure!:
+      center:
+        resizebox width => "\\textwidth":
+          input "graphs/engine_arch"
+
+      caption "Hierarchy of engine processes with $N$ workers and $\\sum_{i=1}^N M_i$ players"
+      label :engine_arch
+
+  frame "The prototype result":
+    figure!:
+      center:
+        resizebox height => "15em":
+          includegraphics "images/cube_movement.png"
+      caption "A cube that was moved by the player program"
+      label :cube_movement    
+
+  subsection "Continuous integration"
+  frame "Continuous integration setup":
     p "..."
 
-  frame "The log system":
+  subsection "The log system"
+  frame "Match replay":
     p "..."
 
-  frame "Deployment of AI":
+  frame "Event sourcing":
     p "..."
 
-  frame "The control panel":
+  frame "Snapshots":
     p "..."
 
-  frame "The first world":
+  frame "Log compression":
     p "..."
 
-  frame "Fleets and planets":
+  subsection "Deployment of AI"
+  frame "Authentication":
     p "..."
 
-  frame "A whole galaxy":
+  frame "Player login":
+    figure!:
+      centered:
+        resizebox height => "180pt":
+          includegraphics "images/login_ok.png"
+
+        resizebox height => "180pt":
+          includegraphics "images/login_error.png"
+
+      caption "Login form. Valid (left). Invalid (right)"
+      label :login_form
+
+  frame "AI hot-swapping":
+    figure!:
+      centered:
+        resizebox height => "180pt":
+          includegraphics "images/deploy_error.png"
+
+      caption "Player deployment with a compilation error"
+      label :deploy_error
+
+  subsection "The first world"
+  frame "Galcon and Planet Wars":
+    p "..."
+
+  frame "Procedural generation of planetary systems":
+    p "..."
+
+  subsection "Fleets and planets"
+  frame "Game loop support":
+    p "..."
+
+  subsection "A whole galaxy"
+
+  frame "From a system to a galaxy":
     p "..."
 
   section "Demonstration"
@@ -88,10 +156,11 @@ document:
     p "..."
 
   section "Evaluation"
-  frame "Validation":
+  subsection "Validation"
+  frame "Stable and scalable":
     p "..."
 
-  section "Conclusion"
+  subsection "Conclusion"
   frame "Summary":
     p "..."
 
