@@ -12,7 +12,7 @@ are made and fixing it becomes a nightmare.
 
 In order to ensure that all the components of the platform keep working during the entire implementation process, and also
 detect and fix issues as soon as possible, the project was developed using an iterative methodology based on
-continuous integration #autoref{ci}. This methodology consisted in:"
+continuous integration #cite{ci}. This methodology consisted in:"
 
 enumerate:
   item; p "Develop a simple prototype of the platform."

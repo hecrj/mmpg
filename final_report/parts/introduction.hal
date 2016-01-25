@@ -16,8 +16,7 @@ intelligences (AIs) because they try to make intelligent decisions to win the ga
 
 Darwin consisted of two or more small programs, written by the players, that were loaded in memory. The main goal
 of the game was to spread copies of your own program and find and kill the copies of other players. The game was only
-played for a few weeks before Morris developed an ultimate program, as no-one managed to produce anything that could
-defeat it.
+played for a few weeks. Then, Morris developed a program that no-one managed to defeat.
 
 Since then, many other programming games have been created #cite{pg}. Some of them are even commercial games, like
 SpaceChem #cite{spacechem}."
