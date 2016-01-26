@@ -63,8 +63,24 @@ document:
 
     itemize:
       item "Based on a round system"
-      item "Players that lose stop playing"
+      item "Players who lose stop playing"
       item "Multiple matches needed"
+
+  frame "The problem":
+    figure!:
+      center:
+        resizebox width => "\\textwidth":
+          includegraphics "images/jutge_rounds.png"
+
+      caption "Jutge.org round system"
+
+  frame "The problem":
+    figure!:
+      center:
+        resizebox height => "180pt":
+          includegraphics "images/eda_bot.png"
+
+      caption "Twitter bot announcing eliminated players"
 
   frame "The state of the art":
     itemize:
@@ -285,12 +301,25 @@ document:
 
   frame "Rendering a galaxy":
     minipage ".60\\textwidth":
-      resizebox height => "\\textwidth":
+      resizebox width => "\\textwidth":
         includegraphics "images/galaxy_50_players.png"
 
     minipage ".35\\textwidth":
       p "$$x(t) = at \\: cos(t + \\theta)$$
          $$y(t) = at \\: sin(t + \\theta)$$"
+
+  frame "Rendering a galaxy":
+    figure!:
+      resizebox width => "\\textwidth":
+        includegraphics "images/identicons.png"
+
+      caption "Identicons"
+
+  frame "Rendering a galaxy":
+    center:
+      resizebox height => "180pt":
+        includegraphics "images/galaxy_identicons.png"
+
 
   section "Demonstration"
   frame "Space Wars":
