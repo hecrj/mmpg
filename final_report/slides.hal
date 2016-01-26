@@ -16,6 +16,8 @@ usepackage "marvosym"
 usepackage "siunitx"
 usepackage "multirow"
 usepackage "svg"
+usepackage "float"
+usepackage "tabularx"
 
 import haltex.beamer
 
@@ -23,6 +25,7 @@ usetheme :Antibes
 setbeamertemplate "navigation symbols", ""
 captionsetup "labelformat=empty", options => "figure"
 setcounter :tocdepth, 1
+typewrite "API", "MMPG"
 
 title "Platform for massive multiplayer programming games"
 institute "Facultat d'Informàtica de Barcelona"
@@ -48,33 +51,111 @@ document:
     p "..."
 
   frame "The state of the art":
-    p "..."
+    itemize:
+      item "Google's AI programming challenge #cite{google_ai}"
+      item "Battlecode #cite{battlecode}"
+      item "CodinGame #cite{codingame}"
+      item "|EDA| competition #cite{eda}"
 
   subsection "Design"
   frame "The solution":
-    p "..."
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/mmpg_design_initial.pdf"
+
+  frame "The solution":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/mmpg_design_parts.pdf"
+
+  frame "The solution":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/mmpg_design_clients.pdf"
+
+  frame "The solution":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/mmpg_design_libs.pdf"
+
+  frame "The solution":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/mmpg_design.pdf"
 
   section "Planning"
   subsection "Time plan"
 
-  frame "Time table":
-    p "..."
+  frame "Timeline":
+    figure!:
+      center:
+        resizebox height => "180pt":
+          ganttchart 1, 25, options => "hgrid, vgrid":
+            gantttitle 2015, 20; gantttitle 2016, 5
+            br
+            ["September", "October", "November", "December", "January"].each with month:
+              gantttitle month, 5
+            br
+            ganttbar "Project management", 3, 8; br
+            ganttbar "Analysis and design", 4, 5; br
+            ganttbar "Engine", 6, 10; br;
+            ganttbar "Client", 11, 13; br
+            ganttbar "API", 14, 15; br
+            ganttbar "Control panel", 16, 17; br
+            ganttbar "Game example - logic", 11, 18; br
+            ganttbar "Game example - viewer", 16, 20; br
+            ganttbar "Testing and polishing", 21, 22; br
+            ganttbar "Project memory", 11, 23; br
+            ganttbar "Oral presentation", 24, 24
 
-  frame "Time line":
-    p "..."
+            ganttlink "elem1", "elem2"
+            ganttlink "elem2", "elem3"
+            ganttlink "elem3", "elem4"
+            ganttlink "elem4", "elem5"
+            ganttlink "elem2", "elem6"
+            ganttlink "elem4", "elem7"
+            ganttlink "elem6", "elem8"
+            ganttlink "elem7", "elem8"
+            ganttlink "elem2", "elem9"
+            ganttlink "elem9", "elem10"
 
   subsection "Budget"
   frame "Total budget":
-    p "..."
+    input "tables/budget"
 
   section "Implementation"
   subsection "Methodology"
   frame "Continuous integration":
-    p "..."
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci_initial.pdf"
+
+  frame "Continuous integration":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci_repo.pdf"
+
+  frame "Continuous integration":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci_service.pdf"
+
+  frame "Continuous integration":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci_errors.pdf"
+
+  frame "Continuous integration":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci.pdf"
 
   subsection "The first prototype"
   frame "A simple prototype":
-    p "..."
+    description:
+      item "Engine"; p "Running one simple player and notifying actions to subscribers."
+      item "API"; p "Subscribed to the engine and notifying actions to clients."
+      item "Client"; p "Subscribed to the API and drawing player actions in a web-browser."
 
   frame "The engine architecture":
     figure!:
@@ -94,8 +175,15 @@ document:
       label :cube_movement    
 
   subsection "Continuous integration"
-  frame "Continuous integration setup":
-    p "..."
+  frame "Continuous integration stack":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci.pdf"
+
+  frame "Continuous integration stack":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/ci_final.pdf"
 
   subsection "The log system"
   frame "Match replay":
@@ -107,24 +195,17 @@ document:
   frame "Snapshots":
     p "..."
 
-  frame "Log compression":
+  frame "Log files":
     p "..."
 
   subsection "Deployment of AI"
   frame "Authentication":
-    p "..."
-
-  frame "Player login":
     figure!:
       centered:
         resizebox height => "180pt":
           includegraphics "images/login_ok.png"
 
-        resizebox height => "180pt":
-          includegraphics "images/login_error.png"
-
-      caption "Login form. Valid (left). Invalid (right)"
-      label :login_form
+      caption "Login form"
 
   frame "AI hot-swapping":
     figure!:
@@ -133,14 +214,54 @@ document:
           includegraphics "images/deploy_error.png"
 
       caption "Player deployment with a compilation error"
-      label :deploy_error
 
   subsection "The first world"
-  frame "Galcon and Planet Wars":
-    p "..."
+  frame "Galcon":
+    figure!:
+      resizebox height => "180pt":
+        includegraphics "images/galcon.png"
+
+      caption "Galcon 2 (Flash version)"
+
+  frame "Planetary system approximation":
+    figure!:
+      minipage ".65\\textwidth":
+        resizebox width => "\\textwidth":
+          includegraphics "graphs/planet_position.pdf"
+
+      minipage ".3\\textwidth":
+        p "$$x = a #: cos(#theta)$$
+           $$y = b #: sin(#theta)$$"
 
   frame "Procedural generation of planetary systems":
-    p "..."
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation_initial.pdf"
+
+  frame "Procedural generation of planetary systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation_planet1.pdf"
+
+  frame "Procedural generation of planetary systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation_planet2.pdf"
+
+  frame "Procedural generation of planetary systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation_planets.pdf"
+
+  frame "Procedural generation of planetary systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation_connection.pdf"
+
+  frame "Procedural generation of planetary systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation.pdf"
 
   subsection "Fleets and planets"
   frame "Game loop support":
@@ -148,8 +269,36 @@ document:
 
   subsection "A whole galaxy"
 
-  frame "From a system to a galaxy":
-    p "..."
+  frame "Connecting systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/generation.pdf"
+
+  frame "Connecting systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/relay_planets.pdf"
+
+  frame "Connecting systems":
+    center:
+      resizebox height => "180pt":
+        includegraphics "graphs/relay.pdf"
+
+  frame "Separating world structure from dynamic data":
+    figure!:
+      resizebox width => "\\textwidth":
+        includegraphics "images/cpu_galaxy.png"
+
+      caption "CPU usage drop after separating world structure from dynamic data"
+
+  frame "Rendering a galaxy":
+    minipage ".60\\textwidth":
+      resizebox height => "\\textwidth":
+        includegraphics "images/galaxy_50_players.png"
+
+    minipage ".35\\textwidth":
+      p "$$x(t) = at \\: cos(t + \\theta)$$
+         $$y(t) = at \\: sin(t + \\theta)$$"
 
   section "Demonstration"
   frame "Space Wars":
@@ -157,8 +306,43 @@ document:
 
   section "Evaluation"
   subsection "Validation"
-  frame "Stable and scalable":
-    p "..."
+  frame "Stability":
+    figure!:
+      resizebox width => "\\textwidth":
+        includegraphics "images/mmpg_cpu.png"
+
+      caption "CPU usage of the platform in a 30 day period"
+
+  subsection "Time management"
+  frame "Final timeline":
+    figure!:
+      centered:
+        resizebox height => "180pt":
+          ganttchart 1, 25, options => "hgrid, vgrid":
+            gantttitle 2015, 20; gantttitle 2016, 5
+            br
+            ["September", "October", "November", "December", "January"].each with month:
+              gantttitle month, 5
+            br
+            ganttbar "Project management", 3, 11; br
+            ganttbar "Analysis and design", 6, 7; br
+            ganttbar "Engine", 11, 20; br;
+            ganttbar "API", 11, 20; br
+            ganttbar "Client", 11, 20; br
+            ganttbar "Space Wars - logic", 16, 21; br
+            ganttbar "Space Wars - viewer", 16, 21; br
+            ganttbar "Testing and polishing", 13, 22; br
+            ganttbar "Project memory", 16, 23; br
+            ganttbar "Oral presentation", 24, 24
+
+            ganttlink "elem1", "elem2"
+            ganttlink "elem1", "elem3"
+            ganttlink "elem1", "elem4"
+            ganttlink "elem8", "elem9"
+
+  subsection "Economic cost"
+  frame "Total cost":
+    input "tables/economic_cost"
 
   subsection "Conclusion"
   frame "Summary":

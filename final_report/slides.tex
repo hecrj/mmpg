@@ -12,6 +12,8 @@
 \usepackage{siunitx}
 \usepackage{multirow}
 \usepackage{svg}
+\usepackage{float}
+\usepackage{tabularx}
 \usetheme{Antibes}
 \setbeamertemplate{navigation symbols}{}
 \captionsetup[figure]{labelformat=empty}
@@ -36,32 +38,156 @@
 ...
 \end{frame}
 \begin{frame}{The state of the art}
-...
+\begin{itemize}
+\item
+Google's AI programming challenge \cite{google_ai}
+\item
+Battlecode \cite{battlecode}
+\item
+CodinGame \cite{codingame}
+\item
+\texttt{EDA} competition \cite{eda}
+\end{itemize}
 \end{frame}
 \subsection{Design}
 \begin{frame}{The solution}
-...
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/mmpg_design_initial.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{The solution}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/mmpg_design_parts.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{The solution}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/mmpg_design_clients.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{The solution}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/mmpg_design_libs.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{The solution}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/mmpg_design.pdf}
+}
+\end{center}
 \end{frame}
 \section{Planning}
 \subsection{Time plan}
-\begin{frame}{Time table}
-...
-\end{frame}
-\begin{frame}{Time line}
-...
+\begin{frame}{Timeline}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\begin{ganttchart}[hgrid, vgrid]{1}{25}
+\gantttitle{2015}{20}
+\gantttitle{2016}{5}
+\\
+\gantttitle{September}{5}
+\gantttitle{October}{5}
+\gantttitle{November}{5}
+\gantttitle{December}{5}
+\gantttitle{January}{5}
+\\
+\ganttbar{Project management}{3}{8}
+\\
+\ganttbar{Analysis and design}{4}{5}
+\\
+\ganttbar{Engine}{6}{10}
+\\
+\ganttbar{Client}{11}{13}
+\\
+\ganttbar{API}{14}{15}
+\\
+\ganttbar{Control panel}{16}{17}
+\\
+\ganttbar{Game example - logic}{11}{18}
+\\
+\ganttbar{Game example - viewer}{16}{20}
+\\
+\ganttbar{Testing and polishing}{21}{22}
+\\
+\ganttbar{Project memory}{11}{23}
+\\
+\ganttbar{Oral presentation}{24}{24}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem2}{elem3}
+\ganttlink{elem3}{elem4}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem2}{elem6}
+\ganttlink{elem4}{elem7}
+\ganttlink{elem6}{elem8}
+\ganttlink{elem7}{elem8}
+\ganttlink{elem2}{elem9}
+\ganttlink{elem9}{elem10}
+\end{ganttchart}
+}
+\end{center}
+\end{figure}
 \end{frame}
 \subsection{Budget}
 \begin{frame}{Total budget}
-...
+\input{tables/budget}
 \end{frame}
 \section{Implementation}
 \subsection{Methodology}
 \begin{frame}{Continuous integration}
-...
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci_initial.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Continuous integration}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci_repo.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Continuous integration}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci_service.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Continuous integration}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci_errors.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Continuous integration}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci.pdf}
+}
+\end{center}
 \end{frame}
 \subsection{The first prototype}
 \begin{frame}{A simple prototype}
-...
+\begin{description}
+\item[Engine]
+Running one simple player and notifying actions to subscribers.
+\item[\texttt{API}]
+Subscribed to the engine and notifying actions to clients.
+\item[Client]
+Subscribed to the \texttt{API} and drawing player actions in a web-browser.
+\end{description}
 \end{frame}
 \begin{frame}{The engine architecture}
 \begin{figure}[H]
@@ -86,8 +212,19 @@
 \end{figure}
 \end{frame}
 \subsection{Continuous integration}
-\begin{frame}{Continuous integration setup}
-...
+\begin{frame}{Continuous integration stack}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Continuous integration stack}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/ci_final.pdf}
+}
+\end{center}
 \end{frame}
 \subsection{The log system}
 \begin{frame}{Match replay}
@@ -99,25 +236,18 @@
 \begin{frame}{Snapshots}
 ...
 \end{frame}
-\begin{frame}{Log compression}
+\begin{frame}{Log files}
 ...
 \end{frame}
 \subsection{Deployment of AI}
 \begin{frame}{Authentication}
-...
-\end{frame}
-\begin{frame}{Player login}
 \begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{!}{180pt}{
 \includegraphics{images/login_ok.png}
 }
-\noindent\resizebox{!}{180pt}{
-\includegraphics{images/login_error.png}
 }
-}
-\caption{Login form. Valid (left). Invalid (right)}
-\label{login_form}
+\caption{Login form}
 \end{figure}
 \end{frame}
 \begin{frame}{AI hot-swapping}
@@ -128,23 +258,116 @@
 }
 }
 \caption{Player deployment with a compilation error}
-\label{deploy_error}
 \end{figure}
 \end{frame}
 \subsection{The first world}
-\begin{frame}{Galcon and Planet Wars}
-...
+\begin{frame}{Galcon}
+\begin{figure}[H]
+\noindent\resizebox{!}{180pt}{
+\includegraphics{images/galcon.png}
+}
+\caption{Galcon 2 (Flash version)}
+\end{figure}
+\end{frame}
+\begin{frame}{Planetary system approximation}
+\begin{figure}[H]
+\begin{minipage}{.65\textwidth}
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{graphs/planet_position.pdf}
+}
+\end{minipage}
+\begin{minipage}{.3\textwidth}
+$$x = a \: cos(\theta)$$
+           $$y = b \: sin(\theta)$$
+\end{minipage}
+\end{figure}
 \end{frame}
 \begin{frame}{Procedural generation of planetary systems}
-...
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation_initial.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation_planet1.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation_planet2.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation_planets.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation_connection.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Procedural generation of planetary systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation.pdf}
+}
+\end{center}
 \end{frame}
 \subsection{Fleets and planets}
 \begin{frame}{Game loop support}
 ...
 \end{frame}
 \subsection{A whole galaxy}
-\begin{frame}{From a system to a galaxy}
-...
+\begin{frame}{Connecting systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/generation.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Connecting systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/relay_planets.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Connecting systems}
+\begin{center}
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/relay.pdf}
+}
+\end{center}
+\end{frame}
+\begin{frame}{Separating world structure from dynamic data}
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/cpu_galaxy.png}
+}
+\caption{CPU usage drop after separating world structure from dynamic data}
+\end{figure}
+\end{frame}
+\begin{frame}{Rendering a galaxy}
+\begin{minipage}{.60\textwidth}
+\noindent\resizebox{!}{\textwidth}{
+\includegraphics{images/galaxy_50_players.png}
+}
+\end{minipage}
+\begin{minipage}{.35\textwidth}
+$$x(t) = at \: cos(t + \theta)$$
+         $$y(t) = at \: sin(t + \theta)$$
+\end{minipage}
 \end{frame}
 \section{Demonstration}
 \begin{frame}{Space Wars}
@@ -152,8 +375,60 @@
 \end{frame}
 \section{Evaluation}
 \subsection{Validation}
-\begin{frame}{Stable and scalable}
-...
+\begin{frame}{Stability}
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/mmpg_cpu.png}
+}
+\caption{CPU usage of the platform in a 30 day period}
+\end{figure}
+\end{frame}
+\subsection{Time management}
+\begin{frame}{Final timeline}
+\begin{figure}[H]
+\makebox[\textwidth]{
+\noindent\resizebox{!}{180pt}{
+\begin{ganttchart}[hgrid, vgrid]{1}{25}
+\gantttitle{2015}{20}
+\gantttitle{2016}{5}
+\\
+\gantttitle{September}{5}
+\gantttitle{October}{5}
+\gantttitle{November}{5}
+\gantttitle{December}{5}
+\gantttitle{January}{5}
+\\
+\ganttbar{Project management}{3}{11}
+\\
+\ganttbar{Analysis and design}{6}{7}
+\\
+\ganttbar{Engine}{11}{20}
+\\
+\ganttbar{API}{11}{20}
+\\
+\ganttbar{Client}{11}{20}
+\\
+\ganttbar{Space Wars - logic}{16}{21}
+\\
+\ganttbar{Space Wars - viewer}{16}{21}
+\\
+\ganttbar{Testing and polishing}{13}{22}
+\\
+\ganttbar{Project memory}{16}{23}
+\\
+\ganttbar{Oral presentation}{24}{24}
+\ganttlink{elem1}{elem2}
+\ganttlink{elem1}{elem3}
+\ganttlink{elem1}{elem4}
+\ganttlink{elem8}{elem9}
+\end{ganttchart}
+}
+}
+\end{figure}
+\end{frame}
+\subsection{Economic cost}
+\begin{frame}{Total cost}
+\input{tables/economic_cost}
 \end{frame}
 \subsection{Conclusion}
 \begin{frame}{Summary}
