@@ -45,6 +45,10 @@ class Kernel:
     __method_missing__ :itemize:
       Itemize.new.instance_exec &yield
 
+  def enumerate:
+    __method_missing__ :enumerate:
+      Itemize.new.instance_exec &yield
+
   def figure!:
     __method_missing__ :figure, options => "H": yield
 

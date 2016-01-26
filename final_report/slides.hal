@@ -18,7 +18,6 @@ usepackage "multirow"
 usepackage "svg"
 usepackage "float"
 usepackage "tabularx"
-usepackage "natbib", options => "sort&compress,comma,super"
 
 import haltex.beamer
 
@@ -26,7 +25,7 @@ usetheme :Antibes
 setbeamertemplate "navigation symbols", ""
 captionsetup "labelformat=empty", options => "figure"
 setcounter :tocdepth, 1
-typewrite "API", "MMPG", "AI", "Jutge.org"
+typewrite "API", "MMPG", "AI", "Jutge.org", "MMPGs", "AIs"
 
 title "Platform for massive multiplayer programming games"
 institute "Facultat d'Informàtica de Barcelona"
@@ -51,7 +50,10 @@ document:
         resizebox height => "130pt":
           includegraphics "images/spacechem.jpg"
 
-      caption "SpaceChem #cite{spacechem}"
+      caption "SpaceChem"
+
+  frame "Gamification":
+    p "..."
 
   section "Formulation"
   subsection "Analysis"
@@ -66,10 +68,22 @@ document:
 
   frame "The state of the art":
     itemize:
-      item "Google's AI programming challenge #cite{google_ai}"
-      item "Battlecode #cite{battlecode}"
-      item "CodinGame #cite{codingame}"
-      item "|EDA| competition #cite{eda}"
+      item "Google's AI programming challenge"
+      item "Battlecode"
+      item "CodinGame"
+      item "|EDA| competition"
+
+  subsection "Objectives"
+  frame "The main objective":
+    p "Develop a set of components that ease the creation and the usage of *massive* multiplayer programming games (MMPGs)."
+
+  frame "Secondary objectives":
+    enumerate:
+      item "Develop an abstract game engine"
+      item "Allow hot-swapping of AIs"
+      item "Implement a real-time webviewer"
+      item "Make the infrastructure scalable and stable"
+      item "Create a game example"
 
   subsection "Design"
   frame "The solution":
@@ -96,46 +110,6 @@ document:
     center:
       resizebox height => "180pt":
         includegraphics "graphs/mmpg_design.pdf"
-
-  section "Planning"
-  subsection "Time plan"
-
-  frame "Timeline":
-    figure!:
-      center:
-        resizebox height => "180pt":
-          ganttchart 1, 25, options => "hgrid, vgrid":
-            gantttitle 2015, 20; gantttitle 2016, 5
-            br
-            ["September", "October", "November", "December", "January"].each with month:
-              gantttitle month, 5
-            br
-            ganttbar "Project management", 3, 8; br
-            ganttbar "Analysis and design", 4, 5; br
-            ganttbar "Engine", 6, 10; br;
-            ganttbar "Client", 11, 13; br
-            ganttbar "API", 14, 15; br
-            ganttbar "Control panel", 16, 17; br
-            ganttbar "Game example - logic", 11, 18; br
-            ganttbar "Game example - viewer", 16, 20; br
-            ganttbar "Testing and polishing", 21, 22; br
-            ganttbar "Project memory", 11, 23; br
-            ganttbar "Oral presentation", 24, 24
-
-            ganttlink "elem1", "elem2"
-            ganttlink "elem2", "elem3"
-            ganttlink "elem3", "elem4"
-            ganttlink "elem4", "elem5"
-            ganttlink "elem2", "elem6"
-            ganttlink "elem4", "elem7"
-            ganttlink "elem6", "elem8"
-            ganttlink "elem7", "elem8"
-            ganttlink "elem2", "elem9"
-            ganttlink "elem9", "elem10"
-
-  subsection "Budget"
-  frame "Total budget":
-    input "tables/budget"
 
   section "Implementation"
   subsection "Methodology"
@@ -239,7 +213,7 @@ document:
       resizebox height => "180pt":
         includegraphics "images/galcon.png"
 
-      caption "Galcon 2 (Flash version)"
+      caption "Galcon 2"
 
   frame "Planetary system approximation":
     figure!:
@@ -332,6 +306,39 @@ document:
       caption "CPU usage of the platform in a 30 day period"
 
   subsection "Time management"
+  frame "Planning timeline":
+    figure!:
+      center:
+        resizebox height => "180pt":
+          ganttchart 1, 25, options => "hgrid, vgrid":
+            gantttitle 2015, 20; gantttitle 2016, 5
+            br
+            ["September", "October", "November", "December", "January"].each with month:
+              gantttitle month, 5
+            br
+            ganttbar "Project management", 3, 8; br
+            ganttbar "Analysis and design", 4, 5; br
+            ganttbar "Engine", 6, 10; br;
+            ganttbar "Client", 11, 13; br
+            ganttbar "API", 14, 15; br
+            ganttbar "Control panel", 16, 17; br
+            ganttbar "Game example - logic", 11, 18; br
+            ganttbar "Game example - viewer", 16, 20; br
+            ganttbar "Testing and polishing", 21, 22; br
+            ganttbar "Project memory", 11, 23; br
+            ganttbar "Oral presentation", 24, 24
+
+            ganttlink "elem1", "elem2"
+            ganttlink "elem2", "elem3"
+            ganttlink "elem3", "elem4"
+            ganttlink "elem4", "elem5"
+            ganttlink "elem2", "elem6"
+            ganttlink "elem4", "elem7"
+            ganttlink "elem6", "elem8"
+            ganttlink "elem7", "elem8"
+            ganttlink "elem2", "elem9"
+            ganttlink "elem9", "elem10"
+
   frame "Final timeline":
     figure!:
       centered:
@@ -358,17 +365,16 @@ document:
             ganttlink "elem1", "elem4"
             ganttlink "elem8", "elem9"
 
+  frame "Time table":
+    input "tables/time_table"
+
   subsection "Economic cost"
   frame "Total cost":
     input "tables/economic_cost"
 
   subsection "Conclusion"
-  frame "Summary":
+  frame "Conclusions":
     p "..."
 
   frame "Final thoughts":
     p "..."
-
-  frame "References", options => "allowframebreaks":
-    bibliographystyle :plain
-    bibliography :references
