@@ -1,5 +1,6 @@
 import haltex
 import utils
+import references
 
 documentclass "beamer"
 
@@ -7,7 +8,6 @@ usepackage "babel", options => "english"
 usepackage "unicode-math"
 usepackage "xunicode"
 usepackage "url"
-usepackage "cite"
 usepackage "graphicx"
 usepackage "caption", options => "justification=centering, labelfont=bf"
 usepackage "float"
@@ -18,6 +18,7 @@ usepackage "multirow"
 usepackage "svg"
 usepackage "float"
 usepackage "tabularx"
+usepackage "natbib", options => "sort&compress,comma,super"
 
 import haltex.beamer
 
@@ -25,7 +26,7 @@ usetheme :Antibes
 setbeamertemplate "navigation symbols", ""
 captionsetup "labelformat=empty", options => "figure"
 setcounter :tocdepth, 1
-typewrite "API", "MMPG"
+typewrite "API", "MMPG", "AI", "Jutge.org"
 
 title "Platform for massive multiplayer programming games"
 institute "Facultat d'Informàtica de Barcelona"
@@ -42,13 +43,26 @@ document:
 
   subsection "Programming games"
   frame "What is a programming game?":
-    p "..."
+    p "A computer game where the player does not directly interact with the game. Instead, the player writes a computer program
+    (AI) that plays it."
+
+    figure!:
+      center:
+        resizebox height => "130pt":
+          includegraphics "images/spacechem.jpg"
+
+      caption "SpaceChem #cite{spacechem}"
 
   section "Formulation"
   subsection "Analysis"
 
   frame "The problem":
-    p "..."
+    p "Jutge.org programming challenge:"
+
+    itemize:
+      item "Based on a round system"
+      item "Players that lose stop playing"
+      item "Multiple matches needed"
 
   frame "The state of the art":
     itemize:
@@ -190,10 +204,14 @@ document:
     p "..."
 
   frame "Event sourcing":
-    p "..."
+    centered:
+      resizebox height => "180pt":
+        includegraphics "graphs/eventsourcing.pdf"
 
   frame "Snapshots":
-    p "..."
+    centered:
+      resizebox height => "180pt":
+        includegraphics "graphs/eventsourcing_snapshot.pdf"
 
   frame "Log files":
     p "..."
@@ -350,3 +368,7 @@ document:
 
   frame "Final thoughts":
     p "..."
+
+  frame "References", options => "allowframebreaks":
+    bibliographystyle :plain
+    bibliography :references

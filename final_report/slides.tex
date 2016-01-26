@@ -3,7 +3,6 @@
 \usepackage{unicode-math}
 \usepackage{xunicode}
 \usepackage{url}
-\usepackage{cite}
 \usepackage{graphicx}
 \usepackage[justification=centering, labelfont=bf]{caption}
 \usepackage{float}
@@ -14,6 +13,7 @@
 \usepackage{svg}
 \usepackage{float}
 \usepackage{tabularx}
+\usepackage[sort&compress,comma,super]{natbib}
 \usetheme{Antibes}
 \setbeamertemplate{navigation symbols}{}
 \captionsetup[figure]{labelformat=empty}
@@ -30,17 +30,34 @@
 \section{Introduction}
 \subsection{Programming games}
 \begin{frame}{What is a programming game?}
-...
+A computer game where the player does not directly interact with the game. Instead, the player writes a computer program
+    (\texttt{AI}) that plays it.
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{130pt}{
+\includegraphics{images/spacechem.jpg}
+}
+\end{center}
+\caption{SpaceChem \cite{spacechem}}
+\end{figure}
 \end{frame}
 \section{Formulation}
 \subsection{Analysis}
 \begin{frame}{The problem}
-...
+\texttt{Jutge.org} programming challenge:
+\begin{itemize}
+\item
+Based on a round system
+\item
+Players that lose stop playing
+\item
+Multiple matches needed
+\end{itemize}
 \end{frame}
 \begin{frame}{The state of the art}
 \begin{itemize}
 \item
-Google's AI programming challenge \cite{google_ai}
+Google's \texttt{AI} programming challenge \cite{google_ai}
 \item
 Battlecode \cite{battlecode}
 \item
@@ -231,10 +248,18 @@ Subscribed to the \texttt{API} and drawing player actions in a web-browser.
 ...
 \end{frame}
 \begin{frame}{Event sourcing}
-...
+\makebox[\textwidth]{
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/eventsourcing.pdf}
+}
+}
 \end{frame}
 \begin{frame}{Snapshots}
-...
+\makebox[\textwidth]{
+\noindent\resizebox{!}{180pt}{
+\includegraphics{graphs/eventsourcing_snapshot.pdf}
+}
+}
 \end{frame}
 \begin{frame}{Log files}
 ...
@@ -250,7 +275,7 @@ Subscribed to the \texttt{API} and drawing player actions in a web-browser.
 \caption{Login form}
 \end{figure}
 \end{frame}
-\begin{frame}{AI hot-swapping}
+\begin{frame}{\texttt{AI} hot-swapping}
 \begin{figure}[H]
 \makebox[\textwidth]{
 \noindent\resizebox{!}{180pt}{
@@ -436,5 +461,9 @@ $$x(t) = at \: cos(t + \theta)$$
 \end{frame}
 \begin{frame}{Final thoughts}
 ...
+\end{frame}
+\begin{frame}[allowframebreaks]{References}
+\bibliographystyle{plain}
+\bibliography{references}
 \end{frame}
 \end{document}

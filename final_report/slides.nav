@@ -130,8 +130,15 @@
 \headcommand {\beamer@framepages {47}{47}}
 \headcommand {\slideentry {6}{4}{2}{48/48}{Conclusion}{0}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\beamer@partpages {1}{48}}
-\headcommand {\beamer@subsectionpages {47}{48}}
+\headcommand {\sectionentry {7}{References}{49}{References}{0}}
 \headcommand {\beamer@sectionpages {44}{48}}
-\headcommand {\beamer@documentpages {48}}
-\headcommand {\def \inserttotalframenumber {48}}
+\headcommand {\beamer@subsectionpages {47}{48}}
+\headcommand {\slideentry {7}{0}{3}{49/49}{Conclusion}{0}}
+\headcommand {\beamer@framepages {49}{49}}
+\headcommand {\slideentry {7}{0}{3}{49/50}{Conclusion}{0}}
+\headcommand {\beamer@framepages {49}{50}}
+\headcommand {\beamer@partpages {1}{50}}
+\headcommand {\beamer@subsectionpages {47}{50}}
+\headcommand {\beamer@sectionpages {44}{50}}
+\headcommand {\beamer@documentpages {50}}
+\headcommand {\def \inserttotalframenumber {50}}
