@@ -1,0 +1,7 @@
+\frametitle{Separating world structure from dynamic data}
+\begin{figure}[H]
+\begin{center}
+\inputminted[fontsize=\tiny]{js}{code/snapshot.json}
+\end{center}
+\caption{A snapshot before the optimization}
+\end{figure}

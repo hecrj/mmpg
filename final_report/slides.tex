@@ -13,6 +13,9 @@
 \usepackage{svg}
 \usepackage{float}
 \usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{minted}
+\def\Checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 \usetheme{Antibes}
 \setbeamertemplate{navigation symbols}{}
 \captionsetup[figure]{labelformat=empty}
@@ -273,8 +276,11 @@ $$t_2 - t_1 = t_3 - t_2 = \cdots = t_{M+1} - t_M = \text{log interval}$$
 \noindent\resizebox{!}{180pt}{
 \includegraphics{images/login_ok.png}
 }
+\noindent\resizebox{!}{180pt}{
+\includegraphics{images/login_error.png}
 }
-\caption{Login form}
+}
+\caption{Login form. Valid (left). Invalid (right)}
 \end{figure}
 \end{frame}
 \begin{frame}{\texttt{AI} hot-swapping}
@@ -351,18 +357,7 @@ $$x = a \: cos(\theta)$$
 }
 \end{center}
 \end{frame}
-\subsection{Fleets and planets}
-\begin{frame}{Game loop support}
-...
-\end{frame}
 \subsection{A whole galaxy}
-\begin{frame}{Connecting systems}
-\begin{center}
-\noindent\resizebox{!}{180pt}{
-\includegraphics{graphs/generation.pdf}
-}
-\end{center}
-\end{frame}
 \begin{frame}{Connecting systems}
 \begin{center}
 \noindent\resizebox{!}{180pt}{
@@ -376,6 +371,29 @@ $$x = a \: cos(\theta)$$
 \includegraphics{graphs/relay.pdf}
 }
 \end{center}
+\end{frame}
+\begin{frame}{Generating multiple systems}
+\begin{center}
+300 planetary systems
+      $$\Downarrow$$
+      CPU usage increase from 2\% to 20\% in the Linode
+\end{center}
+\end{frame}
+\begin{frame}[fragile]{Separating world structure from dynamic data}
+\begin{figure}[H]
+\begin{center}
+\inputminted[fontsize=\tiny]{js}{code/snapshot.json}
+\end{center}
+\caption{A snapshot before the optimization}
+\end{figure}
+\end{frame}
+\begin{frame}{Separating world structure from dynamic data}
+\begin{figure}[H]
+\begin{center}
+\inputminted{js}{code/optimized_snapshot.json}
+\end{center}
+\caption{A snapshot after the optimization}
+\end{figure}
 \end{frame}
 \begin{frame}{Separating world structure from dynamic data}
 \begin{figure}[H]
@@ -412,18 +430,96 @@ $$x(t) = at \: cos(t + \theta)$$
 \end{center}
 \end{frame}
 \section{Demonstration}
+\subsection{Live}
 \begin{frame}{Space Wars}
-...
+\begin{center}
+\emph{Live demo}
+\end{center}
 \end{frame}
 \section{Evaluation}
 \subsection{Validation}
+\begin{frame}{Validation of secondary objectives}
+\begin{enumerate}
+\item
+Develop an abstract game engine
+\item
+Allow hot-swapping of \texttt{AIs}
+\item
+Implement a real-time webviewer
+\item
+Make the infrastructure scalable and stable
+\item
+Create a game example
+\end{enumerate}
+\end{frame}
+\begin{frame}{Validation of secondary objectives}
+\begin{enumerate}
+\item
+Develop an abstract game engine \Checkmark
+\item
+Allow hot-swapping of \texttt{AIs} \Checkmark
+\item
+Implement a real-time webviewer \Checkmark
+\item
+Make the infrastructure scalable and stable
+\item
+Create a game example \Checkmark
+\end{enumerate}
+\end{frame}
 \begin{frame}{Stability}
 \begin{figure}[H]
 \noindent\resizebox{\textwidth}{!}{
 \includegraphics{images/mmpg_cpu.png}
 }
-\caption{CPU usage of the platform in a 30 day period}
+\caption{CPU usage of the platform in a 30 day period (Linode 1024)}
 \end{figure}
+\end{frame}
+\begin{frame}{Scalability}
+\begin{figure}[H]
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/mmpg_cpu_50_players.png}
+}
+\caption{CPU usage of the platform with 50 players and 300 planetary systems in a day (Linode 1024)}
+\end{figure}
+\end{frame}
+\begin{frame}{Validation of secondary objectives}
+\begin{enumerate}
+\item
+Develop an abstract game engine \Checkmark
+\item
+Allow hot-swapping of \texttt{AIs} \Checkmark
+\item
+Implement a real-time webviewer \Checkmark
+\item
+Make the infrastructure scalable and stable
+\item
+Create a game example \Checkmark
+\end{enumerate}
+\end{frame}
+\begin{frame}{Validation of secondary objectives}
+\begin{enumerate}
+\item
+Develop an abstract game engine \Checkmark
+\item
+Allow hot-swapping of \texttt{AIs} \Checkmark
+\item
+Implement a real-time webviewer \Checkmark
+\item
+Make the infrastructure scalable and stable \Checkmark
+\item
+Create a game example \Checkmark
+\end{enumerate}
+\end{frame}
+\begin{frame}{Validation of the main objective}
+\emph{Develop a set of components that ease the creation and the usage of \texttt{MMPGs}.}
+\begin{itemize}
+\item
+Abstract game engine \Checkmark
+\item
+Client library \Checkmark
+\item
+Documentation \texttimes
+\end{itemize}
 \end{frame}
 \subsection{Time management}
 \begin{frame}{Planning timeline}
@@ -526,10 +622,35 @@ $$x(t) = at \: cos(t + \theta)$$
 \input{tables/economic_cost}
 \end{frame}
 \subsection{Conclusion}
-\begin{frame}{Conclusions}
-...
+\begin{frame}{The future}
+\begin{itemize}
+\item
+Documentation
+\item
+Widget library
+\item
+Game template
+\item
+Game-logic testing suite
+\end{itemize}
 \end{frame}
-\begin{frame}{Final thoughts}
-...
+\begin{frame}{Conclusions}
+A platform was built, featuring:
+\begin{itemize}
+\item
+Abstract game engine
+\item
+Client library
+\item
+\texttt{AI} hot-swapping
+\item
+Real-time support
+\item
+Match replay
+\item
+Game example
+\end{itemize}
+The platform sets the foundations for a new type of programming games: the \texttt{MMPGs}, while providing a useful set of
+    components to create them and use them.
 \end{frame}
 \end{document}

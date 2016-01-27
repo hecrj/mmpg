@@ -96,52 +96,66 @@
 \headcommand {\beamer@framepages {38}{38}}
 \headcommand {\slideentry {3}{6}{8}{39/39}{The first world}{0}}
 \headcommand {\beamer@framepages {39}{39}}
-\headcommand {\beamer@subsectionentry {0}{3}{7}{40}{Fleets and planets}}\headcommand {\beamer@subsectionpages {32}{39}}
-\headcommand {\slideentry {3}{7}{1}{40/40}{Fleets and planets}{0}}
+\headcommand {\beamer@subsectionentry {0}{3}{7}{40}{A whole galaxy}}\headcommand {\beamer@subsectionpages {32}{39}}
+\headcommand {\slideentry {3}{7}{1}{40/40}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {40}{40}}
-\headcommand {\beamer@subsectionentry {0}{3}{8}{41}{A whole galaxy}}\headcommand {\beamer@subsectionpages {40}{40}}
-\headcommand {\slideentry {3}{8}{1}{41/41}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{2}{41/41}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {3}{8}{2}{42/42}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{3}{42/42}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\slideentry {3}{8}{3}{43/43}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{4}{43/43}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {3}{8}{4}{44/44}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{5}{44/44}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {44}{44}}
-\headcommand {\slideentry {3}{8}{5}{45/45}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{6}{45/45}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\slideentry {3}{8}{6}{46/46}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{7}{46/46}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {46}{46}}
-\headcommand {\slideentry {3}{8}{7}{47/47}{A whole galaxy}{0}}
+\headcommand {\slideentry {3}{7}{8}{47/47}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {47}{47}}
-\headcommand {\sectionentry {4}{Demonstration}{48}{Demonstration}{0}}
-\headcommand {\beamer@sectionpages {16}{47}}
-\headcommand {\beamer@subsectionpages {41}{47}}
-\headcommand {\slideentry {4}{0}{8}{48/48}{}{0}}
+\headcommand {\slideentry {3}{7}{9}{48/48}{A whole galaxy}{0}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\sectionentry {5}{Evaluation}{49}{Evaluation}{0}}
-\headcommand {\beamer@sectionpages {48}{48}}
-\headcommand {\beamer@subsectionpages {48}{48}}
-\headcommand {\beamer@subsectionentry {0}{5}{1}{49}{Validation}}\headcommand {\beamer@subsectionpages {49}{48}}
-\headcommand {\slideentry {5}{1}{1}{49/49}{Validation}{0}}
+\headcommand {\sectionentry {4}{Demonstration}{49}{Demonstration}{0}}
+\headcommand {\beamer@sectionpages {16}{48}}
+\headcommand {\beamer@subsectionpages {40}{48}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{49}{Live}}\headcommand {\beamer@subsectionpages {49}{48}}
+\headcommand {\slideentry {4}{1}{1}{49/49}{Live}{0}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\beamer@subsectionentry {0}{5}{2}{50}{Time management}}\headcommand {\beamer@subsectionpages {49}{49}}
-\headcommand {\slideentry {5}{2}{1}{50/50}{Time management}{0}}
+\headcommand {\sectionentry {5}{Evaluation}{50}{Evaluation}{0}}
+\headcommand {\beamer@sectionpages {49}{49}}
+\headcommand {\beamer@subsectionpages {49}{49}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{50}{Validation}}\headcommand {\beamer@subsectionpages {50}{49}}
+\headcommand {\slideentry {5}{1}{1}{50/50}{Validation}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {5}{2}{2}{51/51}{Time management}{0}}
+\headcommand {\slideentry {5}{1}{2}{51/51}{Validation}{0}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {5}{2}{3}{52/52}{Time management}{0}}
+\headcommand {\slideentry {5}{1}{3}{52/52}{Validation}{0}}
 \headcommand {\beamer@framepages {52}{52}}
-\headcommand {\beamer@subsectionentry {0}{5}{3}{53}{Economic cost}}\headcommand {\beamer@subsectionpages {50}{52}}
-\headcommand {\slideentry {5}{3}{1}{53/53}{Economic cost}{0}}
+\headcommand {\slideentry {5}{1}{4}{53/53}{Validation}{0}}
 \headcommand {\beamer@framepages {53}{53}}
-\headcommand {\beamer@subsectionentry {0}{5}{4}{54}{Conclusion}}\headcommand {\beamer@subsectionpages {53}{53}}
-\headcommand {\slideentry {5}{4}{1}{54/54}{Conclusion}{0}}
+\headcommand {\slideentry {5}{1}{5}{54/54}{Validation}{0}}
 \headcommand {\beamer@framepages {54}{54}}
-\headcommand {\slideentry {5}{4}{2}{55/55}{Conclusion}{0}}
+\headcommand {\slideentry {5}{1}{6}{55/55}{Validation}{0}}
 \headcommand {\beamer@framepages {55}{55}}
-\headcommand {\beamer@partpages {1}{55}}
-\headcommand {\beamer@subsectionpages {54}{55}}
-\headcommand {\beamer@sectionpages {49}{55}}
-\headcommand {\beamer@documentpages {55}}
-\headcommand {\def \inserttotalframenumber {55}}
+\headcommand {\slideentry {5}{1}{7}{56/56}{Validation}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{57}{Time management}}\headcommand {\beamer@subsectionpages {50}{56}}
+\headcommand {\slideentry {5}{2}{1}{57/57}{Time management}{0}}
+\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\slideentry {5}{2}{2}{58/58}{Time management}{0}}
+\headcommand {\beamer@framepages {58}{58}}
+\headcommand {\slideentry {5}{2}{3}{59/59}{Time management}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\beamer@subsectionentry {0}{5}{3}{60}{Economic cost}}\headcommand {\beamer@subsectionpages {57}{59}}
+\headcommand {\slideentry {5}{3}{1}{60/60}{Economic cost}{0}}
+\headcommand {\beamer@framepages {60}{60}}
+\headcommand {\beamer@subsectionentry {0}{5}{4}{61}{Conclusion}}\headcommand {\beamer@subsectionpages {60}{60}}
+\headcommand {\slideentry {5}{4}{1}{61/61}{Conclusion}{0}}
+\headcommand {\beamer@framepages {61}{61}}
+\headcommand {\slideentry {5}{4}{2}{62/62}{Conclusion}{0}}
+\headcommand {\beamer@framepages {62}{62}}
+\headcommand {\beamer@partpages {1}{62}}
+\headcommand {\beamer@subsectionpages {61}{62}}
+\headcommand {\beamer@sectionpages {50}{62}}
+\headcommand {\beamer@documentpages {62}}
+\headcommand {\def \inserttotalframenumber {62}}

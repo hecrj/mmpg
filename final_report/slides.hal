@@ -18,6 +18,10 @@ usepackage "multirow"
 usepackage "svg"
 usepackage "float"
 usepackage "tabularx"
+usepackage "tikz"
+usepackage "minted"
+
+p "#def#Checkmark{#tikz#fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}"
 
 import haltex.beamer
 
@@ -229,7 +233,10 @@ document:
         resizebox height => "180pt":
           includegraphics "images/login_ok.png"
 
-      caption "Login form"
+        resizebox height => "180pt":
+          includegraphics "images/login_error.png"
+
+      caption "Login form. Valid (left). Invalid (right)"
 
   frame "AI hot-swapping":
     figure!:
@@ -287,17 +294,7 @@ document:
       resizebox height => "180pt":
         includegraphics "graphs/generation.pdf"
 
-  subsection "Fleets and planets"
-  frame "Game loop support":
-    p "..."
-
   subsection "A whole galaxy"
-
-  frame "Connecting systems":
-    center:
-      resizebox height => "180pt":
-        includegraphics "graphs/generation.pdf"
-
   frame "Connecting systems":
     center:
       resizebox height => "180pt":
@@ -307,6 +304,26 @@ document:
     center:
       resizebox height => "180pt":
         includegraphics "graphs/relay.pdf"
+
+  frame "Generating multiple systems":
+    center:
+      p "300 planetary systems
+      $$#Downarrow$$
+      CPU usage increase from 2\\% to 20\\% in the Linode"
+
+  frame "Separating world structure from dynamic data", options => "fragile":
+    figure!:
+      center:
+        inputminted "js", "code/snapshot.json", options => "fontsize=\\tiny"
+
+      caption "A snapshot before the optimization"
+
+  frame "Separating world structure from dynamic data":
+    figure!:
+      center:
+        inputminted "js", "code/optimized_snapshot.json"
+
+      caption "A snapshot after the optimization"
 
   frame "Separating world structure from dynamic data":
     figure!:
@@ -336,19 +353,67 @@ document:
       resizebox height => "180pt":
         includegraphics "images/galaxy_identicons.png"
 
-
   section "Demonstration"
+  subsection "Live"
   frame "Space Wars":
-    p "..."
+    center:
+      p "*Live demo*"
 
   section "Evaluation"
   subsection "Validation"
+  frame "Validation of secondary objectives":
+    enumerate:
+      item "Develop an abstract game engine"
+      item "Allow hot-swapping of AIs"
+      item "Implement a real-time webviewer"
+      item "Make the infrastructure scalable and stable"
+      item "Create a game example"
+
+  frame "Validation of secondary objectives":
+    enumerate:
+      item "Develop an abstract game engine #Checkmark"
+      item "Allow hot-swapping of AIs #Checkmark"
+      item "Implement a real-time webviewer #Checkmark"
+      item "Make the infrastructure scalable and stable"
+      item "Create a game example #Checkmark"
+
   frame "Stability":
     figure!:
       resizebox width => "\\textwidth":
         includegraphics "images/mmpg_cpu.png"
 
-      caption "CPU usage of the platform in a 30 day period"
+      caption "CPU usage of the platform in a 30 day period (Linode 1024)"
+
+  frame "Scalability":
+    figure!:
+      resizebox width => "\\textwidth":
+        includegraphics "images/mmpg_cpu_50_players.png"
+
+      caption "CPU usage of the platform with 50 players and 300 planetary systems in a day (Linode 1024)"
+
+  frame "Validation of secondary objectives":
+    enumerate:
+      item "Develop an abstract game engine #Checkmark"
+      item "Allow hot-swapping of AIs #Checkmark"
+      item "Implement a real-time webviewer #Checkmark"
+      item "Make the infrastructure scalable and stable"
+      item "Create a game example #Checkmark"
+
+  frame "Validation of secondary objectives":
+    enumerate:
+      item "Develop an abstract game engine #Checkmark"
+      item "Allow hot-swapping of AIs #Checkmark"
+      item "Implement a real-time webviewer #Checkmark"
+      item "Make the infrastructure scalable and stable #Checkmark"
+      item "Create a game example #Checkmark"
+
+  frame "Validation of the main objective":
+    p "*Develop a set of components that ease the creation and the usage of MMPGs.*"
+
+    itemize:
+      item "Abstract game engine #Checkmark"
+      item "Client library #Checkmark"
+      item "Documentation #texttimes"
 
   subsection "Time management"
   frame "Planning timeline":
@@ -418,8 +483,23 @@ document:
     input "tables/economic_cost"
 
   subsection "Conclusion"
-  frame "Conclusions":
-    p "..."
+  frame "The future":
+    itemize:
+      item "Documentation"
+      item "Widget library"
+      item "Game template"
+      item "Game-logic testing suite"
 
-  frame "Final thoughts":
-    p "..."
+  frame "Conclusions":
+    p "A platform was built, featuring:"
+
+    itemize:
+      item "Abstract game engine"
+      item "Client library"
+      item "AI hot-swapping"
+      item "Real-time support"
+      item "Match replay"
+      item "Game example"
+
+    p "The platform sets the foundations for a new type of programming games: the MMPGs, while providing a useful set of
+    components to create them and use them."
