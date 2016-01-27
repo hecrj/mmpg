@@ -112,6 +112,24 @@ document:
       item "Make the infrastructure scalable and stable"
       item "Create a game example"
 
+  frame "Main benefits":
+    itemize:
+      item "For students:"
+      itemize:
+        item "Continuous learning process"
+        item "More attachment to the match"
+        item "More interesting games"
+
+      item "For professors:"
+      itemize:
+        item "Reduced amount of work"
+        item "No need to arrange multiple matches"
+
+      item "For game developers:"
+      itemize:
+        item "Easiness to build new MMPGs"
+        item "Freedom to create huge worlds"
+
   subsection "Design"
   frame "The solution":
     center:
@@ -168,9 +186,9 @@ document:
   subsection "The first prototype"
   frame "A simple prototype":
     description:
-      item "Engine"; p "Running one simple player and notifying actions to subscribers."
-      item "API"; p "Subscribed to the engine and notifying actions to clients."
-      item "Client"; p "Subscribed to the API and drawing player actions in a web-browser."
+      item "Engine:"; p "Running one simple player and notifying actions to subscribers."
+      item "API:"; p "Subscribed to the engine and notifying actions to clients."
+      item "Client:"; p "Subscribed to the API and drawing player actions in a web-browser."
 
   frame "The engine architecture":
     figure!:
