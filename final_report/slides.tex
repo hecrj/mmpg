@@ -1,7 +1,6 @@
 \documentclass{beamer}
 \usepackage[english]{babel}
 \usepackage{unicode-math}
-\usepackage{xunicode}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage[justification=centering, labelfont=bf]{caption}
@@ -15,12 +14,13 @@
 \usepackage{tabularx}
 \usepackage{tikz}
 \usepackage{minted}
-\def\Checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\def\Checkmark{\tikz\fill[scale=0.4,color=black!40!green](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 \usetheme{Antibes}
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
 \captionsetup[figure]{labelformat=empty}
 \setcounter{tocdepth}{1}
-\title{Platform for massive multiplayer programming games}
+\title{Platform for massive multiplayer\\ programming games}
 \institute{Facultat d'Informàtica de Barcelona}
 \author{Héctor Ramón Jiménez}
 \date{January 28, 2016}
@@ -31,9 +31,13 @@
 \end{frame}
 \section{Introduction}
 \subsection{Programming games}
-\begin{frame}{What is a programming game?}
-A computer game where the player does not directly interact with the game. Instead, the player writes a computer program
-    (\texttt{AI}) that plays it.
+\begin{frame}{Programming games}
+\begin{itemize}
+\item
+Players do not directly interact with the game.
+\item
+Players write computer programs (\texttt{AI}) that play the game.
+\end{itemize}
 \begin{figure}[H]
 \begin{center}
 \noindent\resizebox{!}{130pt}{
@@ -44,23 +48,32 @@ A computer game where the player does not directly interact with the game. Inste
 \end{figure}
 \end{frame}
 \begin{frame}{Gamification}
-Programming games can...
+Programming games can:
 \begin{itemize}
 \item
-... show how algorithms work in a visual way.
+show how algorithms work in a visual way.
 \item
-... motivate players to learn and improve.
+motivate players to learn and improve.
 \end{itemize}
-For this reason, they are commonly used in education to teach students different programming techniques.
+\pause
+\begin{center}
+$$\Downarrow$$
+      They are commonly used in education to teach students different programming techniques.
+\end{center}
 \end{frame}
 \begin{frame}{The EDA competition}
 An \texttt{AI} programming challenge held every semester at the FIB using \texttt{Jutge.org}
 \begin{figure}[H]
-\begin{center}
-\noindent\resizebox{!}{60pt}{
+\begin{minipage}{0.3\textwidth}
+\noindent\resizebox{\textwidth}{!}{
 \includegraphics{graphs/semafor.pdf}
 }
-\end{center}
+\end{minipage}
+\begin{minipage}{0.65\textwidth}
+\noindent\resizebox{\textwidth}{!}{
+\includegraphics{images/final_eda.jpg}
+}
+\end{minipage}
 \end{figure}
 \end{frame}
 \section{Formulation}
@@ -306,11 +319,8 @@ $$t_2 - t_1 = t_3 - t_2 = \cdots = t_{M+1} - t_M = \text{log interval}$$
 \noindent\resizebox{!}{180pt}{
 \includegraphics{images/login_ok.png}
 }
-\noindent\resizebox{!}{180pt}{
-\includegraphics{images/login_error.png}
 }
-}
-\caption{Login form. Valid (left). Invalid (right)}
+\caption{Login form}
 \end{figure}
 \end{frame}
 \begin{frame}{\texttt{AI} hot-swapping}
@@ -320,7 +330,7 @@ $$t_2 - t_1 = t_3 - t_2 = \cdots = t_{M+1} - t_M = \text{log interval}$$
 \includegraphics{images/deploy_error.png}
 }
 }
-\caption{Player deployment with a compilation error}
+\caption{Player deployment}
 \end{figure}
 \end{frame}
 \subsection{The first world}
@@ -340,8 +350,8 @@ $$t_2 - t_1 = t_3 - t_2 = \cdots = t_{M+1} - t_M = \text{log interval}$$
 }
 \end{minipage}
 \begin{minipage}{.3\textwidth}
-$$x = a \: cos(\theta)$$
-           $$y = b \: sin(\theta)$$
+$$x = a \: \mathrm{cos} \theta$$
+           $$y = b \: \mathrm{sin} \theta$$
 \end{minipage}
 \end{figure}
 \end{frame}
@@ -440,8 +450,8 @@ $$x = a \: cos(\theta)$$
 }
 \end{minipage}
 \begin{minipage}{.35\textwidth}
-$$x(t) = at \: cos(t + \theta)$$
-         $$y(t) = at \: sin(t + \theta)$$
+$$x(t) = at \: \mathrm{cos}(t + \theta)$$
+         $$y(t) = at \: \mathrm{sin}(t + \theta)$$
 \end{minipage}
 \end{frame}
 \begin{frame}{Rendering a galaxy}
@@ -548,7 +558,7 @@ Abstract game engine \Checkmark
 \item
 Client library \Checkmark
 \item
-Documentation \texttimes
+Documentation \textbf{\textcolor{red}{\texttimes}}
 \end{itemize}
 \end{frame}
 \subsection{Time management}
@@ -644,28 +654,28 @@ Documentation \texttimes
 }
 \end{figure}
 \end{frame}
-\begin{frame}{Time table}
+\begin{frame}{Time table (h)}
 \input{tables/time_table}
 \end{frame}
 \subsection{Economic cost}
-\begin{frame}{Total cost}
+\begin{frame}{Total cost (\EURtm)}
 \input{tables/economic_cost}
 \end{frame}
 \subsection{Conclusion}
 \begin{frame}{The future}
 \begin{itemize}
 \item
-Documentation
+Improve documentation
 \item
-Widget library
+Implement a widget library
 \item
-Game template
+Create a game template
 \item
-Game-logic testing suite
+Develop a game-logic testing suite
 \end{itemize}
 \end{frame}
 \begin{frame}{Conclusions}
-A platform was built, featuring:
+The platform was built, featuring:
 \begin{itemize}
 \item
 Abstract game engine

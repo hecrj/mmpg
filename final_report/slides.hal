@@ -6,7 +6,6 @@ documentclass "beamer"
 
 usepackage "babel", options => "english"
 usepackage "unicode-math"
-usepackage "xunicode"
 usepackage "url"
 usepackage "graphicx"
 usepackage "caption", options => "justification=centering, labelfont=bf"
@@ -21,17 +20,18 @@ usepackage "tabularx"
 usepackage "tikz"
 usepackage "minted"
 
-p "#def#Checkmark{#tikz#fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}"
+p "#def#Checkmark{#tikz#fill[scale=0.4,color=black!40!green](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}"
 
 import haltex.beamer
 
 usetheme :Antibes
-setbeamertemplate "navigation symbols", ""
+setbeamertemplate "navigation symbols", none
+setbeamertemplate :headline, none
 captionsetup "labelformat=empty", options => "figure"
 setcounter :tocdepth, 1
 typewrite "API", "MMPG", "AI", "Jutge.org", "MMPGs", "AIs"
 
-title "Platform for massive multiplayer programming games"
+title "Platform for massive multiplayer\\\\ programming games"
 institute "Facultat d'Informàtica de Barcelona"
 author "Héctor Ramón Jiménez"
 date "January 28, 2016"
@@ -45,9 +45,10 @@ document:
   section "Introduction"
 
   subsection "Programming games"
-  frame "What is a programming game?":
-    p "A computer game where the player does not directly interact with the game. Instead, the player writes a computer program
-    (AI) that plays it."
+  frame "Programming games":
+    itemize:
+      item "Players do not directly interact with the game."
+      item "Players write computer programs (AI) that play the game."
 
     figure!:
       center:
@@ -57,20 +58,28 @@ document:
       caption "SpaceChem"
 
   frame "Gamification":
-    p "Programming games can..."
+    p "Programming games can:"
     itemize:
-      item "... show how algorithms work in a visual way."
-      item "... motivate players to learn and improve."
+      item "show how algorithms work in a visual way."
+      item "motivate players to learn and improve."
 
-    p "For this reason, they are commonly used in education to teach students different programming techniques."
+    pause
+
+    center:
+      p "$$\\Downarrow$$
+      They are commonly used in education to teach students different programming techniques."
 
   frame "The EDA competition":
     p "An AI programming challenge held every semester at the FIB using Jutge.org"
 
     figure!:
-      center:
-        resizebox height => "60pt":
+      minipage "0.3\\textwidth":
+        resizebox width => "\\textwidth":
           includegraphics "graphs/semafor.pdf"
+
+      minipage "0.65\\textwidth":
+        resizebox width => "\\textwidth":
+          includegraphics "images/final_eda.jpg"
 
   section "Formulation"
   subsection "Analysis"
@@ -251,10 +260,7 @@ document:
         resizebox height => "180pt":
           includegraphics "images/login_ok.png"
 
-        resizebox height => "180pt":
-          includegraphics "images/login_error.png"
-
-      caption "Login form. Valid (left). Invalid (right)"
+      caption "Login form"
 
   frame "AI hot-swapping":
     figure!:
@@ -262,7 +268,7 @@ document:
         resizebox height => "180pt":
           includegraphics "images/deploy_error.png"
 
-      caption "Player deployment with a compilation error"
+      caption "Player deployment"
 
   subsection "The first world"
   frame "Galcon":
@@ -279,8 +285,8 @@ document:
           includegraphics "graphs/planet_position.pdf"
 
       minipage ".3\\textwidth":
-        p "$$x = a #: cos(#theta)$$
-           $$y = b #: sin(#theta)$$"
+        p "$$x = a #: #mathrm{cos} #theta$$
+           $$y = b #: #mathrm{sin} #theta$$"
 
   frame "Procedural generation of planetary systems":
     center:
@@ -356,8 +362,8 @@ document:
         includegraphics "images/galaxy_50_players.png"
 
     minipage ".35\\textwidth":
-      p "$$x(t) = at \\: cos(t + \\theta)$$
-         $$y(t) = at \\: sin(t + \\theta)$$"
+      p "$$x(t) = at \\: #mathrm{cos}(t + \\theta)$$
+         $$y(t) = at \\: #mathrm{sin}(t + \\theta)$$"
 
   frame "Rendering a galaxy":
     figure!:
@@ -431,7 +437,7 @@ document:
     itemize:
       item "Abstract game engine #Checkmark"
       item "Client library #Checkmark"
-      item "Documentation #texttimes"
+      item "Documentation **#textcolor{red}{#texttimes}**"
 
   subsection "Time management"
   frame "Planning timeline":
@@ -493,23 +499,23 @@ document:
             ganttlink "elem1", "elem4"
             ganttlink "elem8", "elem9"
 
-  frame "Time table":
+  frame "Time table (h)":
     input "tables/time_table"
 
   subsection "Economic cost"
-  frame "Total cost":
+  frame "Total cost (\\EURtm)":
     input "tables/economic_cost"
 
   subsection "Conclusion"
   frame "The future":
     itemize:
-      item "Documentation"
-      item "Widget library"
-      item "Game template"
-      item "Game-logic testing suite"
+      item "Improve documentation"
+      item "Implement a widget library"
+      item "Create a game template"
+      item "Develop a game-logic testing suite"
 
   frame "Conclusions":
-    p "A platform was built, featuring:"
+    p "The platform was built, featuring:"
 
     itemize:
       item "Abstract game engine"
