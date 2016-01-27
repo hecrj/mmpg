@@ -41,21 +41,27 @@ A computer game where the player does not directly interact with the game. Inste
 \end{figure}
 \end{frame}
 \begin{frame}{Gamification}
-...
+Programming games can...
+\begin{itemize}
+\item
+... show how algorithms work in a visual way.
+\item
+... motivate players to learn and improve.
+\end{itemize}
+For this reason, they are commonly used in education to teach students different programming techniques.
+\end{frame}
+\begin{frame}{The EDA competition}
+An \texttt{AI} programming challenge held every semester at the FIB using \texttt{Jutge.org}
+\begin{figure}[H]
+\begin{center}
+\noindent\resizebox{!}{60pt}{
+\includegraphics{graphs/semafor.pdf}
+}
+\end{center}
+\end{figure}
 \end{frame}
 \section{Formulation}
 \subsection{Analysis}
-\begin{frame}{The problem}
-\texttt{Jutge.org} programming challenge:
-\begin{itemize}
-\item
-Based on a round system
-\item
-Players who lose stop playing
-\item
-Multiple matches needed
-\end{itemize}
-\end{frame}
 \begin{frame}{The problem}
 \begin{figure}[H]
 \begin{center}
@@ -87,6 +93,7 @@ CodinGame
 \item
 \texttt{EDA} competition
 \end{itemize}
+All of them feature multiplayer programming games with a limited amount of players per match.
 \end{frame}
 \subsection{Objectives}
 \begin{frame}{The main objective}
@@ -229,7 +236,13 @@ Subscribed to the \texttt{API} and drawing player actions in a web-browser.
 \end{frame}
 \subsection{The log system}
 \begin{frame}{Match replay}
-...
+\begin{center}
+An \texttt{MMPG} match might last weeks.
+      $$\Downarrow$$
+      Players will miss parts of the match.
+      $$\Downarrow$$
+      Players need to be able to replay the past of the match.
+\end{center}
 \end{frame}
 \begin{frame}{Event sourcing}
 \makebox[\textwidth]{
@@ -246,7 +259,12 @@ Subscribed to the \texttt{API} and drawing player actions in a web-browser.
 }
 \end{frame}
 \begin{frame}{Log files}
-...
+\makebox[\textwidth]{
+\noindent\resizebox{!}{150pt}{
+\includegraphics{graphs/log_files.pdf}
+}
+}
+$$t_2 - t_1 = t_3 - t_2 = \cdots = t_{M+1} - t_M = \text{log interval}$$
 \end{frame}
 \subsection{Deployment of AI}
 \begin{frame}{Authentication}

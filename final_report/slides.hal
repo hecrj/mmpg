@@ -53,18 +53,23 @@ document:
       caption "SpaceChem"
 
   frame "Gamification":
-    p "..."
+    p "Programming games can..."
+    itemize:
+      item "... show how algorithms work in a visual way."
+      item "... motivate players to learn and improve."
+
+    p "For this reason, they are commonly used in education to teach students different programming techniques."
+
+  frame "The EDA competition":
+    p "An AI programming challenge held every semester at the FIB using Jutge.org"
+
+    figure!:
+      center:
+        resizebox height => "60pt":
+          includegraphics "graphs/semafor.pdf"
 
   section "Formulation"
   subsection "Analysis"
-
-  frame "The problem":
-    p "Jutge.org programming challenge:"
-
-    itemize:
-      item "Based on a round system"
-      item "Players who lose stop playing"
-      item "Multiple matches needed"
 
   frame "The problem":
     figure!:
@@ -88,6 +93,8 @@ document:
       item "Battlecode"
       item "CodinGame"
       item "|EDA| competition"
+
+    p "All of them feature multiplayer programming games with a limited amount of players per match."
 
   subsection "Objectives"
   frame "The main objective":
@@ -191,7 +198,12 @@ document:
 
   subsection "The log system"
   frame "Match replay":
-    p "..."
+    center:
+      p "An MMPG match might last weeks.
+      $$\\Downarrow$$
+      Players will miss parts of the match.
+      $$\\Downarrow$$
+      Players need to be able to replay the past of the match."
 
   frame "Event sourcing":
     centered:
@@ -204,7 +216,11 @@ document:
         includegraphics "graphs/eventsourcing_snapshot.pdf"
 
   frame "Log files":
-    p "..."
+    centered:
+      resizebox height => "150pt":
+        includegraphics "graphs/log_files.pdf"
+
+    p "$$t_2 - t_1 = t_3 - t_2 = \\cdots = t_{M+1} - t_M = #text{log interval}$$"
 
   subsection "Deployment of AI"
   frame "Authentication":
