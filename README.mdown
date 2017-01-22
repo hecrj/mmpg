@@ -1,3 +1,8 @@
-# Web platform for MMPGs
+# Platform for MMPGs
 
-[![PDF Status](https://www.sharelatex.com/github/repos/hecrj/mmpg/builds/latest/badge.svg)](https://www.sharelatex.com/github/repos/hecrj/mmpg/builds/latest/output.pdf)
+The aim of this project is to provide an easy way to develop multiplayer
+programming games featuring huge worlds, long matches and a massive amount
+of players in real-time.
+
+[Read 
+more...](https://github.com/hecrj/mmpg/raw/master/final_report/final_report.pdf)
